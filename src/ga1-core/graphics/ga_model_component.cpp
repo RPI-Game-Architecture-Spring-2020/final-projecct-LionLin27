@@ -18,9 +18,10 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
-ga_model_component::ga_model_component(ga_entity* ent, ga_model* model) : ga_component(ent)
+ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_directional_light* light) : ga_component(ent)
 {
-	_material = new ga_animated_material(model->_skeleton);
+	_light = light;
+	_material = new ga_lit_anim_material(model->_skeleton, _light);
 	_material->init();
 
 	glGenVertexArrays(1, &_vao);
@@ -82,6 +83,13 @@ ga_model_component::~ga_model_component()
 
 void ga_model_component::update(ga_frame_params* params)
 {
+	/*
+	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
+	ga_quatf axis_angle;
+	axis_angle.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(60.0f) * dt);
+	get_entity()->rotate(axis_angle);
+	*/
+
 	ga_static_drawcall draw;
 	draw._name = "ga_animated_model_component";
 	draw._vao = _vao;

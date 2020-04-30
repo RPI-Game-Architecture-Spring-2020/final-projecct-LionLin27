@@ -19,6 +19,11 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+void ga_uniform::set(float f)
+{
+	glUniform1f(_location, f);
+}
+
 void ga_uniform::set(const ga_vec3f& vec)
 {
 	glUniform3fv(_location, 1, vec.axes);

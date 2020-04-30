@@ -57,6 +57,7 @@ void ga_animation_component::update(ga_frame_params* params)
 			j->_world = _playing->_animation->_poses[frame]._transforms[joint_index] * parent_matrix;
 			j->_skin = j->_inv_bind * j->_world;
 
+			/*
 #if DEBUG_DRAW_SKELETON
 			ga_dynamic_drawcall drawcall;
 			draw_debug_sphere(0.4f, j->_world * get_entity()->get_transform(), &drawcall);
@@ -65,6 +66,8 @@ void ga_animation_component::update(ga_frame_params* params)
 			params->_dynamic_drawcalls.push_back(drawcall);
 			params->_dynamic_drawcall_lock.clear(std::memory_order_release);
 #endif
+			*/
+
 		}
 	}
 }

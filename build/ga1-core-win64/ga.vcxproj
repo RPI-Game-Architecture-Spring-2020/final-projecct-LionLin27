@@ -1,0 +1,1237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{11B06660-1818-3AC2-90EF-8C395C55D51C}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ga</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ga.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ga</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ga.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ga</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ga.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ga</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ga.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ga</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>																					</Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/bar_bend.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-attack.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-attack.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-die.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-die.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-spawn.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-spawn.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-stand.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-stand.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bar.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/bar.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/environment.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/simpleEnemy.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/simpleEnemy.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/scripts/move.lua D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/scripts/move.lua
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_animated_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_animated_frag_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_animated_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_animated_vert_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_constant_color_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_constant_color_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_lit_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_lit_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_unlit_texture_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_unlit_texture_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>SDL2-2.0.5\Debug\SDL2.lib;glew32s.lib;opengl32.lib;Debug\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/ga.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/ga.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>																					</Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/bar_bend.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-attack.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-attack.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-die.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-die.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-spawn.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-spawn.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-stand.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-stand.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bar.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/bar.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/environment.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/simpleEnemy.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/simpleEnemy.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/scripts/move.lua D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/scripts/move.lua
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_animated_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_animated_frag_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_animated_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_animated_vert_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_constant_color_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_constant_color_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_lit_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_lit_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_unlit_texture_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_unlit_texture_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>SDL2-2.0.5\Release\SDL2.lib;glew32s.lib;opengl32.lib;Release\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/ga.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/ga.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>																					</Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/bar_bend.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-attack.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-attack.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-die.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-die.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-spawn.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-spawn.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-stand.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-stand.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bar.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/bar.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/environment.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/simpleEnemy.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/simpleEnemy.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/scripts/move.lua D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/scripts/move.lua
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_animated_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_animated_frag_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_animated_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_animated_vert_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_constant_color_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_constant_color_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_lit_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_lit_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_unlit_texture_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_unlit_texture_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>SDL2-2.0.5\MinSizeRel\SDL2.lib;glew32s.lib;opengl32.lib;MinSizeRel\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/ga.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/ga.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>																					</Message>
+      <Command>setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/bar_bend.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-attack.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-attack.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-die.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-die.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-spawn.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-spawn.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-stand.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-stand.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bar.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/bar.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/environment.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/simpleEnemy.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/simpleEnemy.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/scripts/move.lua D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/scripts/move.lua
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_animated_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_frag_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_animated_frag_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_animated_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_animated_vert_hw6.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_animated_vert_hw6.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_constant_color_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_constant_color_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_constant_color_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_lit_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_lit_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_lit_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_unlit_texture_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_unlit_texture_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_unlit_texture_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>SDL2-2.0.5\RelWithDebInfo\SDL2.lib;glew32s.lib;opengl32.lib;RelWithDebInfo\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/ga.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/ga.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -SD:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core -BD:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64 --check-stamp-file D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCompilerIdDetection.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompileFeatures.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerABI.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerId.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeFindBinUtils.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitLinkInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystem.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCompilerCommon.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CompilerId\VS-10.vcxproj.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindGLEW.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageHandleStandardArgs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageMessage.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Internal\FeatureTesting.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-Determine-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\SelectLibraryConfigurations.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCXXCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeRCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -SD:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core -BD:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64 --check-stamp-file D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCompilerIdDetection.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompileFeatures.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerABI.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerId.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeFindBinUtils.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitLinkInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystem.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCompilerCommon.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CompilerId\VS-10.vcxproj.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindGLEW.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageHandleStandardArgs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageMessage.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Internal\FeatureTesting.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-Determine-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\SelectLibraryConfigurations.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCXXCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeRCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -SD:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core -BD:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64 --check-stamp-file D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCompilerIdDetection.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompileFeatures.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerABI.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerId.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeFindBinUtils.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitLinkInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystem.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCompilerCommon.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CompilerId\VS-10.vcxproj.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindGLEW.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageHandleStandardArgs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageMessage.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Internal\FeatureTesting.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-Determine-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\SelectLibraryConfigurations.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCXXCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeRCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\RPI\GameArch\CMake\bin\cmake.exe -SD:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core -BD:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64 --check-stamp-file D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeCompilerIdDetection.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompileFeatures.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerABI.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineCompilerId.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeDetermineSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeFindBinUtils.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeParseImplicitLinkInfo.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCCompiler.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystem.cmake.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCXXCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestCompilerCommon.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CMakeTestRCCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TI-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\CompilerId\VS-10.vcxproj.in;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindGLEW.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageHandleStandardArgs.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\FindPackageMessage.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Internal\FeatureTesting.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-Determine-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;D:\RPI\GameArch\CMake\share\cmake-3.16\Modules\SelectLibraryConfigurations.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeCXXCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeRCCompiler.cmake;D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\3.16.2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\entity\ga_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\entity\ga_entity.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\entity\ga_hello_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\entity\ga_lua_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_camera.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_input.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_output.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_sim.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_animation_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_cube_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_debug_geometry.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_egg_parser.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_geometry.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_light.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_light_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_material.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_model_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_program.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_texture.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_button.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_checkbox.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_font.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_label.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_widget.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\jobs\ga_condvar.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\jobs\ga_fiber.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\jobs\ga_intpool.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\jobs\ga_job.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\jobs\ga_queue.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\main.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_mat3f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_mat4f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_quatf.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec2f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec3f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec4f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_intersection.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_intersection.tests.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_physics_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_physics_world.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_playermove_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_rigid_body.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_shape.cpp" />
+    <ClInclude Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\always_copy_data.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\ZERO_CHECK.vcxproj">
+      <Project>{042AC311-60F4-36EA-B2D0-66BE6DAA4C26}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\ALWAYS_COPY_DATA.vcxproj">
+      <Project>{412AE2AE-FA8F-3E8C-B337-3D3530443AE8}</Project>
+      <Name>ALWAYS_COPY_DATA</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\SDL2-static.vcxproj">
+      <Project>{75948892-390E-3381-B608-42C825AE6875}</Project>
+      <Name>SDL2-static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\lua53.vcxproj">
+      <Project>{760B87A2-EE02-3B4C-8D8C-95CD0BC59830}</Project>
+      <Name>lua53</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

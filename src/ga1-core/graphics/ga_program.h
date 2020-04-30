@@ -24,6 +24,7 @@ class ga_uniform
 	friend class ga_program;
 
 public:
+	void set(float f);
 	void set(const struct ga_vec3f& vec);
 	void set(const struct ga_mat4f& mat);
 	void set(const struct ga_mat4f* mats, uint32_t count);

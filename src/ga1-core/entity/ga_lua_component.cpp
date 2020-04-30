@@ -53,6 +53,7 @@ ga_lua_component::ga_lua_component(ga_entity* ent, const char* path) : ga_compon
 	lua_register(_lua, "frame_params_get_input_right", lua_frame_params_get_input_right);
 	lua_register(_lua, "component_get_entity", lua_component_get_entity);
 	lua_register(_lua, "entity_translate", lua_entity_translate);
+	lua_register(_lua, "entity_rotate", lua_entity_rotate);
 }
 
 ga_lua_component::~ga_lua_component()
@@ -85,7 +86,7 @@ int ga_lua_component::lua_frame_params_get_input_left(lua_State* state)
 	if (arg_count == 1)
 	{
 		ga_frame_params* params = (ga_frame_params*)lua_touserdata(state, 1);
-		lua_pushboolean(state, (params->_button_mask & k_button_left) != 0);
+		lua_pushboolean(state, (params->_button_mask & k_button_j) != 0);
 	}
 	else
 	{
@@ -100,7 +101,7 @@ int ga_lua_component::lua_frame_params_get_input_right(lua_State* state)
 	if (arg_count == 1)
 	{
 		ga_frame_params* params = (ga_frame_params*)lua_touserdata(state, 1);
-		lua_pushboolean(state, (params->_button_mask & k_button_right) != 0);
+		lua_pushboolean(state, (params->_button_mask & k_button_k) != 0);
 	}
 	else
 	{
@@ -137,6 +138,27 @@ int ga_lua_component::lua_entity_translate(lua_State* state)
 		vec.z = (float)lua_tonumber(state, 4);
 
 		ent->translate(vec);
+	}
+	else
+	{
+		std::cerr << "Function entity_translate expected 4 arguments but got " << arg_count << "." << std::endl;
+	}
+	return 0;
+}
+
+int ga_lua_component::lua_entity_rotate(lua_State* state)
+{
+	int arg_count = lua_gettop(state);
+	if (arg_count == 2)
+	{
+		ga_frame_params* params = (ga_frame_params*)lua_touserdata(state, -1);
+		ga_entity* ent = (ga_entity*)lua_touserdata(state, -2);
+
+
+		float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
+		ga_quatf axis_angle;
+		axis_angle.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(60.0f) * dt);
+		ent->rotate(axis_angle);
 	}
 	else
 	{

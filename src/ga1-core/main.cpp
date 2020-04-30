@@ -20,6 +20,14 @@
 #include "graphics/ga_cube_component.h"
 #include "graphics/ga_program.h"
 
+#include "graphics/ga_animation.h"
+#include "graphics/ga_animation_component.h"
+#include "graphics/ga_light_component.h"
+#include "graphics/ga_egg_parser.h"
+#include "graphics/ga_material.h"
+#include "graphics/ga_model_component.h"
+#include "graphics/ga_geometry.h"
+
 #include "gui/ga_font.h"
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -56,13 +64,43 @@ int main(int argc, const char** argv)
 	camera->rotate(rotation);
 	rotation.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(15.0f));
 	camera->rotate(rotation);
-
+	/*
 	// Create an entity whose movement is driven by Lua script.
 	ga_entity lua;
 	lua.translate({ 0.0f, 2.0f, 1.0f });
 	ga_lua_component lua_move(&lua, "data/scripts/move.lua");
 	ga_cube_component lua_model(&lua, "data/textures/rpi.png");
 	sim->add_entity(&lua);
+	*/
+
+	// light
+	ga_entity light_entity;
+	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 1, { 1,1,1 });
+	ga_light_component light_component(&light_entity, light);
+	sim->add_entity(&light_entity);
+
+	// Create an animated entity.
+	ga_model animated_model;
+	egg_to_model("data/models/bar.egg", &animated_model);
+
+	ga_animation animation;
+	egg_to_animation("data/animations/bar_bend.egg", &animation);
+
+	ga_entity animated_entity;
+
+	// model & anim
+	//ga_lit_anim_material* animated_material = new ga_lit_anim_material(animated_model._skeleton);
+	ga_model_component model_component(&animated_entity, &animated_model, light);
+	ga_animation_component animation_component(&animated_entity, &animated_model);
+
+	// rotate & move
+	ga_lua_component lua_rotate(&animated_entity, "data/scripts/rotate.lua");
+	ga_lua_component lua_move(&animated_entity, "data/scripts/move.lua");
+
+	sim->add_entity(&animated_entity);
+
+	animation_component.play(&animation);
+
 
 	// Main loop:
 	while (true)

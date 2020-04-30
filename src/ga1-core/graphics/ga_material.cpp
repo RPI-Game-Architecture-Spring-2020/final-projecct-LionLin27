@@ -8,8 +8,8 @@
 */
 
 #include "ga_material.h"
-
 #include "ga_animation.h"
+#include "ga_light.h"
 
 #include <cassert>
 #include <fstream>
@@ -155,10 +155,10 @@ ga_animated_material::~ga_animated_material()
 bool ga_animated_material::init()
 {
 	std::string source_vs;
-	load_shader("data/shaders/ga_animated_vert.glsl", source_vs);
+	load_shader("data/shaders/ga_animated_vert_hw6.glsl", source_vs);
 
 	std::string source_fs;
-	load_shader("data/shaders/ga_animated_frag.glsl", source_fs);
+	load_shader("data/shaders/ga_animated_frag_hw6.glsl", source_fs);
 
 	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
 	if (!_vs->compile())
@@ -200,6 +200,161 @@ void ga_animated_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 		skin[i] = _skeleton->_joints[i]->_skin;
 	}
 	skin_uniform.set(skin, ga_skeleton::k_max_skeleton_joints);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+}
+
+ga_lit_anim_material::ga_lit_anim_material(ga_skeleton* skeleton, ga_directional_light* light) : _skeleton(skeleton), _light(light)
+{
+}
+
+ga_lit_anim_material::~ga_lit_anim_material()
+{
+}
+
+bool ga_lit_anim_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/ga_animated_vert_hw6.glsl", source_vs);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_animated_frag_hw6.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	return true;
+}
+
+void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
+{
+	_baseColor = { 1.0, 1.0, 1.0 };
+	_ambientLight = { 0.1, 0.1, 0.1 };
+
+	//ga_vec3f light_color = { 0.9, 0.6, 0.1 };
+	ga_vec3f light_color = _light->_color;
+	float intensity = _light->_intensity;
+	ga_vec3f direction = _light->_direction;
+
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform trans_uniform = _program->get_uniform("u_trans");
+	ga_uniform skin_uniform = _program->get_uniform("u_skin");
+
+	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
+	ga_uniform ambient_uniform = _program->get_uniform("u_ambientLight");
+
+	ga_uniform light_color_uniform = _program->get_uniform("u_directionalLight.base.color");
+	ga_uniform light_intensity_uniform = _program->get_uniform("u_directionalLight.base.intensity");
+	ga_uniform light_direction_uniform = _program->get_uniform("u_directionalLight.direction");
+
+	_program->use();
+
+	mvp_uniform.set(transform * view_proj);
+	trans_uniform.set(transform);
+	// Collect the skinning matrices.
+	ga_mat4f skin[ga_skeleton::k_max_skeleton_joints];
+	for (uint32_t i = 0; i < _skeleton->_joints.size(); ++i)
+	{
+		assert(i < ga_skeleton::k_max_skeleton_joints);
+		skin[i] = _skeleton->_joints[i]->_skin;
+	}
+	skin_uniform.set(skin, ga_skeleton::k_max_skeleton_joints);
+
+	baseColor_uniform.set(_baseColor);
+	ambient_uniform.set(_ambientLight);
+
+	ga_directional_light light(light_color, intensity, -direction);
+
+	light_color_uniform.set(light_color);
+	light_intensity_uniform.set(intensity);
+	light_direction_uniform.set(light._direction);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+}
+
+ga_lit_material::ga_lit_material(const char* texture_file) :
+	_texture_file(texture_file)
+{
+}
+
+ga_lit_material::~ga_lit_material()
+{
+}
+
+bool ga_lit_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/ga_lit_vert.glsl", source_vs);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_lit_frag.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	_texture = new ga_texture();
+	if (!_texture->load_from_file(_texture_file.c_str()))
+	{
+		std::cerr << "Failed to load rpi.png" << std::endl;
+	}
+
+	return true;
+}
+
+void ga_lit_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
+{
+	_baseColor = {1, 1, 1};
+	_ambientLight = { 0.1, 0.1, 0.1 };
+
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
+	ga_uniform ambient_uniform = _program->get_uniform("u_ambientLight");
+
+	_program->use();
+
+	mvp_uniform.set(transform * view_proj);
+	texture_uniform.set(*_texture, 0);
+	baseColor_uniform.set(_baseColor);
+	ambient_uniform.set(_ambientLight);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

@@ -11,6 +11,7 @@
 
 #include "ga_program.h"
 #include "ga_texture.h"
+#include "ga_light.h"
 
 #include "math/ga_mat4f.h"
 #include "math/ga_vec3f.h"
@@ -91,6 +92,54 @@ private:
 	ga_shader* _vs;
 	ga_shader* _fs;
 	ga_program* _program;
+
+	struct ga_skeleton* _skeleton;
+};
+
+/*
+** Simple unlit, single textured material.
+*/
+class ga_lit_material : public ga_material
+{
+public:
+	ga_lit_material(const char* texture_file);
+	~ga_lit_material();
+
+	virtual bool init() override;
+
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+private:
+	std::string _texture_file;
+
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_program* _program;
+	ga_texture* _texture;
+	ga_vec3f _baseColor;
+	ga_vec3f _ambientLight;
+};
+
+// material with texture & light
+class ga_lit_anim_material : public ga_material {
+public :
+	ga_lit_anim_material(struct ga_skeleton* skeleton, class ga_directional_light* light);
+	~ga_lit_anim_material();
+
+	virtual bool init() override;
+
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+private:
+	std::string _texture_file;
+
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_program* _program;
+	ga_vec3f _baseColor;
+	ga_vec3f _ambientLight;
+
+	class ga_directional_light* _light;
 
 	struct ga_skeleton* _skeleton;
 };
