@@ -25,6 +25,7 @@
 #include "graphics/ga_light_component.h"
 #include "graphics/ga_egg_parser.h"
 #include "graphics/ga_obj_parser.h"
+#include "graphics/ga_procedural_model.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
@@ -69,19 +70,25 @@ int main(int argc, const char** argv)
 	
 
 	// cg pyramid entity
-	ga_entity pyramid_entity;
-	ga_pyramid_component pyramid_component(&pyramid_entity);
-	pyramid_entity.translate({ 1, 0, 0 });
-	sim->add_entity(&pyramid_entity);
+	ga_entity* pyramid_entities[5];
+	ga_pyramid_component* pyramid_components[5];
+	for (int i = 0; i < 5; i++) {
+		pyramid_entities[i] = new ga_entity();
+		pyramid_components[i] = new ga_pyramid_component(pyramid_entities[i]);
+		//pyramid_entity->translate({ 0, 5, 0 });
+		pyramid_entities[i]->set_position({(float)i*3 - 6, 5.0f, -10});
+		sim->add_entity(pyramid_entities[i]);
+	}
 
 
-
+	/*
 	// Create an entity whose movement is driven by Lua script.
 	ga_entity lua;
 	lua.translate({ 0.0f, 2.0f, 1.0f });
 	//ga_lua_component lua_move(&lua, "data/scripts/move.lua");
 	ga_cube_component lua_model(&lua, "data/textures/rpi.png");
 	sim->add_entity(&lua);
+	*/
 	
 
 	// light
@@ -122,6 +129,15 @@ int main(int argc, const char** argv)
 	obj_to_model("data/models/shuttle.obj", &shipModel);
 	ga_model_component ship_model_component(&shipEnt, &shipModel, "data/textures/spstob_1.jpg");
 	sim->add_entity(&shipEnt);
+	shipEnt.scale(10.0f);
+
+	// procedual sphere
+	ga_entity sphereEnt;
+	ga_model sphereModel;
+	generate_sphere(24, &sphereModel);
+	ga_model_component sphere_mc(&sphereEnt, &sphereModel, "data/textures/earth.jpg");
+	sim->add_entity(&sphereEnt);
+
 
 	
 	// Main loop:
@@ -153,6 +169,9 @@ int main(int argc, const char** argv)
 	delete sim;
 	delete input;
 	delete camera;
+
+	delete[] pyramid_entities;
+	delete[] pyramid_components;
 
 	ga_job::shutdown();
 

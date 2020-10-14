@@ -22,12 +22,14 @@
 
 using namespace std;
 
-std::vector<float> vertVals;
-std::vector<float> stVals;
-std::vector<float> normVals;
 
 void obj_to_model(const char* filename, ga_model* model)
 {
+	std::vector<float> vertVals;
+	std::vector<float> stVals;
+	std::vector<float> normVals;
+
+
 	extern char g_root_path[256];
 	std::string fullpath = g_root_path;
 	fullpath += filename;

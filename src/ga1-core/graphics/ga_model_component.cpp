@@ -75,9 +75,11 @@ ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, const ch
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbos[1]);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, model->_indices.size() * sizeof(model->_indices[0]), &model->_indices[0], GL_STATIC_DRAW);
 		_index_count = (uint32_t)model->_indices.size();
+		_drawBuffer = false;
 	}
 	else {
 		_index_count = (uint32_t)model->_vertices.size();
+		_drawBuffer = true;
 	}
 
 	glBindVertexArray(0);

@@ -51,3 +51,13 @@ void ga_entity::rotate(const ga_quatf& rotation)
 	rotation_m.make_rotation(rotation);
 	_transform = rotation_m * _transform;
 }
+
+void ga_entity::scale(float s)
+{
+	_transform.scale(s);
+}
+
+void ga_entity::set_position(const ga_vec3f& new_pos)
+{
+	_transform.set_translation(new_pos);
+}

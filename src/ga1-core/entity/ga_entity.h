@@ -32,6 +32,9 @@ public:
 
 	void translate(const struct ga_vec3f& translation);
 	void rotate(const struct ga_quatf& rotation);
+	void scale(float s);
+
+	void set_position(const struct ga_vec3f& new_pos);
 
 	const ga_mat4f& get_transform() const { return _transform; }
 	void set_transform(const ga_mat4f& t) { _transform = t; }
