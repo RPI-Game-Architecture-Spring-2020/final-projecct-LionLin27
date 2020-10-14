@@ -54,6 +54,9 @@ void generate_sphere(int prec, struct ga_model* model) {
 			indices[6 * (i * prec + j) + 5] = (i + 1) * (prec + 1) + j;
 		}
 	}
+	
+	model->_vertex_format |= k_vertex_attribute_uv;
+	model->_vertex_format |= k_vertex_attribute_normal;
 
 	for (int i = 0; i < numIndices; i++) {
 		ga_vertex v;

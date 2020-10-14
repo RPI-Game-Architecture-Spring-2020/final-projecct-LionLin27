@@ -134,9 +134,11 @@ int main(int argc, const char** argv)
 	// procedual sphere
 	ga_entity sphereEnt;
 	ga_model sphereModel;
-	generate_sphere(24, &sphereModel);
+	generate_sphere(64, &sphereModel);
 	ga_model_component sphere_mc(&sphereEnt, &sphereModel, "data/textures/earth.jpg");
 	sim->add_entity(&sphereEnt);
+	sphereEnt.scale(1000.0f);
+	sphereEnt.set_position({0,0,-2000});
 
 
 	
