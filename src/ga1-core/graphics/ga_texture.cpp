@@ -17,6 +17,7 @@
 
 ga_texture::ga_texture()
 {
+	stbi_set_flip_vertically_on_load(true);
 	glGenTextures(1, &_handle);
 }
 

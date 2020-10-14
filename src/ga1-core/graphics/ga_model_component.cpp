@@ -21,9 +21,10 @@
 ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, const char* texturePath) : ga_component(ent)
 {
 	//_material = new ga_lit_anim_material(model->_skeleton, _light);
-	//_material = new ga_unlit_texture_material(texturePath);
-	_material = new ga_constant_color_material();
-	_material->set_color({1.0f, 1.0f, 1.0});
+	_material = new ga_unlit_texture_material(texturePath);
+	//_material = new ga_constant_color_material();
+	//_material->set_color({1.0f, 1.0f, 1.0});
+
 	_light = NULL;
 	_drawBuffer = true; // TODO: currently obj loader does not support draw element
 	_material->init();

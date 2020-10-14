@@ -181,7 +181,7 @@ void ga_custom_shader_material::bind(const ga_mat4f& view_proj, const ga_mat4f& 
 	mvp_uniform.set(transform * view_proj);
 	texture_uniform.set(*_texture, 0);
 
-	glActiveTexture(GL_TEXTURE0);
+	//glActiveTexture(GL_TEXTURE0);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

@@ -17,6 +17,7 @@
 
 ga_pyramid_component::ga_pyramid_component(ga_entity* ent) : ga_component(ent)
 {
+
 	_material = new ga_custom_shader_material();
 	const char* vs_address = "data/shaders/ga_playground_vert.glsl";
 	const char* fs_address = "data/shaders/ga_playground_frag.glsl";
