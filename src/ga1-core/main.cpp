@@ -24,9 +24,11 @@
 #include "graphics/ga_animation_component.h"
 #include "graphics/ga_light_component.h"
 #include "graphics/ga_egg_parser.h"
+#include "graphics/ga_obj_parser.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
+#include "graphics/ga_pyramid_component.h"
 
 #include "gui/ga_font.h"
 
@@ -64,14 +66,23 @@ int main(int argc, const char** argv)
 	camera->rotate(rotation);
 	rotation.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(15.0f));
 	camera->rotate(rotation);
-	/*
+	
+
+	// cg pyramid entity
+	ga_entity pyramid_entity;
+	ga_pyramid_component pyramid_component(&pyramid_entity);
+	pyramid_entity.translate({ 1, 0, 0 });
+	sim->add_entity(&pyramid_entity);
+
+
+
 	// Create an entity whose movement is driven by Lua script.
 	ga_entity lua;
 	lua.translate({ 0.0f, 2.0f, 1.0f });
-	ga_lua_component lua_move(&lua, "data/scripts/move.lua");
+	//ga_lua_component lua_move(&lua, "data/scripts/move.lua");
 	ga_cube_component lua_model(&lua, "data/textures/rpi.png");
 	sim->add_entity(&lua);
-	*/
+	
 
 	// light
 	ga_entity light_entity;
@@ -79,6 +90,8 @@ int main(int argc, const char** argv)
 	ga_light_component light_component(&light_entity, light);
 	sim->add_entity(&light_entity);
 
+
+	/*
 	// Create an animated entity.
 	ga_model animated_model;
 	egg_to_model("data/models/bar.egg", &animated_model);
@@ -94,14 +107,23 @@ int main(int argc, const char** argv)
 	ga_animation_component animation_component(&animated_entity, &animated_model);
 
 	// rotate & move
-	ga_lua_component lua_rotate(&animated_entity, "data/scripts/rotate.lua");
-	ga_lua_component lua_move(&animated_entity, "data/scripts/move.lua");
+	//ga_lua_component lua_rotate(&animated_entity, "data/scripts/rotate.lua");
+	//ga_lua_component lua_move(&animated_entity, "data/scripts/move.lua");
 
-	sim->add_entity(&animated_entity);
+	//sim->add_entity(&animated_entity);
 
 	animation_component.play(&animation);
+	*/
 
+	
+	// spaceship entity
+	ga_entity shipEnt;
+	ga_model shipModel;
+	obj_to_model("data/models/shuttle.obj", &shipModel);
+	ga_model_component ship_model_component(&shipEnt, &shipModel, "data/textures/spstob_1.jpg");
+	sim->add_entity(&shipEnt);
 
+	
 	// Main loop:
 	while (true)
 	{

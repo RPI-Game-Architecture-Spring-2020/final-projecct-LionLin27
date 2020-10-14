@@ -71,7 +71,12 @@ void ga_output::update(ga_frame_params* params)
 	{
 		d._material->bind(view_perspective, d._transform);
 		glBindVertexArray(d._vao);
-		glDrawElements(d._draw_mode, d._index_count, GL_UNSIGNED_SHORT, 0);
+		if (d._drawBuffer) {
+			glDrawArrays(d._draw_mode, 0, d._index_count);
+		}
+		else {
+			glDrawElements(d._draw_mode, d._index_count, GL_UNSIGNED_SHORT, 0);
+		}
 	}
 
 	// Draw all dynamic geometry:

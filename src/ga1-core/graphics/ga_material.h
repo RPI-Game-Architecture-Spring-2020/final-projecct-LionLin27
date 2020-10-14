@@ -27,9 +27,32 @@ class ga_material
 public:
 	virtual bool init() = 0;
 
+	virtual bool init(const char* vs_address, const char* fs_address) { return false; }
+
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) = 0;
 
 	virtual void set_color(const ga_vec3f& color) {}
+};
+
+/*
+** Simple unlit material.
+*/
+class ga_custom_shader_material : public ga_material
+{
+public:
+	ga_custom_shader_material();
+	~ga_custom_shader_material();
+
+	virtual bool init() override;
+	virtual bool init(const char* vs_address, const char* fs_address) override;
+	void SetTexture(const char* texture_path);
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+private:
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_program* _program;
+	ga_texture* _texture;
 };
 
 /*

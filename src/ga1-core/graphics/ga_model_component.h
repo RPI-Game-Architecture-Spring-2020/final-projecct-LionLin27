@@ -19,6 +19,7 @@
 class ga_model_component : public ga_component
 {
 public:
+	ga_model_component(class ga_entity* ent, struct ga_model* model, const char* texturePath);
 	ga_model_component(class ga_entity* ent, struct ga_model* model, class ga_directional_light* light);
 	virtual ~ga_model_component();
 
@@ -30,4 +31,5 @@ private:
 	uint32_t _vao;
 	uint32_t _vbos[4];
 	uint32_t _index_count;
+	bool _drawBuffer = false;
 };

@@ -69,7 +69,7 @@ bool ga_unlit_texture_material::init()
 	_texture = new ga_texture();
 	if (!_texture->load_from_file(_texture_file.c_str()))
 	{
-		std::cerr << "Failed to load rpi.png" << std::endl;
+		std::cerr << "Failed to load texture" << std::endl;
 	}
 
 	return true;
@@ -84,6 +84,104 @@ void ga_unlit_texture_material::bind(const ga_mat4f& view_proj, const ga_mat4f& 
 
 	mvp_uniform.set(transform * view_proj);
 	texture_uniform.set(*_texture, 0);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+}
+
+ga_custom_shader_material::ga_custom_shader_material()
+{
+}
+
+ga_custom_shader_material::~ga_custom_shader_material()
+{
+}
+
+bool ga_custom_shader_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/ga_unlit_vert.glsl", source_vs);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_unlit_frag.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	return true;
+}
+
+bool ga_custom_shader_material::init(const char* vs_address, const char* fs_address)
+{
+	// default vs: data/shaders/ga_unlit_vert.glsl
+	// default fs: data/shaders/ga_unlit_frag.glsl
+	std::string source_vs;
+	load_shader(vs_address, source_vs);
+
+	std::string source_fs;
+	load_shader(fs_address, source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	return true;
+}
+
+void ga_custom_shader_material::SetTexture(const char* texture_path)
+{
+	_texture = new ga_texture();
+	if (!_texture->load_from_file(texture_path))
+	{
+		std::cerr << "Failed to load rpi.png" << std::endl;
+	}
+}
+
+void ga_custom_shader_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
+{
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("texCoord");
+	_program->use();
+	
+
+	mvp_uniform.set(transform * view_proj);
+	texture_uniform.set(*_texture, 0);
+
+	glActiveTexture(GL_TEXTURE0);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

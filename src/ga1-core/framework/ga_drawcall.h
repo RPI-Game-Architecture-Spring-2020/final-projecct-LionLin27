@@ -29,6 +29,7 @@ struct ga_drawcall
 	ga_mat4f _transform;
 	GLenum _draw_mode;
 	class ga_material* _material = 0;
+	bool _drawBuffer = false;
 };
 
 /*

@@ -52,7 +52,13 @@
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_model_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_obj_parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_pyramid_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_texture.cpp">
