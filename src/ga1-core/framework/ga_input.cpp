@@ -24,6 +24,12 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+
+// imgui
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
+
 ga_input::ga_input() : _paused(false)
 {
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER);
@@ -68,6 +74,25 @@ ga_input::ga_input() : _paused(false)
 	_mouse_x = 0.0f;
 	_mouse_y = 0.0f;
 	_last_time = std::chrono::high_resolution_clock::now();
+
+
+
+
+	//imgui test
+	// setup Dear ImGui context
+	std::string glsl_version = "#version 130";
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	// setup Dear ImGui style
+	ImGui::StyleColorsDark();
+
+	// setup platform/renderer bindings
+	ImGui_ImplSDL2_InitForOpenGL((SDL_Window*)_window, context);
+	ImGui_ImplOpenGL3_Init(glsl_version.c_str());
+
 }
 
 ga_input::~ga_input()
@@ -78,6 +103,40 @@ ga_input::~ga_input()
 
 bool ga_input::update(ga_frame_params* params)
 {
+	//imgui
+	// start the Dear ImGui frame
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame((SDL_Window*)_window);
+	ImGui::NewFrame();
+
+	// position the controls widget in the top-right corner with some margin
+	ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_Always);
+	// here we set the calculated width and also make the height to be
+	// be the height of the main window also with some margin
+	ImGui::SetNextWindowSize(
+		ImVec2(static_cast<float>(300), static_cast<float>(1000 - 20)),
+		ImGuiCond_Always
+	);
+	// create a window and append into it
+	ImGui::Begin("Controls", NULL, ImGuiWindowFlags_NoResize);
+
+	ImGui::Dummy(ImVec2(0.0f, 1.0f));
+	ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Platform");
+	ImGui::Text("%s", SDL_GetPlatform());
+	ImGui::Text("CPU cores: %d", SDL_GetCPUCount());
+	ImGui::Text("RAM: %.2f GB", SDL_GetSystemRAM() / 1024.0f);
+
+	ImGui::End();
+
+	// rendering
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+
+
+	//**********************************
+
 	bool result = true;
 
 	// Save the previous frame's button mask to computed released keys.

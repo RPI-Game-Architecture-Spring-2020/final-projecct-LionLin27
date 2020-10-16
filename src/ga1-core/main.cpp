@@ -39,6 +39,7 @@
 #define STB_TRUETYPE_IMPLEMENTATION
 #include <stb_truetype.h>
 
+
 #if defined(GA_MINGW)
 #include <unistd.h>
 #endif
@@ -150,7 +151,6 @@ int main(int argc, const char** argv)
 	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(&torusEnt);
 
-	
 	// Main loop:
 	while (true)
 	{
