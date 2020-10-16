@@ -25,6 +25,12 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+// imgui
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
+
+
 ga_output::ga_output(void* win) : _window(win)
 {
 	int width, height;
@@ -49,10 +55,10 @@ ga_output::~ga_output()
 void ga_output::update(ga_frame_params* params)
 {
 	//detect player input to change display mode
-	if (params->_button_mask & k_button_k) {
+	if (params->_btn_down_mask & k_button_k) {
 		_wireFrame = false;
 	}
-	if (params->_button_mask & k_button_l) {
+	if (params->_btn_down_mask & k_button_l) {
 		_wireFrame = true;
 	}
 
@@ -101,6 +107,66 @@ void ga_output::update(ga_frame_params* params)
 	// Draw all dynamic geometry:
 	draw_dynamic(params->_dynamic_drawcalls, view_perspective);
 	draw_dynamic(params->_gui_drawcalls, view_ortho);
+
+
+
+	//imgui
+	// start the Dear ImGui frame
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame((SDL_Window*)_window);
+	ImGui::NewFrame();
+
+	{
+		// position the controls widget in the top-right corner with some margin
+		ImGui::SetNextWindowPos(ImVec2(width * 5/6-5, 10), ImGuiCond_Always);
+		// here we set the calculated width and also make the height to be
+		// be the height of the main window also with some margin
+		ImGui::SetNextWindowSize(
+			ImVec2(static_cast<float>(width/6), static_cast<float>(height - 20)),
+			ImGuiCond_Always
+		);
+		// create a window and append into it
+		ImGui::Begin("Parameters", NULL, ImGuiWindowFlags_NoResize);
+
+		ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+		// display entity info
+		float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
+
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Entity: %s", params->_selected_ent->get_name());
+
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Position");
+		ga_vec3f ent_pos = params->_selected_ent->get_transform().get_translation();
+		float ent_pos_arr[] = { ent_pos.x, ent_pos.y, ent_pos.z };
+		ImGui::InputFloat3("pos", ent_pos_arr);
+		//ent_pos = { ent_pos_arr[0], ent_pos_arr[1] , ent_pos_arr[2] };
+		//params->_selected_ent->set_position(ent_pos);
+
+		float ent_trans_arr[] = { 0,0,0 };
+		ImGui::SliderFloat3("trans", ent_trans_arr, -10.0f, 10.0f);
+		ga_vec3f ent_trans = { ent_trans_arr[0], ent_trans_arr[1], ent_trans_arr[2] };
+		params->_selected_ent->translate(ent_trans.scale_result(dt));
+
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Rotation");
+		float ent_rot_arr[] = { 0,0,0 };
+		ImGui::SliderFloat3("rot", ent_rot_arr, -1.0f, 1.0f);
+		ga_quatf axis_angle_x, axis_angle_y, axis_angle_z;
+		axis_angle_x.make_axis_angle(ga_vec3f::x_vector(), ent_rot_arr[0] * dt);
+		axis_angle_y.make_axis_angle(ga_vec3f::y_vector(), ent_rot_arr[1] * dt);
+		axis_angle_z.make_axis_angle(ga_vec3f::z_vector(), ent_rot_arr[2] * dt);
+		ga_quatf combinedRot = axis_angle_x + axis_angle_y + axis_angle_z;
+		params->_selected_ent->rotate(combinedRot);
+
+		ImGui::End();
+	}
+	// rendering
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+
+
+	//**********************************
 
 	GLenum error = glGetError();
 	assert(error == GL_NONE);

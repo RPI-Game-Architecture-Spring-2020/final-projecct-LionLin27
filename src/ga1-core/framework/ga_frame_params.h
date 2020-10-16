@@ -17,6 +17,8 @@
 #include <cstdint>
 #include <vector>
 
+#include "entity/ga_entity.h"
+
 /*
 ** Keyboard/controller buttons we track.
 */
@@ -65,7 +67,9 @@ struct ga_frame_params
 	std::chrono::high_resolution_clock::time_point _current_time;
 	std::chrono::high_resolution_clock::duration _delta_time;
 
-	uint64_t _button_mask;
+	uint64_t _btn_down_mask;
+	uint64_t _btn_pressed_mask;
+	uint64_t _btn_released_mask;
 
 	uint64_t _mouse_click_mask;
 	uint64_t _mouse_press_mask;
@@ -83,6 +87,8 @@ struct ga_frame_params
 	std::atomic_flag _gui_drawcall_lock = ATOMIC_FLAG_INIT;
 
 	ga_mat4f _view;
+
+	ga_entity* _selected_ent;
 
 	// Somewhat of a hack to make collision stable when stepping with a paused simulation.
 	bool _single_step = false;

@@ -1,0 +1,138 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "SDL2-2.0.5",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/3rdparty/SDL2-2.0.5",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ga1-core",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "SDL2",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALWAYS_COPY_DATA::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALWAYS_COPY_DATA-Debug-633fcb5d417b10617520.json",
+					"name" : "ALWAYS_COPY_DATA",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL2-static::@0fd9a87a71f7b7ff81d8",
+					"jsonFile" : "target-SDL2-static-Debug-e6aadfbd3b10f6bae685.json",
+					"name" : "SDL2-static",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL2main::@0fd9a87a71f7b7ff81d8",
+					"jsonFile" : "target-SDL2main-Debug-54167b31e5d87124eba4.json",
+					"name" : "SDL2main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ga::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ga-Debug-59791b48d097dc699bb5.json",
+					"name" : "ga",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lua53::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lua53-Debug-0474dc5ac6dab81dc878.json",
+					"name" : "lua53",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@0fd9a87a71f7b7ff81d8",
+					"jsonFile" : "target-uninstall-Debug-57ab8ed30734678965e2.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)",
+		"source" : "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

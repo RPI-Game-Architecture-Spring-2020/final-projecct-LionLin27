@@ -96,7 +96,6 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 	for (int i = 0; i < numVertices; i++) { sTangents.push_back(ga_vec3f()); }
 	for (int i = 0; i < numVertices; i++) { tTangents.push_back(ga_vec3f()); }
 	for (int i = 0; i < numIndices; i++) { indices.push_back(0); }
-	//checked
 
 	// calculate first ring
 	for (int i = 0; i < prec + 1; i++) {

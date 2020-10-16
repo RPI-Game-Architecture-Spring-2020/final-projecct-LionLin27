@@ -26,23 +26,23 @@ void ga_playermove_component::update(ga_frame_params* params)
 		1.0f / 60.0f :
 		std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
 
-	if (params->_button_mask & k_button_j)
+	if (params->_btn_down_mask & k_button_j)
 	{
 		get_entity()->translate({ -5.0f * dt, 0.0f, 0.0f });
 	}
-	if (params->_button_mask & k_button_l)
+	if (params->_btn_down_mask & k_button_l)
 	{
 		get_entity()->translate({ 5.0f * dt, 0.0f, 0.0f });
 	}
-	if (params->_button_mask & k_button_i)
+	if (params->_btn_down_mask & k_button_i)
 	{
 		get_entity()->translate({ 0.0f, 5.0f * dt, 0.0f });
 	}
-	if (params->_button_mask & k_button_k)
+	if (params->_btn_down_mask & k_button_k)
 	{
 		get_entity()->translate({ 0.0f, -5.0f * dt, 0.0f });
 	}
-	if (params->_button_mask & k_button_o)
+	if (params->_btn_down_mask & k_button_o)
 	{
 		ga_vec3f axis = { 1.0f, 1.0f, 1.0f };
 		ga_quatf axis_angle;

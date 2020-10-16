@@ -23,6 +23,7 @@ class ga_entity final
 {
 public:
 	ga_entity();
+	ga_entity(const char* name);
 	~ga_entity();
 
 	void add_component(class ga_component* comp);
@@ -39,7 +40,10 @@ public:
 	const ga_mat4f& get_transform() const { return _transform; }
 	void set_transform(const ga_mat4f& t) { _transform = t; }
 
+	const char* get_name();
+
 private:
 	std::vector<class ga_component*> _components;
 	ga_mat4f _transform;
+	const char* _name;
 };

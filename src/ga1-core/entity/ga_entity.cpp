@@ -12,6 +12,13 @@
 
 ga_entity::ga_entity()
 {
+	_name = "default_name";
+	_transform.make_identity();
+}
+
+ga_entity::ga_entity(const char* name)
+{
+	_name = name;
 	_transform.make_identity();
 }
 
@@ -60,4 +67,9 @@ void ga_entity::scale(float s)
 void ga_entity::set_position(const ga_vec3f& new_pos)
 {
 	_transform.set_translation(new_pos);
+}
+
+const char* ga_entity::get_name()
+{
+	return _name;
 }

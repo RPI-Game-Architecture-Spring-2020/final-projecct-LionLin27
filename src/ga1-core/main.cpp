@@ -74,7 +74,7 @@ int main(int argc, const char** argv)
 	ga_entity* pyramid_entities[5];
 	ga_pyramid_component* pyramid_components[5];
 	for (int i = 0; i < 5; i++) {
-		pyramid_entities[i] = new ga_entity();
+		pyramid_entities[i] = new ga_entity("pyramid");
 		pyramid_components[i] = new ga_pyramid_component(pyramid_entities[i]);
 		//pyramid_entity->translate({ 0, 5, 0 });
 		pyramid_entities[i]->set_position({ (float)i * 3 - 6, 5.0f, -10 });
@@ -93,7 +93,7 @@ int main(int argc, const char** argv)
 
 
 	// light
-	ga_entity light_entity;
+	ga_entity light_entity("light");
 	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 1, { 1,1,1 });
 	ga_light_component light_component(&light_entity, light);
 	sim->add_entity(&light_entity);
@@ -125,7 +125,7 @@ int main(int argc, const char** argv)
 
 
 	// spaceship entity
-	ga_entity shipEnt;
+	ga_entity shipEnt("ship");
 	ga_model shipModel;
 	obj_to_model("data/models/shuttle.obj", &shipModel);
 	ga_model_component ship_model_component(&shipEnt, &shipModel, "data/textures/spstob_1.jpg");
@@ -134,7 +134,7 @@ int main(int argc, const char** argv)
 	shipEnt.set_position({0, -10, 0});
 
 	// procedual sphere
-	ga_entity sphereEnt;
+	ga_entity sphereEnt("shpere");
 	ga_model sphereModel;
 	generate_sphere(64, &sphereModel);
 	ga_model_component sphere_mc(&sphereEnt, &sphereModel, "data/textures/earth.jpg");
@@ -144,7 +144,7 @@ int main(int argc, const char** argv)
 	sphereEnt.set_position({0,0,-2000});
 
 	// procedual torus
-	ga_entity torusEnt;
+	ga_entity torusEnt("torus");
 	ga_model torusModel;
 	generate_torus(1.5f, 0.7f, 30, &torusModel);
 	ga_model_component torus_mc(&torusEnt, &torusModel, "data/textures/test.bmp");

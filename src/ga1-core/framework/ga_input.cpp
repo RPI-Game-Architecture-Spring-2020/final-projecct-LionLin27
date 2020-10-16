@@ -75,9 +75,7 @@ ga_input::ga_input() : _paused(false)
 	_mouse_y = 0.0f;
 	_last_time = std::chrono::high_resolution_clock::now();
 
-
-
-
+	//****************************************
 	//imgui test
 	// setup Dear ImGui context
 	std::string glsl_version = "#version 130";
@@ -92,7 +90,6 @@ ga_input::ga_input() : _paused(false)
 	// setup platform/renderer bindings
 	ImGui_ImplSDL2_InitForOpenGL((SDL_Window*)_window, context);
 	ImGui_ImplOpenGL3_Init(glsl_version.c_str());
-
 }
 
 ga_input::~ga_input()
@@ -103,40 +100,6 @@ ga_input::~ga_input()
 
 bool ga_input::update(ga_frame_params* params)
 {
-	//imgui
-	// start the Dear ImGui frame
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplSDL2_NewFrame((SDL_Window*)_window);
-	ImGui::NewFrame();
-
-	// position the controls widget in the top-right corner with some margin
-	ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_Always);
-	// here we set the calculated width and also make the height to be
-	// be the height of the main window also with some margin
-	ImGui::SetNextWindowSize(
-		ImVec2(static_cast<float>(300), static_cast<float>(1000 - 20)),
-		ImGuiCond_Always
-	);
-	// create a window and append into it
-	ImGui::Begin("Controls", NULL, ImGuiWindowFlags_NoResize);
-
-	ImGui::Dummy(ImVec2(0.0f, 1.0f));
-	ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Platform");
-	ImGui::Text("%s", SDL_GetPlatform());
-	ImGui::Text("CPU cores: %d", SDL_GetCPUCount());
-	ImGui::Text("RAM: %.2f GB", SDL_GetSystemRAM() / 1024.0f);
-
-	ImGui::End();
-
-	// rendering
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
-
-
-	//**********************************
-
 	bool result = true;
 
 	// Save the previous frame's button mask to computed released keys.
@@ -245,7 +208,9 @@ bool ga_input::update(ga_frame_params* params)
 	_pressed_mask = _button_mask & ~previous_button_mask;
 	_released_mask = previous_button_mask & ~_button_mask;
 
-	params->_button_mask = _button_mask;
+	params->_btn_down_mask = _button_mask;
+	params->_btn_pressed_mask = _pressed_mask;
+	params->_btn_released_mask = _released_mask;
 	params->_mouse_press_mask = _mouse_button_mask;
 	params->_mouse_x = _mouse_x;
 	params->_mouse_y = _mouse_y;
