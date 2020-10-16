@@ -32,10 +32,13 @@ ga_output::ga_output(void* win) : _window(win)
 
 	glViewport(0, 0, width, height);
 	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_CULL_FACE);
 	glDepthFunc(GL_LESS);
+	glFrontFace(GL_CCW);
 
 	_default_material = new ga_constant_color_material();
 	_default_material->init();
+	_wireFrame = false;
 }
 
 ga_output::~ga_output()
@@ -45,6 +48,14 @@ ga_output::~ga_output()
 
 void ga_output::update(ga_frame_params* params)
 {
+	//detect player input to change display mode
+	if (params->_button_mask & k_button_k) {
+		_wireFrame = false;
+	}
+	if (params->_button_mask & k_button_l) {
+		_wireFrame = true;
+	}
+
 	// Update viewport in case window was resized:
 	int width, height;
 	SDL_GetWindowSize(static_cast<SDL_Window* >(_window), &width, &height);
@@ -65,6 +76,14 @@ void ga_output::update(ga_frame_params* params)
 	ga_mat4f view;
 	view.make_lookat_rh(ga_vec3f::z_vector(), -ga_vec3f::z_vector(), ga_vec3f::y_vector());
 	ga_mat4f view_ortho = view * ortho;
+
+	if (_wireFrame) {
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else {
+
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
 	// Draw all static geometry:
 	for (auto& d : params->_static_drawcalls)

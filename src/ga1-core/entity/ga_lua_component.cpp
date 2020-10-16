@@ -154,15 +154,24 @@ int ga_lua_component::lua_entity_rotate(lua_State* state)
 		ga_frame_params* params = (ga_frame_params*)lua_touserdata(state, -1);
 		ga_entity* ent = (ga_entity*)lua_touserdata(state, -2);
 
-
 		float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
 		ga_quatf axis_angle;
 		axis_angle.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(60.0f) * dt);
 		ent->rotate(axis_angle);
 	}
+	else if (arg_count == 3) {
+		float rot_rate = (float)lua_tonumber(state, -1);
+		ga_frame_params* params = (ga_frame_params*)lua_touserdata(state, -2);
+		ga_entity* ent = (ga_entity*)lua_touserdata(state, -3);
+
+		float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
+		ga_quatf axis_angle;
+		axis_angle.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(60.0f) * rot_rate * dt);
+		ent->rotate(axis_angle);
+	}
 	else
 	{
-		std::cerr << "Function entity_translate expected 4 arguments but got " << arg_count << "." << std::endl;
+		std::cerr << "Function entity_rotate expected 2 or 3 arguments but got " << arg_count << "." << std::endl;
 	}
 	return 0;
 }

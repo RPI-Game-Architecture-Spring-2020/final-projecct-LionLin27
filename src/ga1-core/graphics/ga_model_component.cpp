@@ -153,7 +153,7 @@ void ga_model_component::update(ga_frame_params* params)
 	/*
 	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
 	ga_quatf axis_angle;
-	axis_angle.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(60.0f) * dt);
+	axis_angle.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(60.0f) * dt);
 	get_entity()->rotate(axis_angle);
 	*/
 

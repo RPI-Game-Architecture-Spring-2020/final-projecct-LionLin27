@@ -32,4 +32,6 @@ private:
 	void* _window;
 
 	class ga_constant_color_material* _default_material;
+
+	bool _wireFrame;
 };

@@ -67,7 +67,7 @@ int main(int argc, const char** argv)
 	camera->rotate(rotation);
 	rotation.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(15.0f));
 	camera->rotate(rotation);
-	
+
 
 	// cg pyramid entity
 	ga_entity* pyramid_entities[5];
@@ -76,7 +76,7 @@ int main(int argc, const char** argv)
 		pyramid_entities[i] = new ga_entity();
 		pyramid_components[i] = new ga_pyramid_component(pyramid_entities[i]);
 		//pyramid_entity->translate({ 0, 5, 0 });
-		pyramid_entities[i]->set_position({(float)i*3 - 6, 5.0f, -10});
+		pyramid_entities[i]->set_position({ (float)i * 3 - 6, 5.0f, -10 });
 		sim->add_entity(pyramid_entities[i]);
 	}
 
@@ -89,7 +89,7 @@ int main(int argc, const char** argv)
 	ga_cube_component lua_model(&lua, "data/textures/rpi.png");
 	sim->add_entity(&lua);
 	*/
-	
+
 
 	// light
 	ga_entity light_entity;
@@ -122,7 +122,7 @@ int main(int argc, const char** argv)
 	animation_component.play(&animation);
 	*/
 
-	
+
 	// spaceship entity
 	ga_entity shipEnt;
 	ga_model shipModel;
@@ -130,16 +130,25 @@ int main(int argc, const char** argv)
 	ga_model_component ship_model_component(&shipEnt, &shipModel, "data/textures/spstob_1.jpg");
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
+	shipEnt.set_position({0, -10, 0});
 
 	// procedual sphere
 	ga_entity sphereEnt;
 	ga_model sphereModel;
 	generate_sphere(64, &sphereModel);
 	ga_model_component sphere_mc(&sphereEnt, &sphereModel, "data/textures/earth.jpg");
+	ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(&sphereEnt);
 	sphereEnt.scale(1000.0f);
 	sphereEnt.set_position({0,0,-2000});
 
+	// procedual torus
+	ga_entity torusEnt;
+	ga_model torusModel;
+	generate_torus(1.5f, 0.7f, 30, &torusModel);
+	ga_model_component torus_mc(&torusEnt, &torusModel, "data/textures/test.bmp");
+	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
+	sim->add_entity(&torusEnt);
 
 	
 	// Main loop:
