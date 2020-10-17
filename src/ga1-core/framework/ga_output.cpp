@@ -9,7 +9,6 @@
 
 #include "ga_output.h"
 
-#include "ga_frame_params.h"
 
 #include "graphics/ga_material.h"
 #include "graphics/ga_program.h"
@@ -154,7 +153,7 @@ void ga_output::update(ga_frame_params* params)
 		axis_angle_x.make_axis_angle(ga_vec3f::x_vector(), ent_rot_arr[0] * dt);
 		axis_angle_y.make_axis_angle(ga_vec3f::y_vector(), ent_rot_arr[1] * dt);
 		axis_angle_z.make_axis_angle(ga_vec3f::z_vector(), ent_rot_arr[2] * dt);
-		ga_quatf combinedRot = axis_angle_x + axis_angle_y + axis_angle_z;
+		ga_quatf combinedRot = axis_angle_x * axis_angle_y * axis_angle_z;
 		params->_selected_ent->rotate(combinedRot);
 
 		ImGui::End();
