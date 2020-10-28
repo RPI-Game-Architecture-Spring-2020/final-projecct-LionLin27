@@ -156,6 +156,18 @@ void ga_output::update(ga_frame_params* params)
 		ga_quatf combinedRot = axis_angle_x * axis_angle_y * axis_angle_z;
 		params->_selected_ent->rotate(combinedRot);
 
+
+
+		ImGui::End();
+	}
+
+	{
+		ImGui::Begin("Model Creator");
+		
+		if (ImGui::Button("Create Sphere")) {
+			params->_herald->_create_sphere = true;
+		}
+
 		ImGui::End();
 	}
 	// rendering

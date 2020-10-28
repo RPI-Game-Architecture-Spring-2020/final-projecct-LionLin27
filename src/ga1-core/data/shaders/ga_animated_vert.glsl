@@ -20,8 +20,8 @@ void main(void)
 		vec4 temp = vec4(in_vertex, 1.0) * u_skin[in_joints[i]];
 		skin_vert += temp.xyz * vec3(in_weights[i], in_weights[i], in_weights[i]);
 	}
-	
+	mat4 normMat = transpose(inverse(u_mvp));
 	gl_Position = vec4(skin_vert, 1.0) * u_mvp;
-	o_normal = in_normal;
+	o_normal = normMat * in_normal;
 	o_color = in_color;
 }

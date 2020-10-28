@@ -19,6 +19,7 @@
 class ga_model_component : public ga_component
 {
 public:
+	ga_model_component(class ga_entity* ent, struct ga_model* model, class ga_material* mat);
 	ga_model_component(class ga_entity* ent, struct ga_model* model, const char* texturePath);
 	ga_model_component(class ga_entity* ent, struct ga_model* model, class ga_directional_light* light);
 	virtual ~ga_model_component();
@@ -26,6 +27,7 @@ public:
 	virtual void update(struct ga_frame_params* params) override;
 
 private:
+	void bind_model(struct ga_model* model);
 	class ga_material* _material;
 	class ga_directional_light* _light;
 	uint32_t _vao;

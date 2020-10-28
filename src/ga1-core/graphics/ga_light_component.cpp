@@ -24,18 +24,18 @@ ga_light_component::~ga_light_component()
 }
 
 void ga_light_component::update(ga_frame_params* params){
-	if ((params->_btn_down_mask & k_button_z) != 0) {
+	if ((params->_btn_down_mask & k_button_c) != 0) {
 		_light->_intensity += 0.1;
 	}
-	if ((params->_btn_down_mask & k_button_x) != 0) {
+	if ((params->_btn_down_mask & k_button_v) != 0) {
 		_light->_intensity -= 0.1;
 	}
-	if ((params->_btn_down_mask & k_button_c) != 0) {
+	if ((params->_btn_down_mask & k_button_b) != 0) {
 		if (_light->_direction.x > -1)
 			_light->_direction -= {0.1, 0, 0};
 		_light->_direction.normalize();
 	}
-	if ((params->_btn_down_mask & k_button_v) != 0) {
+	if ((params->_btn_down_mask & k_button_n) != 0) {
 		if(_light->_direction.x < 1)
 			_light->_direction += {0.1, 0, 0};
 		_light->_direction.normalize();

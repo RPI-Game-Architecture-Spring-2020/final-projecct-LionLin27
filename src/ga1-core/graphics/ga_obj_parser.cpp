@@ -1,15 +1,5 @@
-/*
-** RPI Game Architecture Engine
-**
-** Portions adapted from:
-** Viper Engine - Copyright (C) 2016 Velan Studios - All Rights Reserved
-**
-** This file is distributed under the MIT License. See LICENSE.txt.
-*/
-
 #include "ga_obj_parser.h"
 
-//#include "ga_animation.h"
 #include "ga_geometry.h"
 
 #include <cassert>

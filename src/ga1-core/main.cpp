@@ -47,6 +47,8 @@
 ga_font* g_font = nullptr;
 static void set_root_path(const char* exepath);
 
+void process_herald_msg(ga_frame_params*, ga_sim*);
+
 int main(int argc, const char** argv)
 {
 	set_root_path(argv[0]);
@@ -92,14 +94,22 @@ int main(int argc, const char** argv)
 	*/
 
 
-	// light
+	// light ent
 	ga_entity light_entity("light");
 	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 1, { 1,1,1 });
 	ga_light_component light_component(&light_entity, light);
+
+	// sphere model of light
+	ga_model lightSphereModel;
+	generate_sphere(12, &lightSphereModel);
+	ga_material* sphereMat = new ga_constant_color_material();
+	sphereMat->set_color({ 1,1,1 });
+	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
+
 	sim->add_entity(&light_entity);
 
-
 	/*
+	*/
 	// Create an animated entity.
 	ga_model animated_model;
 	egg_to_model("data/models/bar.egg", &animated_model);
@@ -118,10 +128,9 @@ int main(int argc, const char** argv)
 	//ga_lua_component lua_rotate(&animated_entity, "data/scripts/rotate.lua");
 	//ga_lua_component lua_move(&animated_entity, "data/scripts/move.lua");
 
-	//sim->add_entity(&animated_entity);
+	sim->add_entity(&animated_entity);
 
 	animation_component.play(&animation);
-	*/
 
 
 	// spaceship entity
@@ -134,7 +143,7 @@ int main(int argc, const char** argv)
 	shipEnt.set_position({0, -10, 0});
 
 	// procedual sphere
-	ga_entity sphereEnt("shpere");
+	ga_entity sphereEnt("earth");
 	ga_model sphereModel;
 	generate_sphere(64, &sphereModel);
 	ga_model_component sphere_mc(&sphereEnt, &sphereModel, "data/textures/earth.jpg");
@@ -143,13 +152,19 @@ int main(int argc, const char** argv)
 	sphereEnt.scale(1000.0f);
 	sphereEnt.set_position({0,0,-2000});
 
+
 	// procedual torus
 	ga_entity torusEnt("torus");
 	ga_model torusModel;
 	generate_torus(1.5f, 0.7f, 30, &torusModel);
-	ga_model_component torus_mc(&torusEnt, &torusModel, "data/textures/test.bmp");
+
+	ga_material* lit_mat = new ga_unlit_texture_material("data/textures/test.bmp");
+
+	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat);
 	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(&torusEnt);
+
+	ga_frame_herald herald;
 
 	// Main loop:
 	while (true)
@@ -157,11 +172,19 @@ int main(int argc, const char** argv)
 		// We pass frame state through the 3 phases using a params object.
 		ga_frame_params params;
 
+		// get information from last frame from the herald
+		params._herald = &herald;
+
 		// Gather user input and current time.
 		if (!input->update(&params))
 		{
 			break;
 		}
+
+		// do stuff with info from last frame
+		// TODO: distribute jobs to different components
+		process_herald_msg(&params, sim);
+
 
 		// Update the camera.
 		camera->update(&params);
@@ -180,9 +203,6 @@ int main(int argc, const char** argv)
 	delete sim;
 	delete input;
 	delete camera;
-
-	delete[] pyramid_entities;
-	delete[] pyramid_components;
 
 	ga_job::shutdown();
 
@@ -214,4 +234,22 @@ static void set_root_path(const char* exepath)
 	g_root_path[strlen(cwd)] = '/';
 	g_root_path[strlen(cwd) + 1] = '\0';
 #endif
+}
+
+
+void create_sphere(ga_sim* sim) {
+	// procedual sphere
+	ga_entity* sphereEnt = new ga_entity("shpere");
+	ga_model* sphereModel = new ga_model();
+	generate_sphere(64, sphereModel);
+	ga_model_component* sphere_mc = new ga_model_component(sphereEnt, sphereModel, "data/textures/earth.jpg");
+	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
+	sim->add_entity(sphereEnt);
+}
+
+void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
+	if (params->_herald->_create_sphere) {
+		create_sphere(sim);
+		params->_herald->_create_sphere = false;
+	}
 }

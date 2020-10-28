@@ -57,6 +57,15 @@ enum ga_button_t
 	k_button_z		= 1 << 30,
 };
 
+/// <summary>
+/// ga_frame herald goes back to the front of the pipeline each frame
+/// carrying information from last frame
+/// </summary>
+struct ga_frame_herald {
+
+	bool _create_sphere = false;
+};
+
 /*
 ** Working information for the frame.
 ** Each frame stage emits some data for consumption by later stages.
@@ -92,4 +101,7 @@ struct ga_frame_params
 
 	// Somewhat of a hack to make collision stable when stepping with a paused simulation.
 	bool _single_step = false;
+
+	// used to carry info into next frame
+	ga_frame_herald* _herald;
 };

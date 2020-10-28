@@ -2,7 +2,6 @@
 
 uniform sampler2D u_texture;
 uniform vec3 u_baseColor;
-uniform vec3 u_ambientLight;
 
 in vec2 texcoord0;
 
@@ -16,13 +15,22 @@ struct DirectionalLight{
 	vec3 direction;
 };
 
+struct PositionalLight{
+	BaseLight base;
+	vec3 position;
+}
+
+uniform vec3 u_ambientLight;
+uniform DirectionalLight u_directionalLight;
+
 vec4 calcLight(BaseLight base, vec3 direction, vec3 normal){
 	float diffuseFactor = dot(-direction, normal);
 
 	vec4 diffuseColor = vec4(0,0,0,0);
-	if(diffuseFactor > 0){
-		diffuseColor = vec4(base.color, 1.0) * base.intensity * diffuseFactor;
+	if(diffuseFactor < 0){
+		diffuseFactor = 0;
 	}
+	diffuseColor = vec4(base.color, 1.0) * base.intensity * diffuseFactor;
 
 	return diffuseColor;
 }
