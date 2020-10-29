@@ -120,17 +120,19 @@ private:
 };
 
 /*
-** Simple unlit, single textured material.
+** Lit material.
 */
 class ga_lit_material : public ga_material
 {
 public:
-	ga_lit_material(const char* texture_file);
+	ga_lit_material(const char* texture_file, ga_directional_light* light);
 	~ga_lit_material();
 
 	virtual bool init() override;
 
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform);
 
 private:
 	std::string _texture_file;
@@ -141,6 +143,8 @@ private:
 	ga_texture* _texture;
 	ga_vec3f _baseColor;
 	ga_vec3f _ambientLight;
+
+	class ga_directional_light* _light;
 };
 
 // material with texture & light

@@ -29,6 +29,6 @@ public:
 	const class ga_entity* get_entity() const { return _entity; }
 	class ga_entity* get_entity() { return _entity; }
 
-private:
+protected:
 	class ga_entity* _entity;
 };

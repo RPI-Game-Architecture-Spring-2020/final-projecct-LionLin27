@@ -93,7 +93,12 @@ void ga_output::update(ga_frame_params* params)
 	// Draw all static geometry:
 	for (auto& d : params->_static_drawcalls)
 	{
-		d._material->bind(view_perspective, d._transform);
+		if (d._lit) {
+			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform);
+		}
+		else {
+			d._material->bind(view_perspective, d._transform);
+		}
 		glBindVertexArray(d._vao);
 		if (d._drawBuffer) {
 			glDrawArrays(d._draw_mode, 0, d._index_count);

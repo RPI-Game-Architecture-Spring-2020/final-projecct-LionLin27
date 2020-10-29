@@ -105,11 +105,10 @@ int main(int argc, const char** argv)
 	ga_material* sphereMat = new ga_constant_color_material();
 	sphereMat->set_color({ 1,1,1 });
 	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
-
+	light_entity.scale(0.1f);
 	sim->add_entity(&light_entity);
 
 	/*
-	*/
 	// Create an animated entity.
 	ga_model animated_model;
 	egg_to_model("data/models/bar.egg", &animated_model);
@@ -131,6 +130,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&animated_entity);
 
 	animation_component.play(&animation);
+	*/
 
 
 	// spaceship entity
@@ -157,10 +157,11 @@ int main(int argc, const char** argv)
 	ga_entity torusEnt("torus");
 	ga_model torusModel;
 	generate_torus(1.5f, 0.7f, 30, &torusModel);
+	//generate_sphere(12, &torusModel);
 
-	ga_material* lit_mat = new ga_unlit_texture_material("data/textures/test.bmp");
+	ga_material* lit_mat = new ga_lit_material("data/textures/test.bmp", light);
 
-	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat);
+	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat, true);
 	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(&torusEnt);
 

@@ -18,8 +18,9 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
-ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_material* mat) : ga_component(ent)
+ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_material* mat, bool lit) : ga_component(ent)
 {
+	_lit = lit;
 	_material = mat;
 	_material->init();
 
@@ -43,6 +44,7 @@ ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, const ch
 ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_directional_light* light) : ga_component(ent)
 {
 	_light = light;
+	_lit = true;
 	_material = new ga_lit_anim_material(model->_skeleton, _light);
 	_material->init();
 
@@ -67,13 +69,14 @@ void ga_model_component::update(ga_frame_params* params)
 	*/
 
 	ga_static_drawcall draw;
-	draw._name = "ga_animated_model_component";
+	draw._name = "ga_model_component";
 	draw._vao = _vao;
 	draw._index_count = _index_count;
 	draw._transform = get_entity()->get_transform();
 	draw._draw_mode = GL_TRIANGLES;
 	draw._material = _material;
 	draw._drawBuffer = _drawBuffer;
+	draw._lit = _lit;
 
 	while (params->_static_drawcall_lock.test_and_set(std::memory_order_acquire)) {}
 	params->_static_drawcalls.push_back(draw);

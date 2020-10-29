@@ -348,6 +348,8 @@ void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 	_baseColor = { 1.0, 1.0, 1.0 };
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
+	_program->use();
+
 	//ga_vec3f light_color = { 0.9, 0.6, 0.1 };
 	ga_vec3f light_color = _light->_color;
 	float intensity = _light->_intensity;
@@ -363,8 +365,6 @@ void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 	ga_uniform light_color_uniform = _program->get_uniform("u_directionalLight.base.color");
 	ga_uniform light_intensity_uniform = _program->get_uniform("u_directionalLight.base.intensity");
 	ga_uniform light_direction_uniform = _program->get_uniform("u_directionalLight.direction");
-
-	_program->use();
 
 	mvp_uniform.set(transform * view_proj);
 	trans_uniform.set(transform);
@@ -391,8 +391,8 @@ void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 	glDepthMask(GL_TRUE);
 }
 
-ga_lit_material::ga_lit_material(const char* texture_file) :
-	_texture_file(texture_file)
+ga_lit_material::ga_lit_material(const char* texture_file, ga_directional_light* light) :
+	_texture_file(texture_file), _light(light)
 {
 }
 
@@ -439,20 +439,57 @@ bool ga_lit_material::init()
 
 void ga_lit_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
 {
-	_baseColor = {1, 1, 1};
-	_ambientLight = { 0.1, 0.1, 0.1 };
-
+	return;
+	/*
 	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
 	ga_uniform texture_uniform = _program->get_uniform("u_texture");
-	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
-	ga_uniform ambient_uniform = _program->get_uniform("u_ambientLight");
 
 	_program->use();
 
 	mvp_uniform.set(transform * view_proj);
 	texture_uniform.set(*_texture, 0);
-	baseColor_uniform.set(_baseColor);
-	ambient_uniform.set(_ambientLight);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+	*/
+}
+
+void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform)
+{
+	_ambientLight = { 0.1, 0.1, 0.1 };
+
+	_program->use();
+
+	// get the locations of the light and material fields in the shader
+	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
+	// ga_uniform ambLoc = _program->get_uniform("u_directionalLight.base.ambient");
+	ga_uniform diffLoc = _program->get_uniform("u_directionalLight.base.color");
+	// ga_uniform specLoc = _program->get_uniform("light.specular");
+	ga_uniform dirLoc = _program->get_uniform("u_directionalLight.direction");
+	ga_uniform itsLoc = _program->get_uniform("u_directionalLight.base.intensity");
+	// ga_uniform mambLoc = _program->get_uniform("material.ambient");
+	// ga_uniform mdiffLoc = _program->get_uniform("material.diffuse");
+	// ga_uniform mspecLoc = _program->get_uniform("material.specular");
+	// ga_uniform mshiLoc = _program->get_uniform("material.shininess");
+	ga_uniform mvMat = _program->get_uniform("u_mvMat");
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+
+	//  set the uniform light and material values in the shader
+	globalAmbLoc.set(_ambientLight);
+	// ambLoc.set(lightAmbient);
+	diffLoc.set(_light->_color);
+	// specLoc.set(lightSpecular);
+	dirLoc.set(_light->_direction);
+	itsLoc.set(_light->_intensity);
+	// mambLoc.set(matAmb);
+	// mdiffLoc.set(matDif);
+	// mspecLoc.set(matSpe);
+	// mshiLoc.set(matShi);
+	mvMat.set(transform * view);
+	mvp_uniform.set(transform * view * proj);
+	texture_uniform.set(*_texture, 0);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

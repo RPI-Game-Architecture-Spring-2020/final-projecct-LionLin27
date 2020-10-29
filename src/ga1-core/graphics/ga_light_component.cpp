@@ -24,6 +24,9 @@ ga_light_component::~ga_light_component()
 }
 
 void ga_light_component::update(ga_frame_params* params){
+
+	_light->_direction = _entity->get_transform().get_forward();
+
 	if ((params->_btn_down_mask & k_button_c) != 0) {
 		_light->_intensity += 0.1;
 	}

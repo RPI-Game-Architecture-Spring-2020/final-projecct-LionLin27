@@ -17,7 +17,7 @@
 
 ga_cube_component::ga_cube_component(ga_entity* ent, const char* texture_file) : ga_component(ent)
 {
-	_material = new ga_lit_material(texture_file);
+	_material = new ga_unlit_texture_material(texture_file);
 	_material->init();
 
 	static GLfloat color[] =

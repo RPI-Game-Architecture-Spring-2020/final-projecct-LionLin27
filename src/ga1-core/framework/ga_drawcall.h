@@ -30,6 +30,7 @@ struct ga_drawcall
 	GLenum _draw_mode;
 	class ga_material* _material = 0;
 	bool _drawBuffer = false;
+	bool _lit = false;
 };
 
 /*

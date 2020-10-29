@@ -106,7 +106,7 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 		axis_angle.make_axis_angle(ga_vec3f::z_vector(), amt);
 		ga_mat4f rMat;
 		rMat.make_identity();
-		rMat.rotate(axis_angle);
+		rMat.make_rotation(axis_angle);
 
 		ga_vec4f initPos4(rMat.transform({ outer, 0.0f, 0.0f, 1.0f }));
 		ga_vec3f initPos = { initPos4.x, initPos4.y, initPos4.z };
@@ -115,7 +115,7 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 		texCoords[i] = { 0.0f, ((float)i / (float)prec) };
 
 		rMat.make_identity();
-		rMat.rotate(axis_angle);
+		rMat.make_rotation(axis_angle);
 		ga_vec4f temp = rMat.transform({ 0.0f, -1.0f, 0.0f, 1.0f });
 		tTangents[i] = {temp.x, temp.y, temp.z};
 
@@ -131,14 +131,14 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 			axis_angle.make_axis_angle(ga_vec3f::y_vector(), amt);
 			ga_mat4f rMat;
 			rMat.make_identity();
-			rMat.rotate(axis_angle);
+			rMat.make_rotation(axis_angle);
 			ga_vec4f v4 = rMat.transform({ vertices[i].x, vertices[i].y, vertices[i].z, 1.0f });
 			vertices[ring * (prec + 1) + i] = {v4.x, v4.y, v4.z};
 
 			texCoords[ring * (prec + 1) + i] = { (float)ring * 2.0f / (float)prec, texCoords[i].y };
 			if (texCoords[ring * (prec + 1) + i].x > 1.0) texCoords[ring * (prec + 1) + i].x -= 1.0f;
 
-			rMat.rotate(axis_angle);
+			rMat.make_rotation(axis_angle);
 			v4 = { sTangents[i].x, sTangents[i].y, sTangents[i].z, 1.0f};
 			v4 = rMat.transform(v4);
 			sTangents[ring * (prec + 1) + i] = {v4.x, v4.y, v4.z};
