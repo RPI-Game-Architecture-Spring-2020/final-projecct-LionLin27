@@ -16,31 +16,35 @@
 
 ga_light_component::ga_light_component(ga_entity* ent, ga_directional_light* light) : ga_component(ent)
 {
+	_type = LightType::directional;
 	_light = light;
 }
 
-ga_light_component::~ga_light_component()
+ga_light_component::ga_light_component(ga_entity* ent, ga_positional_light* light) : ga_component(ent)
 {
+	_type = LightType::positional;
+	_light = light;
 }
 
+//ga_light_component::~ga_light_component()
+//{}
+
 void ga_light_component::update(ga_frame_params* params){
+	if (_type == LightType::directional) {
+		ga_directional_light* dirL = static_cast<ga_directional_light*>(_light);
+		dirL->_direction = _entity->get_transform().get_forward();
+		
+		while (params->_lights_lock.test_and_set(std::memory_order_acquire)) {}
+		params->_lights._dirLight = dirL;
+		params->_lights_lock.clear(std::memory_order_release);
+	}
+	else if (_type == LightType::positional) {
+		ga_positional_light* posL = static_cast<ga_positional_light*>(_light);
+		posL->_position = _entity->get_transform().get_translation();
 
-	_light->_direction = _entity->get_transform().get_forward();
+		while (params->_lights_lock.test_and_set(std::memory_order_acquire)) {}
+		params->_lights._posLightArr.push_back(posL);
+		params->_lights_lock.clear(std::memory_order_release);
+	}
 
-	if ((params->_btn_down_mask & k_button_c) != 0) {
-		_light->_intensity += 0.1;
-	}
-	if ((params->_btn_down_mask & k_button_v) != 0) {
-		_light->_intensity -= 0.1;
-	}
-	if ((params->_btn_down_mask & k_button_b) != 0) {
-		if (_light->_direction.x > -1)
-			_light->_direction -= {0.1, 0, 0};
-		_light->_direction.normalize();
-	}
-	if ((params->_btn_down_mask & k_button_n) != 0) {
-		if(_light->_direction.x < 1)
-			_light->_direction += {0.1, 0, 0};
-		_light->_direction.normalize();
-	}
 }

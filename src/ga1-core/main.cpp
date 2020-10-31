@@ -72,6 +72,7 @@ int main(int argc, const char** argv)
 	camera->rotate(rotation);
 
 
+	/*
 	// cg pyramid entity
 	ga_entity* pyramid_entities[5];
 	ga_pyramid_component* pyramid_components[5];
@@ -84,7 +85,6 @@ int main(int argc, const char** argv)
 	}
 
 
-	/*
 	// Create an entity whose movement is driven by Lua script.
 	ga_entity lua;
 	lua.translate({ 0.0f, 2.0f, 1.0f });
@@ -95,8 +95,8 @@ int main(int argc, const char** argv)
 
 
 	// light ent
-	ga_entity light_entity("light");
-	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 1, { 1,1,1 });
+	ga_entity light_entity("directional light");
+	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 0.5, { 1,1,1 });
 	ga_light_component light_component(&light_entity, light);
 
 	// sphere model of light
@@ -107,6 +107,48 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
 	light_entity.scale(0.1f);
 	sim->add_entity(&light_entity);
+
+	// point light ent
+	ga_entity light_entity2("point light 1");
+	ga_positional_light* light2 = new ga_positional_light({ 0,1,1 }, 1, { 1,1,1 });
+	ga_light_component light_component2(&light_entity2, light2);
+
+	// sphere model of light
+	ga_model lightSphereModel2;
+	generate_sphere(12, &lightSphereModel2);
+	ga_material* sphereMat2 = new ga_constant_color_material();
+	sphereMat2->set_color({ 0,1,1 });
+	ga_model_component sphere_mc3(&light_entity2, &lightSphereModel2, sphereMat2);
+	light_entity2.scale(0.1f);
+	sim->add_entity(&light_entity2);
+
+	// point light ent
+	ga_entity light_entity3("point light 2");
+	ga_positional_light* light3 = new ga_positional_light({ 1,0,1 }, 1, { 1,1,1 });
+	ga_light_component light_component3(&light_entity3, light3);
+
+	// sphere model of light
+	ga_model lightSphereModel3;
+	generate_sphere(12, &lightSphereModel3);
+	ga_material* sphereMat3 = new ga_constant_color_material();
+	sphereMat3->set_color({ 1,0,1 });
+	ga_model_component sphere_mc4(&light_entity3, &lightSphereModel3, sphereMat3);
+	light_entity3.scale(0.1f);
+	sim->add_entity(&light_entity3);
+
+	// point light ent
+	ga_entity light_entity4("point light 3");
+	ga_positional_light* light4 = new ga_positional_light({ 1,1,0 }, 1, { 1,1,1 });
+	ga_light_component light_component4(&light_entity4, light4);
+
+	// sphere model of light
+	ga_model lightSphereModel4;
+	generate_sphere(12, &lightSphereModel4);
+	ga_material* sphereMat4 = new ga_constant_color_material();
+	sphereMat4->set_color({ 1,1,0 });
+	ga_model_component sphere_mc5(&light_entity4, &lightSphereModel4, sphereMat4);
+	light_entity4.scale(0.1f);
+	sim->add_entity(&light_entity4);
 
 	/*
 	// Create an animated entity.
@@ -130,7 +172,6 @@ int main(int argc, const char** argv)
 	sim->add_entity(&animated_entity);
 
 	animation_component.play(&animation);
-	*/
 
 
 	// spaceship entity
@@ -151,15 +192,16 @@ int main(int argc, const char** argv)
 	sim->add_entity(&sphereEnt);
 	sphereEnt.scale(1000.0f);
 	sphereEnt.set_position({0,0,-2000});
+	*/
 
 
-	// procedual torus
+	// lit torus
 	ga_entity torusEnt("torus");
 	ga_model torusModel;
 	generate_torus(1.5f, 0.7f, 30, &torusModel);
 	//generate_sphere(12, &torusModel);
 
-	ga_material* lit_mat = new ga_lit_material("data/textures/test.bmp", light);
+	ga_material* lit_mat = new ga_lit_material("data/textures/test.bmp");
 
 	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat, true);
 	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
@@ -254,3 +296,5 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		params->_herald->_create_sphere = false;
 	}
 }
+
+

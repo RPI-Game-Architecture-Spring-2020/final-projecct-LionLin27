@@ -102,6 +102,10 @@ struct ga_frame_params
 	// Somewhat of a hack to make collision stable when stepping with a paused simulation.
 	bool _single_step = false;
 
+	// light
+	ga_light_drawcall _lights;
+	std::atomic_flag _lights_lock = ATOMIC_FLAG_INIT;
+
 	// used to carry info into next frame
 	ga_frame_herald* _herald;
 };

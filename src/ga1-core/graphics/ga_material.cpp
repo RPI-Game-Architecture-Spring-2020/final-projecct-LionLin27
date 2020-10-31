@@ -391,8 +391,8 @@ void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 	glDepthMask(GL_TRUE);
 }
 
-ga_lit_material::ga_lit_material(const char* texture_file, ga_directional_light* light) :
-	_texture_file(texture_file), _light(light)
+ga_lit_material::ga_lit_material(const char* texture_file) :
+	_texture_file(texture_file)
 {
 }
 
@@ -455,11 +455,16 @@ void ga_lit_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
 	*/
 }
 
-void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform)
+
+
+void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights)
 {
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
 	_program->use();
+
+	// directional light
+	ga_directional_light* dirL = lights._dirLight;
 
 	// get the locations of the light and material fields in the shader
 	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
@@ -472,21 +477,45 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	// ga_uniform mdiffLoc = _program->get_uniform("material.diffuse");
 	// ga_uniform mspecLoc = _program->get_uniform("material.specular");
 	// ga_uniform mshiLoc = _program->get_uniform("material.shininess");
-	ga_uniform mvMat = _program->get_uniform("u_mvMat");
-	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
-	ga_uniform texture_uniform = _program->get_uniform("u_texture");
 
 	//  set the uniform light and material values in the shader
 	globalAmbLoc.set(_ambientLight);
 	// ambLoc.set(lightAmbient);
-	diffLoc.set(_light->_color);
+	diffLoc.set(dirL->_color);
 	// specLoc.set(lightSpecular);
-	dirLoc.set(_light->_direction);
-	itsLoc.set(_light->_intensity);
+	dirLoc.set(dirL->_direction);
+	itsLoc.set(dirL->_intensity);
 	// mambLoc.set(matAmb);
 	// mdiffLoc.set(matDif);
 	// mspecLoc.set(matSpe);
 	// mshiLoc.set(matShi);
+
+	// positional lights
+	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");
+	float posLCount = 0.1;
+	for (ga_positional_light* posL : lights._posLightArr) {
+
+		// TODO: [0] for now
+		std::string index = std::to_string((int)posLCount);
+		std::string diffName = "u_positionalLights[" + index + "].base.color";
+		std::string posName = "u_positionalLights[" + index + "].position";
+		std::string itsName = "u_positionalLights[" + index + "].base.intensity";
+		ga_uniform diffLoc_p = _program->get_uniform(diffName.c_str());
+		ga_uniform posLoc_p = _program->get_uniform(posName.c_str());
+		ga_uniform itsLoc_p = _program->get_uniform(itsName.c_str());
+
+		diffLoc_p.set(posL->_color);
+		posLoc_p.set(posL->_position);
+		itsLoc_p.set(posL->_intensity);
+
+		posLCount += 1.0;
+	}
+	posLightCountLoc.set(posLCount);
+
+
+	ga_uniform mvMat = _program->get_uniform("u_mvMat");
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
 	mvMat.set(transform * view);
 	mvp_uniform.set(transform * view * proj);
 	texture_uniform.set(*_texture, 0);

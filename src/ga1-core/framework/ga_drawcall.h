@@ -33,6 +33,11 @@ struct ga_drawcall
 	bool _lit = false;
 };
 
+struct ga_light_drawcall {
+	class ga_directional_light* _dirLight;
+	std::vector<class ga_positional_light*> _posLightArr;
+};
+
 /*
 ** Draw call with static geometry.
 ** The vertex array object referenced by this draw call should live for at

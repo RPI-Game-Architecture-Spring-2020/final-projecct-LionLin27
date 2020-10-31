@@ -94,7 +94,7 @@ void ga_output::update(ga_frame_params* params)
 	for (auto& d : params->_static_drawcalls)
 	{
 		if (d._lit) {
-			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform);
+			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights);
 		}
 		else {
 			d._material->bind(view_perspective, d._transform);

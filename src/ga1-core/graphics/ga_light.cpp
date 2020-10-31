@@ -26,3 +26,8 @@ ga_directional_light::ga_directional_light(ga_vec3f color, float intensity, ga_v
 	_direction = direction;
 }
 
+ga_positional_light::ga_positional_light(ga_vec3f color, float intensity, ga_vec3f position)
+	:ga_light(color, intensity)
+{
+	_position = position;
+}

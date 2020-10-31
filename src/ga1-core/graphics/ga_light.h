@@ -24,3 +24,9 @@ public:
 	ga_vec3f _direction;
 };
 
+class ga_positional_light : public ga_light {
+public:
+	ga_positional_light(ga_vec3f color, float intensity, ga_vec3f position);
+	ga_vec3f _position;
+};
+
