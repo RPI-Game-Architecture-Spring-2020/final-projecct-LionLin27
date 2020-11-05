@@ -121,7 +121,9 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc3(&light_entity2, &lightSphereModel2, sphereMat2);
 	light_entity2.scale(0.1f);
 	sim->add_entity(&light_entity2);
+	//light_entity2.translate({ -3, -2, -1 });
 
+	/*
 	// point light ent
 	ga_entity light_entity3("point light 2");
 	ga_positional_light* light3 = new ga_positional_light({ 1,0,1 }, 1, { 1,1,1 });
@@ -135,6 +137,7 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc4(&light_entity3, &lightSphereModel3, sphereMat3);
 	light_entity3.scale(0.1f);
 	sim->add_entity(&light_entity3);
+	light_entity3.translate({ -2, 1, 1 });
 
 	// point light ent
 	ga_entity light_entity4("point light 3");
@@ -149,6 +152,8 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc5(&light_entity4, &lightSphereModel4, sphereMat4);
 	light_entity4.scale(0.1f);
 	sim->add_entity(&light_entity4);
+	light_entity4.translate({ 1, 2, 1 });
+	*/
 
 	/*
 	// Create an animated entity.
@@ -199,13 +204,26 @@ int main(int argc, const char** argv)
 	ga_entity torusEnt("torus");
 	ga_model torusModel;
 	generate_torus(1.5f, 0.7f, 30, &torusModel);
-	//generate_sphere(12, &torusModel);
 
-	ga_material* lit_mat = new ga_lit_material("data/textures/test.bmp");
+	ga_material* lit_mat = new ga_lit_material("data/textures/checker.png");
 
 	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat, true);
-	//ga_lua_component lua_rotate(&torusEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(&torusEnt);
+	torusEnt.translate({ 0,-3,0 });
+
+	// lit sphere
+	ga_entity sphereEnt("sphere");
+	ga_model sphereModel;
+	generate_sphere(30, &sphereModel);
+
+	ga_material* lit_mat2 = new ga_lit_material("data/textures/checker.png");
+
+	ga_model_component sphere_mce(&sphereEnt, &sphereModel, lit_mat2, true);
+	sim->add_entity(&sphereEnt);
+	sphereEnt.translate({ 0,2,0 });
+
+
+
 
 	ga_frame_herald herald;
 

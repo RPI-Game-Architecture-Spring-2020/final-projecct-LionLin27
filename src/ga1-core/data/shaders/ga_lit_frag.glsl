@@ -4,6 +4,7 @@
 
 uniform sampler2D u_texture;
 uniform vec3 u_baseColor;
+uniform mat4 u_mvMat;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -51,7 +52,7 @@ vec3 calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos){
 }
 
 vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
-	vec3 L = normalize(posLight.position);
+	vec3 L = normalize(posLight.position-vertPos);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
 
@@ -74,14 +75,14 @@ vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
 void main(void)
 {
 	vec3 dirLight = calcDirectionalLight(u_directionalLight, o_normal, o_vertPos);
-	vec3 posLight = vec3(0,0,0);
+	vec3 posLightSum = vec3(0,0,0);
 	for (int i = 0; i < u_posLightCount; i ++){
 		if(i >= POSITIONAL_LIGHTS_MAX){
 			break;
 		}
-		posLight += calcPositionalLight(u_positionalLights[i], o_normal, o_vertPos);
+		posLightSum += calcPositionalLight(u_positionalLights[i], o_normal, o_vertPos);
 	}
-	vec4 totalLight = vec4(u_ambientLight + dirLight + posLight, 1);
+	vec4 totalLight = vec4(u_ambientLight + dirLight + posLightSum, 1);
 
 	vec3 baseColor = vec3(1,1,1);
 	vec4 textureColor = texture(u_texture, texcoord0);

@@ -494,8 +494,7 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");
 	float posLCount = 0.1;
 	for (ga_positional_light* posL : lights._posLightArr) {
-
-		// TODO: [0] for now
+		ga_vec3f transformedPos = view.transform_point(posL->_position);
 		std::string index = std::to_string((int)posLCount);
 		std::string diffName = "u_positionalLights[" + index + "].base.color";
 		std::string posName = "u_positionalLights[" + index + "].position";
@@ -505,7 +504,7 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 		ga_uniform itsLoc_p = _program->get_uniform(itsName.c_str());
 
 		diffLoc_p.set(posL->_color);
-		posLoc_p.set(posL->_position);
+		posLoc_p.set(transformedPos);
 		itsLoc_p.set(posL->_intensity);
 
 		posLCount += 1.0;
