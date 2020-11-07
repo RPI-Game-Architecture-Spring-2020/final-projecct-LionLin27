@@ -96,6 +96,7 @@ struct ga_frame_params
 	std::atomic_flag _gui_drawcall_lock = ATOMIC_FLAG_INIT;
 
 	ga_mat4f _view;
+	ga_vec3f _camPos;
 
 	ga_entity* _selected_ent;
 

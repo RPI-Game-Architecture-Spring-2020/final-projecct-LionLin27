@@ -77,6 +77,7 @@ void ga_camera::update(ga_frame_params* params)
 	view.make_lookat_rh(eye, at, up);
 
 	params->_view = view;
+	params->_camPos = _transform.get_translation();
 }
 
 void ga_camera::rotate(const ga_quatf& rotation)

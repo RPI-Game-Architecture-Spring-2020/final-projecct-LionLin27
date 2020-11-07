@@ -64,7 +64,7 @@ int main(int argc, const char** argv)
 	g_font = new ga_font("VeraMono.ttf", 16.0f, 512, 512);
 
 	// Create camera.
-	ga_camera* camera = new ga_camera({ 0.0f, 7.0f, 20.0f });
+	ga_camera* camera = new ga_camera({ 0.0f, 0.0f, 20.0f });
 	ga_quatf rotation;
 	rotation.make_axis_angle(ga_vec3f::y_vector(), ga_degrees_to_radians(180.0f));
 	camera->rotate(rotation);
@@ -106,6 +106,9 @@ int main(int argc, const char** argv)
 	sphereMat->set_color({ 1,1,1 });
 	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
 	light_entity.scale(0.1f);
+	ga_quatf rot;
+	rot.make_axis_angle({ 1, 0,0 }, -45);
+	light_entity.rotate(rot);
 
 	ga_model arrowModel;
 	generate_arrow(&arrowModel);
@@ -128,12 +131,12 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc3(&light_entity2, &lightSphereModel2, sphereMat2);
 	light_entity2.scale(0.1f);
 	sim->add_entity(&light_entity2);
-	//light_entity2.translate({ -3, -2, -1 });
+	light_entity2.translate({ 15, -5, -1 });
 
 	/*
 	// point light ent
 	ga_entity light_entity3("point light 2");
-	ga_positional_light* light3 = new ga_positional_light({ 1,0,1 }, 1, { 1,1,1 });
+	ga_positional_light* light3 = new ga_positional_light({ 1,0,1 }, 1);
 	ga_light_component light_component3(&light_entity3, light3);
 
 	// sphere model of light
@@ -144,11 +147,12 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mc4(&light_entity3, &lightSphereModel3, sphereMat3);
 	light_entity3.scale(0.1f);
 	sim->add_entity(&light_entity3);
-	light_entity3.translate({ -2, 1, 1 });
+	light_entity3.translate({ -2,-5, 1 });
+	*/
 
 	// point light ent
 	ga_entity light_entity4("point light 3");
-	ga_positional_light* light4 = new ga_positional_light({ 1,1,0 }, 1, { 1,1,1 });
+	ga_positional_light* light4 = new ga_positional_light({ 1,1,0 }, 0.3);
 	ga_light_component light_component4(&light_entity4, light4);
 
 	// sphere model of light
@@ -160,9 +164,8 @@ int main(int argc, const char** argv)
 	light_entity4.scale(0.1f);
 	sim->add_entity(&light_entity4);
 	light_entity4.translate({ 1, 2, 1 });
-	*/
-
 	/*
+
 	// Create an animated entity.
 	ga_model animated_model;
 	egg_to_model("data/models/bar.egg", &animated_model);
@@ -194,7 +197,7 @@ int main(int argc, const char** argv)
 	ga_model_component ship_model_component(&shipEnt, &shipModel, lit_mat0, true);
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
-	shipEnt.set_position({0, -10, 0});
+	shipEnt.set_position({10, -6, 0});
 	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
@@ -217,10 +220,10 @@ int main(int argc, const char** argv)
 
 	ga_model_component torus_mc(&torusEnt, &torusModel, lit_mat, true);
 	sim->add_entity(&torusEnt);
-	torusEnt.translate({ 0,-3,0 });
+	torusEnt.translate({ 5,-7,0 });
 
 	// lit sphere
-	ga_entity sphereEnt("sphere");
+	ga_entity sphereEnt("sphere_big");
 	ga_model sphereModel;
 	generate_sphere(30, &sphereModel);
 
@@ -228,7 +231,18 @@ int main(int argc, const char** argv)
 
 	ga_model_component sphere_mce(&sphereEnt, &sphereModel, lit_mat2, true);
 	sim->add_entity(&sphereEnt);
-	sphereEnt.translate({ 0,2,0 });
+	sphereEnt.translate({ 0,-1,-4 });
+	sphereEnt.scale(5);
+
+	ga_entity sphereEnt3("sphere_small");
+	ga_model sphereModel3;
+	generate_sphere(30, &sphereModel3);
+
+	ga_material* sp_mat3 = new ga_lit_material("data/textures/checker.png");
+
+	ga_model_component sphere_mce3(&sphereEnt3, &sphereModel3, sp_mat3, true);
+	sim->add_entity(&sphereEnt3);
+	sphereEnt3.translate({ 0, 2,-13 });
 
 	/*
 	*/
@@ -322,7 +336,9 @@ void create_sphere(ga_sim* sim) {
 	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
 	generate_sphere(64, sphereModel);
-	ga_model_component* sphere_mc = new ga_model_component(sphereEnt, sphereModel, "data/textures/earth.jpg");
+	ga_material* lit_mat2 = new ga_lit_material("data/textures/checker.png");
+
+	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, lit_mat2, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(sphereEnt);
 }
