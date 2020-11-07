@@ -132,7 +132,7 @@ public:
 
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
 
-	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights);
+	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP);
 
 private:
 	std::string _texture_file;

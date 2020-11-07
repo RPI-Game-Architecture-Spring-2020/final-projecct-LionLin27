@@ -15,6 +15,7 @@
 #include "math/ga_vec3f.h"
 
 #include <cassert>
+#include <iostream>
 
 #define GLEW_STATIC
 #include <GL/glew.h>
@@ -52,6 +53,11 @@ ga_shader::ga_shader(const char* source, GLenum type)
 {
 	_handle = glCreateShader(type);
 	glShaderSource(_handle, 1, &source, 0);
+
+	if (!this->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << this->get_compile_log() << std::endl;
+	}
 }
 
 ga_shader::~ga_shader()

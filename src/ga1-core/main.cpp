@@ -96,7 +96,7 @@ int main(int argc, const char** argv)
 
 	// light ent
 	ga_entity light_entity("directional light");
-	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 0.5, { 1,1,1 });
+	ga_directional_light* light = new ga_directional_light({ 1,1,1 }, 0.7);
 	ga_light_component light_component(&light_entity, light);
 
 	// sphere model of light
@@ -106,11 +106,18 @@ int main(int argc, const char** argv)
 	sphereMat->set_color({ 1,1,1 });
 	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
 	light_entity.scale(0.1f);
+
+	ga_model arrowModel;
+	generate_arrow(&arrowModel);
+	ga_material* arrow_mat = new ga_constant_color_material();
+	arrow_mat->set_color({ 1,1,1 });
+	ga_model_component arrow_mce(&light_entity, &arrowModel, arrow_mat);
+
 	sim->add_entity(&light_entity);
 
 	// point light ent
 	ga_entity light_entity2("point light 1");
-	ga_positional_light* light2 = new ga_positional_light({ 0,1,1 }, 1, { 1,1,1 });
+	ga_positional_light* light2 = new ga_positional_light({ 0,1,1 }, 1);
 	ga_light_component light_component2(&light_entity2, light2);
 
 	// sphere model of light
@@ -177,17 +184,18 @@ int main(int argc, const char** argv)
 	sim->add_entity(&animated_entity);
 
 	animation_component.play(&animation);
-
+	*/
 
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
 	obj_to_model("data/models/shuttle.obj", &shipModel);
-	ga_model_component ship_model_component(&shipEnt, &shipModel, "data/textures/spstob_1.jpg");
+	ga_material* lit_mat0 = new ga_lit_material("data/textures/spstob_1.jpg");
+	ga_model_component ship_model_component(&shipEnt, &shipModel, lit_mat0, true);
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
 	shipEnt.set_position({0, -10, 0});
-
+	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
 	ga_model sphereModel;
@@ -222,6 +230,17 @@ int main(int argc, const char** argv)
 	sim->add_entity(&sphereEnt);
 	sphereEnt.translate({ 0,2,0 });
 
+	/*
+	*/
+	// lit plane
+	ga_entity planeEnt("plane");
+	ga_model planeModel;
+	generate_plane(&planeModel);
+	ga_material* plane_mat = new ga_lit_material("data/textures/checker.png");
+	ga_model_component plane_mce(&planeEnt, &planeModel, plane_mat, true);
+	sim->add_entity(&planeEnt);
+	planeEnt.translate({0,-0.1,0});
+	planeEnt.scale(100);
 
 
 

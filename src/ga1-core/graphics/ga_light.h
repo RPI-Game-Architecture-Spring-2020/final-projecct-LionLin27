@@ -20,13 +20,13 @@ public:
 
 class ga_directional_light : public ga_light {
 public:
-	ga_directional_light(ga_vec3f color, float intensity, ga_vec3f direction);
+	ga_directional_light(ga_vec3f color, float intensity);
 	ga_vec3f _direction;
 };
 
 class ga_positional_light : public ga_light {
 public:
-	ga_positional_light(ga_vec3f color, float intensity, ga_vec3f position);
+	ga_positional_light(ga_vec3f color, float intensity);
 	ga_vec3f _position;
 };
 

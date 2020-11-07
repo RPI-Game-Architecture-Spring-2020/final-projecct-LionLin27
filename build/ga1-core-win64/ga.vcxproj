@@ -125,7 +125,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																															</Message>
+      <Message>																																</Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -379,6 +379,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/checker.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/checker.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/earth.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/earth.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -470,7 +479,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																															</Message>
+      <Message>																																</Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -724,6 +733,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/checker.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/checker.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/earth.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/earth.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -815,7 +833,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																															</Message>
+      <Message>																																</Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -1069,6 +1087,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/checker.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/checker.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/earth.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/earth.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1159,7 +1186,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																															</Message>
+      <Message>																																</Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -1413,6 +1440,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/checker.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/checker.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/earth.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/earth.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1542,6 +1578,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_procedural_model.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_program.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_pyramid_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_shadow.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_texture.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_button.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\gui\ga_checkbox.cpp" />
@@ -1566,6 +1603,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec2f.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec3f.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\math\ga_vec4f.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\out\build\x64-Debug (default)\CMakeFiles\3.17.20032601-MSVC_2\CompilerIdCXX\CMakeCXXCompilerId.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_intersection.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_intersection.tests.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\physics\ga_physics_component.cpp" />

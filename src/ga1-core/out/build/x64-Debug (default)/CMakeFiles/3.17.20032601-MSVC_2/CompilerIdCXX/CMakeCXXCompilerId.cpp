@@ -633,7 +633,7 @@ const char* info_language_dialect_default = "INFO" ":" "dialect_default["
 "]";
 
 /*--------------------------------------------------------------------------*/
-
+/*
 int main(int argc, char* argv[])
 {
   int require = 0;
@@ -658,3 +658,4 @@ int main(int argc, char* argv[])
   (void)argv;
   return require;
 }
+*/

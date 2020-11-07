@@ -7,6 +7,80 @@
 #include <cmath>
 #include <vector>
 
+void generate_arrow(struct ga_model* model) {
+	int numVertices;
+	int numIndices;
+	std::vector<int> indices;
+	std::vector<ga_vec3f> vertices;
+
+	numVertices = 12;
+	vertices.push_back({ -1,0,0 });
+	vertices.push_back({ 0,0,-4 });
+	vertices.push_back({ 1,0,0 });
+	vertices.push_back({ 0,0,-4 });
+	vertices.push_back({ -1,0,0 });
+	vertices.push_back({ 1,0,0 });
+	vertices.push_back({ 0,-1,0 });
+	vertices.push_back({ 0,0,-4 });
+	vertices.push_back({ 0,1,0 });
+	vertices.push_back({ 0,0,-4 });
+	vertices.push_back({ 0,-1,0 });
+	vertices.push_back({ 0,1,0 });
+
+	for (int i = 0; i < numVertices; i++) {
+		ga_vertex v;
+
+		v._position = vertices[i];
+
+		model->_vertices.push_back(v);
+	}
+}
+
+void generate_plane(struct ga_model* model) {
+	int numVertices;
+	int numIndices;
+	std::vector<int> indices;
+	std::vector<ga_vec3f> vertices;
+	std::vector<ga_vec2f> texCoords;
+	std::vector<ga_vec3f> normals;
+	std::vector<ga_vec3f> tangents;
+
+	numVertices = 6;
+	vertices.push_back({ -1.0, 0.0,  1.0 });
+	vertices.push_back({ 1.0,  0.0,  1.0 });
+	vertices.push_back({ 1.0,  0.0, -1.0 });
+	vertices.push_back({ 1.0,  0.0, -1.0 });
+	vertices.push_back({ -1.0, 0.0, -1.0 });
+	vertices.push_back({ -1.0, 0.0,  1.0 });
+	normals.push_back({ 0,1,0 });
+	normals.push_back({ 0,1,0 });
+	normals.push_back({ 0,1,0 });
+	normals.push_back({ 0,1,0 });
+	normals.push_back({ 0,1,0 });
+	normals.push_back({ 0,1,0 });
+	texCoords.push_back({ 0.0,0.0 });
+	texCoords.push_back({ 1.0,0.0 });
+	texCoords.push_back({ 1.0,1.0 }); 
+	texCoords.push_back({ 1.0,1.0 });
+	texCoords.push_back({ 0.0,1.0 });
+	texCoords.push_back({ 0.0,0.0 });
+
+	model->_vertex_format |= k_vertex_attribute_uv;
+	model->_vertex_format |= k_vertex_attribute_normal;
+
+	for (int i = 0; i < numVertices; i++) {
+		ga_vertex v;
+
+		v._position = vertices[i];
+
+		v._uv = texCoords[i];
+
+		v._normal = normals[i];
+
+		model->_vertices.push_back(v);
+	}
+}
+
 void generate_sphere(int prec, struct ga_model* model) {
 	int numVertices;
 	int numIndices;

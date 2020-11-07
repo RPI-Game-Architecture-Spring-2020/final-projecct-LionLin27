@@ -9,7 +9,7 @@
 
 #include "ga_output.h"
 
-
+#include "graphics/ga_shadow.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_program.h"
 #include "math/ga_mat4f.h"
@@ -29,6 +29,8 @@
 #include <imgui_impl_sdl.h>
 #include <imgui_impl_opengl3.h>
 
+// TODO: move this somewhere else
+ga_shadow _shadow;
 
 ga_output::ga_output(void* win) : _window(win)
 {
@@ -44,6 +46,9 @@ ga_output::ga_output(void* win) : _window(win)
 	_default_material = new ga_constant_color_material();
 	_default_material->init();
 	_wireFrame = false;
+
+	_shadow = ga_shadow();
+	_shadow.init(static_cast<SDL_Window*>(_window));
 }
 
 ga_output::~ga_output()
@@ -70,6 +75,48 @@ void ga_output::update(ga_frame_params* params)
 	glDepthMask(GL_TRUE);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	// first pass
+	ga_mat4f lightVmatrix, lightPmatrix;
+	ga_vec3f currentLightPos = params->_lights._dirLight->_direction.scale_result(500.0f);
+	//params->_lights._posLightArr[0]->_position;
+	//params->_lights._dirLight->_direction.scale_result(-100.0f);
+
+	ga_vec3f eye = currentLightPos;
+	ga_vec3f at = currentLightPos - params->_lights._dirLight->_direction.scale_result(1000.0f);
+	//ga_vec3f at = -currentLightPos.normal();
+	ga_vec3f up = ga_vec3f::y_vector();
+
+	lightVmatrix.make_lookat_rh(eye, at, up);
+	lightPmatrix.make_perspective_rh(ga_degrees_to_radians(60.0f), (float)width / (float)height, 0.1f, 1000.0f);
+		//make_orthographic(0.0f, (float)width, (float)height, 0.0f, 0.1f, 10000.0f);
+		//make_perspective_rh(ga_degrees_to_radians(60.0f), (float)width / (float)height, 0.1f, 1000.0f);
+	ga_mat4f lightVP = lightVmatrix * lightPmatrix;
+	_shadow.readyBuffer();
+	/*
+	*/
+	for (auto& d : params->_static_drawcalls) {
+		// TODO: check if need shadow
+		if (d._lit) {
+			ga_mat4f mMat = d._transform;
+			_shadow.bind(lightVP, mMat);
+
+			glBindVertexArray(d._vao);
+
+			if (d._drawBuffer) {
+				glDrawArrays(d._draw_mode, 0, d._index_count);
+			}
+			else {
+				glDrawElements(d._draw_mode, d._index_count, GL_UNSIGNED_SHORT, 0);
+			}
+		}
+	}
+
+	_shadow.finishPass();
+
+	ga_mat4f b;
+	b.make_scaling(0.5f);
+	b.translate({0.5f, 0.5f, 0.5f});
 
 	// Compute projection matrices:
 	ga_mat4f perspective;
@@ -93,8 +140,11 @@ void ga_output::update(ga_frame_params* params)
 	// Draw all static geometry:
 	for (auto& d : params->_static_drawcalls)
 	{
+		// TODO: check if need shadow
+		ga_mat4f shadowMVP2;
 		if (d._lit) {
-			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights);
+			shadowMVP2 = d._transform * lightVP * b;
+			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
 		}
 		else {
 			d._material->bind(view_perspective, d._transform);

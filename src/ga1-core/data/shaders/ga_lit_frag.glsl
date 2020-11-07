@@ -1,4 +1,4 @@
-#version 400
+#version 430
 
 #define POSITIONAL_LIGHTS_MAX 10
 
@@ -9,6 +9,7 @@ uniform mat4 u_mvMat;
 in vec3 o_normal;
 in vec3 o_vertPos;
 in vec2 texcoord0;
+in vec4 shadow_coord;
 
 struct BaseLight{
 	vec3 color;
@@ -29,6 +30,8 @@ uniform vec3 u_ambientLight;
 uniform DirectionalLight u_directionalLight;
 uniform float u_posLightCount;
 uniform PositionalLight u_positionalLights[POSITIONAL_LIGHTS_MAX];
+
+layout (binding=1) uniform sampler2DShadow shadowTex;
 
 vec3 calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos){
 	vec3 L = normalize(dirLight.direction);
@@ -72,6 +75,13 @@ vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
 	return (diffuse + specular) * posLight.base.intensity;
 }
 
+float lookup(float x, float y)
+{  	float t = textureProj(shadowTex, shadow_coord + vec4(x * 0.001 * shadow_coord.w,
+                                                         y * 0.001 * shadow_coord.w,
+                                                         -0.01, 0.0));
+	return t;
+}
+
 void main(void)
 {
 	vec3 dirLight = calcDirectionalLight(u_directionalLight, o_normal, o_vertPos);
@@ -82,8 +92,8 @@ void main(void)
 		}
 		posLightSum += calcPositionalLight(u_positionalLights[i], o_normal, o_vertPos);
 	}
-	vec4 totalLight = vec4(u_ambientLight + dirLight + posLightSum, 1);
 
+	// texture
 	vec3 baseColor = vec3(1,1,1);
 	vec4 textureColor = texture(u_texture, texcoord0);
 	vec4 color = vec4(baseColor, 1);
@@ -91,5 +101,22 @@ void main(void)
 	if(textureColor != vec4(0,0,0,0)){
 		color *= textureColor;
 	}
-	gl_FragColor = color * totalLight;
+
+	//shadow
+	float shadowFactor=0.0;
+	float swidth = 2.5;
+	vec2 o = mod(floor(gl_FragCoord.xy), 2.0) * swidth;
+	shadowFactor += lookup(-1.5*swidth + o.x,  1.5*swidth - o.y);
+	shadowFactor += lookup(-1.5*swidth + o.x, -0.5*swidth - o.y);
+	shadowFactor += lookup( 0.5*swidth + o.x,  1.5*swidth - o.y);
+	shadowFactor += lookup( 0.5*swidth + o.x, -0.5*swidth - o.y);
+	shadowFactor = shadowFactor / 4.0;
+
+	float inShadow = textureProj(shadowTex, shadow_coord);
+	vec3 totalLight = u_ambientLight;
+	totalLight += (dirLight + posLightSum)*inShadow;
+
+	vec4 totalLightv4 = vec4(totalLight, 1.0);
+
+	gl_FragColor = color * totalLightv4;
 }

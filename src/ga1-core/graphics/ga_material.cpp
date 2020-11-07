@@ -380,7 +380,7 @@ void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& trans
 	baseColor_uniform.set(_baseColor);
 	ambient_uniform.set(_ambientLight);
 
-	ga_directional_light light(light_color, intensity, -direction);
+	ga_directional_light light(light_color, intensity);
 
 	light_color_uniform.set(light_color);
 	light_intensity_uniform.set(intensity);
@@ -431,7 +431,7 @@ bool ga_lit_material::init()
 	_texture = new ga_texture();
 	if (!_texture->load_from_file(_texture_file.c_str()))
 	{
-		std::cerr << "Failed to load rpi.png" << std::endl;
+		std::cerr << "Failed to load texture" << std::endl;
 	}
 
 	return true;
@@ -457,7 +457,7 @@ void ga_lit_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
 
 
 
-void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights)
+void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
 {
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
@@ -477,18 +477,20 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	// ga_uniform mdiffLoc = _program->get_uniform("material.diffuse");
 	// ga_uniform mspecLoc = _program->get_uniform("material.specular");
 	// ga_uniform mshiLoc = _program->get_uniform("material.shininess");
+	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
 	globalAmbLoc.set(_ambientLight);
 	// ambLoc.set(lightAmbient);
 	diffLoc.set(dirL->_color);
 	// specLoc.set(lightSpecular);
-	dirLoc.set(dirL->_direction);
+	dirLoc.set(view.transform_vector(dirL->_direction));
 	itsLoc.set(dirL->_intensity);
 	// mambLoc.set(matAmb);
 	// mdiffLoc.set(matDif);
 	// mspecLoc.set(matSpe);
 	// mshiLoc.set(matShi);
+	shadowMVPLoc.set(shadowMVP);
 
 	// positional lights
 	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");

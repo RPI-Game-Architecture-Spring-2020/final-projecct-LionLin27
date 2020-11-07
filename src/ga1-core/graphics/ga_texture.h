@@ -25,6 +25,10 @@ public:
 	void load_from_data(uint32_t width, uint32_t height, uint32_t channels, void* data);
 	bool load_from_file(const char* path);
 
+	uint32_t* get_handle() {
+		return &_handle;
+	}
+
 private:
 	uint32_t _handle;
 };

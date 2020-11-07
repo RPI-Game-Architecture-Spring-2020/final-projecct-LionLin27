@@ -2,6 +2,8 @@
 
 #include "math/ga_math.h"
 
+void generate_arrow(struct ga_model* model);
+void generate_plane(struct ga_model* model);
 /*
 generate a sphere model procedurally
 */

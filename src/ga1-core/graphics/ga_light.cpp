@@ -19,15 +19,12 @@ ga_light::ga_light(ga_vec3f color, float intensity)
 	_intensity = intensity;
 }
 
-ga_directional_light::ga_directional_light(ga_vec3f color, float intensity, ga_vec3f direction)
+ga_directional_light::ga_directional_light(ga_vec3f color, float intensity)
 	:ga_light(color, intensity)
 {
-	direction.normalize();
-	_direction = direction;
 }
 
-ga_positional_light::ga_positional_light(ga_vec3f color, float intensity, ga_vec3f position)
+ga_positional_light::ga_positional_light(ga_vec3f color, float intensity)
 	:ga_light(color, intensity)
 {
-	_position = position;
 }
