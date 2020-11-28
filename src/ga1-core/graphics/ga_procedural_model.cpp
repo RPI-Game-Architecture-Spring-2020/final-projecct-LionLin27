@@ -131,6 +131,7 @@ void generate_sphere(int prec, struct ga_model* model) {
 	
 	model->_vertex_format |= k_vertex_attribute_uv;
 	model->_vertex_format |= k_vertex_attribute_normal;
+	model->_vertex_format |= k_vertex_attribute_tangent;
 
 	for (int i = 0; i < numIndices; i++) {
 		ga_vertex v;
@@ -145,6 +146,10 @@ void generate_sphere(int prec, struct ga_model* model) {
 		v._normal = { (normals[indices[i]]).x ,
 					  (normals[indices[i]]).y ,
 					  (normals[indices[i]]).z };
+
+		v._tangent = { (tangents[indices[i]]).x ,
+					   (tangents[indices[i]]).y ,
+					   (tangents[indices[i]]).z };
 
 		model->_vertices.push_back(v);
 	}
