@@ -120,14 +120,14 @@ int main(int argc, const char** argv)
 
 	// point light ent
 	ga_entity light_entity2("point light 1");
-	ga_positional_light* light2 = new ga_positional_light({ 0,1,1 }, 1);
+	ga_positional_light* light2 = new ga_positional_light({ 1,1,1 }, 1);
 	ga_light_component light_component2(&light_entity2, light2);
 
 	// sphere model of light
 	ga_model lightSphereModel2;
 	generate_sphere(12, &lightSphereModel2);
 	ga_material* sphereMat2 = new ga_constant_color_material();
-	sphereMat2->set_color({ 0,1,1 });
+	sphereMat2->set_color({ 1,1,1 });
 	ga_model_component sphere_mc3(&light_entity2, &lightSphereModel2, sphereMat2);
 	light_entity2.scale(0.1f);
 	sim->add_entity(&light_entity2);
@@ -148,8 +148,6 @@ int main(int argc, const char** argv)
 	light_entity3.scale(0.1f);
 	sim->add_entity(&light_entity3);
 	light_entity3.translate({ -2,-5, 1 });
-	*/
-
 	// point light ent
 	ga_entity light_entity4("point light 3");
 	ga_positional_light* light4 = new ga_positional_light({ 1,1,0 }, 0.3);
@@ -164,6 +162,10 @@ int main(int argc, const char** argv)
 	light_entity4.scale(0.1f);
 	sim->add_entity(&light_entity4);
 	light_entity4.translate({ 1, 2, 1 });
+	*/
+	/*
+	*/
+
 	/*
 
 	// Create an animated entity.

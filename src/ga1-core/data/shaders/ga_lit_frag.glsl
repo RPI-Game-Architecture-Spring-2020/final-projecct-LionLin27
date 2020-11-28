@@ -3,11 +3,13 @@
 #define POSITIONAL_LIGHTS_MAX 10
 
 uniform sampler2D u_texture;
+uniform sampler2D normMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
+in vec3 o_tangent;
 in vec2 texcoord0;
 in vec4 shadow_coord;
 
@@ -72,7 +74,10 @@ vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
 	vec3 diffuse = posLight.base.color.xyz * max(cosTheta, 0.0);
 	vec3 specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
 
-	return (diffuse + specular) * posLight.base.intensity;
+	float dist = length(posLight.position-vertPos);
+	float intensity = max(posLight.base.intensity - dist*0.1, 0);
+
+	return (diffuse + specular) * intensity;
 }
 
 float lookup(float x, float y)
