@@ -126,6 +126,7 @@ class ga_lit_material : public ga_material
 {
 public:
 	ga_lit_material(const char* texture_file);// , ga_directional_light* light);
+	ga_lit_material(const char* texture_file, const char* normalmap_file);
 	~ga_lit_material();
 
 	virtual bool init() override;
@@ -136,11 +137,13 @@ public:
 
 private:
 	std::string _texture_file;
+	std::string _normalmap_file;
 
 	ga_shader* _vs;
 	ga_shader* _fs;
 	ga_program* _program;
 	ga_texture* _texture;
+	ga_texture* _normalmap;
 	ga_vec3f _baseColor;
 	ga_vec3f _ambientLight;
 

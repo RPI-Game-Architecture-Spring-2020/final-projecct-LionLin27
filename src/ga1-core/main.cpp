@@ -132,8 +132,8 @@ int main(int argc, const char** argv)
 	light_entity2.scale(0.1f);
 	sim->add_entity(&light_entity2);
 	light_entity2.translate({ 15, -5, -1 });
-
 	/*
+
 	// point light ent
 	ga_entity light_entity3("point light 2");
 	ga_positional_light* light3 = new ga_positional_light({ 1,0,1 }, 1);
@@ -191,6 +191,7 @@ int main(int argc, const char** argv)
 	animation_component.play(&animation);
 	*/
 
+	/*
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
@@ -200,7 +201,6 @@ int main(int argc, const char** argv)
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
 	shipEnt.set_position({10, -6, 0});
-	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
 	ga_model sphereModel;
@@ -229,12 +229,12 @@ int main(int argc, const char** argv)
 	ga_model sphereModel;
 	generate_sphere(30, &sphereModel);
 
-	ga_material* lit_mat2 = new ga_lit_material("data/textures/checker.png");
+	ga_material* lit_mat2 = new ga_lit_material("data/textures/moon.jpg", "data/textures/moonNormal.jpg");
 
 	ga_model_component sphere_mce(&sphereEnt, &sphereModel, lit_mat2, true);
 	sim->add_entity(&sphereEnt);
 	sphereEnt.translate({ 0,-1,-4 });
-	sphereEnt.scale(5);
+	sphereEnt.scale(15);
 
 	ga_entity sphereEnt3("sphere_small");
 	ga_model sphereModel3;
@@ -247,7 +247,6 @@ int main(int argc, const char** argv)
 	sphereEnt3.translate({ 0, 2,-13 });
 
 	/*
-	*/
 	// lit plane
 	ga_entity planeEnt("plane");
 	ga_model planeModel;
@@ -257,6 +256,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&planeEnt);
 	planeEnt.translate({0,-0.1,0});
 	planeEnt.scale(100);
+	*/
 
 
 

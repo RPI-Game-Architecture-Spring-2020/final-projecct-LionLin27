@@ -114,6 +114,7 @@ void ga_output::update(ga_frame_params* params)
 			else {
 				glDrawElements(d._draw_mode, d._index_count, GL_UNSIGNED_SHORT, 0);
 			}
+			
 		}
 	}
 

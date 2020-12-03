@@ -150,7 +150,7 @@ void generate_sphere(int prec, struct ga_model* model) {
 		v._tangent = { (tangents[indices[i]]).x ,
 					   (tangents[indices[i]]).y ,
 					   (tangents[indices[i]]).z };
-
+					   
 		model->_vertices.push_back(v);
 	}
 }

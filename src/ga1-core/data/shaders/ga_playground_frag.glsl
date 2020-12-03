@@ -3,14 +3,18 @@
 #define POSITIONAL_LIGHTS_MAX 10
 
 uniform sampler2D u_texture;
+uniform sampler2D u_normMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
 
+uniform bool b_useNormalMap;
+uniform bool b_useTexture;
+
 in vec3 o_normal;
 in vec3 o_vertPos;
+in vec3 o_tangent;
 in vec2 texcoord0;
 in vec4 shadow_coord;
-in vec3 originalVert;
 
 struct BaseLight{
 	vec3 color;
@@ -33,6 +37,20 @@ uniform float u_posLightCount;
 uniform PositionalLight u_positionalLights[POSITIONAL_LIGHTS_MAX];
 
 layout (binding=1) uniform sampler2DShadow shadowTex;
+
+vec3 calcNewNormal(){
+	vec3 normal = normalize(o_normal);
+	vec3 tangent = normalize(o_tangent);
+	tangent = normalize(tangent - dot(tangent, normal)*normal);
+	vec3 btangent = cross(tangent, normal);
+	mat3 tbn = mat3(tangent, btangent, normal);
+
+	vec3 map_normal = texture(u_normMap, texcoord0).xyz;
+	map_normal = map_normal * 2.0 - 1.0;
+	vec3 newNormal = tbn * map_normal;
+	newNormal = normalize(newNormal);
+	return newNormal;
+}
 
 vec3 calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos){
 	vec3 L = normalize(dirLight.direction);
@@ -88,29 +106,28 @@ float lookup(float x, float y)
 
 void main(void)
 {
-	float a = 0.25; // height of bump
-	float b = 100.0; // width of bump
+	vec3 normal = o_normal;
+	
+	if(b_useNormalMap){
+		normal = calcNewNormal();
+	}
 
-	vec3 N = o_normal;
-	N.x += a*sin(b*o_vertPos.x);
-	N.y += a*sin(b*o_vertPos.y);
-	N.z += a*sin(b*o_vertPos.z);
-
-	vec3 dirLight = calcDirectionalLight(u_directionalLight, N, o_vertPos);
+	vec3 dirLight = calcDirectionalLight(u_directionalLight, normal, o_vertPos);
 	vec3 posLightSum = vec3(0,0,0);
 	for (int i = 0; i < u_posLightCount; i ++){
 		if(i >= POSITIONAL_LIGHTS_MAX){
 			break;
 		}
-		posLightSum += calcPositionalLight(u_positionalLights[i], N, o_vertPos);
+		posLightSum += calcPositionalLight(u_positionalLights[i], normal, o_vertPos);
 	}
 
 	// texture
 	vec3 baseColor = vec3(1,1,1);
 	vec4 textureColor = texture(u_texture, texcoord0);
+	
 	vec4 color = vec4(baseColor, 1);
 
-	if(textureColor != vec4(0,0,0,0)){
+	if(b_useTexture && textureColor != vec4(0,0,0,0)){
 		color *= textureColor;
 	}
 
