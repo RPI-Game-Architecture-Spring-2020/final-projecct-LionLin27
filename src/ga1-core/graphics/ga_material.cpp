@@ -550,3 +550,152 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
 }
+
+// tesselation shader for plane
+ga_tess_plane_material::ga_tess_plane_material(const char* texture_file) :
+	_texture_file(texture_file)
+{
+}
+
+ga_tess_plane_material::~ga_tess_plane_material()
+{
+}
+
+bool ga_tess_plane_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/ga_tvs.glsl", source_vs);
+
+	std::string source_tcs;
+	load_shader("data/shaders/ga_tcs.glsl", source_tcs);
+
+	std::string source_tes;
+	load_shader("data/shaders/ga_tes.glsl", source_tes);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_tfs.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+
+	_tcs = new ga_shader(source_tcs.c_str(), GL_TESS_CONTROL_SHADER);
+	if (!_tcs->compile())
+		std::cerr << "Failed to compile tess control shader:" << std::endl << _tcs->get_compile_log() << std::endl;
+
+	_tes = new ga_shader(source_tes.c_str(), GL_TESS_EVALUATION_SHADER);
+	if (!_tes->compile())
+		std::cerr << "Failed to compile tess evaluation shader:" << std::endl << _tes->get_compile_log() << std::endl;
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_tcs);
+	_program->attach(*_tes);
+	_program->attach(*_fs);
+
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	_texture = new ga_texture();
+	if (!_texture->load_from_file(_texture_file.c_str()))
+	{
+		std::cerr << "Failed to load texture" << std::endl;
+	}
+
+	return true;
+}
+
+void ga_tess_plane_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
+{
+	_program->use();
+
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	ga_uniform controls_uniform = _program->get_uniform("u_controls");
+	ga_uniform tesslvl_uniform = _program->get_uniform("TL");
+
+	mvp_uniform.set(transform * view_proj);
+	texture_uniform.set(*_texture, 0);
+	controls_uniform.set(_patch->_controls);
+	tesslvl_uniform.set(_patch->_tess_lvl);
+
+	glPatchParameteri(GL_PATCH_VERTICES, 16);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+	glDisable(GL_CULL_FACE);
+
+	return;
+}
+
+void ga_tess_plane_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
+{
+	_ambientLight = { 0.1, 0.1, 0.1 };
+
+	_program->use();
+
+	// directional light
+	ga_directional_light* dirL = lights._dirLight;
+
+	// get the locations of the light and material fields in the shader
+	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
+	ga_uniform diffLoc = _program->get_uniform("u_directionalLight.base.color");
+	ga_uniform dirLoc = _program->get_uniform("u_directionalLight.direction");
+	ga_uniform itsLoc = _program->get_uniform("u_directionalLight.base.intensity");
+	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
+
+	//  set the uniform light and material values in the shader
+	globalAmbLoc.set(_ambientLight);
+	diffLoc.set(dirL->_color);
+	dirLoc.set(view.transform_vector(dirL->_direction));
+	itsLoc.set(dirL->_intensity);
+	shadowMVPLoc.set(shadowMVP);
+
+	// positional lights
+	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");
+	float posLCount = 0.1;
+	for (ga_positional_light* posL : lights._posLightArr) {
+		ga_vec3f transformedPos = view.transform_point(posL->_position);
+		std::string index = std::to_string((int)posLCount);
+		std::string diffName = "u_positionalLights[" + index + "].base.color";
+		std::string posName = "u_positionalLights[" + index + "].position";
+		std::string itsName = "u_positionalLights[" + index + "].base.intensity";
+		ga_uniform diffLoc_p = _program->get_uniform(diffName.c_str());
+		ga_uniform posLoc_p = _program->get_uniform(posName.c_str());
+		ga_uniform itsLoc_p = _program->get_uniform(itsName.c_str());
+
+		diffLoc_p.set(posL->_color);
+		posLoc_p.set(transformedPos);
+		itsLoc_p.set(posL->_intensity);
+
+		posLCount += 1.0;
+	}
+	posLightCountLoc.set(posLCount);
+
+
+	ga_uniform mvMat = _program->get_uniform("u_mvMat");
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	mvMat.set(transform * view);
+	mvp_uniform.set(transform * view * proj);
+	texture_uniform.set(*_texture, 0);
+
+	ga_uniform useTexture = _program->get_uniform("b_useNTexture");
+	useTexture.set(false);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+}
+
+void ga_tess_plane_material::bindPatch(ga_patch* patch)
+{
+	_patch = patch;
+}

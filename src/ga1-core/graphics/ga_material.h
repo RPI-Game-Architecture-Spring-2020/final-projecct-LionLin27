@@ -12,6 +12,7 @@
 #include "ga_program.h"
 #include "ga_texture.h"
 #include "ga_light.h"
+#include "ga_geometry.h"
 
 #include "math/ga_mat4f.h"
 #include "math/ga_vec3f.h"
@@ -172,4 +173,34 @@ private:
 	class ga_directional_light* _light;
 
 	struct ga_skeleton* _skeleton;
+};
+
+// material with texture & light
+class ga_tess_plane_material : public ga_material
+{
+public:
+	ga_tess_plane_material(const char* texture_file);// , ga_directional_light* light
+	~ga_tess_plane_material();
+
+	virtual bool init() override;
+
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP);
+
+	void bindPatch(ga_patch* patch);
+
+private:
+	std::string _texture_file;
+
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_shader* _tcs;
+	ga_shader* _tes;
+	ga_program* _program;
+	ga_texture* _texture;
+	ga_texture* _normalmap;
+	ga_vec3f _baseColor;
+	ga_vec3f _ambientLight;
+	ga_patch* _patch;
 };

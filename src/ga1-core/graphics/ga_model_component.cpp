@@ -27,6 +27,18 @@ ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_mater
 	bind_model(model);
 }
 
+ga_model_component::ga_model_component(ga_entity* ent, ga_patch* model, ga_material* mat, bool lit) : ga_component(ent)
+{
+	_drawPatch = true;
+	_lit = lit;
+	_material = mat;
+	_material->init();
+
+	((ga_tess_plane_material*)mat)->bindPatch(model);
+
+	bind_patch(model);
+}
+
 ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, const char* texturePath) : ga_component(ent)
 {
 	//_material = new ga_lit_anim_material(model->_skeleton, _light);
@@ -76,11 +88,17 @@ void ga_model_component::update(ga_frame_params* params)
 	draw._draw_mode = GL_TRIANGLES;
 	draw._material = _material;
 	draw._drawBuffer = _drawBuffer;
+	draw._drawPatch = _drawPatch;
 	draw._lit = _lit;
 
 	while (params->_static_drawcall_lock.test_and_set(std::memory_order_acquire)) {}
 	params->_static_drawcalls.push_back(draw);
 	params->_static_drawcall_lock.clear(std::memory_order_release);
+}
+
+ga_patch* ga_model_component::get_patch()
+{
+	return _patch;
 }
 
 void ga_model_component::bind_model(ga_model* model)
@@ -145,4 +163,11 @@ void ga_model_component::bind_model(ga_model* model)
 		_index_count = (uint32_t)model->_vertices.size();
 		_drawBuffer = true;
 	}
+}
+
+void ga_model_component::bind_patch(ga_patch* model) {
+	glGenVertexArrays(1, &_vao);
+	glBindVertexArray(_vao);
+
+	_patch = model;
 }

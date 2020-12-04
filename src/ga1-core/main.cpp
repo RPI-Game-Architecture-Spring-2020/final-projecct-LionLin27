@@ -258,7 +258,15 @@ int main(int argc, const char** argv)
 	planeEnt.scale(100);
 	*/
 
+	ga_entity tess_plane_ent("tess_plane");
+	ga_patch tess_plane_patch(50);
 
+	ga_material* tess_mat = new ga_tess_plane_material("data/textures/checker.png");
+	ga_model_component tess_plane_mc(&tess_plane_ent, &tess_plane_patch, tess_mat, false);
+	sim->add_entity(&tess_plane_ent);
+	tess_plane_ent.translate({ 0,-1,0 });
+	tess_plane_ent.scale(100);
+	
 
 	ga_frame_herald herald;
 

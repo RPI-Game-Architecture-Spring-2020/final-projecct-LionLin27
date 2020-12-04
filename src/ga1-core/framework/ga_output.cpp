@@ -13,6 +13,8 @@
 #include "graphics/ga_skybox.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_program.h"
+#include "graphics/ga_model_component.h"
+#include "graphics/ga_geometry.h"
 #include "math/ga_mat4f.h"
 #include "math/ga_quatf.h"
 
@@ -161,7 +163,10 @@ void ga_output::update(ga_frame_params* params)
 			d._material->bind(view_perspective, d._transform);
 		}
 		glBindVertexArray(d._vao);
-		if (d._drawBuffer) {
+		if (d._drawPatch) {
+			glDrawArrays(GL_PATCHES, 0, 16);
+		}
+		else if (d._drawBuffer) {
 			glDrawArrays(d._draw_mode, 0, d._index_count);
 		}
 		else {
@@ -221,7 +226,48 @@ void ga_output::update(ga_frame_params* params)
 		ga_quatf combinedRot = axis_angle_x * axis_angle_y * axis_angle_z;
 		params->_selected_ent->rotate(combinedRot);
 
+		// scale
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Scale");
+		float scale_val = 0.0f;
+		ImGui::SliderFloat("scale", &scale_val, -1.0f, 1.0f);
+		if (scale_val != 0.0f)
+			params->_selected_ent->scale(1 + scale_val*dt);
 
+		/*
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Transform Mat");
+		ga_mat4f trans = params->_selected_ent->get_transform();
+		ImGui::InputFloat4("", trans.data[0]);
+		ImGui::InputFloat4("", trans.data[1]);
+		ImGui::InputFloat4("", trans.data[2]);
+		ImGui::InputFloat4("", trans.data[3]);
+		*/
+
+
+		if (params->_selected_ent->get_component("ga_model_component")) {
+			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
+			ga_patch* patch = mc->get_patch();
+			if (patch) {
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Patch Control");
+
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Inner Level");
+				ImGui::SliderInt("tess lvl", &patch->_tess_lvl, 10, 100);
+
+				ga_mat4f* controls = &(mc->get_patch()->_controls);
+				ga_mat4f delta_con;
+				delta_con.make_zeros();
+
+				ImGui::SliderFloat4("c0", delta_con.data[0], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c1", delta_con.data[1], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c2", delta_con.data[2], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c3", delta_con.data[3], -1.0f, 1.0f);
+
+				for (int i = 0; i < 4; ++i)
+					for (int j = 0; j < 4; ++j)
+						delta_con.data[i][j] *= dt;
+
+				*controls = *controls + delta_con;
+			}
+		}
 
 		ImGui::End();
 	}
