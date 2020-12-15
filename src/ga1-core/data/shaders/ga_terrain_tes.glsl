@@ -15,6 +15,7 @@ uniform mat4 u_mvMat;
 out vec3 o_normal;
 out vec3 o_tangent;
 out vec3 o_vertPos;
+out vec4 o_p;//for fog
 
 //	Classic Perlin 2D Noise 
 //	by Stefan Gustavson
@@ -51,7 +52,7 @@ float cnoise(vec2 P){
   vec2 fade_xy = fade(Pf.xy);
   vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
   float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
-  return 0.05 *  n_xy;
+  return 0.02 *  n_xy;
 }
 
 void main (void)
@@ -65,7 +66,7 @@ void main (void)
 	
 	// add the height from the height map to the vertex:
 	//tessellatedPoint.y += (texture(u_height, tc).r) / 60.0;
-	tessellatedPoint.y += cnoise(vec2(tessellatedPoint.x*100, tessellatedPoint.z*100));
+	tessellatedPoint.y += cnoise(vec2(tessellatedPoint.x*50, tessellatedPoint.z*50));
 	
 	gl_Position = tessellatedPoint * u_mvp;
 	tes_out = tc;
@@ -73,4 +74,5 @@ void main (void)
 	o_normal = vec3(0,1,0);
 	o_tangent = vec3(1,0,0);
 	o_vertPos = (tessellatedPoint * u_mvMat).xyz;
+	o_p = tessellatedPoint * u_mvMat;
 }

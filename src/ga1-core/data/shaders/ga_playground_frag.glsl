@@ -141,11 +141,21 @@ void main(void)
 	shadowFactor += lookup( 0.5*swidth + o.x, -0.5*swidth - o.y);
 	shadowFactor = shadowFactor / 4.0;
 
-	float inShadow = textureProj(shadowTex, shadow_coord);
+	float inShadow = textureProj(shadowTex, shadow_coord) * shadowFactor;
+
+	// fog
+	vec4 fogColor = vec4(0.7, 0.8, 0.9, 1.0);
+	float fogStart = 10;
+	float fogEnd = 100;
+
+	vec3 eyePos = o_vertPos;
+	float dist = length(eyePos);
+	float fogFactor = clamp(((fogEnd - dist) / (fogEnd - fogStart)), 0.0, 1.0);
+
 	vec3 totalLight = u_ambientLight;
 	totalLight += (dirLight + posLightSum)*inShadow;
 
 	vec4 totalLightv4 = vec4(totalLight, 1.0);
 
-	gl_FragColor = color * totalLightv4;
+	gl_FragColor = mix(fogColor, color * totalLightv4, fogFactor);
 }
