@@ -104,7 +104,7 @@ void ga_output::update(ga_frame_params* params)
 	*/
 	for (auto& d : params->_static_drawcalls) {
 		// TODO: check if need shadow
-		if (d._lit) {
+		if (d._lit && !d._drawTerrain) {
 			ga_mat4f mMat = d._transform;
 			_shadow.bind(lightVP, mMat);
 
@@ -150,6 +150,8 @@ void ga_output::update(ga_frame_params* params)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
+	assert(glGetError() == GL_NONE);
+
 	// Draw all static geometry:
 	for (auto& d : params->_static_drawcalls)
 	{
@@ -157,14 +159,23 @@ void ga_output::update(ga_frame_params* params)
 		ga_mat4f shadowMVP2;
 		if (d._lit) {
 			shadowMVP2 = d._transform * lightVP * b;
-			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			if (d._drawTerrain) {
+				((ga_terrain_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			}
+			else {
+				((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			}
 		}
 		else {
 			d._material->bind(view_perspective, d._transform);
 		}
+
 		glBindVertexArray(d._vao);
 		if (d._drawPatch) {
 			glDrawArrays(GL_PATCHES, 0, 16);
+		}
+		else if (d._drawTerrain) {
+			glDrawArraysInstanced(GL_PATCHES, 0, 4, 64*64);
 		}
 		else if (d._drawBuffer) {
 			glDrawArrays(d._draw_mode, 0, d._index_count);
@@ -246,6 +257,7 @@ void ga_output::update(ga_frame_params* params)
 		if (params->_selected_ent->get_component("ga_model_component")) {
 			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
 			ga_patch* patch = mc->get_patch();
+			ga_terrain* terrain = mc->get_terrain();
 			if (patch) {
 				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Patch Control");
 
@@ -267,7 +279,15 @@ void ga_output::update(ga_frame_params* params)
 
 				*controls = *controls + delta_con;
 			}
+
+			else if (terrain) {
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Terrain Control");
+
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Subdivisions");
+				ImGui::SliderFloat("subdiv", &terrain->_subdivision, 1, 100);
+			}
 		}
+		
 
 		ImGui::End();
 	}

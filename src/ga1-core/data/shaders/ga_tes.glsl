@@ -4,6 +4,7 @@ layout (quads, equal_spacing,ccw) in;
 
 uniform mat4 u_mvp;
 layout (binding = 0) uniform sampler2D u_texture;
+layout (binding = 2) uniform sampler2D u_height;
 
 in vec2 tcs_out[];
 out vec2 tes_out;
@@ -45,7 +46,8 @@ void main (void)
 		+ bu1 * ( bv0*p10 + bv1*p11 + bv2*p12 + bv3*p13 )
 		+ bu2 * ( bv0*p20 + bv1*p21 + bv2*p22 + bv3*p23 )
 		+ bu3 * ( bv0*p30 + bv1*p31 + bv2*p32 + bv3*p33 );
-	gl_Position = vec4(outputPosition,1.0f) * u_mvp;   // shows bezier curve
+
+	//gl_Position = vec4(outputPosition,1.0f) * u_mvp;   // shows bezier curve
 //	gl_Position = u_mvp * vec4(u,0,v,1);               // shows original grid (pick one)
 	
 	// output the interpolated texture coordinates
@@ -53,4 +55,6 @@ void main (void)
 	vec2 tc2 = mix(tcs_out[12], tcs_out[15], gl_TessCoord.x);
 	vec2 tc = mix(tc2, tc1, gl_TessCoord.y);
 	tes_out = tc;
+    outputPosition.y += (texture(u_height, tc).r) / 40.0;
+    gl_Position = vec4(outputPosition,1.0f) * u_mvp; 
 }

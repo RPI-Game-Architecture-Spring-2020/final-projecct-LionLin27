@@ -31,6 +31,7 @@ struct ga_drawcall
 	class ga_material* _material = 0;
 	bool _drawBuffer = false;
 	bool _drawPatch = false;
+	bool _drawTerrain = false;
 	bool _lit = false;
 	bool _cast_shadow = _lit;
 	bool _receive_shadow = _lit;

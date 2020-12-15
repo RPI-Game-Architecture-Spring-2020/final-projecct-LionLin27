@@ -179,19 +179,18 @@ private:
 class ga_tess_plane_material : public ga_material
 {
 public:
-	ga_tess_plane_material(const char* texture_file);// , ga_directional_light* light
+	ga_tess_plane_material(const char* texture_file, const char* heightmap_file);// , ga_directional_light* light
 	~ga_tess_plane_material();
 
 	virtual bool init() override;
 
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
 
-	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP);
-
 	void bindPatch(ga_patch* patch);
 
 private:
 	std::string _texture_file;
+	std::string _height_file;
 
 	ga_shader* _vs;
 	ga_shader* _fs;
@@ -199,8 +198,39 @@ private:
 	ga_shader* _tes;
 	ga_program* _program;
 	ga_texture* _texture;
+	ga_texture* _heightmap;
+	ga_patch* _patch;
+};
+
+
+class ga_terrain_material : public ga_material
+{
+public:
+	ga_terrain_material(const char* texture_file, const char* heightmap_file, const char* normal_file);// , ga_directional_light* light
+	~ga_terrain_material();
+
+	virtual bool init() override;
+
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP);
+
+	void bindTerrain(ga_terrain* terrain);
+
+private:
+	std::string _texture_file;
+	std::string _height_file;
+	std::string _normal_file;
+
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_shader* _tcs;
+	ga_shader* _tes;
+	ga_program* _program;
+	ga_texture* _texture;
+	ga_texture* _heightmap;
 	ga_texture* _normalmap;
 	ga_vec3f _baseColor;
 	ga_vec3f _ambientLight;
-	ga_patch* _patch;
+	ga_terrain* _terrain;
 };

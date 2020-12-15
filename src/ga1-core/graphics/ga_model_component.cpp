@@ -29,14 +29,29 @@ ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_mater
 
 ga_model_component::ga_model_component(ga_entity* ent, ga_patch* model, ga_material* mat, bool lit) : ga_component(ent)
 {
-	_drawPatch = true;
 	_lit = lit;
 	_material = mat;
 	_material->init();
 
+	_drawPatch = true;
 	((ga_tess_plane_material*)mat)->bindPatch(model);
 
 	bind_patch(model);
+}
+
+ga_model_component::ga_model_component(ga_entity* ent, ga_terrain* model, ga_material* mat, bool lit) : ga_component(ent)
+{
+	_drawTerrain = true;
+
+	_lit = lit;
+	_material = mat;
+	_material->init();
+
+	_terrain = model;
+	((ga_terrain_material*)mat)->bindTerrain(model);
+
+	glGenVertexArrays(1, &_vao);
+	glBindVertexArray(_vao);
 }
 
 ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, const char* texturePath) : ga_component(ent)
@@ -73,13 +88,6 @@ ga_model_component::~ga_model_component()
 
 void ga_model_component::update(ga_frame_params* params)
 {
-	/*
-	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(params->_delta_time).count();
-	ga_quatf axis_angle;
-	axis_angle.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(60.0f) * dt);
-	get_entity()->rotate(axis_angle);
-	*/
-
 	ga_static_drawcall draw;
 	draw._name = "ga_model_component";
 	draw._vao = _vao;
@@ -89,6 +97,7 @@ void ga_model_component::update(ga_frame_params* params)
 	draw._material = _material;
 	draw._drawBuffer = _drawBuffer;
 	draw._drawPatch = _drawPatch;
+	draw._drawTerrain = _drawTerrain;
 	draw._lit = _lit;
 
 	while (params->_static_drawcall_lock.test_and_set(std::memory_order_acquire)) {}
@@ -99,6 +108,10 @@ void ga_model_component::update(ga_frame_params* params)
 ga_patch* ga_model_component::get_patch()
 {
 	return _patch;
+}
+
+ga_terrain* ga_model_component::get_terrain() {
+	return _terrain;
 }
 
 void ga_model_component::bind_model(ga_model* model)

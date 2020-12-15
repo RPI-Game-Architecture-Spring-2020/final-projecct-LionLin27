@@ -233,7 +233,7 @@ int main(int argc, const char** argv)
 
 	ga_model_component sphere_mce(&sphereEnt, &sphereModel, lit_mat2, true);
 	sim->add_entity(&sphereEnt);
-	sphereEnt.translate({ 0,-1,-4 });
+	sphereEnt.translate({ 0,-1,-100 });
 	sphereEnt.scale(15);
 
 	ga_entity sphereEnt3("sphere_small");
@@ -256,17 +256,24 @@ int main(int argc, const char** argv)
 	sim->add_entity(&planeEnt);
 	planeEnt.translate({0,-0.1,0});
 	planeEnt.scale(100);
-	*/
 
 	ga_entity tess_plane_ent("tess_plane");
-	ga_patch tess_plane_patch(50);
+	ga_patch tess_plane_patch(60);
 
-	ga_material* tess_mat = new ga_tess_plane_material("data/textures/checker.png");
+	ga_material* tess_mat = new ga_tess_plane_material("data/textures/checker.png", "data/textures/checker.png");
 	ga_model_component tess_plane_mc(&tess_plane_ent, &tess_plane_patch, tess_mat, false);
 	sim->add_entity(&tess_plane_ent);
-	tess_plane_ent.translate({ 0,-1,0 });
+	tess_plane_ent.translate({ 0,-50,0 });
 	tess_plane_ent.scale(100);
-	
+	*/
+
+	ga_entity moon_terrain_ent("moon_terrain");
+	ga_terrain moon_terrain;
+	ga_material* moon_terrain_mat = new ga_terrain_material("data/textures/squareMoonMap.jpg", "data/textures/squareMoonBump.jpg", "data/textures/squareMoonNormal.jpg");
+	ga_model_component moon_terrain_mc(&moon_terrain_ent, &moon_terrain, moon_terrain_mat, true);
+	sim->add_entity(&moon_terrain_ent);
+	moon_terrain_ent.scale(1000.0);
+	moon_terrain_ent.translate({ 0, -10, 0 });
 
 	ga_frame_herald herald;
 

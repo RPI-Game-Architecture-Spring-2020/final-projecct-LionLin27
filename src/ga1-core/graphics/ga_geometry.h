@@ -62,3 +62,10 @@ struct ga_patch {
 	ga_mat4f _controls;
 	int _tess_lvl;
 };
+
+struct ga_terrain {
+	ga_terrain();
+	~ga_terrain();
+
+	float _subdivision;
+};

@@ -30,3 +30,12 @@ ga_patch::ga_patch(int tess_lvl) {
 
 ga_patch::~ga_patch() {
 }
+
+ga_terrain::ga_terrain()
+{
+	_subdivision = 16.0;
+}
+
+ga_terrain::~ga_terrain()
+{
+}

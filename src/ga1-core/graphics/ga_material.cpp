@@ -552,8 +552,8 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 }
 
 // tesselation shader for plane
-ga_tess_plane_material::ga_tess_plane_material(const char* texture_file) :
-	_texture_file(texture_file)
+ga_tess_plane_material::ga_tess_plane_material(const char* texture_file, const char* heightmap_file) :
+	_texture_file(texture_file), _height_file(heightmap_file)
 {
 }
 
@@ -608,6 +608,12 @@ bool ga_tess_plane_material::init()
 		std::cerr << "Failed to load texture" << std::endl;
 	}
 
+	_heightmap = new ga_texture();
+	if (!_heightmap->load_from_file(_height_file.c_str()))
+	{
+		std::cerr << "Failed to load height map" << std::endl;
+	}
+
 	return true;
 }
 
@@ -617,11 +623,13 @@ void ga_tess_plane_material::bind(const ga_mat4f& view_proj, const ga_mat4f& tra
 
 	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
 	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	ga_uniform height_uniform = _program->get_uniform("u_height");
 	ga_uniform controls_uniform = _program->get_uniform("u_controls");
 	ga_uniform tesslvl_uniform = _program->get_uniform("TL");
 
 	mvp_uniform.set(transform * view_proj);
 	texture_uniform.set(*_texture, 0);
+	height_uniform.set(*_heightmap, 2);
 	controls_uniform.set(_patch->_controls);
 	tesslvl_uniform.set(_patch->_tess_lvl);
 
@@ -635,7 +643,115 @@ void ga_tess_plane_material::bind(const ga_mat4f& view_proj, const ga_mat4f& tra
 	return;
 }
 
-void ga_tess_plane_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
+void ga_tess_plane_material::bindPatch(ga_patch* patch)
+{
+	_patch = patch;
+}
+
+
+
+// tesselation terrain
+ga_terrain_material::ga_terrain_material(const char* texture_file, const char* heightmap_file, const char* normal_file) :
+	_texture_file(texture_file), _height_file(heightmap_file), _normal_file(normal_file)
+{
+}
+
+ga_terrain_material::~ga_terrain_material()
+{
+}
+
+void ga_terrain_material::bindTerrain(ga_terrain* terrain)
+{
+	_terrain = terrain;
+}
+
+bool ga_terrain_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/ga_terrain_tvs.glsl", source_vs);
+
+	std::string source_tcs;
+	load_shader("data/shaders/ga_terrain_tcs.glsl", source_tcs);
+
+	std::string source_tes;
+	load_shader("data/shaders/ga_terrain_tes.glsl", source_tes);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_terrain_tfs.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+
+	_tcs = new ga_shader(source_tcs.c_str(), GL_TESS_CONTROL_SHADER);
+	if (!_tcs->compile())
+		std::cerr << "Failed to compile tess control shader:" << std::endl << _tcs->get_compile_log() << std::endl;
+
+	_tes = new ga_shader(source_tes.c_str(), GL_TESS_EVALUATION_SHADER);
+	if (!_tes->compile())
+		std::cerr << "Failed to compile tess evaluation shader:" << std::endl << _tes->get_compile_log() << std::endl;
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_tcs);
+	_program->attach(*_tes);
+	_program->attach(*_fs);
+
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	_texture = new ga_texture();
+	if (!_texture->load_from_file(_texture_file.c_str()))
+	{
+		std::cerr << "Failed to load texture" << std::endl;
+	}
+
+	_heightmap = new ga_texture();
+	if (!_heightmap->load_from_file(_height_file.c_str()))
+	{
+		std::cerr << "Failed to load height map" << std::endl;
+	}
+
+	_normalmap = new ga_texture();
+	if (!_normalmap->load_from_file(_normal_file.c_str()))
+	{
+		std::cerr << "Failed to load normal map" << std::endl;
+	}
+
+	return true;
+}
+
+void ga_terrain_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
+{
+	_program->use();
+
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	ga_uniform height_uniform = _program->get_uniform("u_height");
+	ga_uniform subdiv_uniform = _program->get_uniform("u_subdivisions");
+
+	mvp_uniform.set(transform * view_proj);
+	texture_uniform.set(*_texture, 0);
+	height_uniform.set(*_heightmap, 2);
+	subdiv_uniform.set(_terrain->_subdivision);
+
+	glPatchParameteri(GL_PATCH_VERTICES, 4);
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+	glDisable(GL_CULL_FACE);
+
+	return;
+}
+
+void ga_terrain_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
 {
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
@@ -649,14 +765,20 @@ void ga_tess_plane_material::bindLight(const ga_mat4f& view, const ga_mat4f& pro
 	ga_uniform diffLoc = _program->get_uniform("u_directionalLight.base.color");
 	ga_uniform dirLoc = _program->get_uniform("u_directionalLight.direction");
 	ga_uniform itsLoc = _program->get_uniform("u_directionalLight.base.intensity");
-	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
+	//ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
 	globalAmbLoc.set(_ambientLight);
+	// ambLoc.set(lightAmbient);
 	diffLoc.set(dirL->_color);
+	// specLoc.set(lightSpecular);
 	dirLoc.set(view.transform_vector(dirL->_direction));
 	itsLoc.set(dirL->_intensity);
-	shadowMVPLoc.set(shadowMVP);
+	// mambLoc.set(matAmb);
+	// mdiffLoc.set(matDif);
+	// mspecLoc.set(matSpe);
+	// mshiLoc.set(matShi);
+	//shadowMVPLoc.set(shadowMVP);
 
 	// positional lights
 	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");
@@ -680,22 +802,26 @@ void ga_tess_plane_material::bindLight(const ga_mat4f& view, const ga_mat4f& pro
 	posLightCountLoc.set(posLCount);
 
 
-	ga_uniform mvMat = _program->get_uniform("u_mvMat");
 	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
 	ga_uniform texture_uniform = _program->get_uniform("u_texture");
-	mvMat.set(transform * view);
+	ga_uniform height_uniform = _program->get_uniform("u_height");
+	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
+	ga_uniform mvMat = _program->get_uniform("u_mvMat");
+	ga_uniform subdiv_uniform = _program->get_uniform("u_subdivisions");
+	
 	mvp_uniform.set(transform * view * proj);
 	texture_uniform.set(*_texture, 0);
+	height_uniform.set(*_heightmap, 2);
+	normalmap_uniform.set(*_normalmap, 3);
+	mvMat.set(transform * view);
+	subdiv_uniform.set(_terrain->_subdivision);
 
-	ga_uniform useTexture = _program->get_uniform("b_useNTexture");
-	useTexture.set(false);
+	glPatchParameteri(GL_PATCH_VERTICES, 4);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
-}
+	glDisable(GL_CULL_FACE);
 
-void ga_tess_plane_material::bindPatch(ga_patch* patch)
-{
-	_patch = patch;
+	return;
 }
