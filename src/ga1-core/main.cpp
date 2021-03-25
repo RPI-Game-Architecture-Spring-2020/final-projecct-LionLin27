@@ -191,7 +191,6 @@ int main(int argc, const char** argv)
 	animation_component.play(&animation);
 	*/
 
-	/*
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
@@ -201,6 +200,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
 	shipEnt.set_position({10, -6, 0});
+	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
 	ga_model sphereModel;

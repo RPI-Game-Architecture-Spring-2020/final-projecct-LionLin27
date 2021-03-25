@@ -130,7 +130,6 @@ void main(void)
 	if(b_useTexture && textureColor != vec4(0,0,0,0)){
 		color *= textureColor;
 	}
-
 	//shadow
 	float shadowFactor=0.0;
 	float swidth = 2.5;

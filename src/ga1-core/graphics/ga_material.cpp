@@ -535,8 +535,8 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	mvp_uniform.set(transform * view * proj);
 	texture_uniform.set(*_texture, 0);
 
-	ga_uniform useTexture = _program->get_uniform("b_useNTexture");
-	useTexture.set(false);
+	ga_uniform useTexture = _program->get_uniform("b_useTexture");
+	useTexture.set(true);
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
