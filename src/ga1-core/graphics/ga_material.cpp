@@ -408,10 +408,10 @@ ga_lit_material::~ga_lit_material()
 bool ga_lit_material::init()
 {
 	std::string source_vs;
-	load_shader("data/shaders/ga_playground_vert.glsl", source_vs);
+	load_shader("data/shaders/ga_lit_vert.glsl", source_vs);
 
 	std::string source_fs;
-	load_shader("data/shaders/ga_playground_frag.glsl", source_fs);
+	load_shader("data/shaders/ga_lit_frag.glsl", source_fs);
 
 	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
 	if (!_vs->compile())
@@ -434,17 +434,24 @@ bool ga_lit_material::init()
 		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
 	}
 
+
 	_texture = new ga_texture();
+	_useTextureMap = true;
 	if (!_texture->load_from_file(_texture_file.c_str()))
 	{
 		std::cerr << "Failed to load texture" << std::endl;
+		_useTextureMap = false;
 	}
 
+
+	_useNormalMap = false;
 	if (_normalmap_file.length() > 0) {
+		_useNormalMap = true;
 		_normalmap = new ga_texture();
 		if (!_normalmap->load_from_file(_normalmap_file.c_str()))
 		{
 			std::cerr << "Failed to load normal map" << std::endl;
+			_useNormalMap = false;
 		}
 	}
 
@@ -540,15 +547,54 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
-	useNormalMap.set(false);
-	if (_normalmap_file.length() > 0) {
-		useNormalMap.set(true);
+	
+	useNormalMap.set(_useNormalMap);
+	if (_useNormalMap) {
 		normalmap_uniform.set(*_normalmap, 2);
 	}
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
+}
+
+void ga_lit_material::bind_texture(std::string file_name)
+{
+	_texture_file = file_name;
+	_texture = new ga_texture();
+	if (!_texture->load_from_file(_texture_file.c_str()))
+	{
+		std::cerr << "Failed to load texture" << std::endl;
+		return;
+	}
+
+	_program->use();
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	texture_uniform.set(*_texture, 0);
+}
+
+void ga_lit_material::bind_normalMap(std::string file_name)
+{
+	_normalmap_file = file_name;
+	_normalmap = new ga_texture();
+	if (!_normalmap->load_from_file(_normalmap_file.c_str()))
+	{
+		std::cerr << "Failed to load normal map" << std::endl;
+		return;
+	}
+
+	_program->use();
+	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
+	normalmap_uniform.set(*_normalmap, 2);
+}
+
+void ga_lit_material::set_useNormalMap(bool use)
+{
+	_useNormalMap = use;
+
+	_program->use();
+	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
+	useNormalMap.set(_useNormalMap);
 }
 
 // tesselation shader for plane

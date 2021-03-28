@@ -114,6 +114,11 @@ ga_terrain* ga_model_component::get_terrain() {
 	return _terrain;
 }
 
+ga_material* ga_model_component::get_material()
+{
+	return _material;
+}
+
 void ga_model_component::bind_model(ga_model* model)
 {
 	glGenVertexArrays(1, &_vao);

@@ -30,6 +30,7 @@ public:
 
 	ga_patch* get_patch();
 	ga_terrain* get_terrain();
+	class ga_material* get_material();
 
 private:
 	void bind_model(struct ga_model* model);

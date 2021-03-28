@@ -33,6 +33,8 @@ public:
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) = 0;
 
 	virtual void set_color(const ga_vec3f& color) {}
+
+	virtual const char* get_name() { return "nameless material"; }
 };
 
 /*
@@ -93,6 +95,8 @@ public:
 
 	virtual void set_color(const ga_vec3f& color) override { _color = color; }
 
+	virtual const char* get_name() override { return "constant color material"; }
+
 private:
 	ga_shader* _vs;
 	ga_shader* _fs;
@@ -136,6 +140,14 @@ public:
 
 	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP);
 
+	// for ui display and dynamic change
+	virtual const char* get_name() override { return "lit material"; }
+	std::string get_texture_file() { return _texture_file; }
+	void bind_texture(std::string file_name);
+	void bind_normalMap(std::string file_name);
+	bool get_useNormalMap() { return _useNormalMap; };
+	void set_useNormalMap(bool use);
+
 private:
 	std::string _texture_file;
 	std::string _normalmap_file;
@@ -147,6 +159,9 @@ private:
 	ga_texture* _normalmap;
 	ga_vec3f _baseColor;
 	ga_vec3f _ambientLight;
+
+	bool _useNormalMap;
+	bool _useTextureMap;
 
 	//class ga_directional_light* _light;
 };

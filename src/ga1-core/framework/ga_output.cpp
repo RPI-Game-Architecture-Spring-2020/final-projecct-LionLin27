@@ -7,6 +7,8 @@
 ** This file is distributed under the MIT License. See LICENSE.txt.
 */
 
+#include <string>
+
 #include "ga_output.h"
 
 #include "graphics/ga_shadow.h"
@@ -31,6 +33,7 @@
 #include <imgui.h>
 #include <imgui_impl_sdl.h>
 #include <imgui_impl_opengl3.h>
+#include <imgui_stdlib.h>
 
 // TODO: move this somewhere else
 ga_shadow _shadow;
@@ -195,6 +198,7 @@ void ga_output::update(ga_frame_params* params)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame((SDL_Window*)_window);
 	ImGui::NewFrame();
+	ImGuiIO& io = ImGui::GetIO();
 
 	{
 		// position the controls widget in the top-right corner with some margin
@@ -253,7 +257,7 @@ void ga_output::update(ga_frame_params* params)
 		ImGui::InputFloat4("", trans.data[3]);
 		*/
 
-
+		// model info
 		if (params->_selected_ent->get_component("ga_model_component")) {
 			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
 			ga_patch* patch = mc->get_patch();
@@ -285,6 +289,21 @@ void ga_output::update(ga_frame_params* params)
 
 				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Subdivisions");
 				ImGui::SliderFloat("subdiv", &terrain->_subdivision, 1, 100);
+			}
+
+			ImGui::Dummy(ImVec2(0.0f, 5.0f));
+
+			// material info
+			ga_material* mat = mc->get_material();
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), mat->get_name());
+			if (dynamic_cast<ga_lit_material*>(mat)) {
+				ga_lit_material* lit_mat = dynamic_cast<ga_lit_material*>(mat);
+				bool useNormalMap = lit_mat->get_useNormalMap();
+				ImGui::Checkbox("Normal Map", &useNormalMap);
+				if (useNormalMap != lit_mat->get_useNormalMap()) {
+					std::cout << "use normal map toggled" << std::endl;
+					lit_mat->set_useNormalMap(useNormalMap);
+				}
 			}
 		}
 		
