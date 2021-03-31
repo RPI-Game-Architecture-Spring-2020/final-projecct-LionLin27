@@ -37,7 +37,6 @@
 
 // TODO: move this somewhere else
 ga_shadow _shadow;
-ga_skybox _skybox;
 
 ga_output::ga_output(void* win) : _window(win)
 {
@@ -56,9 +55,6 @@ ga_output::ga_output(void* win) : _window(win)
 
 	_shadow = ga_shadow();
 	_shadow.init(static_cast<SDL_Window*>(_window));
-
-	_skybox = ga_skybox();
-	_skybox.init("data/textures/cubeMap");
 }
 
 ga_output::~ga_output()
@@ -143,7 +139,7 @@ void ga_output::update(ga_frame_params* params)
 	ga_mat4f sky_v;
 	sky_v.make_identity();
 	sky_v.translate(params->_camPos.scale_result(-1));
-	_skybox.draw(params->_view, perspective);
+	_skybox->draw(params->_view, perspective);
 
 	if (_wireFrame) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);

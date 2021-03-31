@@ -148,7 +148,7 @@ public:
 	bool get_useNormalMap() { return _useNormalMap; };
 	void set_useNormalMap(bool use);
 
-private:
+protected:
 	std::string _texture_file;
 	std::string _normalmap_file;
 
@@ -164,6 +164,13 @@ private:
 	bool _useTextureMap;
 
 	//class ga_directional_light* _light;
+};
+
+class ga_reflective_lit_material : public ga_lit_material {
+public:
+	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
+
+
 };
 
 // material with texture & light

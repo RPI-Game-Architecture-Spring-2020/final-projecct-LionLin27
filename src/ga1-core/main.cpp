@@ -30,6 +30,7 @@
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
 #include "graphics/ga_pyramid_component.h"
+#include "graphics/ga_skybox.h"
 
 #include "gui/ga_font.h"
 
@@ -71,7 +72,11 @@ int main(int argc, const char** argv)
 	rotation.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(15.0f));
 	camera->rotate(rotation);
 
-
+	// skybox
+	ga_cube_texture sky_tex("data/textures/cubeMap");
+	ga_skybox skybox(&sky_tex);
+	output->SetSkybox(&skybox);
+	skybox.init();
 	/*
 	// cg pyramid entity
 	ga_entity* pyramid_entities[5];
