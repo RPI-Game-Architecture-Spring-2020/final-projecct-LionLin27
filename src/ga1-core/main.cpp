@@ -283,6 +283,7 @@ int main(int argc, const char** argv)
 	tess_plane_ent.scale(100);
 	*/
 
+	/*
 	ga_entity moon_terrain_ent("moon_terrain");
 	ga_terrain moon_terrain;
 	ga_material* moon_terrain_mat = new ga_terrain_material("data/textures/squareMoonMap.jpg", "data/textures/squareMoonBump.jpg", "data/textures/squareMoonNormal.jpg");
@@ -290,6 +291,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&moon_terrain_ent);
 	moon_terrain_ent.scale(1000.0);
 	moon_terrain_ent.translate({ 0, -10, 0 });
+	*/
 
 	ga_frame_herald herald;
 
