@@ -6,6 +6,7 @@
 **
 ** This file is distributed under the MIT License. See LICENSE.txt.
 */
+#include <cassert>
 
 #include "ga_model_component.h"
 
@@ -155,6 +156,7 @@ void ga_model_component::bind_model(ga_model* model)
 
 	if (model->_vertex_format & k_vertex_attribute_weight)
 	{
+		assert(false);
 		glVertexAttribIPointer(4, 4, GL_UNSIGNED_INT, vertex_size, (GLvoid*)44);
 		glEnableVertexAttribArray(4);
 
@@ -169,7 +171,6 @@ void ga_model_component::bind_model(ga_model* model)
 
 		// IS THE DATA REALLY IN??
 	}
-
 
 	if (model->_indices.size() > 0) {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbos[1]);

@@ -34,7 +34,7 @@ protected:
 	uint32_t _handle;
 };
 
-class ga_cube_texture : ga_texture{
+class ga_cube_texture : public ga_texture{
 public:
 	ga_cube_texture(const char* path) { load_from_file(path); };
 	virtual bool load_from_file(const char* path) override;

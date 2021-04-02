@@ -251,6 +251,17 @@ int main(int argc, const char** argv)
 	sim->add_entity(&sphereEnt3);
 	sphereEnt3.translate({ 0, 2,-13 });
 
+	// reflective torus
+	ga_entity torusRefEnt("torus");
+	ga_model torusRefModel;
+	generate_torus(1.5f, 0.7f, 30, &torusRefModel);
+
+	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "", &sky_tex);
+
+	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
+	sim->add_entity(&torusRefEnt);
+	torusRefEnt.translate({ 5,-7,10 });
+
 	/*
 	// lit plane
 	ga_entity planeEnt("plane");

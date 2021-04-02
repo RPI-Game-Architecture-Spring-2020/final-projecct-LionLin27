@@ -90,9 +90,7 @@ void ga_skybox::draw(const ga_mat4f& view, const ga_mat4f& proj) {
     glEnableVertexAttribArray(0);
 
     glActiveTexture(GL_TEXTURE5);
-    assert(glGetError() == GL_NONE);
     glBindTexture(GL_TEXTURE_CUBE_MAP, *_cubeTex->get_handle());
-    assert(glGetError() == GL_NONE);
     glEnable(GL_CULL_FACE);
     glFrontFace(GL_CCW);	// cube is CW, but we are viewing the inside
     glDisable(GL_DEPTH_TEST);

@@ -170,7 +170,16 @@ class ga_reflective_lit_material : public ga_lit_material {
 public:
 	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
 
+	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
 
+	virtual bool init() override;
+
+	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP) override;
+
+protected:
+	ga_cube_texture* _envMap;
+
+	bool _useEnvMap;
 };
 
 // material with texture & light
