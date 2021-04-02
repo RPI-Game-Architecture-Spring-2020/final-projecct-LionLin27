@@ -25,6 +25,11 @@ void ga_uniform::set(float f)
 	glUniform1f(_location, f);
 }
 
+void ga_uniform::set(int i)
+{
+	glUniform1i(_location, i);
+}
+
 void ga_uniform::set(const ga_vec3f& vec)
 {
 	glUniform3fv(_location, 1, vec.axes);
@@ -47,17 +52,19 @@ void ga_uniform::set(const ga_texture& tex, uint32_t unit)
 	glUniform1i(_location, unit);
 }
 
+void ga_uniform::set(const ga_cube_texture& tex, uint32_t unit)
+{
+	glActiveTexture(GL_TEXTURE0 + unit);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, tex._handle);
+	glUniform1i(_location, unit);
+}
+
 ga_uniform::ga_uniform(int32_t location) : _location(location) {}
 
 ga_shader::ga_shader(const char* source, GLenum type)
 {
 	_handle = glCreateShader(type);
 	glShaderSource(_handle, 1, &source, 0);
-
-	if (!this->compile())
-	{
-		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << this->get_compile_log() << std::endl;
-	}
 }
 
 ga_shader::~ga_shader()

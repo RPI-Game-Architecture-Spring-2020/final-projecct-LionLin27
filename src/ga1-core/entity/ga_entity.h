@@ -41,6 +41,7 @@ public:
 	void set_transform(const ga_mat4f& t) { _transform = t; }
 
 	const char* get_name();
+	class ga_component* get_component(const char* name);
 
 private:
 	std::vector<class ga_component*> _components;

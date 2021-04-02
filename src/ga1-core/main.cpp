@@ -30,6 +30,7 @@
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
 #include "graphics/ga_pyramid_component.h"
+#include "graphics/ga_skybox.h"
 
 #include "gui/ga_font.h"
 
@@ -71,7 +72,11 @@ int main(int argc, const char** argv)
 	rotation.make_axis_angle(ga_vec3f::x_vector(), ga_degrees_to_radians(15.0f));
 	camera->rotate(rotation);
 
-
+	// skybox
+	ga_cube_texture sky_tex("data/textures/cubeMap");
+	ga_skybox skybox(&sky_tex);
+	output->SetSkybox(&skybox);
+	skybox.init();
 	/*
 	// cg pyramid entity
 	ga_entity* pyramid_entities[5];
@@ -191,7 +196,6 @@ int main(int argc, const char** argv)
 	animation_component.play(&animation);
 	*/
 
-	/*
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
@@ -201,6 +205,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
 	shipEnt.set_position({10, -6, 0});
+	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
 	ga_model sphereModel;
@@ -233,7 +238,7 @@ int main(int argc, const char** argv)
 
 	ga_model_component sphere_mce(&sphereEnt, &sphereModel, lit_mat2, true);
 	sim->add_entity(&sphereEnt);
-	sphereEnt.translate({ 0,-1,-4 });
+	sphereEnt.translate({ 0,-1,-100 });
 	sphereEnt.scale(15);
 
 	ga_entity sphereEnt3("sphere_small");
@@ -246,6 +251,17 @@ int main(int argc, const char** argv)
 	sim->add_entity(&sphereEnt3);
 	sphereEnt3.translate({ 0, 2,-13 });
 
+	// reflective torus
+	ga_entity torusRefEnt("torus");
+	ga_model torusRefModel;
+	generate_torus(1.5f, 0.7f, 30, &torusRefModel);
+
+	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "", &sky_tex);
+
+	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
+	sim->add_entity(&torusRefEnt);
+	torusRefEnt.translate({ 5,-7,10 });
+
 	/*
 	// lit plane
 	ga_entity planeEnt("plane");
@@ -256,9 +272,26 @@ int main(int argc, const char** argv)
 	sim->add_entity(&planeEnt);
 	planeEnt.translate({0,-0.1,0});
 	planeEnt.scale(100);
+
+	ga_entity tess_plane_ent("tess_plane");
+	ga_patch tess_plane_patch(60);
+
+	ga_material* tess_mat = new ga_tess_plane_material("data/textures/checker.png", "data/textures/checker.png");
+	ga_model_component tess_plane_mc(&tess_plane_ent, &tess_plane_patch, tess_mat, false);
+	sim->add_entity(&tess_plane_ent);
+	tess_plane_ent.translate({ 0,-50,0 });
+	tess_plane_ent.scale(100);
 	*/
 
-
+	/*
+	ga_entity moon_terrain_ent("moon_terrain");
+	ga_terrain moon_terrain;
+	ga_material* moon_terrain_mat = new ga_terrain_material("data/textures/squareMoonMap.jpg", "data/textures/squareMoonBump.jpg", "data/textures/squareMoonNormal.jpg");
+	ga_model_component moon_terrain_mc(&moon_terrain_ent, &moon_terrain, moon_terrain_mat, true);
+	sim->add_entity(&moon_terrain_ent);
+	moon_terrain_ent.scale(1000.0);
+	moon_terrain_ent.translate({ 0, -10, 0 });
+	*/
 
 	ga_frame_herald herald;
 

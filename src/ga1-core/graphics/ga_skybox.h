@@ -13,19 +13,19 @@
 class ga_skybox
 {
 public:
-	ga_skybox();
+	ga_skybox(ga_cube_texture* tex);
 	~ga_skybox();
-	bool init(const char* mapPath);
+	bool init();
 	void draw(const ga_mat4f& view, const ga_mat4f& proj);
 
 private:
-	uint32_t loadCubemap(std::vector<std::string> faces);
 	void load_shader(const char* filename, std::string& contents);
+
+	ga_cube_texture* _cubeTex;
 
 	ga_shader* _vs;
 	ga_shader* _fs;
 	uint32_t _vao;
 	uint32_t _vbos[1];
 	ga_program* _program;
-	uint32_t _tex_handle;
 };

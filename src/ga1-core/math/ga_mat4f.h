@@ -20,6 +20,8 @@ struct ga_mat4f
 {
 	float data[4][4];
 
+	void make_zeros();
+
 	/*
 	** Build an identity matrix.
 	*/
@@ -35,6 +37,8 @@ struct ga_mat4f
 	*/
 	void make_scaling(float s);
 
+	void make_scaling(ga_vec3f v3);
+
 	/*
 	** Build a rotation matrix.
 	*/
@@ -49,6 +53,7 @@ struct ga_mat4f
 	** Apply uniform scaling to the given matrix.
 	*/
 	void scale(float s);
+	void scale(ga_vec3f v3);
 
 	/*
 	** Apply rotation to the given matrix.
@@ -64,6 +69,9 @@ struct ga_mat4f
 	** Multiply a matrix by another, storing the result in the first.
 	*/
 	ga_mat4f& operator*=(const ga_mat4f& __restrict m);
+
+	// not used a lot but nice to have
+	ga_mat4f ga_mat4f::operator+(const ga_mat4f& __restrict b) const;
 
 	/*
 	** Transform a vector by a matrix.

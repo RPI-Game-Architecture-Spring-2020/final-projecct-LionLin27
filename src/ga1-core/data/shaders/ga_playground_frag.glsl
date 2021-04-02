@@ -4,11 +4,15 @@
 
 uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
+layout (binding = 5) uniform samplerCube u_envMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
+uniform mat4 u_vMat;
 
 uniform bool b_useNormalMap;
 uniform bool b_useTexture;
+
+//uniform bool b_useEnvMap;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -52,7 +56,8 @@ vec3 calcNewNormal(){
 	return newNormal;
 }
 
-vec3 calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos){
+void calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos, 
+	out vec3 diffuse, out vec3 specular){
 	vec3 L = normalize(dirLight.direction);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
@@ -67,13 +72,14 @@ vec3 calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos){
 	float cosPhi = dot(V,R);
 
 	// compute ADS
-	vec3 diffuse = dirLight.base.color.xyz * max(cosTheta, 0.0);
-	vec3 specular = dirLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	diffuse =  dirLight.base.intensity * dirLight.base.color.xyz * max(cosTheta, 0.0);
+	specular = dirLight.base.intensity * dirLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
 
-	return (diffuse + specular) * dirLight.base.intensity;
+	//return (diffuse + specular) * dirLight.base.intensity;
 }
 
-vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
+void calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos,
+	out vec3 diffuse, out vec3 specular){
 	vec3 L = normalize(posLight.position-vertPos);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
@@ -88,13 +94,15 @@ vec3 calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos){
 	float cosPhi = dot(V,R);
 
 	// compute ADS
-	vec3 diffuse = posLight.base.color.xyz * max(cosTheta, 0.0);
-	vec3 specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	diffuse = posLight.base.color.xyz * max(cosTheta, 0.0);
+	specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
 
 	float dist = length(posLight.position-vertPos);
 	float intensity = max(posLight.base.intensity - dist*0.1, 0);
 
-	return (diffuse + specular) * intensity;
+	diffuse *= intensity;
+	specular *= intensity;
+	//return (diffuse + specular) * intensity;
 }
 
 float lookup(float x, float y)
@@ -112,22 +120,32 @@ void main(void)
 		normal = calcNewNormal();
 	}
 
-	vec3 dirLight = calcDirectionalLight(u_directionalLight, normal, o_vertPos);
-	vec3 posLightSum = vec3(0,0,0);
+	vec3 dirLightDiffuse;
+	vec3 dirLightSpec;
+	calcDirectionalLight(u_directionalLight, normal, o_vertPos, dirLightDiffuse, dirLightSpec);
+
+	vec3 posLightDiffuseSum = vec3(0,0,0);
+	vec3 posLightSpecSum = vec3(0,0,0);
 	for (int i = 0; i < u_posLightCount; i ++){
 		if(i >= POSITIONAL_LIGHTS_MAX){
 			break;
 		}
-		posLightSum += calcPositionalLight(u_positionalLights[i], normal, o_vertPos);
+
+		vec3 posLightDiffise;
+		vec3 posLightSpec;
+
+		calcPositionalLight(u_positionalLights[i], normal, o_vertPos, posLightDiffise, posLightSpec);
+
+		posLightDiffuseSum += posLightDiffise;
+		posLightSpecSum += posLightSpec;
 	}
 
 	// texture
 	vec3 baseColor = vec3(1,1,1);
 	vec4 textureColor = texture(u_texture, texcoord0);
-	
 	vec4 color = vec4(baseColor, 1);
 
-	if(b_useTexture && textureColor != vec4(0,0,0,0)){
+	if(textureColor != vec4(0,0,0,0)){
 		color *= textureColor;
 	}
 
@@ -142,10 +160,25 @@ void main(void)
 	shadowFactor = shadowFactor / 4.0;
 
 	float inShadow = textureProj(shadowTex, shadow_coord);
+
+	// fog
+	vec4 fogColor = vec4(0.7, 0.8, 0.9, 1.0);
+	float fogStart = 10;
+	float fogEnd = 100;
+
+	vec3 eyePos = o_vertPos;
+	float dist = length(eyePos);
+	float fogFactor = clamp(((fogEnd - dist) / (fogEnd - fogStart)), 0.0, 1.0);
+
 	vec3 totalLight = u_ambientLight;
-	totalLight += (dirLight + posLightSum)*inShadow;
+	totalLight += (dirLightDiffuse + posLightDiffuseSum)*inShadow;
 
 	vec4 totalLightv4 = vec4(totalLight, 1.0);
+	vec4 totalSpec = vec4(posLightSpecSum+dirLightSpec, 1.0);
 
-	gl_FragColor = color * totalLightv4;
+	//gl_FragColor = mix(fogColor, color * totalLightv4 + totalSpec, fogFactor);
+
+	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
+	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	gl_FragColor = texture(u_envMap, r2.xyz);
 }

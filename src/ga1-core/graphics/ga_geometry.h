@@ -53,3 +53,19 @@ struct ga_model
 
 	struct ga_skeleton* _skeleton;
 };
+
+struct ga_patch {
+	ga_patch(int tess_lvl);
+	~ga_patch();
+
+	const char* _texture_name;
+	ga_mat4f _controls;
+	int _tess_lvl;
+};
+
+struct ga_terrain {
+	ga_terrain();
+	~ga_terrain();
+
+	float _subdivision;
+};

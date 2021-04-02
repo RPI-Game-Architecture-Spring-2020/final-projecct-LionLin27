@@ -22,3 +22,20 @@ ga_model::~ga_model()
 		delete _skeleton;
 	}
 }
+
+ga_patch::ga_patch(int tess_lvl) {
+	_tess_lvl = tess_lvl;
+	_controls.make_zeros();
+}
+
+ga_patch::~ga_patch() {
+}
+
+ga_terrain::ga_terrain()
+{
+	_subdivision = 16.0;
+}
+
+ga_terrain::~ga_terrain()
+{
+}

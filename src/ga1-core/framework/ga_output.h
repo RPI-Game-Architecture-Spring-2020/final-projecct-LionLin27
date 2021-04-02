@@ -26,6 +26,8 @@ public:
 
 	void update(struct ga_frame_params* params);
 
+	void SetSkybox(class ga_skybox* skb) { _skybox = skb; };
+
 private:
 	void draw_dynamic(const std::vector<ga_dynamic_drawcall>& drawcalls, const ga_mat4f& view_proj);
 
@@ -34,4 +36,6 @@ private:
 	class ga_constant_color_material* _default_material;
 
 	bool _wireFrame;
+
+	class ga_skybox* _skybox;
 };

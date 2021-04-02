@@ -10,7 +10,8 @@
 */
 
 #include <cstdint>
-
+#include <string>
+#include <vector>
 /*
 ** Represents a texture object for rendering.
 */
@@ -22,13 +23,24 @@ public:
 	ga_texture();
 	~ga_texture();
 
-	void load_from_data(uint32_t width, uint32_t height, uint32_t channels, void* data);
-	bool load_from_file(const char* path);
+	virtual void load_from_data(uint32_t width, uint32_t height, uint32_t channels, void* data);
+	virtual bool load_from_file(const char* path);
 
-	uint32_t* get_handle() {
+	virtual uint32_t* get_handle() {
 		return &_handle;
 	}
 
-private:
+protected:
 	uint32_t _handle;
+};
+
+class ga_cube_texture : public ga_texture{
+public:
+	ga_cube_texture(const char* path) { load_from_file(path); };
+	virtual bool load_from_file(const char* path) override;
+	virtual uint32_t* get_handle() override {
+		return &_handle;
+	}
+private:
+	uint32_t load_cube_data(std::vector<std::string> faces);
 };

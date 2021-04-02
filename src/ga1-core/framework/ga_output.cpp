@@ -7,12 +7,16 @@
 ** This file is distributed under the MIT License. See LICENSE.txt.
 */
 
+#include <string>
+
 #include "ga_output.h"
 
 #include "graphics/ga_shadow.h"
 #include "graphics/ga_skybox.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_program.h"
+#include "graphics/ga_model_component.h"
+#include "graphics/ga_geometry.h"
 #include "math/ga_mat4f.h"
 #include "math/ga_quatf.h"
 
@@ -29,10 +33,10 @@
 #include <imgui.h>
 #include <imgui_impl_sdl.h>
 #include <imgui_impl_opengl3.h>
+#include <imgui_stdlib.h>
 
 // TODO: move this somewhere else
 ga_shadow _shadow;
-ga_skybox _skybox;
 
 ga_output::ga_output(void* win) : _window(win)
 {
@@ -51,9 +55,6 @@ ga_output::ga_output(void* win) : _window(win)
 
 	_shadow = ga_shadow();
 	_shadow.init(static_cast<SDL_Window*>(_window));
-
-	_skybox = ga_skybox();
-	_skybox.init("data/textures/cubeMap");
 }
 
 ga_output::~ga_output()
@@ -102,7 +103,7 @@ void ga_output::update(ga_frame_params* params)
 	*/
 	for (auto& d : params->_static_drawcalls) {
 		// TODO: check if need shadow
-		if (d._lit) {
+		if (d._lit && !d._drawTerrain) {
 			ga_mat4f mMat = d._transform;
 			_shadow.bind(lightVP, mMat);
 
@@ -138,7 +139,7 @@ void ga_output::update(ga_frame_params* params)
 	ga_mat4f sky_v;
 	sky_v.make_identity();
 	sky_v.translate(params->_camPos.scale_result(-1));
-	_skybox.draw(params->_view, perspective);
+	_skybox->draw(params->_view, perspective);
 
 	if (_wireFrame) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -148,6 +149,8 @@ void ga_output::update(ga_frame_params* params)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
+	assert(glGetError() == GL_NONE);
+
 	// Draw all static geometry:
 	for (auto& d : params->_static_drawcalls)
 	{
@@ -155,13 +158,25 @@ void ga_output::update(ga_frame_params* params)
 		ga_mat4f shadowMVP2;
 		if (d._lit) {
 			shadowMVP2 = d._transform * lightVP * b;
-			((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			if (d._drawTerrain) {
+				((ga_terrain_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			}
+			else {
+				((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			}
 		}
 		else {
 			d._material->bind(view_perspective, d._transform);
 		}
+
 		glBindVertexArray(d._vao);
-		if (d._drawBuffer) {
+		if (d._drawPatch) {
+			glDrawArrays(GL_PATCHES, 0, 16);
+		}
+		else if (d._drawTerrain) {
+			glDrawArraysInstanced(GL_PATCHES, 0, 4, 64*64);
+		}
+		else if (d._drawBuffer) {
 			glDrawArrays(d._draw_mode, 0, d._index_count);
 		}
 		else {
@@ -179,6 +194,7 @@ void ga_output::update(ga_frame_params* params)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame((SDL_Window*)_window);
 	ImGui::NewFrame();
+	ImGuiIO& io = ImGui::GetIO();
 
 	{
 		// position the controls widget in the top-right corner with some margin
@@ -221,7 +237,72 @@ void ga_output::update(ga_frame_params* params)
 		ga_quatf combinedRot = axis_angle_x * axis_angle_y * axis_angle_z;
 		params->_selected_ent->rotate(combinedRot);
 
+		// scale
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Scale");
+		float scale_val = 0.0f;
+		ImGui::SliderFloat("scale", &scale_val, -1.0f, 1.0f);
+		if (scale_val != 0.0f)
+			params->_selected_ent->scale(1 + scale_val*dt);
 
+		/*
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Transform Mat");
+		ga_mat4f trans = params->_selected_ent->get_transform();
+		ImGui::InputFloat4("", trans.data[0]);
+		ImGui::InputFloat4("", trans.data[1]);
+		ImGui::InputFloat4("", trans.data[2]);
+		ImGui::InputFloat4("", trans.data[3]);
+		*/
+
+		// model info
+		if (params->_selected_ent->get_component("ga_model_component")) {
+			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
+			ga_patch* patch = mc->get_patch();
+			ga_terrain* terrain = mc->get_terrain();
+			if (patch) {
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Patch Control");
+
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Inner Level");
+				ImGui::SliderInt("tess lvl", &patch->_tess_lvl, 10, 100);
+
+				ga_mat4f* controls = &(mc->get_patch()->_controls);
+				ga_mat4f delta_con;
+				delta_con.make_zeros();
+
+				ImGui::SliderFloat4("c0", delta_con.data[0], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c1", delta_con.data[1], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c2", delta_con.data[2], -1.0f, 1.0f);
+				ImGui::SliderFloat4("c3", delta_con.data[3], -1.0f, 1.0f);
+
+				for (int i = 0; i < 4; ++i)
+					for (int j = 0; j < 4; ++j)
+						delta_con.data[i][j] *= dt;
+
+				*controls = *controls + delta_con;
+			}
+
+			else if (terrain) {
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Terrain Control");
+
+				ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Subdivisions");
+				ImGui::SliderFloat("subdiv", &terrain->_subdivision, 1, 100);
+			}
+
+			ImGui::Dummy(ImVec2(0.0f, 5.0f));
+
+			// material info
+			ga_material* mat = mc->get_material();
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), mat->get_name());
+			if (dynamic_cast<ga_lit_material*>(mat)) {
+				ga_lit_material* lit_mat = dynamic_cast<ga_lit_material*>(mat);
+				bool useNormalMap = lit_mat->get_useNormalMap();
+				ImGui::Checkbox("Normal Map", &useNormalMap);
+				if (useNormalMap != lit_mat->get_useNormalMap()) {
+					std::cout << "use normal map toggled" << std::endl;
+					lit_mat->set_useNormalMap(useNormalMap);
+				}
+			}
+		}
+		
 
 		ImGui::End();
 	}
