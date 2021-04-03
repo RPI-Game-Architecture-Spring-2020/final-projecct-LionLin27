@@ -3,7 +3,7 @@
 in vec3 tc;
 out vec4 fragColor;
 
-layout (binding = 0) uniform samplerCube samp;
+layout (binding = 5) uniform samplerCube samp;
 
 void main(void)
 {

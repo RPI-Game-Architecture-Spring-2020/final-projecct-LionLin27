@@ -176,10 +176,15 @@ public:
 
 	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP) override;
 
+	virtual float get_roughness();
+	virtual void set_roughness(float roughness);
 protected:
 	ga_cube_texture* _envMap;
 
 	bool _useEnvMap;
+
+	float _roughness;
+	ga_texture* _roughnessMap;
 };
 
 // material with texture & light

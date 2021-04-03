@@ -301,6 +301,16 @@ void ga_output::update(ga_frame_params* params)
 					lit_mat->set_useNormalMap(useNormalMap);
 				}
 			}
+
+			// roughness for reflective materials
+			if (dynamic_cast<ga_reflective_lit_material*>(mat)) {
+				ga_reflective_lit_material* reflect_mat = dynamic_cast<ga_reflective_lit_material*>(mat);
+				float roughness = reflect_mat->get_roughness();
+				ImGui::SliderFloat("Roughness", &roughness, 0.0f, 1.0f);
+				if (std::abs(roughness - reflect_mat->get_roughness()) > 0.01) {
+					reflect_mat->set_roughness(roughness);
+				}
+			}
 		}
 		
 

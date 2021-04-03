@@ -927,6 +927,9 @@ bool ga_reflective_lit_material::init()
 		}
 	}
 
+	// set initial roughness to 0
+	_roughness = 0.0f;
+
 	return true;
 }
 
@@ -1013,8 +1016,23 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	if (_useNormalMap) {
 		normalmap_uniform.set(*_normalmap, 2);
 	}
+	
+	// roughness
+	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
+	roughness_uniform.set(_roughness);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
+}
+
+void ga_reflective_lit_material::set_roughness(float roughness) {
+	_roughness = roughness;
+
+	_program->use();
+	ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
+	roughnessUniform.set(roughness);
+}
+float ga_reflective_lit_material::get_roughness() {
+	return _roughness;
 }

@@ -13,6 +13,7 @@ uniform bool b_useNormalMap;
 uniform bool b_useTexture;
 
 //uniform bool b_useEnvMap;
+uniform float f_roughness;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -112,6 +113,43 @@ float lookup(float x, float y)
 	return t;
 }
 
+vec3 randVec(vec3 seed) {
+
+		// taken from Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe
+    return (2 * vec3(
+		fract(sin(dot(seed.xy, vec2(12.9898,78.233)))*43758.5453123),
+		fract(sin(dot(seed.xz, vec2(12.9898,78.233)))*43758.5453123),
+		fract(sin(dot(seed.yz, vec2(12.9898,78.233)))*43758.5453123))) - vec3(1,1,1);
+	}
+
+vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
+	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
+	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	vec4 samp = 0.2 * texture(u_envMap, r2.xyz);
+
+	vec3 roughOffset = randVec(o_vertPos + vec3(123, -234, 166));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-585, 44, 4));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-1, 23567, -734));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-76, 222, -1222));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	return samp;
+}
+
 void main(void)
 {
 	vec3 normal = o_normal;
@@ -178,7 +216,13 @@ void main(void)
 
 	//gl_FragColor = mix(fogColor, color * totalLightv4 + totalSpec, fogFactor);
 
+	// blurred reflection based on f_roughness
+	gl_FragColor = blurReflection(o_vertPos, o_normal);
+
+	// Perfect Reflection : no blurring : 
+	/*
 	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
 	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
 	gl_FragColor = texture(u_envMap, r2.xyz);
+	*/
 }
