@@ -928,7 +928,7 @@ bool ga_reflective_lit_material::init()
 	}
 
 	// set initial roughness to 0
-	_roughness = 0.0f;
+	_roughness = 0.1f;
 
 	return true;
 }

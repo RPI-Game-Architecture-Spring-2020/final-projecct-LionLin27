@@ -1,6 +1,7 @@
 #version 430
 
 #define POSITIONAL_LIGHTS_MAX 10
+#define CUBE_MAP_LODS 7.0
 
 uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
@@ -123,8 +124,10 @@ vec3 randVec(vec3 seed) {
 	}
 
 vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
+	
 	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
 	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	/*
 	vec4 samp = 0.2 * texture(u_envMap, r2.xyz);
 
 	vec3 roughOffset = randVec(o_vertPos + vec3(123, -234, 166));
@@ -145,9 +148,10 @@ vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
 	roughOffset = randVec(o_vertPos + vec3(-76, 222, -1222));
 	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
 	r2 = normalize(vec4(r,0) * inverse(u_vMat));
-	samp += 0.2 * texture(u_envMap, r2.xyz);
+	samp += 0.2 * texture(u_envMap, r2.xyz);*/
+	return textureLod(u_envMap, r2.xyz, f_roughness * CUBE_MAP_LODS);
 
-	return samp;
+	// return samp;
 }
 
 void main(void)
