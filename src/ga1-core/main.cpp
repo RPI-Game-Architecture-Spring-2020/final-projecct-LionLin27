@@ -73,7 +73,7 @@ int main(int argc, const char** argv)
 	camera->rotate(rotation);
 
 	// skybox
-	ga_cube_texture sky_tex("data/textures/cubeMap");
+	ga_cube_texture sky_tex("data/textures/sybox_forest_pine");
 	ga_skybox skybox(&sky_tex);
 	output->SetSkybox(&skybox);
 	skybox.init();
@@ -256,7 +256,7 @@ int main(int argc, const char** argv)
 	ga_model torusRefModel;
 	generate_torus(1.5f, 0.7f, 30, &torusRefModel);
 
-	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "", &sky_tex);
+	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/moonNormal.jpg", &sky_tex);
 
 	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
 	sim->add_entity(&torusRefEnt);

@@ -24,7 +24,6 @@ ga_model_component::ga_model_component(ga_entity* ent, ga_model* model, ga_mater
 	_lit = lit;
 	_material = mat;
 	_material->init();
-
 	bind_model(model);
 }
 

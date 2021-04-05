@@ -218,14 +218,16 @@ void main(void)
 	vec4 totalLightv4 = vec4(totalLight, 1.0);
 	vec4 totalSpec = vec4(posLightSpecSum+dirLightSpec, 1.0);
 
+
+
 	//gl_FragColor = mix(fogColor, color * totalLightv4 + totalSpec, fogFactor);
 
 	// blurred reflection based on f_roughness
-	gl_FragColor = blurReflection(o_vertPos, o_normal);
+	gl_FragColor = blurReflection(o_vertPos, normal);
 
-	// Perfect Reflection : no blurring : 
 	/*
-	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
+	// Perfect Reflection : no blurring : 
+	vec3 r = -reflect(normalize(-o_vertPos), normalize(normal));
 	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
 	gl_FragColor = texture(u_envMap, r2.xyz);
 	*/

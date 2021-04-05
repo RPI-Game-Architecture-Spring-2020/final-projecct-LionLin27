@@ -215,7 +215,7 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 			vertices[ring * (prec + 1) + i] = {v4.x, v4.y, v4.z};
 
 			texCoords[ring * (prec + 1) + i] = { (float)ring * 2.0f / (float)prec, texCoords[i].y };
-			if (texCoords[ring * (prec + 1) + i].x > 1.0) texCoords[ring * (prec + 1) + i].x -= 1.0f;
+			//if (texCoords[ring * (prec + 1) + i].x > 1.0) texCoords[ring * (prec + 1) + i].x -= 1.0f;
 
 			rMat.make_rotation(axis_angle);
 			v4 = { sTangents[i].x, sTangents[i].y, sTangents[i].z, 1.0f};
@@ -245,6 +245,7 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 
 	model->_vertex_format |= k_vertex_attribute_uv;
 	model->_vertex_format |= k_vertex_attribute_normal;
+	model->_vertex_format |= k_vertex_attribute_tangent;
 
 	for (int i = 0; i < numIndices; i++) {
 		ga_vertex v;
@@ -259,6 +260,10 @@ void generate_torus(float inner, float outer, int prec, struct ga_model* model)
 		v._normal = { (normals[indices[i]]).x ,
 					  (normals[indices[i]]).y ,
 					  (normals[indices[i]]).z };
+
+		v._tangent = {  (tTangents[indices[i]]).x,
+						(tTangents[indices[i]]).y,
+						(tTangents[indices[i]]).z };
 
 		model->_vertices.push_back(v);
 	}
