@@ -29,7 +29,13 @@ public:
 	class ga_entity* selected_ent();
 	void select_last_ent();
 
+	void set_env_map(class ga_cube_texture* env) { _env_map = env; }
+	class ga_cube_texture* get_env_map() { return _env_map; };
+
 private:
 	std::vector<class ga_entity*> _entities;
 	int _selected_ent_index;
+
+	// env map ( there could be better place to put this..?
+	class ga_cube_texture* _env_map;
 };

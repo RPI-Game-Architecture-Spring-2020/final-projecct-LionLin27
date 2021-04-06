@@ -77,6 +77,9 @@ int main(int argc, const char** argv)
 	ga_skybox skybox(&sky_tex);
 	output->SetSkybox(&skybox);
 	skybox.init();
+
+	sim->set_env_map(&sky_tex);
+
 	/*
 	// cg pyramid entity
 	ga_entity* pyramid_entities[5];
@@ -385,7 +388,7 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos) {
 	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
 	generate_sphere(64, sphereModel);
-	ga_material* lit_mat2 = new ga_lit_material("data/textures/checker.png");
+	ga_material* lit_mat2 = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", sim->get_env_map());
 
 	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, lit_mat2, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
