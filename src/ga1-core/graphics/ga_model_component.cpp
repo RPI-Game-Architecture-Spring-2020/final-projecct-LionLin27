@@ -167,8 +167,6 @@ void ga_model_component::bind_model(ga_model* model)
 		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, vertex_size, (GLvoid*)44);
 		glEnableVertexAttribArray(4);
 
-
-		// IS THE DATA REALLY IN??
 	}
 
 	if (model->_indices.size() > 0) {

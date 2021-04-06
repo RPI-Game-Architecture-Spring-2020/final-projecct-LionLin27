@@ -15,6 +15,8 @@ uniform bool b_useTexture;
 
 //uniform bool b_useEnvMap;
 uniform float f_roughness;
+uniform float f_metalness;
+uniform float f_normalStr;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -55,6 +57,10 @@ vec3 calcNewNormal(){
 	map_normal = map_normal * 2.0 - 1.0;
 	vec3 newNormal = tbn * map_normal;
 	newNormal = normalize(newNormal);
+
+	// normal strength
+	newNormal = normalize(newNormal * f_normalStr + normal * (1.0 - f_normalStr));
+
 	return newNormal;
 }
 
@@ -73,9 +79,13 @@ void calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos,
 	// angle between view vector and reflected light
 	float cosPhi = dot(V,R);
 
+	// shininess
+	float shiniess = (1.0 - f_roughness) * 100.0;
+	shiniess = clamp(shiniess, 1, 99);
+
 	// compute ADS
 	diffuse =  dirLight.base.intensity * dirLight.base.color.xyz * max(cosTheta, 0.0);
-	specular = dirLight.base.intensity * dirLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	specular = dirLight.base.intensity * dirLight.base.color.xyz * pow(max(cosPhi,0.0), shiniess);//51 material.shininess);
 
 	//return (diffuse + specular) * dirLight.base.intensity;
 }
@@ -95,9 +105,13 @@ void calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos,
 	// angle between view vector and reflected light
 	float cosPhi = dot(V,R);
 
+	// shininess
+	float shiniess = (1.0 - f_roughness) * 100.0;
+	shiniess = clamp(shiniess, 1, 99);
+
 	// compute ADS
 	diffuse = posLight.base.color.xyz * max(cosTheta, 0.0);
-	specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), f_roughness);//51 material.shininess);
 
 	float dist = length(posLight.position-vertPos);
 	float intensity = max(posLight.base.intensity - dist*0.1, 0);
@@ -218,17 +232,11 @@ void main(void)
 	vec4 totalLightv4 = vec4(totalLight, 1.0);
 	vec4 totalSpec = vec4(posLightSpecSum+dirLightSpec, 1.0);
 
+	vec4 litColor = color * totalLightv4 + totalSpec;
 
+	vec4 reflectionColor = blurReflection(o_vertPos, normal);
 
-	//gl_FragColor = mix(fogColor, color * totalLightv4 + totalSpec, fogFactor);
+	vec4 mixedColor = f_metalness * reflectionColor + (1.0 - f_metalness) * litColor;
 
-	// blurred reflection based on f_roughness
-	gl_FragColor = blurReflection(o_vertPos, normal);
-
-	/*
-	// Perfect Reflection : no blurring : 
-	vec3 r = -reflect(normalize(-o_vertPos), normalize(normal));
-	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
-	gl_FragColor = texture(u_envMap, r2.xyz);
-	*/
+	gl_FragColor = mix(fogColor, mixedColor, fogFactor);
 }

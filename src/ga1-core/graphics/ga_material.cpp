@@ -929,6 +929,8 @@ bool ga_reflective_lit_material::init()
 
 	// set initial roughness to 0
 	_roughness = 0.1f;
+	_metalness = 0.5f;
+	_normalStr = 1.0f;
 
 	return true;
 }
@@ -1020,6 +1022,12 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	// roughness
 	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
 	roughness_uniform.set(_roughness);
+
+	ga_uniform metalness_uniform = _program->get_uniform("f_metalness");
+	metalness_uniform.set(_metalness);
+
+	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
+	normalStr_uniform.set(_normalStr);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

@@ -256,11 +256,25 @@ int main(int argc, const char** argv)
 	ga_model torusRefModel;
 	generate_torus(1.5f, 0.7f, 30, &torusRefModel);
 
-	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/moonNormal.jpg", &sky_tex);
+	ga_material* ref_mat = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex);
 
 	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
+
+	/*
+	{
+	// rocket
+	ga_entity rocketEnt("rocket");
+	ga_model rocketModel;
+	obj_to_model("data/models/TheRocket.obj", &rocketModel);
+	ga_material* rocket_mat = new ga_lit_material("data/textures/checker.png");
+	ga_model_component rocket_model_component(&rocketEnt, &rocketModel, rocket_mat, true);
+	sim->add_entity(&rocketEnt);
+	rocketEnt.scale(1.0f);
+	rocketEnt.set_position({ 10, 6, 0 });
+	}
+	*/
 
 	/*
 	// lit plane
