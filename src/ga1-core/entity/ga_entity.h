@@ -43,8 +43,11 @@ public:
 	const char* get_name();
 	class ga_component* get_component(const char* name);
 
+	float get_size() { return _size; }
+
 private:
 	std::vector<class ga_component*> _components;
 	ga_mat4f _transform;
+	float _size;
 	const char* _name;
 };

@@ -380,7 +380,7 @@ static void set_root_path(const char* exepath)
 }
 
 
-void create_sphere(ga_sim* sim) {
+ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos) {
 	// procedual sphere
 	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
@@ -390,11 +390,18 @@ void create_sphere(ga_sim* sim) {
 	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, lit_mat2, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(sphereEnt);
+
+	sphereEnt->set_position(pos);
+
+	return sphereEnt;
 }
 
 void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 	if (params->_herald->_create_sphere) {
-		create_sphere(sim);
+		ga_vec3f pos = params->_camPos;
+		ga_vec3f dir = params->_camDir;
+		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10));
+		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
 	}
 }

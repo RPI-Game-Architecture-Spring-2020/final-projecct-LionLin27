@@ -27,6 +27,7 @@ public:
 	void late_update(struct ga_frame_params* params);
 
 	class ga_entity* selected_ent();
+	void select_last_ent();
 
 private:
 	std::vector<class ga_entity*> _entities;
