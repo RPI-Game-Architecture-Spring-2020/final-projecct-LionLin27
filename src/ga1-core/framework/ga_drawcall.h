@@ -29,6 +29,17 @@ struct ga_drawcall
 	ga_mat4f _transform;
 	GLenum _draw_mode;
 	class ga_material* _material = 0;
+	bool _drawBuffer = false;
+	bool _drawPatch = false;
+	bool _drawTerrain = false;
+	bool _lit = false;
+	bool _cast_shadow = _lit;
+	bool _receive_shadow = _lit;
+};
+
+struct ga_light_drawcall {
+	class ga_directional_light* _dirLight;
+	std::vector<class ga_positional_light*> _posLightArr;
 };
 
 /*

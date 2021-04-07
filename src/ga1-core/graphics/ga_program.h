@@ -24,10 +24,13 @@ class ga_uniform
 	friend class ga_program;
 
 public:
+	void set(int i);
+	void set(float f);
 	void set(const struct ga_vec3f& vec);
 	void set(const struct ga_mat4f& mat);
 	void set(const struct ga_mat4f* mats, uint32_t count);
 	void set(const class ga_texture& tex, uint32_t unit);
+	void set(const class ga_cube_texture& tex, uint32_t unit);
 
 private:
 	ga_uniform(int32_t location);

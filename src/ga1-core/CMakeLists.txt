@@ -33,6 +33,9 @@ file(GLOB_RECURSE LUA_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/lua-5
 list(REMOVE_ITEM LUA_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/lua-5.3.3/src/luac.c)
 add_library(lua53 ${LUA_SOURCE_FILES})
 
+# ImGUI
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/ImGUI1.79/include")
+
 # GA framework and homeworks:
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}")
 file(GLOB_RECURSE GA_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)

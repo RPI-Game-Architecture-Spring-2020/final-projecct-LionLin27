@@ -186,7 +186,7 @@ bool ga_input::update(ga_frame_params* params)
 	_pressed_mask = _button_mask & ~previous_button_mask;
 	_released_mask = previous_button_mask & ~_button_mask;
 
-	params->_button_mask = _button_mask;
+	params->_btn_down_mask = _button_mask;
 	params->_mouse_press_mask = _mouse_button_mask;
 	params->_mouse_x = _mouse_x;
 	params->_mouse_y = _mouse_y;

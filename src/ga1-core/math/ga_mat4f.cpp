@@ -14,6 +14,17 @@
 //#define GA_CLIP_SPACE_DX 1
 #define GA_CLIP_SPACE_GL 1
 
+void ga_mat4f::make_zeros()
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			data[i][j] = 0.0f;
+		}
+	}
+}
+
 void ga_mat4f::make_identity()
 {
 	for (int i = 0; i < 4; ++i)
@@ -44,6 +55,15 @@ void ga_mat4f::make_scaling(float s)
 	data[3][3] = 1.0f;
 }
 
+void ga_mat4f::make_scaling(ga_vec3f v3) {
+	make_identity();
+
+	data[0][0] = v3.x;
+	data[1][1] = v3.y;
+	data[2][2] = v3.z;
+	data[3][3] = 1.0f;
+}
+
 void ga_mat4f::make_rotation(const ga_quatf& __restrict q)
 {
 	make_identity();
@@ -71,7 +91,22 @@ void ga_mat4f::scale(float s)
 {
 	ga_mat4f tmp;
 	tmp.make_scaling(s);
+	ga_vec3f position_temp = { data[3][0], data[3][1], data[3][2] };
 	(*this) *= tmp;
+	data[3][0] = position_temp.x;
+	data[3][1] = position_temp.y;
+	data[3][2] = position_temp.z;
+}
+
+void ga_mat4f::scale(ga_vec3f v3)
+{
+	ga_mat4f tmp;
+	tmp.make_scaling(v3);
+	ga_vec3f position_temp = { data[3][0], data[3][1], data[3][2] };
+	(*this) *= tmp;
+	data[3][0] = position_temp.x;
+	data[3][1] = position_temp.y;
+	data[3][2] = position_temp.z;
 }
 
 void ga_mat4f::rotate(const ga_quatf& __restrict q)
@@ -79,6 +114,19 @@ void ga_mat4f::rotate(const ga_quatf& __restrict q)
 	ga_mat4f tmp;
 	tmp.make_rotation(q);
 	(*this) *= tmp;
+}
+
+ga_mat4f ga_mat4f::operator+(const ga_mat4f& __restrict b) const
+{
+	ga_mat4f result;
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			result.data[i][j] = data[i][j] + b.data[i][j];
+		}
+	}
+	return result;
 }
 
 ga_mat4f ga_mat4f::operator*(const ga_mat4f& __restrict b) const

@@ -1,0 +1,16 @@
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/ALWAYS_COPY_DATA.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/ga.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/lua53.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/install/local.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/install.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/CMakeFiles/list_install_components.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/rebuild_cache.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/SDL2-static.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/SDL2main.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/uninstall.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/install/local.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/install.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/edit_cache.dir
+D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/out/build/x64-Debug (default)/SDL2-2.0.5/CMakeFiles/list_install_components.dir

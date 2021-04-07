@@ -14,12 +14,16 @@
 #include "entity/ga_entity.h"
 #include "jobs/ga_job.h"
 
+
+#include "ga_frame_params.h"
+
 #if defined(GA_MINGW)
 #include <malloc.h>
 #endif
 
 ga_sim::ga_sim()
 {
+	_selected_ent_index = 0;
 }
 
 ga_sim::~ga_sim()
@@ -64,6 +68,15 @@ void ga_sim::update(ga_frame_params* params)
 	int32_t update_counter;
 	ga_job::run(decls, int(_entities.size()), &update_counter);
 	ga_job::wait(&update_counter);
+
+	// select entity
+	if (params->_btn_pressed_mask & k_button_z) {
+		_selected_ent_index++;
+		if (_selected_ent_index >= _entities.size()) {
+			_selected_ent_index = 0;
+		}
+	}
+	params->_selected_ent = selected_ent();
 }
 
 void ga_sim::late_update(ga_frame_params* params)
@@ -93,4 +106,9 @@ void ga_sim::late_update(ga_frame_params* params)
 	int32_t update_counter;
 	ga_job::run(decls, int(_entities.size()), &update_counter);
 	ga_job::wait(&update_counter);
+}
+
+ga_entity* ga_sim::selected_ent()
+{
+	return _entities[_selected_ent_index];
 }

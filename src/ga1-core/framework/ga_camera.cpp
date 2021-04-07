@@ -26,14 +26,22 @@ void ga_camera::update(ga_frame_params* params)
 	const float k_move_speed = 0.1f;
 	const float k_rotate_speed = 0.5f;
 
+	// focus
+	if (params->_btn_down_mask & k_button_f) {
+		ga_vec3f ent_pos = params->_selected_ent->get_transform().get_translation();
+		ga_vec3f forward_dir = _transform.get_forward();
+		float offset = 10.0f;
+		_transform.set_translation(ent_pos - forward_dir.scale_result(offset));
+	}
+
 	// Use WASD to control the position.
 	ga_vec3f translation = { 0.0f, 0.0f, 0.0f };
-	translation += (params->_button_mask & k_button_d) ? -_transform.get_right() : ga_vec3f::zero_vector();
-	translation += (params->_button_mask & k_button_a) ? _transform.get_right() : ga_vec3f::zero_vector();
-	translation += (params->_button_mask & k_button_s) ? -_transform.get_forward() : ga_vec3f::zero_vector();
-	translation += (params->_button_mask & k_button_w) ? _transform.get_forward() : ga_vec3f::zero_vector();
-	translation += (params->_button_mask & k_button_q) ? -_transform.get_up() : ga_vec3f::zero_vector();
-	translation += (params->_button_mask & k_button_e) ? _transform.get_up() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_d) ? -_transform.get_right() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_a) ? _transform.get_right() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_s) ? -_transform.get_forward() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_w) ? _transform.get_forward() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_q) ? -_transform.get_up() : ga_vec3f::zero_vector();
+	translation += (params->_btn_down_mask & k_button_e) ? _transform.get_up() : ga_vec3f::zero_vector();
 	translation.scale(k_move_speed);
 
 	// By using the camera's directional vectors, we've defined the translation in world space.
@@ -43,11 +51,11 @@ void ga_camera::update(ga_frame_params* params)
 
 	// Use arrow keys to pitch and rotate.
 	float rotation = 0.0f;
-	rotation += (params->_button_mask & k_button_left) ? k_rotate_speed : 0.0f;
-	rotation += (params->_button_mask & k_button_right) ? -k_rotate_speed : 0.0f;
+	rotation += (params->_btn_down_mask & k_button_left) ? k_rotate_speed : 0.0f;
+	rotation += (params->_btn_down_mask & k_button_right) ? -k_rotate_speed : 0.0f;
 	float pitch = 0.0f;
-	pitch += (params->_button_mask & k_button_up) ? -k_rotate_speed : 0.0f;
-	pitch += (params->_button_mask & k_button_down) ? k_rotate_speed : 0.0f;
+	pitch += (params->_btn_down_mask & k_button_up) ? -k_rotate_speed : 0.0f;
+	pitch += (params->_btn_down_mask & k_button_down) ? k_rotate_speed : 0.0f;
 
 	rotation = ga_degrees_to_radians(rotation);
 	pitch = ga_degrees_to_radians(pitch);
@@ -69,6 +77,7 @@ void ga_camera::update(ga_frame_params* params)
 	view.make_lookat_rh(eye, at, up);
 
 	params->_view = view;
+	params->_camPos = _transform.get_translation();
 }
 
 void ga_camera::rotate(const ga_quatf& rotation)

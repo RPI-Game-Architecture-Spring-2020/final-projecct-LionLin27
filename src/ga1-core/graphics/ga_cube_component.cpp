@@ -162,6 +162,8 @@ ga_cube_component::ga_cube_component(ga_entity* ent, const char* texture_file) :
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbos[3]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	
+	
 
 	glBindVertexArray(0);
 }

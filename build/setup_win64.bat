@@ -4,7 +4,7 @@ if "%1"=="" goto usage
 
 mkdir %1-win64
 cd %1-win64
-cmake -G "Visual Studio 15 2017 Win64" ../../src/%1
+cmake -G "Visual Studio 16 2019" ../../src/%1
 cd ..
 goto end
 

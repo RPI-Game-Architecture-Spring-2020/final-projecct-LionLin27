@@ -65,7 +65,7 @@ struct ga_frame_params
 	std::chrono::high_resolution_clock::time_point _current_time;
 	std::chrono::high_resolution_clock::duration _delta_time;
 
-	uint64_t _button_mask;
+	uint64_t _btn_down_mask;
 
 	uint64_t _mouse_click_mask;
 	uint64_t _mouse_press_mask;

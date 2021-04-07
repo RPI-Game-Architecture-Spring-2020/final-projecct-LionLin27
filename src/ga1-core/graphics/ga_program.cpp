@@ -15,9 +15,20 @@
 #include "math/ga_vec3f.h"
 
 #include <cassert>
+#include <iostream>
 
 #define GLEW_STATIC
 #include <GL/glew.h>
+
+void ga_uniform::set(float f)
+{
+	glUniform1f(_location, f);
+}
+
+void ga_uniform::set(int i)
+{
+	glUniform1i(_location, i);
+}
 
 void ga_uniform::set(const ga_vec3f& vec)
 {
@@ -38,6 +49,13 @@ void ga_uniform::set(const ga_texture& tex, uint32_t unit)
 {
 	glActiveTexture(GL_TEXTURE0 + unit);
 	glBindTexture(GL_TEXTURE_2D, tex._handle);
+	glUniform1i(_location, unit);
+}
+
+void ga_uniform::set(const ga_cube_texture& tex, uint32_t unit)
+{
+	glActiveTexture(GL_TEXTURE0 + unit);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, tex._handle);
 	glUniform1i(_location, unit);
 }
 

@@ -25,6 +25,7 @@ struct ga_vertex
 	ga_vec3f _normal;
 	ga_vec3f _color;
 	ga_vec2f _uv;
+	ga_vec3f _tangent;
 
 	uint32_t _joints[4] = { 0, 0, 0, 0 };
 	float _weights[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
@@ -36,6 +37,7 @@ enum ga_vertex_attribute
 	k_vertex_attribute_color = 2,
 	k_vertex_attribute_uv = 4,
 	k_vertex_attribute_weight = 8,
+	k_vertex_attribute_tangent = 16,
 };
 
 struct ga_model
@@ -50,4 +52,20 @@ struct ga_model
 	const char* _texture_name;
 
 	struct ga_skeleton* _skeleton;
+};
+
+struct ga_patch {
+	ga_patch(int tess_lvl);
+	~ga_patch();
+
+	const char* _texture_name;
+	ga_mat4f _controls;
+	int _tess_lvl;
+};
+
+struct ga_terrain {
+	ga_terrain();
+	~ga_terrain();
+
+	float _subdivision;
 };

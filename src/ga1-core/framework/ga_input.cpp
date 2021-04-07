@@ -24,6 +24,12 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+
+// imgui
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
+
 ga_input::ga_input() : _paused(false)
 {
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER);
@@ -68,6 +74,22 @@ ga_input::ga_input() : _paused(false)
 	_mouse_x = 0.0f;
 	_mouse_y = 0.0f;
 	_last_time = std::chrono::high_resolution_clock::now();
+
+	//****************************************
+	//imgui test
+	// setup Dear ImGui context
+	std::string glsl_version = "#version 130";
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	// setup Dear ImGui style
+	ImGui::StyleColorsDark();
+
+	// setup platform/renderer bindings
+	ImGui_ImplSDL2_InitForOpenGL((SDL_Window*)_window, context);
+	ImGui_ImplOpenGL3_Init(glsl_version.c_str());
 }
 
 ga_input::~ga_input()
@@ -186,7 +208,9 @@ bool ga_input::update(ga_frame_params* params)
 	_pressed_mask = _button_mask & ~previous_button_mask;
 	_released_mask = previous_button_mask & ~_button_mask;
 
-	params->_button_mask = _button_mask;
+	params->_btn_down_mask = _button_mask;
+	params->_btn_pressed_mask = _pressed_mask;
+	params->_btn_released_mask = _released_mask;
 	params->_mouse_press_mask = _mouse_button_mask;
 	params->_mouse_x = _mouse_x;
 	params->_mouse_y = _mouse_y;

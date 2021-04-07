@@ -26,6 +26,9 @@ public:
 	void update(struct ga_frame_params* params);
 	void late_update(struct ga_frame_params* params);
 
+	class ga_entity* selected_ent();
+
 private:
 	std::vector<class ga_entity*> _entities;
+	int _selected_ent_index;
 };
