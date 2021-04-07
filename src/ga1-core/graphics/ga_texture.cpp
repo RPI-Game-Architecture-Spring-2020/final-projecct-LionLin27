@@ -83,6 +83,36 @@ bool ga_cube_texture::load_from_file(const char* path)
 	return false;
 }
 
+unsigned char* convolveImage(int width, int height, int channels, unsigned char* data) {
+	unsigned char* cImage = new unsigned char[width * height * channels];
+	float k[5][5] = { { 1 / 273, 4 / 273,  7 / 273,  4 / 273,  1 / 273 },
+						{ 4 / 273, 16 / 273,  26 / 273,  16 / 273,  4 / 273 },
+						{ 7 / 273, 26 / 273,  41 / 273,  26 / 273,  7 / 273 },
+						{ 4 / 273, 16 / 273,  26 / 273,  16 / 273,  4 / 273 },
+						{ 1 / 273, 4 / 273,  7 / 273,  4 / 273,  1 / 273 } };
+
+	for (int w = 0; w < width; ++w) {
+		for (int h = 0; h < height; ++h) {
+			for (int c = 0; c < channels; ++c) {
+
+				float pix = 0;
+				for (int i1 = 0; i1 < 5; ++i1) {
+					for (int i2 = 0; i2 < 5; ++i2) {
+						int ho = std::min(std::max(h + i1 - 2, 0), height - 1);
+						int wo = std::min(std::max(w + i2 - 2, 0), width - 1);
+						pix += k[i1][i2] * (float)data[(ho * height * channels) + (wo * channels) + c];
+					}
+				}
+				cImage[(h * height * channels) + (w * channels) + c] = pix;
+
+			}
+		}
+	}
+
+	return cImage;
+
+}
+
 uint32_t ga_cube_texture::load_cube_data(std::vector<std::string> faces)
 {
 	stbi_set_flip_vertically_on_load(false);
@@ -91,7 +121,7 @@ uint32_t ga_cube_texture::load_cube_data(std::vector<std::string> faces)
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_BASE_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAX_LEVEL, 4);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAX_LEVEL, 5);
 
 	extern char g_root_path[256];
 	std::string fullpath = g_root_path;
@@ -106,6 +136,11 @@ uint32_t ga_cube_texture::load_cube_data(std::vector<std::string> faces)
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
 				0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
 			);
+			/* unsigned char* cData = convolveImage(width, height, nrChannels, data);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+				1, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, cData
+			);
+			delete[] cData;*/
 			stbi_image_free(data);
 		}
 		else

@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+#include "ga_geometry.h"
+
 /*
 ** Read an OBJ file, get the animation data.
 void obj_to_animation(const char* filename, struct ga_animation* animation);

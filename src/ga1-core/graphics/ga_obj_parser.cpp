@@ -38,8 +38,8 @@ ga_vec3f getNormal(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c) {
 	return normal;
 }
 
-float getDistanceToTri(const ga_vec3f & a, const ga_vec3f & b, const ga_vec3f & c,
-	const ga_vec3f & p, const ga_vec3f & dir) {
+float getDistanceToTri(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c,
+	const ga_vec3f& p, const ga_vec3f& dir) {
 
 	ga_vec3f normal = getNormal(a, b, c);
 	float d = normal.dot(a);
