@@ -344,6 +344,14 @@ void ga_output::update(ga_frame_params* params)
 	}
 
 	{
+		// position the controls widget in the top-right corner with some margin
+		ImGui::SetNextWindowPos(ImVec2(5, 10), ImGuiCond_Always);
+		// here we set the calculated width and also make the height to be
+		// be the height of the main window also with some margin
+		ImGui::SetNextWindowSize(
+			ImVec2(static_cast<float>(width / 8), static_cast<float>(height * 0.3f - 20)),
+			ImGuiCond_Always
+		);
 		ImGui::Begin("Model Creator");
 		
 		if (ImGui::Button("Create Sphere")) {
