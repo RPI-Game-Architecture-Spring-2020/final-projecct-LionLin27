@@ -178,12 +178,21 @@ public:
 
 	virtual float get_roughness();
 	virtual void set_roughness(float roughness);
+
+	virtual float get_metalness() { return _metalness; }
+	virtual void set_metalness(float metalness) { _metalness = metalness; }
+
+	virtual float get_normalStr() { return _normalStr; }
+	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
+
 protected:
 	ga_cube_texture* _envMap;
 
 	bool _useEnvMap;
 
 	float _roughness;
+	float _metalness;
+	float _normalStr;
 	ga_texture* _roughnessMap;
 };
 

@@ -12,18 +12,21 @@
 
 // TODO: move these else where
 #include "graphics/ga_model_component.h"
+#include "graphics/ga_light_component.h"
 #include <cstring>
 
 ga_entity::ga_entity()
 {
 	_name = "default_name";
 	_transform.make_identity();
+	_size = 1;
 }
 
 ga_entity::ga_entity(const char* name)
 {
 	_name = name;
 	_transform.make_identity();
+	_size = 1;
 }
 
 ga_entity::~ga_entity()
@@ -66,6 +69,7 @@ void ga_entity::rotate(const ga_quatf& rotation)
 void ga_entity::scale(float s)
 {
 	_transform.scale(s);
+	_size *= s;
 }
 
 void ga_entity::set_position(const ga_vec3f& new_pos)
@@ -82,6 +86,9 @@ ga_component* ga_entity::get_component(const char* name) {
 	for (auto& c : _components)
 	{
 		if (dynamic_cast<ga_model_component*>(c) && strcmp(name, "ga_model_component") == 0) {
+			return c;
+		}
+		if (dynamic_cast<ga_light_component*>(c) && strcmp(name, "ga_light_component") == 0) {
 			return c;
 		}
 	}

@@ -17,6 +17,8 @@ public:
 	ga_light_component(class ga_entity* ent, class ga_positional_light* light);
 	virtual void update(struct ga_frame_params* params) override;
 
+	class ga_light* get_light() { return _light; }
+
 private:
 	enum class LightType { directional, positional };
 	LightType _type;

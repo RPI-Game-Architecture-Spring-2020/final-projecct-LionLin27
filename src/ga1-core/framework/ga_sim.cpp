@@ -112,3 +112,8 @@ ga_entity* ga_sim::selected_ent()
 {
 	return _entities[_selected_ent_index];
 }
+
+void ga_sim::select_last_ent()
+{
+	_selected_ent_index = _entities.size() - 1;
+}

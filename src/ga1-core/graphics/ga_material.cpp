@@ -880,10 +880,10 @@ ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file,
 bool ga_reflective_lit_material::init()
 {
 	std::string source_vs;
-	load_shader("data/shaders/ga_playground_vert.glsl", source_vs);
+	load_shader("data/shaders/pbr_vert.glsl", source_vs);
 
 	std::string source_fs;
-	load_shader("data/shaders/ga_playground_frag.glsl", source_fs);
+	load_shader("data/shaders/pbr_frag.glsl", source_fs);
 
 	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
 	if (!_vs->compile())
@@ -929,6 +929,8 @@ bool ga_reflective_lit_material::init()
 
 	// set initial roughness to 0
 	_roughness = 0.1f;
+	_metalness = 0.5f;
+	_normalStr = 1.0f;
 
 	return true;
 }
@@ -1020,6 +1022,12 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	// roughness
 	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
 	roughness_uniform.set(_roughness);
+
+	ga_uniform metalness_uniform = _program->get_uniform("f_metalness");
+	metalness_uniform.set(_metalness);
+
+	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
+	normalStr_uniform.set(_normalStr);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
