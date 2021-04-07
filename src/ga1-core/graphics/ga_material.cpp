@@ -880,10 +880,10 @@ ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file,
 bool ga_reflective_lit_material::init()
 {
 	std::string source_vs;
-	load_shader("data/shaders/ga_playground_vert.glsl", source_vs);
+	load_shader("data/shaders/pbr_vert.glsl", source_vs);
 
 	std::string source_fs;
-	load_shader("data/shaders/ga_playground_frag.glsl", source_fs);
+	load_shader("data/shaders/pbr_frag.glsl", source_fs);
 
 	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
 	if (!_vs->compile())

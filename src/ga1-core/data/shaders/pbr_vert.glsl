@@ -1,36 +1,35 @@
-#version 450 core
-// Physically Based Rendering
-// Copyright (c) 2017-2018 Michał Siejak
+#version 430
 
-// Physically Based shading model: Vertex program.
+layout(location = 0) in vec3 in_vertex;
+layout (location = 1) in vec3 in_normal;
+layout(location = 3) in vec2 in_texcood0;
+layout(location = 4) in vec3 in_tangent;
+out vec3 o_normal;
+out vec3 o_vertPos;
+out vec3 o_tangent;
+out vec2 texcoord0;
+out vec4 shadow_coord;
 
-layout(location=0) in vec3 position;
-layout(location=1) in vec3 normal;
-layout(location=3) in vec2 texcoord;
-layout(location=4) in vec3 tangent;
-layout(location=5) in vec3 bitangent;
+uniform mat4 u_mvp;
+uniform mat4 u_mvMat;
 
-layout(std140, binding=0) uniform TransformUniforms
+uniform mat4 shadowMVP;
+
+uniform bool b_useNormalMap;
+
+void main(void)
 {
-	mat4 viewProjectionMatrix;
-	mat4 skyProjectionMatrix;
-	mat4 sceneRotationMatrix;
-};
+	gl_Position = vec4(in_vertex, 1.0) * u_mvp;
 
-layout(location=0) out Vertex
-{
-	vec3 position;
-	vec2 texcoord;
-	mat3 tangentBasis;
-} vout;
+	mat4 normMat = transpose(inverse(u_mvMat));
+	o_normal = (vec4(in_normal,1.0) * normMat).xyz;
+	o_vertPos = (vec4(in_vertex, 1.0)*u_mvMat).xyz;
+	texcoord0 = in_texcood0;
+	shadow_coord =  vec4(in_vertex,1.0) * shadowMVP;
 
-void main()
-{
-	vout.position = vec3(sceneRotationMatrix * vec4(position, 1.0));
-	vout.texcoord = vec2(texcoord.x, 1.0-texcoord.y);
-
-	// Pass tangent space basis vectors (for normal mapping).
-	vout.tangentBasis = mat3(sceneRotationMatrix) * mat3(tangent, bitangent, normal);
-
-	gl_Position = viewProjectionMatrix * sceneRotationMatrix * vec4(position, 1.0);
+	if(b_useNormalMap){
+		o_tangent = in_tangent;
+	}else{
+		o_tangent = vec3(0,0,0);
+	}
 }

@@ -64,6 +64,8 @@ enum ga_button_t
 struct ga_frame_herald {
 
 	bool _create_sphere = false;
+	bool _create_torus = false;
+	bool _create_light = false;
 };
 
 /*

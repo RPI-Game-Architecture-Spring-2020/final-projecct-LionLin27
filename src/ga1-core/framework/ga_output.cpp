@@ -17,6 +17,8 @@
 #include "graphics/ga_program.h"
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
+#include "graphics/ga_light_component.h"
+#include "graphics/ga_light.h"
 #include "math/ga_mat4f.h"
 #include "math/ga_quatf.h"
 
@@ -253,6 +255,17 @@ void ga_output::update(ga_frame_params* params)
 		ImGui::InputFloat4("", trans.data[3]);
 		*/
 
+
+		// light info
+		if (params->_selected_ent->get_component("ga_light_component")) {
+			ga_light_component* lc = dynamic_cast<ga_light_component*>(params->_selected_ent->get_component("ga_light_component"));
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Light Control");
+			//float intensity = lc->get_light()->_intensity;
+			float delta = 0.0;
+			ImGui::SliderFloat("Intensity", &delta, -1.0f, 1.0f);
+			lc->get_light()->_intensity = max(lc->get_light()->_intensity + delta*dt, 0.0);
+		}
+
 		// model info
 		if (params->_selected_ent->get_component("ga_model_component")) {
 			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
@@ -335,6 +348,12 @@ void ga_output::update(ga_frame_params* params)
 		
 		if (ImGui::Button("Create Sphere")) {
 			params->_herald->_create_sphere = true;
+		}
+		if (ImGui::Button("Create Torus")) {
+			params->_herald->_create_torus = true;
+		}
+		if (ImGui::Button("Create Light")) {
+			params->_herald->_create_light = true;
 		}
 
 		ImGui::End();

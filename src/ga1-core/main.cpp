@@ -199,6 +199,7 @@ int main(int argc, const char** argv)
 	animation_component.play(&animation);
 	*/
 
+	/*
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
@@ -208,7 +209,6 @@ int main(int argc, const char** argv)
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
 	shipEnt.set_position({10, -6, 0});
-	/*
 	// procedual sphere
 	ga_entity sphereEnt("earth");
 	ga_model sphereModel;
@@ -218,7 +218,6 @@ int main(int argc, const char** argv)
 	sim->add_entity(&sphereEnt);
 	sphereEnt.scale(1000.0f);
 	sphereEnt.set_position({0,0,-2000});
-	*/
 
 
 	// lit torus
@@ -253,6 +252,7 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mce3(&sphereEnt3, &sphereModel3, sp_mat3, true);
 	sim->add_entity(&sphereEnt3);
 	sphereEnt3.translate({ 0, 2,-13 });
+	*/
 
 	// reflective torus
 	ga_entity torusRefEnt("torus");
@@ -399,6 +399,41 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos) {
 	return sphereEnt;
 }
 
+ga_entity* create_torus(ga_sim* sim, ga_vec3f pos) {
+	// procedual sphere
+	ga_entity* torusEnt = new ga_entity("torus");
+	ga_model* torusModel = new ga_model();
+	generate_torus(1.5f, 0.7f, 30, torusModel);
+	ga_material* lit_mat2 = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", sim->get_env_map());
+
+	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, lit_mat2, true);
+	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
+	sim->add_entity(torusEnt);
+
+	torusEnt->set_position(pos);
+
+	return torusEnt;
+}
+
+ga_entity* create_light(ga_sim* sim, ga_vec3f pos) {
+	// point light ent
+	ga_entity* light_entity2 = new ga_entity("point light");
+	ga_positional_light* light2 = new ga_positional_light({ 1,1,1 }, 1);
+	ga_light_component* light_component2 = new ga_light_component(light_entity2, light2);
+
+	// sphere model of light
+	ga_model* lightSphereModel2 = new ga_model();
+	generate_sphere(12, lightSphereModel2);
+	ga_material* sphereMat2 = new ga_constant_color_material();
+	sphereMat2->set_color({ 1,1,1 });
+	ga_model_component* sphere_mc3 = new ga_model_component(light_entity2, lightSphereModel2, sphereMat2);
+	light_entity2->scale(0.1f);
+	sim->add_entity(light_entity2);
+	light_entity2->set_position(pos);
+
+	return light_entity2;
+}
+
 void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 	if (params->_herald->_create_sphere) {
 		ga_vec3f pos = params->_camPos;
@@ -406,6 +441,20 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10));
 		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
+	}
+	if (params->_herald->_create_torus) {
+		ga_vec3f pos = params->_camPos;
+		ga_vec3f dir = params->_camDir;
+		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10));
+		sim->select_last_ent();
+		params->_herald->_create_torus = false;
+	}
+	if (params->_herald->_create_light) {
+		ga_vec3f pos = params->_camPos;
+		ga_vec3f dir = params->_camDir;
+		ga_entity* new_ent = create_light(sim, pos + dir.scale_result(10));
+		sim->select_last_ent();
+		params->_herald->_create_light = false;
 	}
 }
 
