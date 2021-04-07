@@ -12,3 +12,11 @@
 1. open the solution using Sisual Studio 
 2. set 'ga' to default startup project (right-click on the solution panel)
 3. run via Visual Studio
+
+## Controls:
+- WASD: move camera
+- Arrow keys: rotate camera
+- Z: toggle selected entity
+- F: focus on selected entity 
+- L: show framework
+- K: show lit models
