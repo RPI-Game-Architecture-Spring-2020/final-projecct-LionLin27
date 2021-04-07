@@ -1,7 +1,7 @@
 #version 430
 
 #define POSITIONAL_LIGHTS_MAX 10
-#define CUBE_MAP_LODS 7.0
+#define CUBE_MAP_LODS 4.0
 
 uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
