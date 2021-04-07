@@ -64,6 +64,14 @@ bool ga_skybox::init() {
 
     _vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
     _fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+    if (!_fs->compile())
+    {
+        std::cerr << "Failed to compile skybox fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+    }
+    if (!_vs->compile())
+    {
+        std::cerr << "Failed to compile skybox vertex shader:\n\t" << std::endl << _vs->get_compile_log() << std::endl;
+    }
 
     _program = new ga_program();
     _program->attach(*_vs);

@@ -17,6 +17,8 @@
 #include "graphics/ga_program.h"
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_geometry.h"
+#include "graphics/ga_light_component.h"
+#include "graphics/ga_light.h"
 #include "math/ga_mat4f.h"
 #include "math/ga_quatf.h"
 
@@ -253,6 +255,17 @@ void ga_output::update(ga_frame_params* params)
 		ImGui::InputFloat4("", trans.data[3]);
 		*/
 
+
+		// light info
+		if (params->_selected_ent->get_component("ga_light_component")) {
+			ga_light_component* lc = dynamic_cast<ga_light_component*>(params->_selected_ent->get_component("ga_light_component"));
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Light Control");
+			//float intensity = lc->get_light()->_intensity;
+			float delta = 0.0;
+			ImGui::SliderFloat("Intensity", &delta, -1.0f, 1.0f);
+			lc->get_light()->_intensity = max(lc->get_light()->_intensity + delta*dt, 0.0);
+		}
+
 		// model info
 		if (params->_selected_ent->get_component("ga_model_component")) {
 			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
@@ -301,6 +314,29 @@ void ga_output::update(ga_frame_params* params)
 					lit_mat->set_useNormalMap(useNormalMap);
 				}
 			}
+
+			// reflective materials
+			if (dynamic_cast<ga_reflective_lit_material*>(mat)) {
+				ga_reflective_lit_material* reflect_mat = dynamic_cast<ga_reflective_lit_material*>(mat);
+
+				float normalStr = reflect_mat->get_normalStr();
+				ImGui::SliderFloat("Normal Strength", &normalStr, 0.0f, 1.0f);
+				if (std::abs(normalStr - reflect_mat->get_normalStr()) > 0.01) {
+					reflect_mat->set_normalStr(normalStr);
+				}
+
+				float roughness = reflect_mat->get_roughness();
+				ImGui::SliderFloat("Roughness", &roughness, 0.0f, 1.0f);
+				if (std::abs(roughness - reflect_mat->get_roughness()) > 0.01) {
+					reflect_mat->set_roughness(roughness);
+				}
+
+				float metalness = reflect_mat->get_metalness();
+				ImGui::SliderFloat("Metalness", &metalness, 0.0f, 1.0f);
+				if (std::abs(metalness - reflect_mat->get_metalness()) > 0.01) {
+					reflect_mat->set_metalness(metalness);
+				}
+			}
 		}
 		
 
@@ -312,6 +348,12 @@ void ga_output::update(ga_frame_params* params)
 		
 		if (ImGui::Button("Create Sphere")) {
 			params->_herald->_create_sphere = true;
+		}
+		if (ImGui::Button("Create Torus")) {
+			params->_herald->_create_torus = true;
+		}
+		if (ImGui::Button("Create Light")) {
+			params->_herald->_create_light = true;
 		}
 
 		ImGui::End();

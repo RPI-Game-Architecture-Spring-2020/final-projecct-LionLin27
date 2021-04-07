@@ -1,0 +1,8 @@
+newmtl Rock
+Ka 0 0 0
+Ns 8.16617
+Ks 1 1 1
+Kd 0.332628 0.321135 0.20835
+map_Kd Rock.tif
+map_D Rock_a.tif
+map_Bump Rock_b.tif
