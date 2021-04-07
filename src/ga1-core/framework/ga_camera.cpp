@@ -29,9 +29,14 @@ void ga_camera::update(ga_frame_params* params)
 	// focus
 	if (params->_btn_down_mask & k_button_f) {
 		ga_vec3f ent_pos = params->_selected_ent->get_transform().get_translation();
+		float ent_size = params->_selected_ent->get_size();
 		ga_vec3f forward_dir = _transform.get_forward();
 		float offset = 10.0f;
-		_transform.set_translation(ent_pos - forward_dir.scale_result(offset));
+
+		ga_vec3f target_pos = ent_pos - forward_dir.scale_result(offset*ent_size);
+		ga_vec3f move_dir = target_pos - _transform.get_translation();
+		//move_dir.normalize();
+		_transform.set_translation(_transform.get_translation() + move_dir.scale_result(0.2f));
 	}
 
 	// Use WASD to control the position.
@@ -78,6 +83,7 @@ void ga_camera::update(ga_frame_params* params)
 
 	params->_view = view;
 	params->_camPos = _transform.get_translation();
+	params->_camDir = _transform.get_forward();
 }
 
 void ga_camera::rotate(const ga_quatf& rotation)

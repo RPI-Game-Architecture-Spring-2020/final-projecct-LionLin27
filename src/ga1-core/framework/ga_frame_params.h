@@ -64,6 +64,8 @@ enum ga_button_t
 struct ga_frame_herald {
 
 	bool _create_sphere = false;
+	bool _create_torus = false;
+	bool _create_light = false;
 };
 
 /*
@@ -97,6 +99,7 @@ struct ga_frame_params
 
 	ga_mat4f _view;
 	ga_vec3f _camPos;
+	ga_vec3f _camDir;
 
 	ga_entity* _selected_ent;
 

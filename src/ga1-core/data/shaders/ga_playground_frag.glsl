@@ -1,6 +1,7 @@
 #version 430
 
 #define POSITIONAL_LIGHTS_MAX 10
+#define CUBE_MAP_LODS 7.0
 
 uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
@@ -13,6 +14,9 @@ uniform bool b_useNormalMap;
 uniform bool b_useTexture;
 
 //uniform bool b_useEnvMap;
+uniform float f_roughness;
+uniform float f_metalness;
+uniform float f_normalStr;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -53,6 +57,10 @@ vec3 calcNewNormal(){
 	map_normal = map_normal * 2.0 - 1.0;
 	vec3 newNormal = tbn * map_normal;
 	newNormal = normalize(newNormal);
+
+	// normal strength
+	newNormal = normalize(newNormal * f_normalStr + normal * (1.0 - f_normalStr));
+
 	return newNormal;
 }
 
@@ -71,9 +79,13 @@ void calcDirectionalLight(DirectionalLight dirLight, vec3 normal, vec3 vertPos,
 	// angle between view vector and reflected light
 	float cosPhi = dot(V,R);
 
+	// shininess
+	float shiniess = (1.0 - f_roughness) * 100.0;
+	shiniess = clamp(shiniess, 1, 99);
+
 	// compute ADS
 	diffuse =  dirLight.base.intensity * dirLight.base.color.xyz * max(cosTheta, 0.0);
-	specular = dirLight.base.intensity * dirLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	specular = dirLight.base.intensity * dirLight.base.color.xyz * pow(max(cosPhi,0.0), shiniess);//51 material.shininess);
 
 	//return (diffuse + specular) * dirLight.base.intensity;
 }
@@ -93,9 +105,13 @@ void calcPositionalLight(PositionalLight posLight, vec3 normal, vec3 vertPos,
 	// angle between view vector and reflected light
 	float cosPhi = dot(V,R);
 
+	// shininess
+	float shiniess = (1.0 - f_roughness) * 100.0;
+	shiniess = clamp(shiniess, 1, 99);
+
 	// compute ADS
 	diffuse = posLight.base.color.xyz * max(cosTheta, 0.0);
-	specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), 51);//material.shininess);
+	specular = posLight.base.color.xyz * pow(max(cosPhi,0.0), f_roughness);//51 material.shininess);
 
 	float dist = length(posLight.position-vertPos);
 	float intensity = max(posLight.base.intensity - dist*0.1, 0);
@@ -110,6 +126,46 @@ float lookup(float x, float y)
                                                          y * 0.001 * shadow_coord.w,
                                                          -0.01, 0.0));
 	return t;
+}
+
+vec3 randVec(vec3 seed) {
+
+		// taken from Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe
+    return (2 * vec3(
+		fract(sin(dot(seed.xy, vec2(12.9898,78.233)))*43758.5453123),
+		fract(sin(dot(seed.xz, vec2(12.9898,78.233)))*43758.5453123),
+		fract(sin(dot(seed.yz, vec2(12.9898,78.233)))*43758.5453123))) - vec3(1,1,1);
+	}
+
+vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
+	
+	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
+	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	/*
+	vec4 samp = 0.2 * texture(u_envMap, r2.xyz);
+
+	vec3 roughOffset = randVec(o_vertPos + vec3(123, -234, 166));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-585, 44, 4));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-1, 23567, -734));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);
+
+	roughOffset = randVec(o_vertPos + vec3(-76, 222, -1222));
+	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
+	r2 = normalize(vec4(r,0) * inverse(u_vMat));
+	samp += 0.2 * texture(u_envMap, r2.xyz);*/
+	return textureLod(u_envMap, r2.xyz, f_roughness * CUBE_MAP_LODS);
+
+	// return samp;
 }
 
 void main(void)
@@ -176,9 +232,11 @@ void main(void)
 	vec4 totalLightv4 = vec4(totalLight, 1.0);
 	vec4 totalSpec = vec4(posLightSpecSum+dirLightSpec, 1.0);
 
-	//gl_FragColor = mix(fogColor, color * totalLightv4 + totalSpec, fogFactor);
+	vec4 litColor = color * totalLightv4 + totalSpec;
 
-	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
-	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
-	gl_FragColor = texture(u_envMap, r2.xyz);
+	vec4 reflectionColor = blurReflection(o_vertPos, normal);
+
+	vec4 mixedColor = f_metalness * reflectionColor + (1.0 - f_metalness) * litColor;
+
+	gl_FragColor = mix(fogColor, mixedColor, fogFactor);
 }
