@@ -1,9 +1,14 @@
-# RPI Game Architecture Homework Repro
+# Lynx Renderer
 
-  * build - Project files & makefiles as well as the scripts for generating them.
-  * personal - Scratch space.
-  * src - GA engine framework and homework assignments.
+## Build Steps:
+1. install cmake
+2. go to \build
+3. make sure Visual Studio version matches setup_win64.bat
+4. shift-right click and open powershell in \build
+5. run '.\setup_win64.bat ga1-core'
+6. the project should build and create a Visual Studio solution
 
-Note: MinGW-w64 build is supported, but not recommended.
-Recommended download location is: https://mingw-w64.org/doku.php/download/mingw-builds
-The mingw bin folder must be in your PATH variable before running setup-mingw.bat.
+## Run Steps:
+1. open the solution using Sisual Studio 
+2. set 'ga' to default startup project (right-click on the solution panel)
+3. run via Visual Studio
