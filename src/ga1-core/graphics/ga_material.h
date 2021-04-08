@@ -93,6 +93,7 @@ public:
 
 	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
 
+	virtual ga_vec3f get_color() { return _color; }
 	virtual void set_color(const ga_vec3f& color) override { _color = color; }
 
 	virtual const char* get_name() override { return "constant color material"; }
@@ -144,9 +145,14 @@ public:
 	virtual const char* get_name() override { return "lit material"; }
 	std::string get_texture_file() { return _texture_file; }
 	void bind_texture(std::string file_name);
+	bool get_useTexturelMap() { return _useTextureMap; };
+	void set_useTextureMap(bool use);
 	void bind_normalMap(std::string file_name);
 	bool get_useNormalMap() { return _useNormalMap; };
 	void set_useNormalMap(bool use);
+	ga_vec3f get_baseColor() { return _baseColor; }
+	void set_baseColor(ga_vec3f color);
+
 
 protected:
 	std::string _texture_file;
@@ -170,7 +176,7 @@ class ga_reflective_lit_material : public ga_lit_material {
 public:
 	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
 
-	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
+	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file = "", const char* metalMap_file = "");
 
 	virtual bool init() override;
 
@@ -189,11 +195,16 @@ protected:
 	ga_cube_texture* _envMap;
 
 	bool _useEnvMap;
+	bool _useRoughMap;
+	bool _useMetalMap;
 
 	float _roughness;
 	float _metalness;
 	float _normalStr;
+	std::string _roughness_file;
+	std::string _metallic_file;
 	ga_texture* _roughnessMap;
+	ga_texture* _metallicMap;
 };
 
 // material with texture & light

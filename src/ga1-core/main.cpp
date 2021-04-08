@@ -45,6 +45,22 @@
 #include <unistd.h>
 #endif
 
+struct TexturePack {
+	const char* texture;
+	const char* normal;
+	const char* roughness;
+	const char* metallic;
+
+	TexturePack(const char* txt, const char* nml, const char* rgh, const char* mtl) : texture(txt), normal(nml), roughness(rgh), metallic(mtl) {};
+};
+
+TexturePack my_test_pack("data/textures/checker.png", "data/textures/lego_normal.png", "", "");
+TexturePack marble_pack("data/textures/Marble6/Color.jpg", "data/textures/Marble6/Normal.jpg", "data/textures/Marble6/Roughness.jpg", "");
+TexturePack rustiron_pack("data/textures/rustediron/basecolor.png", "data/textures/rustediron/normal.png", "data/textures/rustediron/roughness.png", "data/textures/rustediron/metallic.png");
+TexturePack steel_pack("data/textures/Metal38/Color.jpg", "data/textures/Metal38/Normal.jpg", "data/textures/Metal38/Roughness.jpg", "data/textures/Metal38/Metalness.jpg");
+TexturePack wood_pack("data/textures/Wood47/Color.jpg", "data/textures/Wood47/Normal.jpg", "data/textures/Wood47/Roughness.jpg", "");
+TexturePack tile_pack("data/textures/Tiles83/Color.jpg", "data/textures/Tiles83/Normal.jpg", "data/textures/Tiles83/Roughness.jpg", "");
+
 ga_font* g_font = nullptr;
 static void set_root_path(const char* exepath);
 
@@ -383,12 +399,12 @@ static void set_root_path(const char* exepath)
 }
 
 
-ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos) {
+ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	// procedual sphere
 	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
 	generate_sphere(64, sphereModel);
-	ga_material* lit_mat2 = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", sim->get_env_map());
+	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
 	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, lit_mat2, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
@@ -399,12 +415,12 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos) {
 	return sphereEnt;
 }
 
-ga_entity* create_torus(ga_sim* sim, ga_vec3f pos) {
+ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	// procedual sphere
 	ga_entity* torusEnt = new ga_entity("torus");
 	ga_model* torusModel = new ga_model();
 	generate_torus(1.5f, 0.7f, 30, torusModel);
-	ga_material* lit_mat2 = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", sim->get_env_map());
+	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
 	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, lit_mat2, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
@@ -435,17 +451,45 @@ ga_entity* create_light(ga_sim* sim, ga_vec3f pos) {
 }
 
 void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
+
+	TexturePack* selectedTP;
+
+	switch (params->_herald->_selected_mat)
+	{
+	case(0):
+		selectedTP = &my_test_pack;
+		break;
+	case(1):
+		selectedTP = &marble_pack;
+		break;
+	case(2):
+		selectedTP = &rustiron_pack;
+		break;
+	case(3):
+		selectedTP = &steel_pack;
+		break;
+	case(4):
+		selectedTP = &wood_pack;
+		break;
+	case(5):
+		selectedTP = &tile_pack;
+		break;
+	default:
+		selectedTP = &my_test_pack;
+		break;
+	}
+
 	if (params->_herald->_create_sphere) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10));
+		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10), selectedTP);
 		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
 	}
 	if (params->_herald->_create_torus) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10));
+		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10), selectedTP);
 		sim->select_last_ent();
 		params->_herald->_create_torus = false;
 	}

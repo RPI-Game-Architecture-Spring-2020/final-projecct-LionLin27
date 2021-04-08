@@ -455,6 +455,8 @@ bool ga_lit_material::init()
 		}
 	}
 
+	_baseColor = { 1,1,1 };
+
 	return true;
 }
 
@@ -595,6 +597,23 @@ void ga_lit_material::set_useNormalMap(bool use)
 	_program->use();
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	useNormalMap.set(_useNormalMap);
+}
+
+void ga_lit_material::set_baseColor(ga_vec3f color)
+{
+	_program->use();
+	ga_uniform baseColorUniform = _program->get_uniform("u_baseColor");
+	baseColorUniform.set(color);
+	_baseColor = color;
+}
+
+void ga_lit_material::set_useTextureMap(bool use)
+{
+	_useTextureMap = use;
+
+	_program->use();
+	ga_uniform useTextureMap = _program->get_uniform("b_useTexture");
+	useTextureMap.set(_useTextureMap);
 }
 
 // tesselation shader for plane
@@ -872,7 +891,8 @@ void ga_terrain_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, 
 	return;
 }
 
-ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map) : ga_lit_material(texture_file, normalmap_file), _envMap(env_map)
+ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file) : 
+	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file)
 {
 	_useEnvMap = true;
 }
@@ -927,10 +947,34 @@ bool ga_reflective_lit_material::init()
 		}
 	}
 
+	_useRoughMap = false;
+	if (_roughness_file.length() > 0) {
+		_useRoughMap = true;
+		_roughnessMap = new ga_texture();
+		if (!_roughnessMap->load_from_file(_roughness_file.c_str()))
+		{
+			std::cerr << "Failed to load roughness map" << std::endl;
+			_useRoughMap = false;
+		}
+	}
+
+	_useMetalMap = false;
+	if (_metallic_file.length() > 0) {
+		_useMetalMap = true;
+		_metallicMap = new ga_texture();
+		if (!_metallicMap->load_from_file(_metallic_file.c_str()))
+		{
+			std::cerr << "Failed to load metallic map" << std::endl;
+			_useMetalMap = false;
+		}
+	}
+
 	// set initial roughness to 0
 	_roughness = 0.1f;
 	_metalness = 0.5f;
 	_normalStr = 1.0f;
+
+	_baseColor = { 1,1,1 };
 
 	return true;
 }
@@ -947,28 +991,16 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	// get the locations of the light and material fields in the shader
 	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
-	// ga_uniform ambLoc = _program->get_uniform("u_directionalLight.base.ambient");
 	ga_uniform diffLoc = _program->get_uniform("u_directionalLight.base.color");
-	// ga_uniform specLoc = _program->get_uniform("light.specular");
 	ga_uniform dirLoc = _program->get_uniform("u_directionalLight.direction");
 	ga_uniform itsLoc = _program->get_uniform("u_directionalLight.base.intensity");
-	// ga_uniform mambLoc = _program->get_uniform("material.ambient");
-	// ga_uniform mdiffLoc = _program->get_uniform("material.diffuse");
-	// ga_uniform mspecLoc = _program->get_uniform("material.specular");
-	// ga_uniform mshiLoc = _program->get_uniform("material.shininess");
 	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
 	globalAmbLoc.set(_ambientLight);
-	// ambLoc.set(lightAmbient);
 	diffLoc.set(dirL->_color);
-	// specLoc.set(lightSpecular);
 	dirLoc.set(view.transform_vector(dirL->_direction));
 	itsLoc.set(dirL->_intensity);
-	// mambLoc.set(matAmb);
-	// mdiffLoc.set(matDif);
-	// mspecLoc.set(matSpe);
-	// mshiLoc.set(matShi);
 	shadowMVPLoc.set(shadowMVP);
 
 	// positional lights
@@ -992,6 +1024,9 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	}
 	posLightCountLoc.set(posLCount);
 
+	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
+	baseColor_uniform.set(_baseColor);
+
 	// env map
 	ga_uniform envMap_uniform = _program->get_uniform("u_envMap");
 	envMap_uniform.set(*_envMap, 5);// no particular reason for 5..
@@ -1009,7 +1044,7 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	texture_uniform.set(*_texture, 0);
 
 	ga_uniform useTexture = _program->get_uniform("b_useTexture");
-	useTexture.set(true);
+	useTexture.set(_useTextureMap);
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
@@ -1028,6 +1063,20 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
 	normalStr_uniform.set(_normalStr);
+
+	ga_uniform useRoughMap = _program->get_uniform("b_useRoughMap");
+	ga_uniform roughmap_uniform = _program->get_uniform("u_roughnessMap");
+	useRoughMap.set(_useNormalMap);
+	if (_useRoughMap) {
+		roughmap_uniform.set(*_roughnessMap, 3);
+	}
+
+	ga_uniform useMetalMap = _program->get_uniform("b_useMetalMap");
+	ga_uniform metalmap_uniform = _program->get_uniform("u_metallicMap");
+	useMetalMap.set(_useMetalMap);
+	if (_useMetalMap) {
+		metalmap_uniform.set(*_metallicMap, 4);
+	}
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

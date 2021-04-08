@@ -262,8 +262,16 @@ void ga_output::update(ga_frame_params* params)
 			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Light Control");
 			//float intensity = lc->get_light()->_intensity;
 			float delta = 0.0;
-			ImGui::SliderFloat("Intensity", &delta, -1.0f, 1.0f);
+			ImGui::SliderFloat("Intensity", &delta, -5.0f, 5.0f);
 			lc->get_light()->_intensity = max(lc->get_light()->_intensity + delta*dt, 0.0);
+
+			// color
+			ga_model_component* mc = dynamic_cast<ga_model_component*>(params->_selected_ent->get_component("ga_model_component"));
+			ga_constant_color_material* light_mat = dynamic_cast<ga_constant_color_material*>(mc->get_material());
+			ga_vec3f light_color = light_mat->get_color();
+			ImGui::ColorEdit3("light color", (float*)&light_color);
+			light_mat->set_color(light_color);
+			lc->get_light()->_color = light_color;
 		}
 
 		// model info
@@ -307,6 +315,18 @@ void ga_output::update(ga_frame_params* params)
 			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), mat->get_name());
 			if (dynamic_cast<ga_lit_material*>(mat)) {
 				ga_lit_material* lit_mat = dynamic_cast<ga_lit_material*>(mat);
+
+				ga_vec3f base_color = lit_mat->get_baseColor();
+				ImGui::ColorEdit3("base color", (float*)&base_color);
+				lit_mat->set_baseColor(base_color);
+
+				bool useTexture = lit_mat->get_useTexturelMap();
+				ImGui::Checkbox("Texture Map", &useTexture);
+				if (useTexture != lit_mat->get_useTexturelMap()) {
+					std::cout << "use texture map toggled" << std::endl;
+					lit_mat->set_useTextureMap(useTexture);
+				}
+
 				bool useNormalMap = lit_mat->get_useNormalMap();
 				ImGui::Checkbox("Normal Map", &useNormalMap);
 				if (useNormalMap != lit_mat->get_useNormalMap()) {
@@ -349,11 +369,37 @@ void ga_output::update(ga_frame_params* params)
 		// here we set the calculated width and also make the height to be
 		// be the height of the main window also with some margin
 		ImGui::SetNextWindowSize(
-			ImVec2(static_cast<float>(width / 8), static_cast<float>(height * 0.3f - 20)),
+			ImVec2(static_cast<float>(width / 8), static_cast<float>(height * 0.5f - 20)),
 			ImGuiCond_Always
 		);
 		ImGui::Begin("Model Creator");
+
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Select Material");
+		// select material
+		static int selectedMat = 0;
+		for (int n = 0; n < 6; n++)
+		{
+			char buf[32];
+			if(n == 0)
+				sprintf(buf, "My Test");
+			else if (n == 1)
+				sprintf(buf, "Marble");
+			else if (n == 2)
+				sprintf(buf, "Rust Iron");
+			else if (n == 3)
+				sprintf(buf, "Steel");
+			else if (n == 4)
+				sprintf(buf, "Wood"); 
+			else if (n == 5)
+				sprintf(buf, "Tiles");
+
+
+			if (ImGui::Selectable(buf, selectedMat == n))
+				selectedMat = n;
+		}
+		params->_herald->_selected_mat = selectedMat;
 		
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Select Model");
 		if (ImGui::Button("Create Sphere")) {
 			params->_herald->_create_sphere = true;
 		}
