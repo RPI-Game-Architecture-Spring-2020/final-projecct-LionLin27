@@ -201,9 +201,7 @@ void main(void)
 	vec3 color = u_baseColor;
     if(b_useTexture){
 	    vec4 textureColor = texture(u_texture, texcoord0);
-        if(textureColor != vec4(0,0,0,0)){
-            color *= textureColor.xyz;
-        }
+        color *= textureColor.xyz;
     }
 
 
@@ -253,14 +251,6 @@ void main(void)
 	float dist = length(eyePos);
 	float fogFactor = clamp(((fogEnd - dist) / (fogEnd - fogStart)), 0.0, 1.0);
 
-/*
-	vec3 totalLight = u_ambientLight;
-	totalLight += (dirLightDiffuse + posLightDiffuseSum)*inShadow;
-
-	vec4 totalLightv4 = vec4(totalLight, 1.0);
-	vec4 totalSpec = vec4(posLightSpecSum+dirLightSpec, 1.0);
-
-*/
 	vec4 litColor = vec4(color, 1.0);
 
 	vec4 reflectionColor = blurReflection(o_vertPos, normal, roughness);

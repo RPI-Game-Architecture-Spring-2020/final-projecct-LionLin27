@@ -1051,7 +1051,7 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	useNormalMap.set(_useNormalMap);
 	if (_useNormalMap) {
-		normalmap_uniform.set(*_normalmap, 2);
+		normalmap_uniform.set(*_normalmap, 1);
 	}
 	
 	// roughness
@@ -1066,16 +1066,16 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	ga_uniform useRoughMap = _program->get_uniform("b_useRoughMap");
 	ga_uniform roughmap_uniform = _program->get_uniform("u_roughnessMap");
-	useRoughMap.set(_useNormalMap);
+	useRoughMap.set(_useRoughMap);
 	if (_useRoughMap) {
-		roughmap_uniform.set(*_roughnessMap, 3);
+		roughmap_uniform.set(*_roughnessMap, 2);
 	}
 
 	ga_uniform useMetalMap = _program->get_uniform("b_useMetalMap");
 	ga_uniform metalmap_uniform = _program->get_uniform("u_metallicMap");
 	useMetalMap.set(_useMetalMap);
 	if (_useMetalMap) {
-		metalmap_uniform.set(*_metallicMap, 4);
+		metalmap_uniform.set(*_metallicMap, 3);
 	}
 
 	glDisable(GL_BLEND);
