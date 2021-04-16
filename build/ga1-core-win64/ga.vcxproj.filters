@@ -28,6 +28,9 @@
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_animation_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_assimp_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_cube_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -1,6 +1,7 @@
 cmake_minimum_required (VERSION 3.6)
 project (ga1-core)
 
+
 # SDL: for windowing and input:
 set(SDL_AUDIO_ENABLED_BY_DEFAULT OFF)
 set(SDL_ATOMIC_ENABLED_BY_DEFAULT OFF)
@@ -36,6 +37,10 @@ add_library(lua53 ${LUA_SOURCE_FILES})
 # ImGUI
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/ImGUI1.79/include")
 
+# assimp
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/include")
+link_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/lib")
+
 # GA framework and homeworks:
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}")
 file(GLOB_RECURSE GA_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
@@ -66,3 +71,5 @@ foreach (GA_DATA_FILE ${GA_DATA_FILES})
 	message("copying file " ${GA_DATA_FILE})
 	add_custom_command(TARGET ga POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/${GA_DATA_FILE} $<TARGET_FILE_DIR:ga>/${GA_DATA_FILE})
 endforeach(GA_DATA_FILE)
+
+add_custom_command(TARGET ga POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/bin/assimp-vc142-mt.dll $<TARGET_FILE_DIR:ga>)

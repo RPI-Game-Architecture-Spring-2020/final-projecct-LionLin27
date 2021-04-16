@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -102,10 +102,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -113,7 +113,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message></Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug
 if %errorlevel% neq 0 goto :cmEnd
@@ -125,7 +126,8 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																																																										</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -173,6 +175,15 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/TheRocket.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/TheRocket.obj
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -496,7 +507,196 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/pbr_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/vert2Shader.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/vert2Shader.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Marble6/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Marble6/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Marble6/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Marble6/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Metal38/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Metal38/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Metalness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Metal38/Metalness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Metal38/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Roughness.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/AO.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Tiles83/AO.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Tiles83/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Tiles83/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Tiles83/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Tiles83/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Wood47/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Wood47/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Wood47/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/Wood47/Roughness.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -586,6 +786,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/lego_normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/lego_normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/moon.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/moon.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -605,6 +814,186 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/About these PBR files.txt" "D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/About these PBR files.txt"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/basecolor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/basecolor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/desktop.ini D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/rustediron/roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Forest_medow_4.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/Forest_medow_4.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/Rock.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_a.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/Rock_a.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_b.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/Rock_b.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/forest_medow.ccb D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/forest_medow.ccb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -649,7 +1038,88 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/skybox_forest_pine.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/skybox_forest_pine.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/xn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/xp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/yn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/yp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/zn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/sybox_forest_pine/zp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/bin/assimp-vc142-mt.dll D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -659,8 +1129,8 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>SDL2-2.0.5\Debug\SDL2.lib;glew32s.lib;opengl32.lib;Debug\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2-2.0.5\Debug\SDL2.lib;glew32s.lib;opengl32.lib;Debug\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;winspool.lib;shell32.lib;comdlg32.lib;advapi32.lib;assimp-vc142-mt.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -674,7 +1144,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -690,10 +1160,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -701,7 +1171,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message></Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release
 if %errorlevel% neq 0 goto :cmEnd
@@ -713,7 +1184,8 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																																																										</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -761,6 +1233,15 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/TheRocket.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/TheRocket.obj
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1084,7 +1565,196 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/pbr_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/vert2Shader.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/vert2Shader.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Marble6/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Marble6/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Marble6/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Marble6/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Metalness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Metalness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Roughness.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/AO.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Tiles83/AO.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Tiles83/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Tiles83/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Tiles83/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Tiles83/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Wood47/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Wood47/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Wood47/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Wood47/Roughness.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1174,6 +1844,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/lego_normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/lego_normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/moon.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/moon.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1193,6 +1872,186 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/About these PBR files.txt" "D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/About these PBR files.txt"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/basecolor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/basecolor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/desktop.ini D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/rustediron/roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Forest_medow_4.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/Forest_medow_4.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/Rock.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_a.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/Rock_a.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_b.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/Rock_b.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/forest_medow.ccb D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/forest_medow.ccb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1237,7 +2096,88 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/skybox_forest_pine.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/skybox_forest_pine.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/xn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/xp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/yn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/yp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/zn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/sybox_forest_pine/zp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/bin/assimp-vc142-mt.dll D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1248,7 +2188,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>SDL2-2.0.5\Release\SDL2.lib;glew32s.lib;opengl32.lib;Release\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -1262,7 +2202,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -1278,10 +2218,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -1289,7 +2229,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message></Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
@@ -1301,7 +2242,8 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																																																										</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -1349,6 +2291,15 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/TheRocket.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/TheRocket.obj
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1672,7 +2623,196 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/pbr_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/vert2Shader.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/vert2Shader.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Marble6/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Marble6/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Marble6/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Marble6/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Metal38/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Metal38/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Metalness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Metal38/Metalness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Metal38/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Roughness.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/AO.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Tiles83/AO.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Tiles83/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Tiles83/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Tiles83/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Tiles83/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Wood47/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Wood47/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Wood47/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/Wood47/Roughness.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1762,6 +2902,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/lego_normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/lego_normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/moon.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/moon.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1781,6 +2930,186 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/About these PBR files.txt" "D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/About these PBR files.txt"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/basecolor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/basecolor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/desktop.ini D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/rustediron/roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Forest_medow_4.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/Forest_medow_4.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/Rock.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_a.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/Rock_a.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_b.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/Rock_b.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/forest_medow.ccb D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/forest_medow.ccb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1825,7 +3154,88 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/skybox_forest_pine.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/skybox_forest_pine.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/xn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/xp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/yn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/yp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/zn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/sybox_forest_pine/zp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/bin/assimp-vc142-mt.dll D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1836,7 +3246,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>SDL2-2.0.5\MinSizeRel\SDL2.lib;glew32s.lib;opengl32.lib;MinSizeRel\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -1850,7 +3260,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) $(CMAKE_CXX_FLAGS)</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -1865,10 +3275,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -1876,7 +3286,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message></Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/ttf-bitstream-vera-1.10/VeraMono.ttf D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
@@ -1888,7 +3299,8 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Message>																																																										</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/bar_bend.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/bar_bend.egg
 if %errorlevel% neq 0 goto :cmEnd
@@ -1936,6 +3348,15 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/animations/simpleEnemy-walk.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/animations/simpleEnemy-walk.egg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/TheRocket.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/TheRocket.obj
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2259,7 +3680,196 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/pbr_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/vert2Shader.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/vert2Shader.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Marble6/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Marble6/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Marble6/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Marble6/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Marble6/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Metalness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Metalness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Roughness.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/AO.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Tiles83/AO.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Tiles83/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Tiles83/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Tiles83/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Tiles83/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Tiles83/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Color.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Wood47/Color.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Displacement.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Wood47/Displacement.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Normal.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Wood47/Normal.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Wood47/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Wood47/Roughness.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2349,6 +3959,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/lego_normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/lego_normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/moon.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/moon.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -2368,6 +3987,186 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rpi.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rpi.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different "D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/About these PBR files.txt" "D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/About these PBR files.txt"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/basecolor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/basecolor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/desktop.ini D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/desktop.ini
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/rustediron/roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/rustediron/roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Forest_medow_4.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/Forest_medow_4.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/Rock.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_a.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/Rock_a.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/Rock_b.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/Rock_b.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.mtl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/farmpeeps_forest_medow_skybox.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/forest_medow.ccb D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/forest_medow.ccb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_1.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_11.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_2.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_4.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_5.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/skybox_forest_medow/skybox_forest_medow_6.jpg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2412,7 +4211,88 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/Pine_Spring_forest.ccp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/skybox_forest_pine.txt D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/skybox_forest_pine.txt
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/xn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/xp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/xp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/yn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/yp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/yp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zn.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/zn.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/sybox_forest_pine/zp.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/sybox_forest_pine/zp.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/test.bmp D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/test.bmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/bin/assimp-vc142-mt.dll D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2423,7 +4303,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalDependencies>SDL2-2.0.5\RelWithDebInfo\SDL2.lib;glew32s.lib;opengl32.lib;RelWithDebInfo\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -2502,6 +4382,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_output.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\framework\ga_sim.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_animation_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_assimp_loader.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_cube_component.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_debug_geometry.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_egg_parser.cpp" />

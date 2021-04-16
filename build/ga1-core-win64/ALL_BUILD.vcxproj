@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -76,7 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -86,7 +86,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\assimp\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

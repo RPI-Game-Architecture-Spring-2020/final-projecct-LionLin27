@@ -25,6 +25,7 @@
 #include "graphics/ga_light_component.h"
 #include "graphics/ga_egg_parser.h"
 #include "graphics/ga_obj_parser.h"
+#include "graphics/ga_assimp_loader.h"
 #include "graphics/ga_procedural_model.h"
 #include "graphics/ga_material.h"
 #include "graphics/ga_model_component.h"
@@ -219,8 +220,8 @@ int main(int argc, const char** argv)
 	// spaceship entity
 	ga_entity shipEnt("ship");
 	ga_model shipModel;
-	obj_to_model("data/models/shuttle.obj", &shipModel);
-	ga_material* lit_mat0 = new ga_lit_material("data/textures/spstob_1.jpg");
+	assimp_load_model("data/models/shuttle.obj", &shipModel);
+	ga_material* lit_mat0 = new ga_reflective_lit_material("data/textures/spstob_1.jpg", "data/textures/lego_normal.png", &sky_tex);
 	ga_model_component ship_model_component(&shipEnt, &shipModel, lit_mat0, true);
 	sim->add_entity(&shipEnt);
 	shipEnt.scale(10.0f);
@@ -281,18 +282,16 @@ int main(int argc, const char** argv)
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
 
-	/*
-	{
 	// rocket
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
-	obj_to_model("data/models/TheRocket.obj", &rocketModel);
-	ga_material* rocket_mat = new ga_lit_material("data/textures/checker.png");
+	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
+	ga_material* rocket_mat = new ga_reflective_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex);
 	ga_model_component rocket_model_component(&rocketEnt, &rocketModel, rocket_mat, true);
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);
 	rocketEnt.set_position({ 10, 6, 0 });
-	}
+	/*
 	*/
 
 	/*
