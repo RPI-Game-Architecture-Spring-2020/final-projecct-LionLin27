@@ -269,7 +269,6 @@ int main(int argc, const char** argv)
 	ga_model_component sphere_mce3(&sphereEnt3, &sphereModel3, sp_mat3, true);
 	sim->add_entity(&sphereEnt3);
 	sphereEnt3.translate({ 0, 2,-13 });
-	*/
 
 	// reflective torus
 	ga_entity torusRefEnt("torus");
@@ -281,6 +280,7 @@ int main(int argc, const char** argv)
 	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
+	*/
 
 	// rocket
 	ga_entity rocketEnt("rocket");
@@ -290,7 +290,7 @@ int main(int argc, const char** argv)
 	ga_model_component rocket_model_component(&rocketEnt, &rocketModel, rocket_mat, true);
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);
-	rocketEnt.set_position({ 10, 6, 0 });
+	rocketEnt.set_position({ 0, -3, 10 });
 	/*
 	*/
 
