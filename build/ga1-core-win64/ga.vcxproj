@@ -615,6 +615,96 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/AO.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/AO.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/BaseColor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/BaseColor.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Emissive.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Emissive.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Metallic.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Normal.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/textures/RocketTextures/Roughness.tif
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1665,6 +1755,96 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/AO.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/AO.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/BaseColor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/BaseColor.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Emissive.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Emissive.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Metallic.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Normal.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/textures/RocketTextures/Roughness.png
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2731,6 +2911,96 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/AO.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/AO.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/BaseColor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/BaseColor.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Emissive.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Emissive.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Metallic.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Normal.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Roughness.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/textures/RocketTextures/Roughness.tif
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -3780,6 +4050,96 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/Metal38/Roughness.jpg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/Metal38/Roughness.jpg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/AO.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/AO.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/AO.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/BaseColor.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/BaseColor.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/BaseColor.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Emissive.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Emissive.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Metallic.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Metallic.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Metallic.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Normal.png
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Normal.tif D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Normal.tif
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/textures/RocketTextures/Roughness.png D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/textures/RocketTextures/Roughness.png
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

@@ -38,6 +38,8 @@ add_library(lua53 ${LUA_SOURCE_FILES})
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/ImGUI1.79/include")
 
 # assimp
+set(CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp")
+set(CMAKE_LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/lib")
 include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/include")
 link_directories ("${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/assimp/lib")
 
