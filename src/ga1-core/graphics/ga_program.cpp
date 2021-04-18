@@ -61,6 +61,8 @@ void ga_uniform::set(const ga_cube_texture& tex, uint32_t unit)
 
 ga_uniform::ga_uniform(int32_t location) : _location(location) {}
 
+int32_t ga_uniform::get_location() { return _location; }
+
 ga_shader::ga_shader(const char* source, GLenum type)
 {
 	_handle = glCreateShader(type);

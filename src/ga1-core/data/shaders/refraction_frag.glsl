@@ -5,6 +5,8 @@
 
 uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
+uniform sampler2D u_eyeDepth;
+
 layout (binding = 5) uniform samplerCube u_envMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
@@ -23,6 +25,7 @@ in vec3 o_vertPos;
 in vec3 o_tangent;
 in vec2 texcoord0;
 in vec4 shadow_coord;
+in float o_internal_dist;
 
 struct BaseLight{
 	vec3 color;
@@ -128,17 +131,9 @@ float lookup(float x, float y)
 	return t;
 }
 
-vec3 randVec(vec3 seed) {
 
-		// taken from Book of Shaders by Patricio Gonzalez Vivo & Jen Lowe
-    return (2 * vec3(
-		fract(sin(dot(seed.xy, vec2(12.9898,78.233)))*43758.5453123),
-		fract(sin(dot(seed.xz, vec2(12.9898,78.233)))*43758.5453123),
-		fract(sin(dot(seed.yz, vec2(12.9898,78.233)))*43758.5453123))) - vec3(1,1,1);
-	}
-
-vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
-	
+vec4 blurRefraction(vec3 o_vertPos, vec3 o_normal) {
+	// TODO : the refraction logic
 	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
 	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
 	/*
@@ -163,7 +158,7 @@ vec4 blurReflection(vec3 o_vertPos, vec3 o_normal) {
 	r = -reflect(normalize(-o_vertPos), normalize(o_normal + (roughOffset * f_roughness * 0.1)));
 	r2 = normalize(vec4(r,0) * inverse(u_vMat));
 	samp += 0.2 * texture(u_envMap, r2.xyz);*/
-	return textureLod(u_envMap, r2.xyz, max(f_roughness, 0.001) * CUBE_MAP_LODS);
+	return textureLod(u_envMap, r2.xyz, f_roughness * CUBE_MAP_LODS);
 
 	// return samp;
 }
@@ -234,7 +229,7 @@ void main(void)
 
 	vec4 litColor = color * totalLightv4 + totalSpec;
 
-	vec4 reflectionColor = blurReflection(o_vertPos, normal);
+	vec4 reflectionColor = blurRefraction(o_vertPos, normal);
 
 	vec4 mixedColor = f_metalness * reflectionColor + (1.0 - f_metalness) * litColor;
 

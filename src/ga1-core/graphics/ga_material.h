@@ -173,6 +173,7 @@ public:
 	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
 
 	virtual bool init() override;
+	virtual const char* get_name() override { return "reflective material"; }
 
 	virtual void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP) override;
 
@@ -185,6 +186,40 @@ public:
 	virtual float get_normalStr() { return _normalStr; }
 	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
 
+protected:
+	ga_cube_texture* _envMap;
+
+	bool _useEnvMap;
+
+	float _roughness;
+	float _metalness;
+	float _normalStr;
+	ga_texture* _roughnessMap;
+};
+
+class ga_refractive_lit_material : public ga_lit_material {
+public:
+	ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
+
+	ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
+
+	virtual bool init() override;
+
+	virtual const char* get_name() override { return "refractive material"; }
+
+	virtual float get_roughness();
+	void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, 
+		const ga_light_drawcall& lights, const ga_mat4f& shadowMVP, int depthTexIndex, int normalTexIndex, 
+		const ga_mat4f& u_eyeProj, const ga_vec3f& eyePos, const ga_mat4f& vpMat_for_world_proj);
+	virtual void set_roughness(float roughness);
+
+	virtual float get_metalness() { return _metalness; }
+	virtual void set_metalness(float metalness) { _metalness = metalness; }
+
+	virtual float get_normalStr() { return _normalStr; }
+	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
+
+	virtual ga_texture * get_normalMap() { return _normalmap; }
 protected:
 	ga_cube_texture* _envMap;
 

@@ -265,6 +265,19 @@ int main(int argc, const char** argv)
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
 
+	
+	// refractive torus
+	ga_entity torusRefEnt2("sphere");
+	ga_model torusRefModel2;
+	//generate_torus(1.5f, 0.7f, 30, &torusRefModel2);
+	generate_sphere(30, &torusRefModel2, true);
+
+	ga_material* refr_mat = new ga_refractive_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex);
+	ga_model_component torus_refr_mc(&torusRefEnt2, &torusRefModel2, refr_mat, true);
+	sim->add_entity(&torusRefEnt2);
+	torusRefEnt2.translate({ -5,-7,10 });
+	
+
 	/*
 	{
 	// rocket

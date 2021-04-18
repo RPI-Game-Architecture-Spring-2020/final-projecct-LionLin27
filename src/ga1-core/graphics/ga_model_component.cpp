@@ -168,7 +168,6 @@ void ga_model_component::bind_model(ga_model* model)
 		glEnableVertexAttribArray(4);
 	}
 	if (model->_vertex_format & k_vertex_attribute_internal_dist) {
-		// TODO
 		glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, vertex_size, (GLvoid*)88);
 		glEnableVertexAttribArray(6);
 	}

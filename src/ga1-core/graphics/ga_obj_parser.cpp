@@ -12,7 +12,6 @@
 
 using namespace std;
 
-// TODO : put this somewhere else
 float inline det2(float a, float b, float c, float d) {
 	return a * d - b * c;
 }
@@ -56,7 +55,7 @@ float getDistanceToTri(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c,
 			a.x - b.x, a.x - c.x, dir.x,
 			a.y - b.y, a.y - c.y, dir.y,
 			a.z - b.z, a.z - c.z, dir.z);
-		if (fabs(detA) <= 0.000001) return 0;
+		if (fabs(detA) <= 0.000001) return INFINITY;
 		assert(fabs(detA) >= 0.000001);
 
 		float beta = det3(

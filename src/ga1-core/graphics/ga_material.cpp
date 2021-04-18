@@ -1018,7 +1018,7 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	if (_useNormalMap) {
 		normalmap_uniform.set(*_normalmap, 2);
 	}
-	
+
 	// roughness
 	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
 	roughness_uniform.set(_roughness);
@@ -1042,5 +1042,198 @@ void ga_reflective_lit_material::set_roughness(float roughness) {
 	roughnessUniform.set(roughness);
 }
 float ga_reflective_lit_material::get_roughness() {
+	return _roughness;
+}
+
+// REFRACTIVE LIT MATERIAL
+ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map) : ga_lit_material(texture_file, normalmap_file), _envMap(env_map)
+{
+	_useEnvMap = true;
+}
+
+bool ga_refractive_lit_material::init()
+{
+	std::string source_vs;
+	load_shader("data/shaders/refraction_vert.glsl", source_vs);
+
+	std::string source_fs;
+	load_shader("data/shaders/refraction_frag.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+
+	_texture = new ga_texture();
+	_useTextureMap = true;
+	if (!_texture->load_from_file(_texture_file.c_str()))
+	{
+		std::cerr << "Failed to load texture" << std::endl;
+		_useTextureMap = false;
+	}
+
+
+	_useNormalMap = false;
+	if (_normalmap_file.length() > 0) {
+		_useNormalMap = true;
+		_normalmap = new ga_texture();
+		if (!_normalmap->load_from_file(_normalmap_file.c_str()))
+		{
+			std::cerr << "Failed to load normal map" << std::endl;
+			_useNormalMap = false;
+		}
+	}
+
+	// set initial roughness to 0
+	_roughness = 0.1f;
+	_metalness = 0.5f;
+	_normalStr = 1.0f;
+
+	return true;
+}
+
+
+void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj,
+	const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP,
+	int depthTexIndex, int normalTexIndex, const ga_mat4f& u_eyeProj, const ga_vec3f & eyePos,
+	const ga_mat4f& vpMat_for_world_proj)
+{
+	_ambientLight = { 0.1, 0.1, 0.1 };
+
+	_program->use();
+
+	// directional light
+	ga_directional_light* dirL = lights._dirLight;
+
+	// get the locations of the light and material fields in the shader
+	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
+	// ga_uniform ambLoc = _program->get_uniform("u_directionalLight.base.ambient");
+	ga_uniform diffLoc = _program->get_uniform("u_directionalLight.base.color");
+	// ga_uniform specLoc = _program->get_uniform("light.specular");
+	ga_uniform dirLoc = _program->get_uniform("u_directionalLight.direction");
+	ga_uniform itsLoc = _program->get_uniform("u_directionalLight.base.intensity");
+	// ga_uniform mambLoc = _program->get_uniform("material.ambient");
+	// ga_uniform mdiffLoc = _program->get_uniform("material.diffuse");
+	// ga_uniform mspecLoc = _program->get_uniform("material.specular");
+	// ga_uniform mshiLoc = _program->get_uniform("material.shininess");
+	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
+
+	//  set the uniform light and material values in the shader
+	globalAmbLoc.set(_ambientLight);
+	// ambLoc.set(lightAmbient);
+	diffLoc.set(dirL->_color);
+	// specLoc.set(lightSpecular);
+	dirLoc.set(view.transform_vector(dirL->_direction));
+	itsLoc.set(dirL->_intensity);
+	// mambLoc.set(matAmb);
+	// mdiffLoc.set(matDif);
+	// mspecLoc.set(matSpe);
+	// mshiLoc.set(matShi);
+	shadowMVPLoc.set(shadowMVP);
+
+	// positional lights
+	ga_uniform posLightCountLoc = _program->get_uniform("u_posLightCount");
+	float posLCount = 0.1;
+	for (ga_positional_light* posL : lights._posLightArr) {
+		ga_vec3f transformedPos = view.transform_point(posL->_position);
+		std::string index = std::to_string((int)posLCount);
+		std::string diffName = "u_positionalLights[" + index + "].base.color";
+		std::string posName = "u_positionalLights[" + index + "].position";
+		std::string itsName = "u_positionalLights[" + index + "].base.intensity";
+		ga_uniform diffLoc_p = _program->get_uniform(diffName.c_str());
+		ga_uniform posLoc_p = _program->get_uniform(posName.c_str());
+		ga_uniform itsLoc_p = _program->get_uniform(itsName.c_str());
+
+		diffLoc_p.set(posL->_color);
+		posLoc_p.set(transformedPos);
+		itsLoc_p.set(posL->_intensity);
+
+		posLCount += 1.0;
+	}
+	posLightCountLoc.set(posLCount);
+
+	// env map
+	ga_uniform envMap_uniform = _program->get_uniform("u_envMap");
+	envMap_uniform.set(*_envMap, 5);// no particular reason for 5..
+
+	// fix reflection
+	ga_uniform vMat = _program->get_uniform("u_vMat");
+	vMat.set(view);
+
+	ga_uniform eyePos_uniform = _program->get_uniform("v_eyePos");
+	eyePos_uniform.set(eyePos);
+
+	ga_uniform mvMat = _program->get_uniform("u_mvMat");
+	ga_uniform mvp_uniform = _program->get_uniform("u_mvp");
+	ga_uniform texture_uniform = _program->get_uniform("u_texture");
+	mvMat.set(transform * view);
+	mvp_uniform.set(transform * view * proj);
+	texture_uniform.set(*_texture, 0);
+
+	ga_uniform vpMat_uniform = _program->get_uniform("u_vpMat_proj");
+	vpMat_uniform.set(vpMat_for_world_proj);
+
+	ga_uniform eyeProj_uniform = _program->get_uniform("u_eyeProj");
+	eyeProj_uniform.set(u_eyeProj);
+
+	ga_uniform useTexture = _program->get_uniform("b_useTexture");
+	useTexture.set(true);
+
+	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
+	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
+
+	useNormalMap.set(_useNormalMap);
+	if (_useNormalMap) {
+		normalmap_uniform.set(*_normalmap, 2);
+	}
+
+	// roughness
+	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
+	roughness_uniform.set(_roughness);
+
+	ga_uniform metalness_uniform = _program->get_uniform("f_metalness");
+	metalness_uniform.set(_metalness);
+
+	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
+	normalStr_uniform.set(_normalStr);
+
+	ga_uniform backNormal_uniform = _program->get_uniform("u_backNormals");
+	ga_uniform backDepth_uniform = _program->get_uniform("u_backDepths");
+
+	//std::cout << backDepth_uniform.get_location() << std::endl;
+	//std::cout << backNormal_uniform.get_location() << std::endl;
+	//backNormal_uniform.set(normalTexIndex);
+	//backDepth_uniform.set(depthTexIndex);
+	
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glDepthMask(GL_TRUE);
+}
+
+void ga_refractive_lit_material::set_roughness(float roughness) {
+	_roughness = roughness;
+
+	_program->use();
+	ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
+	roughnessUniform.set(roughness);
+}
+float ga_refractive_lit_material::get_roughness() {
 	return _roughness;
 }

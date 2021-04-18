@@ -32,8 +32,10 @@ public:
 	void set(const class ga_texture& tex, uint32_t unit);
 	void set(const class ga_cube_texture& tex, uint32_t unit);
 
+	int32_t get_location();
 private:
 	ga_uniform(int32_t location);
+
 
 	const int32_t _location;
 };
