@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\cc63f21c6b0856a0b629498c6ca861b7\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\e77d660af75b82fedd807ff350056465\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{3FB3F77C-DDB4-344D-9BA2-02BB027F6D44}</UniqueIdentifier>
+      <UniqueIdentifier>{2F792A30-DCD1-3F90-A4D9-CAD603C3EFA4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

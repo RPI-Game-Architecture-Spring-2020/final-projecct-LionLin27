@@ -1,115 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lapi.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lapi.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lauxlib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lauxlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lbaselib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lbaselib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lbitlib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lbitlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lcode.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lcode.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lcorolib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lcorolib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lctype.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lctype.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldblib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldblib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldebug.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldebug.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldo.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldo.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldump.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ldump.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lfunc.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lfunc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lgc.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lgc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\linit.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\linit.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\liolib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\liolib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\llex.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\llex.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lmathlib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lmathlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lmem.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lmem.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\loadlib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\loadlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lobject.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lobject.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lopcodes.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lopcodes.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\loslib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\loslib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lparser.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lparser.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstate.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstring.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstring.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstrlib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lstrlib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltable.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltablib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltablib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltm.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\ltm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lua.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lua.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lundump.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lundump.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lutf8lib.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lutf8lib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lvm.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lvm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lzio.c">
+    <ClCompile Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\lua-5.3.3\src\lzio.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{09F14083-C4C1-38FB-BC6B-E058249C58D8}</UniqueIdentifier>
+      <UniqueIdentifier>{AE4E04EA-E6C1-3F89-A754-3247741E8198}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

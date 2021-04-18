@@ -1,4 +1,4 @@
-# Install script for directory: D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core
+# Install script for directory: C:/Users/idemaj/Desktop/LyonEngine/final-projecct-LionLin27/src/ga1-core
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/SDL2-2.0.5/cmake_install.cmake")
+  include("C:/Users/idemaj/Desktop/LyonEngine/final-projecct-LionLin27/build/ga1-core-win64/SDL2-2.0.5/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/idemaj/Desktop/LyonEngine/final-projecct-LionLin27/build/ga1-core-win64/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DF1A6002-24D8-3A1D-AF81-7DC83E2DAB0B}</ProjectGuid>
+    <ProjectGuid>{4B4FD089-8AE3-3608-8F52-96BCF3C00881}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -77,7 +77,7 @@
       <StdOutEncoding>UTF-8</StdOutEncoding>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\cmake3.18.3\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -89,7 +89,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -100,7 +100,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <StdOutEncoding>UTF-8</StdOutEncoding>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\cmake3.18.3\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -112,7 +112,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -123,7 +123,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <StdOutEncoding>UTF-8</StdOutEncoding>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\cmake3.18.3\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -135,7 +135,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\SDL2-2.0.5\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\stb;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\3rdparty\glew-2.0.0\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\lua-5.3.3\src;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core\..\3rdparty\ImGUI1.79\include;C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\src\ga1-core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -146,7 +146,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <StdOutEncoding>UTF-8</StdOutEncoding>
       <Message></Message>
       <Command>setlocal
-"C:\Program Files\cmake3.18.3\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -DBUILD_TYPE=$(Configuration) -P cmake_install.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -157,7 +157,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\cc63f21c6b0856a0b629498c6ca861b7\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\e77d660af75b82fedd807ff350056465\INSTALL_force.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd .
@@ -169,7 +169,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> </Message>
@@ -183,7 +183,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"> </Message>
@@ -197,7 +197,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"> </Message>
@@ -211,20 +211,20 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\ZERO_CHECK.vcxproj">
-      <Project>{042AC311-60F4-36EA-B2D0-66BE6DAA4C26}</Project>
+    <ProjectReference Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\ZERO_CHECK.vcxproj">
+      <Project>{6CFAF1A5-5E17-3207-A3C1-3B843B57BE92}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\build\ga1-core-win64\ALL_BUILD.vcxproj">
-      <Project>{4C186481-DC29-357E-94D2-E3B11D8217EB}</Project>
+    <ProjectReference Include="C:\Users\idemaj\Desktop\LyonEngine\final-projecct-LionLin27\build\ga1-core-win64\ALL_BUILD.vcxproj">
+      <Project>{8BF43EE7-1496-32A6-9652-59093C850E81}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
