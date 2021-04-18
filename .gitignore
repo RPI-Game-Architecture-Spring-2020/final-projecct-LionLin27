@@ -27,6 +27,7 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+!src/3rdparty/*/bin/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
