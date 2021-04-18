@@ -72,6 +72,7 @@ StyleCopReport.xml
 *.ilk
 *.meta
 *.obj
+!src/*/data/models/*.obj
 *.iobj
 *.pch
 *.pdb
@@ -93,6 +94,9 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+
+# ga builds
+build/*/
 
 # Chutzpah Test files
 _Chutzpah*
