@@ -19,6 +19,7 @@
 #include "graphics/ga_geometry.h"
 #include "graphics/ga_light_component.h"
 #include "graphics/ga_light.h"
+#include "graphics/ga_refraction_pass.h"
 #include "math/ga_mat4f.h"
 #include "math/ga_quatf.h"
 
@@ -39,6 +40,7 @@
 
 // TODO: move this somewhere else
 ga_shadow _shadow;
+ga_refraction_pass _refractionPass;
 
 ga_output::ga_output(void* win) : _window(win)
 {
@@ -57,6 +59,9 @@ ga_output::ga_output(void* win) : _window(win)
 
 	_shadow = ga_shadow();
 	_shadow.init(static_cast<SDL_Window*>(_window));
+
+	_refractionPass = ga_refraction_pass();
+	_refractionPass.init(static_cast<SDL_Window*>(_window));
 }
 
 ga_output::~ga_output()
@@ -138,6 +143,28 @@ void ga_output::update(ga_frame_params* params)
 	view.make_lookat_rh(ga_vec3f::z_vector(), -ga_vec3f::z_vector(), ga_vec3f::y_vector());
 	ga_mat4f view_ortho = view * ortho;
 
+	// REFRACTION PASS
+	// MAKE 2 TEXTURES : a depth texture and color texture for back normals
+	_refractionPass.readyBuffer();
+	for (auto& d : params->_static_drawcalls) {
+		ga_refractive_lit_material* rMat = dynamic_cast<ga_refractive_lit_material*>(d._material);
+		if (rMat) {
+			ga_mat4f mMat = d._transform;
+
+			_refractionPass.bind(params->_view, perspective, d._transform, params->_camPos, rMat);
+			glBindVertexArray(d._vao);
+
+			if (d._drawBuffer) {
+				glDrawArrays(d._draw_mode, 0, d._index_count);
+			}
+			else {
+				glDrawElements(d._draw_mode, d._index_count, GL_UNSIGNED_SHORT, 0);
+			}
+
+		}
+	}
+	_refractionPass.finishPass();
+
 	ga_mat4f sky_v;
 	sky_v.make_identity();
 	sky_v.translate(params->_camPos.scale_result(-1));
@@ -160,8 +187,14 @@ void ga_output::update(ga_frame_params* params)
 		ga_mat4f shadowMVP2;
 		if (d._lit) {
 			shadowMVP2 = d._transform * lightVP * b;
+			ga_refractive_lit_material* rMat = dynamic_cast<ga_refractive_lit_material*>(d._material);
 			if (d._drawTerrain) {
 				((ga_terrain_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
+			}
+			else if (rMat) {
+				// TODO : texture bindings are current set directly from the shaders
+				_refractionPass.bindTextures(10, 11);
+				rMat->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2, 10, 11, d._transform * params->_view * perspective * b, params->_camPos, params->_view * perspective * b);
 			}
 			else {
 				((ga_lit_material*)d._material)->bindLight(params->_view, perspective, d._transform, params->_lights, shadowMVP2);
@@ -356,6 +389,33 @@ void ga_output::update(ga_frame_params* params)
 				if (std::abs(metalness - reflect_mat->get_metalness()) > 0.01) {
 					reflect_mat->set_metalness(metalness);
 				}
+			}
+
+			// refractive materials
+			if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
+				ga_refractive_lit_material* refract_mat = dynamic_cast<ga_refractive_lit_material*>(mat);
+
+				float normalStr = refract_mat->get_normalStr();
+				ImGui::SliderFloat("Normal Strength", &normalStr, 0.001f, 1.0f);
+				if (std::abs(normalStr - refract_mat->get_normalStr()) > 0.01) {
+					refract_mat->set_normalStr(normalStr);
+				}
+
+				float roughness = refract_mat->get_roughness();
+				ImGui::SliderFloat("Roughness", &roughness, 0.001f, 1.0f);
+				if (std::abs(roughness - refract_mat->get_roughness()) > 0.01) {
+					refract_mat->set_roughness(roughness);
+				}
+
+				float metalness = refract_mat->get_metalness();
+				ImGui::SliderFloat("Metalness", &metalness, 0.001f, 1.0f);
+				if (std::abs(metalness - refract_mat->get_metalness()) > 0.01) {
+					refract_mat->set_metalness(metalness);
+				}
+
+				float ior = refract_mat->get_IOR();
+				ImGui::SliderFloat("IOR", &ior, 1.0f, 1.5f);
+				refract_mat->set_IOR(ior);
 			}
 		}
 		
