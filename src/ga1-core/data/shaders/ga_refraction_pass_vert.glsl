@@ -14,7 +14,6 @@ uniform mat4 u_mvp;
 uniform mat4 u_mvMat;
 uniform mat4 u_vMat;
 
-
 uniform bool b_useNormalMap;
 
 void main(void)

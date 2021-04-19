@@ -931,7 +931,7 @@ bool ga_reflective_lit_material::init()
 	_useTextureMap = true;
 	if (!_texture->load_from_file(_texture_file.c_str()))
 	{
-		std::cerr << "Failed to load texture" << std::endl;
+		std::cerr << "Failed to load textures" << std::endl;
 		_useTextureMap = false;
 	}
 
@@ -1096,7 +1096,8 @@ float ga_reflective_lit_material::get_roughness() {
 
 
 // REFRACTIVE LIT MATERIAL
-ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map) : ga_lit_material(texture_file, normalmap_file), _envMap(env_map)
+ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file) :
+	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file)
 {
 	_useEnvMap = true;
 }
@@ -1150,6 +1151,29 @@ bool ga_refractive_lit_material::init()
 			_useNormalMap = false;
 		}
 	}
+
+	_useRoughMap = false;
+	if (_roughness_file.length() > 0) {
+		_useRoughMap = true;
+		_roughnessMap = new ga_texture();
+		if (!_roughnessMap->load_from_file(_roughness_file.c_str()))
+		{
+			std::cerr << "Failed to load roughness map" << std::endl;
+			_useRoughMap = false;
+		}
+	}
+
+	_useMetalMap = false;
+	if (_metallic_file.length() > 0) {
+		_useMetalMap = true;
+		_metallicMap = new ga_texture();
+		if (!_metallicMap->load_from_file(_metallic_file.c_str()))
+		{
+			std::cerr << "Failed to load metallic map" << std::endl;
+			_useMetalMap = false;
+		}
+	}
+
 
 	// set initial roughness to 0
 	_roughness = 0.1f;
@@ -1249,10 +1273,23 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
-
 	useNormalMap.set(_useNormalMap);
 	if (_useNormalMap) {
-		normalmap_uniform.set(*_normalmap, 2);
+		normalmap_uniform.set(*_normalmap, 1);
+	}
+
+	ga_uniform useRoughMap = _program->get_uniform("b_useRoughMap");
+	ga_uniform roughmap_uniform = _program->get_uniform("u_roughnessMap");
+	useRoughMap.set(_useRoughMap);
+	if (_useRoughMap) {
+		roughmap_uniform.set(*_roughnessMap, 2);
+	}
+
+	ga_uniform useMetalMap = _program->get_uniform("b_useMetalMap");
+	ga_uniform metalmap_uniform = _program->get_uniform("u_metallicMap");
+	useMetalMap.set(_useMetalMap);
+	if (_useMetalMap) {
+		metalmap_uniform.set(*_metallicMap, 3);
 	}
 
 	// roughness
@@ -1267,12 +1304,12 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	ga_uniform ior_uniform = _program->get_uniform("f_ior");
 	ior_uniform.set(_ior);
 
+
+
 	ga_uniform backNormal_uniform = _program->get_uniform("u_backNormals");
 	ga_uniform backDepth_uniform = _program->get_uniform("u_backDepths");
 
-	// Hardcoded to 10 and 11
-	// backNormal_uniform.set(normalTexIndex);
-	// backDepth_uniform.set(depthTexIndex);
+	// Properties and normal/depth buffers are Hardcoded to 10 and 11
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

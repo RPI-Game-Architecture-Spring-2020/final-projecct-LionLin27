@@ -51,7 +51,7 @@ bool ga_refraction_pass::init(SDL_Window* window)
 
 	_depthTex = new ga_texture();
 	_normalTex = new ga_texture();
-	_roughnessTex = new ga_texture();
+	_propertyTex = new ga_texture();
 	_program = new ga_program();
 	_program->attach(*_vs);
 	_program->attach(*_fs);
@@ -70,7 +70,7 @@ void ga_refraction_pass::readyBuffer() {
 	glBindFramebuffer(GL_FRAMEBUFFER, _Buffer);
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, *(_depthTex->get_handle()), 0);
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, *(_normalTex->get_handle()), 0);
-	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, *(_roughnessTex->get_handle()), 0);
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, *(_propertyTex->get_handle()), 0);
 
 	glClearColor(0, 1, 1, 1);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -97,7 +97,7 @@ void ga_refraction_pass::finishPass() {
 
 void ga_refraction_pass::bindTextures(int roughnessTexIndex, int normalTexIndex) {
 	glActiveTexture(GL_TEXTURE0 + roughnessTexIndex);
-	glBindTexture(GL_TEXTURE_2D, *(_roughnessTex->get_handle()));
+	glBindTexture(GL_TEXTURE_2D, *(_propertyTex->get_handle()));
 	glActiveTexture(GL_TEXTURE0 + normalTexIndex);
 	glBindTexture(GL_TEXTURE_2D, *(_normalTex->get_handle()));
 }
@@ -105,15 +105,6 @@ void ga_refraction_pass::bindTextures(int roughnessTexIndex, int normalTexIndex)
 void ga_refraction_pass::bind(const ga_mat4f& view, const ga_mat4f& proj, 
 	const ga_mat4f& transform, const ga_vec3f& eyePos, ga_refractive_lit_material * mat)
 {
-	/*
-CC-uniform sampler2D u_normMap;
-CC-uniform mat4 u_mvMat;
-CC-uniform mat4 u_vMat;
-CC-uniform bool b_useNormalMap;
-CC-uniform float f_normalStr;
-CC-uniform mat4 u_mvp;
-CC-uniform mat4 u_mvMat;
-	*/
 	_program->use();
 
 	ga_uniform vMat = _program->get_uniform("u_vMat");
@@ -125,19 +116,34 @@ CC-uniform mat4 u_mvMat;
 	mvMat.set(transform * view);
 	mvp_uniform.set(transform * view * proj);
 
-	ga_uniform eyePos_uniform = _program->get_uniform("v_eyePos");
-	eyePos_uniform.set(eyePos);
+	ga_uniform eyePos_unifor = _program->get_uniform("v_eyePos");
+	eyePos_unifor.set(eyePos);
+
+	ga_uniform uni_roughness = _program->get_uniform("f_roughness");
+	uni_roughness.set(mat->get_roughness());
+
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
-
-	ga_uniform uni_roughness = _program->get_uniform("u_roughness");
-	uni_roughness.set(mat->get_roughness());
+	ga_uniform useRoughMap = _program->get_uniform("b_useRoughMap");
+	ga_uniform roughmap_uniform = _program->get_uniform("u_roughnessMap");
+	ga_uniform useMetalMap = _program->get_uniform("b_useMetalMap");
+	ga_uniform metalmap_uniform = _program->get_uniform("u_metallicMap");
 
 	useNormalMap.set(mat->get_useNormalMap());
+	std::cout << mat->get_useNormalMap() << std::endl;
 	if (mat->get_useNormalMap()) {
-		normalmap_uniform.set(*(mat->get_normalMap()), 2);
+		normalmap_uniform.set(*(mat->get_normalMap()), 1);
 	}
+	useRoughMap.set(mat->get_useRoughnessMap());
+	if (mat->get_useRoughnessMap()) {
+		roughmap_uniform.set(*(mat->get_roughnessMap()), 2);
+	}
+	useMetalMap.set(mat->get_useMetallicMap());
+	if (mat->get_useMetallicMap()) {
+		metalmap_uniform.set(*(mat->get_metallicMap()), 3);
+	}
+
 	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
 	normalStr_uniform.set(mat->get_normalStr());
 
@@ -182,8 +188,8 @@ void ga_refraction_pass::setupRefractionBuffers(SDL_Window* window)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	// roughness
-	glGenTextures(1, _roughnessTex->get_handle());
-	glBindTexture(GL_TEXTURE_2D, *(_roughnessTex->get_handle()));
+	glGenTextures(1, _propertyTex->get_handle());
+	glBindTexture(GL_TEXTURE_2D, *(_propertyTex->get_handle()));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RG32F,
 		_scSizeX, _scSizeY, 0, GL_RG, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

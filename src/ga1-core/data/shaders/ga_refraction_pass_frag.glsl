@@ -1,14 +1,25 @@
 #version 430
 
-uniform sampler2D u_normMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
 uniform mat4 u_vMat;
 
 uniform vec3 v_eyePos;
+
+uniform sampler2D u_texture;
+uniform sampler2D u_normMap;
+uniform sampler2D u_roughnessMap;
+uniform sampler2D u_metallicMap;
+
+uniform bool b_useTexture;
 uniform bool b_useNormalMap;
+uniform bool b_useRoughMap;
+uniform bool b_useMetalMap;
+
+//uniform bool b_useEnvMap;
+uniform float f_roughness;
+uniform float f_metalness;
 uniform float f_normalStr;
-uniform float u_roughness;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -17,7 +28,7 @@ in vec2 texcoord0;
 in vec3 o_worldPos;
 
 layout(location = 0) out vec4 normalTex;
-layout(location = 1) out float roughnessTex;
+layout(location = 1) out vec2 propTex;
 
 vec3 calcNewNormal() {
 	vec3 normal = normalize(o_normal);
@@ -45,6 +56,16 @@ void main(void)
 		normal = calcNewNormal();
 	}
 
+	float roughness = f_roughness;
+	float metallic = f_metalness;
+	if (b_useRoughMap) {
+		roughness = roughness * texture(u_roughnessMap, texcoord0).x;
+	}
+	if (b_useMetalMap) {
+		metallic = metallic * texture(u_metallicMap, texcoord0).x;
+	}
+
 	normalTex = vec4(normal.xyz, (distance(o_worldPos, v_eyePos)));
-	roughnessTex = u_roughness;
+	// TODO : after you get everything else working
+	propTex = vec2(roughness, metallic);
 }

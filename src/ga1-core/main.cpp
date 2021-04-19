@@ -167,7 +167,7 @@ int main(int argc, const char** argv)
 	generate_sphere(30, &torusRefModel2);
 	computeInteriorDistances(&torusRefModel2);
 
-	ga_material* refr_mat = new ga_refractive_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex);
+	ga_material* refr_mat = new ga_refractive_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex, "data/textures/RocketTextures/Roughness.png", "data/textures/RocketTextures/Metallic.png");
 	ga_model_component torus_refr_mc(&torusRefEnt2, &torusRefModel2, refr_mat, true);
 	sim->add_entity(&torusRefEnt2);
 	torusRefEnt2.translate({ -10,-7,10 });

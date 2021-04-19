@@ -395,6 +395,21 @@ void ga_output::update(ga_frame_params* params)
 			if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
 				ga_refractive_lit_material* refract_mat = dynamic_cast<ga_refractive_lit_material*>(mat);
 
+
+				bool useRoughMap = refract_mat->get_useRoughnessMap();
+				ImGui::Checkbox("Use Roughness Map", &useRoughMap);
+				if (useRoughMap != refract_mat->get_useRoughnessMap()) {
+					std::cout << "use normal map toggled" << std::endl;
+					refract_mat->set_useRoughnessMap(useRoughMap);
+				}
+
+				bool useMetalMap = refract_mat->get_useMetallicMap();
+				ImGui::Checkbox("Use Metallic Map", &useMetalMap);
+				if (useMetalMap != refract_mat->get_useMetallicMap()) {
+					std::cout << "use metallic map toggled" << std::endl;
+					refract_mat->set_useMetallicMap(useMetalMap);
+				}
+
 				float normalStr = refract_mat->get_normalStr();
 				ImGui::SliderFloat("Normal Strength", &normalStr, 0.001f, 1.0f);
 				if (std::abs(normalStr - refract_mat->get_normalStr()) > 0.01) {
