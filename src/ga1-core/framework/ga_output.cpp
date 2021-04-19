@@ -413,6 +413,10 @@ void ga_output::update(ga_frame_params* params)
 				if (std::abs(metalness - refract_mat->get_metalness()) > 0.01) {
 					refract_mat->set_metalness(metalness);
 				}
+
+				float ior = refract_mat->get_IOR();
+				ImGui::SliderFloat("IOR", &ior, 1.0f, 1.5f);
+				refract_mat->set_IOR(ior);
 			}
 		}
 		

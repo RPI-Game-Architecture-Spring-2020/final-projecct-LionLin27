@@ -145,7 +145,7 @@ float lookup(float x, float y)
 
 vec4 blurRefraction(vec3 vertPos, vec3 normal) {
 	vec3 I = normalize(o_worldPos - v_eyePos);
-    vec3 T_1 = refract(I, normalize(normal), 1.0 / 1.22);
+    vec3 T_1 = refract(I, normalize(normal), 1.0 / f_ior);
 
     vec4 backNormals = textureProj(u_backNormals, screen_coord);
 
@@ -158,8 +158,12 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
 
     vec3 N_2 = textureProj(u_backNormals, vec4(P_2, 1) * u_vpMat_proj).xyz;
 
-    vec3 T_2 = refract(T_1, -normalize(N_2), 1.22);
-	return texture(u_envMap, T_2);
+    vec3 T_2 = refract(T_1, -normalize(N_2), f_ior);
+    // If N_2 isn't picked up or T_2 isn't a good refraction, revert to T_1
+    int n_good = int(step(0.5, length(N_2)));
+    int t_good = int(step(0.01, length(T_2)));
+    float all_good = float(n_good & t_good);
+	return texture(u_envMap, (all_good * T_2) + ((1 - all_good) * T_1));
 	// return vec4(N_2, 1);
 }
 

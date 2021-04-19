@@ -1155,6 +1155,7 @@ bool ga_refractive_lit_material::init()
 	_roughness = 0.1f;
 	_metalness = 0.5f;
 	_normalStr = 1.0f;
+	_ior = 1.0f;
 
 	return true;
 }
@@ -1263,27 +1264,17 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
 	normalStr_uniform.set(_normalStr);
+	ga_uniform ior_uniform = _program->get_uniform("f_ior");
+	ior_uniform.set(_ior);
 
 	ga_uniform backNormal_uniform = _program->get_uniform("u_backNormals");
 	ga_uniform backDepth_uniform = _program->get_uniform("u_backDepths");
 
-	//std::cout << backDepth_uniform.get_location() << std::endl;
-	//std::cout << backNormal_uniform.get_location() << std::endl;
-	//backNormal_uniform.set(normalTexIndex);
-	//backDepth_uniform.set(depthTexIndex);
+	// Hardcoded to 10 and 11
+	// backNormal_uniform.set(normalTexIndex);
+	// backDepth_uniform.set(depthTexIndex);
 
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
-}
-
-void ga_refractive_lit_material::set_roughness(float roughness) {
-	_roughness = roughness;
-
-	_program->use();
-	ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
-	roughnessUniform.set(roughness);
-}
-float ga_refractive_lit_material::get_roughness() {
-	return _roughness;
 }

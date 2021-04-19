@@ -218,17 +218,20 @@ public:
 
 	virtual const char* get_name() override { return "refractive material"; }
 
-	virtual float get_roughness();
+	virtual float get_roughness() { return _roughness; }
 	void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform,
 		const ga_light_drawcall& lights, const ga_mat4f& shadowMVP, int depthTexIndex, int normalTexIndex,
 		const ga_mat4f& u_eyeProj, const ga_vec3f& eyePos, const ga_mat4f& vpMat_for_world_proj);
-	virtual void set_roughness(float roughness);
+	virtual void set_roughness(float roughness) { _roughness = roughness; }
 
 	virtual float get_metalness() { return _metalness; }
 	virtual void set_metalness(float metalness) { _metalness = metalness; }
 
 	virtual float get_normalStr() { return _normalStr; }
 	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
+
+	virtual float get_IOR() { return _ior;  }
+	virtual void set_IOR(float ior) { _ior = ior; }
 
 	virtual ga_texture* get_normalMap() { return _normalmap; }
 protected:
@@ -239,6 +242,7 @@ protected:
 	float _roughness;
 	float _metalness;
 	float _normalStr;
+	float _ior;
 	ga_texture * _roughnessMap;
 };
 
