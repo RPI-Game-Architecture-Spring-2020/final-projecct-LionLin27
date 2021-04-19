@@ -51,6 +51,7 @@ bool ga_refraction_pass::init(SDL_Window* window)
 
 	_depthTex = new ga_texture();
 	_normalTex = new ga_texture();
+	_roughnessTex = new ga_texture();
 	_program = new ga_program();
 	_program->attach(*_vs);
 	_program->attach(*_fs);
@@ -69,6 +70,7 @@ void ga_refraction_pass::readyBuffer() {
 	glBindFramebuffer(GL_FRAMEBUFFER, _Buffer);
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, *(_depthTex->get_handle()), 0);
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, *(_normalTex->get_handle()), 0);
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, *(_roughnessTex->get_handle()), 0);
 
 	glClearColor(0, 1, 1, 1);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -90,12 +92,12 @@ void ga_refraction_pass::finishPass() {
 	glCullFace(GL_BACK);
 	//glDrawBuffer(GL_FRONT);
 	glDisable(GL_POLYGON_OFFSET_FILL);	// artifact reduction, continued
-	//glDrawBuffer(GL_FRONT);
+	glDrawBuffer(GL_FRONT);
 }
 
-void ga_refraction_pass::bindTextures(int depthTexIndex, int normalTexIndex) {
-	glActiveTexture(GL_TEXTURE0 + depthTexIndex);
-	glBindTexture(GL_TEXTURE_2D, *(_depthTex->get_handle()));
+void ga_refraction_pass::bindTextures(int roughnessTexIndex, int normalTexIndex) {
+	glActiveTexture(GL_TEXTURE0 + roughnessTexIndex);
+	glBindTexture(GL_TEXTURE_2D, *(_roughnessTex->get_handle()));
 	glActiveTexture(GL_TEXTURE0 + normalTexIndex);
 	glBindTexture(GL_TEXTURE_2D, *(_normalTex->get_handle()));
 }
@@ -129,6 +131,9 @@ CC-uniform mat4 u_mvMat;
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
 
+	ga_uniform uni_roughness = _program->get_uniform("u_roughness");
+	uni_roughness.set(mat->get_roughness());
+
 	useNormalMap.set(mat->get_useNormalMap());
 	if (mat->get_useNormalMap()) {
 		normalmap_uniform.set(*(mat->get_normalMap()), 2);
@@ -136,6 +141,8 @@ CC-uniform mat4 u_mvMat;
 	ga_uniform normalStr_uniform = _program->get_uniform("f_normalStr");
 	normalStr_uniform.set(mat->get_normalStr());
 
+	GLenum buffers[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
+	glDrawBuffers(2, buffers);
 }
 
 void ga_refraction_pass::setupRefractionBuffers(SDL_Window* window)
@@ -151,7 +158,7 @@ void ga_refraction_pass::setupRefractionBuffers(SDL_Window* window)
 
 	glGenTextures(1, _depthTex->get_handle());
 	glBindTexture(GL_TEXTURE_2D, *(_depthTex->get_handle()));
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24,
 		_scSizeX, _scSizeY, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -166,6 +173,19 @@ void ga_refraction_pass::setupRefractionBuffers(SDL_Window* window)
 	glBindTexture(GL_TEXTURE_2D, *(_normalTex->get_handle()));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F,
 		_scSizeX, _scSizeY, 0, GL_RGBA, GL_FLOAT, 0);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	// roughness
+	glGenTextures(1, _roughnessTex->get_handle());
+	glBindTexture(GL_TEXTURE_2D, *(_roughnessTex->get_handle()));
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RG32F,
+		_scSizeX, _scSizeY, 0, GL_RG, GL_FLOAT, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);

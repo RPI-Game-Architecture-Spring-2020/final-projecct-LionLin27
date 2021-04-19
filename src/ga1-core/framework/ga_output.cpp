@@ -150,8 +150,8 @@ void ga_output::update(ga_frame_params* params)
 		ga_refractive_lit_material* rMat = dynamic_cast<ga_refractive_lit_material*>(d._material);
 		if (rMat) {
 			ga_mat4f mMat = d._transform;
-			_refractionPass.bind(params->_view, perspective, d._transform, params->_camPos, rMat);
 
+			_refractionPass.bind(params->_view, perspective, d._transform, params->_camPos, rMat);
 			glBindVertexArray(d._vao);
 
 			if (d._drawBuffer) {
@@ -164,7 +164,6 @@ void ga_output::update(ga_frame_params* params)
 		}
 	}
 	_refractionPass.finishPass();
-
 
 	ga_mat4f sky_v;
 	sky_v.make_identity();

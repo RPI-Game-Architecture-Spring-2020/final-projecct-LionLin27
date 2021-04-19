@@ -31,6 +31,7 @@ private:
 	ga_texture* _depthTex;
 	uint32_t _Buffer;
 	ga_texture* _normalTex;
+	ga_texture* _roughnessTex;
 	uint32_t _normalBuffer;
 	int _scSizeX, _scSizeY;
 };

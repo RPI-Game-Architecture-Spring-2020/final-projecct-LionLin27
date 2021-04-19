@@ -8,12 +8,16 @@ uniform mat4 u_vMat;
 uniform vec3 v_eyePos;
 uniform bool b_useNormalMap;
 uniform float f_normalStr;
+uniform float u_roughness;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
 in vec3 o_tangent;
 in vec2 texcoord0;
 in vec3 o_worldPos;
+
+layout(location = 0) out vec4 normalTex;
+layout(location = 1) out float roughnessTex;
 
 vec3 calcNewNormal() {
 	vec3 normal = normalize(o_normal);
@@ -41,5 +45,6 @@ void main(void)
 		normal = calcNewNormal();
 	}
 
-	gl_FragColor = vec4(normal.xyz, (distance(o_worldPos, v_eyePos)));
+	normalTex = vec4(normal.xyz, (distance(o_worldPos, v_eyePos)));
+	roughnessTex = u_roughness;
 }
