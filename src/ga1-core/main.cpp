@@ -414,6 +414,20 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	return sphereEnt;
 }
 
+ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+	ga_entity* ent = new ga_entity("cube");
+	ga_model* model = new ga_model();
+	generate_cube(model);
+	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
+
+	ga_model_component* mce = new ga_model_component(ent, model, lit_mat2, true);
+	sim->add_entity(ent);
+
+	ent->set_position(pos);
+
+	return ent;
+}
+
 ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	// procedual sphere
 	ga_entity* torusEnt = new ga_entity("torus");
@@ -484,6 +498,13 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10), selectedTP);
 		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
+	}
+	if (params->_herald->_create_cube) {
+		ga_vec3f pos = params->_camPos;
+		ga_vec3f dir = params->_camDir;
+		ga_entity* new_ent = create_cube(sim, pos + dir.scale_result(10), selectedTP);
+		sim->select_last_ent();
+		params->_herald->_create_cube = false;
 	}
 	if (params->_herald->_create_torus) {
 		ga_vec3f pos = params->_camPos;

@@ -403,6 +403,9 @@ void ga_output::update(ga_frame_params* params)
 		if (ImGui::Button("Create Sphere")) {
 			params->_herald->_create_sphere = true;
 		}
+		if (ImGui::Button("Create Cube")) {
+			params->_herald->_create_cube = true;
+		}
 		if (ImGui::Button("Create Torus")) {
 			params->_herald->_create_torus = true;
 		}

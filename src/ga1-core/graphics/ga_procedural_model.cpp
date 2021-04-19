@@ -7,6 +7,8 @@
 #include <cmath>
 #include <vector>
 
+#include <cassert>
+
 void generate_arrow(struct ga_model* model) {
 	int numVertices;
 	int numIndices;
@@ -76,6 +78,139 @@ void generate_plane(struct ga_model* model) {
 		v._uv = texCoords[i];
 
 		v._normal = normals[i];
+
+		model->_vertices.push_back(v);
+	}
+}
+
+void generate_cube(struct ga_model* model) {
+	static ga_vec3f vertices[] = {
+		// Front
+		-1.0, -1.0,  1.0,
+		 1.0, -1.0,  1.0,
+		 1.0,  1.0,  1.0,
+		-1.0,  1.0,  1.0,
+		// Top
+		-1.0,  1.0,  1.0,
+		 1.0,  1.0,  1.0,
+		 1.0,  1.0, -1.0,
+		-1.0,  1.0, -1.0,
+		// Back
+		 1.0, -1.0, -1.0,
+		-1.0, -1.0, -1.0,
+		-1.0,  1.0, -1.0,
+		 1.0,  1.0, -1.0,
+		 // Bottom
+		 -1.0, -1.0, -1.0,
+		  1.0, -1.0, -1.0,
+		  1.0, -1.0,  1.0,
+		 -1.0, -1.0,  1.0,
+		 // Left
+		 -1.0, -1.0, -1.0,
+		 -1.0, -1.0,  1.0,
+		 -1.0,  1.0,  1.0,
+		 -1.0,  1.0, -1.0,
+		 // Right
+		  1.0, -1.0,  1.0,
+		  1.0, -1.0, -1.0,
+		  1.0,  1.0, -1.0,
+		  1.0,  1.0,  1.0,
+	};
+	static ga_vec2f texcoords[] = {
+		// Front
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// Top
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// Back
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// Bottom
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// Left
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+		// Right
+		0.0, 0.0,
+		1.0, 0.0,
+		1.0, 1.0,
+		0.0, 1.0,
+	};
+	static short indices[] = {
+		// Front
+		0,  1,  2,
+		2,  3,  0,
+		// Top
+		4,  5,  6,
+		6,  7,  4,
+		// Back
+		8,  9, 10,
+		10, 11,  8,
+		// Bottom
+		12, 13, 14,
+		14, 15, 12,
+		// Left
+		16, 17, 18,
+		18, 19, 16,
+		// Right
+		20, 21, 22,
+		22, 23, 20,
+	};
+
+	int numVertices = uint32_t(sizeof(vertices) / sizeof(*vertices));
+	int numIndices = uint32_t(sizeof(indices) / sizeof(*indices));
+
+	assert(numVertices == 24);
+	assert(numIndices == 36);
+
+	model->_vertex_format |= k_vertex_attribute_uv;
+	model->_vertex_format |= k_vertex_attribute_normal;
+	model->_vertex_format |= k_vertex_attribute_tangent;
+
+	for (int i = 0; i < numIndices; i++) {
+		ga_vertex v;
+		int index = indices[i];
+		v._position = vertices[index];
+		v._uv = texcoords[index];
+
+		if (i / 6 == 0) {
+			//front
+			v._normal = { 0,0,1 };
+			v._tangent = { 1,0,0 };
+		}
+		else if (i / 6 == 1) {
+			//top
+			v._normal = { 0,1,0 };
+			v._tangent = { 0,0,1 };
+		}
+		else if (1 / 6 == 2) {
+			v._normal = { 0,0,-1 };
+			v._tangent = { -1,0,0 };
+		}
+		else if (i / 6 == 3) {
+			v._normal = { 0,-1,0 };
+			v._tangent = { 0,0,-1 };
+		}
+		else if (i / 6 == 4) {
+			v._normal = { -1,0,0 };
+			v._tangent = { 0,0,1 };
+		}
+		else if (i / 6 == 5) {
+			v._normal = { 1,0,0 };
+			v._tangent = { 0,0,-1 };
+		}
 
 		model->_vertices.push_back(v);
 	}
