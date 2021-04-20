@@ -131,7 +131,6 @@ void ga_refraction_pass::bind(const ga_mat4f& view, const ga_mat4f& proj,
 	ga_uniform metalmap_uniform = _program->get_uniform("u_metallicMap");
 
 	useNormalMap.set(mat->get_useNormalMap());
-	std::cout << mat->get_useNormalMap() << std::endl;
 	if (mat->get_useNormalMap()) {
 		normalmap_uniform.set(*(mat->get_normalMap()), 1);
 	}

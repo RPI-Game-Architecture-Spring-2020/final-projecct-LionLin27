@@ -7,10 +7,9 @@ uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
 uniform sampler2D u_roughnessMap;
 uniform sampler2D u_metallicMap;
-//uniform sampler2D u_backNormals;
-//uniform sampler2D u_backDepths;
+
 layout (binding=11) uniform sampler2D u_backNormals;
-layout (binding=10) uniform sampler2D u_backDepths;
+layout (binding=10) uniform sampler2D u_backProps;
 
 layout (binding = 5) uniform samplerCube u_envMap;
 uniform vec3 u_baseColor;
@@ -65,7 +64,8 @@ uniform PositionalLight u_positionalLights[POSITIONAL_LIGHTS_MAX];
 
 layout (binding=1) uniform sampler2DShadow shadowTex;
 
-
+// TODO : for roughness
+// l = (1 - ((1 - back) * (1 - front)) * u_roughness????
 vec4 blurRefraction(vec3 vertPos, vec3 normal) {
 	vec3 I = normalize(o_worldPos - v_eyePos);
     vec3 T_1 = refract(I, normalize(normal), 1.0 / f_ior);
@@ -86,7 +86,14 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
     int n_good = int(step(0.5, length(N_2)));
     int t_good = int(step(0.01, length(T_2)));
     float all_good = float(n_good & t_good);
-	return texture(u_envMap, (all_good * T_2) + ((1 - all_good) * T_1));
+    float lod = f_roughness;
+    if (b_useRoughMap) {
+        float back_rough = textureProj(u_backProps, vec4(P_2, 1) * u_vpMat_proj).x;
+        float front_rough = texture(u_roughnessMap, texcoord0).x;
+        lod = lod * (1 - ((1 - back_rough) * (1 - front_rough)));
+    }
+
+	return textureLod(u_envMap, (all_good * T_2) + ((1.0 - all_good) * T_1), CUBE_MAP_LODS * lod);
 }
 
 float DistributionGGX(vec3 N, vec3 H, float roughness){
