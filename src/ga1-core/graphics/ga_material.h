@@ -176,7 +176,7 @@ class ga_reflective_lit_material : public ga_lit_material {
 public:
 	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
 
-	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file = "", const char* metalMap_file = "");
+	ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file = "", const char* metalMap_file = "", const char* ao_file = "");
 
 	virtual bool init() override;
 
@@ -191,20 +191,48 @@ public:
 	virtual float get_normalStr() { return _normalStr; }
 	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
 
+	bool get_useEnvMap() { return _useEnvMap; }
+	bool get_useRoughMap() { return _useRoughMap; }
+	bool get_useMetallicMap() { return _useMetalMap; }
+	bool get_useAOMap() { return _useAOMap; }
+	void switch_pbr_maps(bool useEnv, bool useRgh, bool useMtl, bool useAO) {
+		_useEnvMap = useEnv;
+		_useRoughMap = useRgh;
+		_useMetalMap = useMtl;
+		_useAOMap = useAO;
+	}
+
+	bool get_NDF() { return _NDF; }
+	bool get_GEO() { return _GEO; }
+	bool get_FNL() { return _FNL; }
+	void switch_brdf_comp(bool ndf, bool geo, bool fnl);
+
+	int get_debug_uniform() { return _debug_uniform; }
+	void set_debug_uniform(int input) { _debug_uniform = input; }
+
 protected:
 	ga_cube_texture* _envMap;
 
 	bool _useEnvMap;
 	bool _useRoughMap;
 	bool _useMetalMap;
+	bool _useAOMap;
 
 	float _roughness;
 	float _metalness;
 	float _normalStr;
 	std::string _roughness_file;
 	std::string _metallic_file;
+	std::string _ao_file;
 	ga_texture* _roughnessMap;
 	ga_texture* _metallicMap;
+	ga_texture* _aoMap;
+
+	// spit steps for visualization
+	bool _NDF;
+	bool _GEO;
+	bool _FNL;
+	int _debug_uniform;
 };
 
 // material with texture & light

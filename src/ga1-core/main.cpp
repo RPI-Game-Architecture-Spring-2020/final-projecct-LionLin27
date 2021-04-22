@@ -286,7 +286,7 @@ int main(int argc, const char** argv)
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
 	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
-	ga_material* rocket_mat = new ga_reflective_lit_material("data/textures/RocketTextures/BaseColor.png", "data/textures/RocketTextures/Normal.png", &sky_tex, "data/textures/RocketTextures/Roughness.png", "data/textures/RocketTextures/Metallic.png");
+	ga_material* rocket_mat = new ga_reflective_lit_material("data/textures/RocketTextures/BaseColor.png", "data/textures/RocketTextures/Normal.png", &sky_tex, "data/textures/RocketTextures/Roughness.png", "data/textures/RocketTextures/Metallic.png", "data/textures/RocketTextures/AO.png");
 	ga_model_component rocket_model_component(&rocketEnt, &rocketModel, rocket_mat, true);
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);

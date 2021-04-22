@@ -345,6 +345,16 @@ void ga_output::update(ga_frame_params* params)
 					reflect_mat->set_normalStr(normalStr);
 				}
 
+				bool useEnv = reflect_mat->get_useEnvMap();
+				bool useRgh = reflect_mat->get_useRoughMap();
+				bool useMtl = reflect_mat->get_useMetallicMap();
+				bool useAO = reflect_mat->get_useAOMap();
+				ImGui::Checkbox("Env Map", &useEnv);
+				ImGui::Checkbox("Roughness Map", &useRgh);
+				ImGui::Checkbox("Metallic Map", &useMtl);
+				ImGui::Checkbox("AO Map", &useAO);
+				reflect_mat->switch_pbr_maps(useEnv, useRgh, useMtl, useAO);
+
 				float roughness = reflect_mat->get_roughness();
 				ImGui::SliderFloat("Roughness", &roughness, 0.0f, 1.0f);
 				if (std::abs(roughness - reflect_mat->get_roughness()) > 0.01) {
@@ -356,6 +366,24 @@ void ga_output::update(ga_frame_params* params)
 				if (std::abs(metalness - reflect_mat->get_metalness()) > 0.01) {
 					reflect_mat->set_metalness(metalness);
 				}
+
+				bool ndf = reflect_mat->get_NDF();
+				bool geo = reflect_mat->get_GEO();
+				bool fnl = reflect_mat->get_FNL();
+				ImGui::Checkbox("Normal Distrib", &ndf);
+				ImGui::Checkbox("Geometry", &geo);
+				ImGui::Checkbox("Frenel", &fnl);
+				if (ndf != reflect_mat->get_NDF()
+					|| geo != reflect_mat->get_GEO()
+					|| fnl != reflect_mat->get_FNL()) {
+
+					reflect_mat->switch_brdf_comp(ndf, geo, fnl);
+				}
+
+				int debug_uniform = reflect_mat->get_debug_uniform();
+				ImGui::SliderInt("debug uniform", &debug_uniform, 0, 10);
+				if(debug_uniform != reflect_mat->get_debug_uniform())
+					reflect_mat->set_debug_uniform(debug_uniform);
 			}
 		}
 		

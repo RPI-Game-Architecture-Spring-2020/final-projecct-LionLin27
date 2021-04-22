@@ -9,6 +9,7 @@ uniform sampler2D u_texture;
 uniform sampler2D u_normMap;
 uniform sampler2D u_roughnessMap;
 uniform sampler2D u_metallicMap;
+uniform sampler2D u_AOMap;
 layout (binding = 5) uniform samplerCube u_envMap;
 uniform vec3 u_baseColor;
 uniform mat4 u_mvMat;
@@ -18,11 +19,17 @@ uniform bool b_useTexture;
 uniform bool b_useNormalMap;
 uniform bool b_useRoughMap;
 uniform bool b_useMetalMap;
+uniform bool b_useAOMap;
 
 //uniform bool b_useEnvMap;
 uniform float f_roughness;
 uniform float f_metalness;
 uniform float f_normalStr;
+
+uniform bool b_NDF;
+uniform bool b_GEO;
+uniform bool b_FNL;
+uniform int u_debug;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -106,7 +113,7 @@ vec3 calcNewNormal(){
 	return newNormal;
 }
 
-void calcDirectionalLight(DirectionalLight dirLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo){
+void calcDirectionalLight(DirectionalLight dirLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo, out vec3 spec_debug){
 
 	vec3 L = normalize(dirLight.direction);
 	vec3 N = normalize(normal);
@@ -118,21 +125,31 @@ void calcDirectionalLight(DirectionalLight dirLight, vec3 vertPos, vec3 normal, 
     // brdf
     float D = DistributionGGX(N, H, roughness);
     float G = GeometrySmith(N, V, L, roughness);
-    vec3 F = fresnelSchlick(max(dot(H,V), 0.0), F0);
+    vec3 F = fresnelSchlick(max(dot(N,V), 0.0), F0);
 
     vec3 kS = F;
     vec3 kD = vec3(1.0) - kS;
     kD *= 1.0 - metallic;
 
-    vec3 numerator = D*G*F;
+    //vec3 numerator = D*G*F;
+    // spit steps for visualization 
+    vec3 numerator = vec3(1.0);
+    if(b_NDF)
+        numerator *= D;
+    if(b_GEO)
+        numerator *= G;
+    if(b_FNL)
+        numerator *= F;
+
     float denom = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0);
     vec3 specular = numerator / max(denom, 0.001);  
 
     float NdotL = max(dot(N,L), 0.0);
     Lo += (kD * albedo / PI + specular) * radiance * NdotL;
+    spec_debug += specular;
 }
 
-void calcPositionalLight(PositionalLight posLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo){
+void calcPositionalLight(PositionalLight posLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo, out vec3 spec_debug){
 	vec3 L = normalize(posLight.position-vertPos);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
@@ -145,18 +162,27 @@ void calcPositionalLight(PositionalLight posLight, vec3 vertPos, vec3 normal, ve
     // brdf
     float D = DistributionGGX(N, H, roughness);
     float G = GeometrySmith(N, V, L, roughness);
-    vec3 F = fresnelSchlick(max(dot(H,V), 0.0), F0);
+    vec3 F = fresnelSchlick(max(dot(N,V), 0.0), F0);
 
     vec3 kS = F;
     vec3 kD = vec3(1.0) - kS;
     kD *= 1.0 - metallic;
 
-    vec3 numerator = D*G*F;
+    //vec3 numerator = D*G*F;
+    vec3 numerator = vec3(1.0);
+    if(b_NDF)
+        numerator *= D;
+    if(b_GEO)
+        numerator *= G;
+    if(b_FNL)
+        numerator *= F;
+
     float denom = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0);
     vec3 specular = numerator / max(denom, 0.001);  
 
     float NdotL = max(dot(N,L), 0.0);
     Lo += (kD * albedo / PI + specular) * radiance * NdotL;
+    spec_debug += numerator;
 }
 
 void calcEnvReflection(vec4 reflectColor, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo){
@@ -211,18 +237,22 @@ void main(void)
     vec3 F0 = vec3(0.04);
     F0 = mix(F0, color, f_metalness);
 
-	calcDirectionalLight(u_directionalLight,  o_vertPos, normal, F0, color, roughness, metallic, Lo);
+    vec3 spec_debug = vec3(0.0);
+	calcDirectionalLight(u_directionalLight,  o_vertPos, normal, F0, color, roughness, metallic, Lo, spec_debug);
 
     for(int i = 0; i < u_posLightCount; i ++){
         if(i >= POSITIONAL_LIGHTS_MAX){
 			break;
 		}
 
-        calcPositionalLight(u_positionalLights[i], o_vertPos, normal, F0, color, roughness, metallic, Lo);
+        calcPositionalLight(u_positionalLights[i], o_vertPos, normal, F0, color, roughness, metallic, Lo, spec_debug);
     }
 
 
     vec3 ambient = u_ambientLight * color;
+    if(b_useAOMap){
+        ambient *= texture(u_AOMap, texcoord0).x;
+    }
     color = ambient + Lo;
 	
     color = color / (color + vec3(1.0));
@@ -257,5 +287,16 @@ void main(void)
 
 	vec4 mixedColor = metallic * reflectionColor + (1.0 - metallic) * litColor;
 
-	gl_FragColor = mix(fogColor, mixedColor, fogFactor);
+    if(u_debug == 0)
+	    gl_FragColor = mix(fogColor, mixedColor, fogFactor);
+    else if (u_debug == 1)
+        gl_FragColor = vec4(spec_debug,1.0);
+    else if(u_debug == 2)
+        gl_FragColor = vec4(o_normal, 1.0);
+    else if(u_debug == 3)
+        gl_FragColor = vec4(normal, 1.0);
+    else if(u_debug == 4)
+        gl_FragColor = texture(u_AOMap, texcoord0);
+    else
+        gl_FragColor = mix(fogColor, mixedColor, fogFactor);
 }

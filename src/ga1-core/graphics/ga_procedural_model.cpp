@@ -195,19 +195,23 @@ void generate_cube(struct ga_model* model) {
 			v._normal = { 0,1,0 };
 			v._tangent = { 0,0,1 };
 		}
-		else if (1 / 6 == 2) {
+		else if (i / 6 == 2) {
+			//back
 			v._normal = { 0,0,-1 };
 			v._tangent = { -1,0,0 };
 		}
 		else if (i / 6 == 3) {
+			//bottom
 			v._normal = { 0,-1,0 };
 			v._tangent = { 0,0,-1 };
 		}
 		else if (i / 6 == 4) {
+			//left
 			v._normal = { -1,0,0 };
 			v._tangent = { 0,0,1 };
 		}
 		else if (i / 6 == 5) {
+			//right
 			v._normal = { 1,0,0 };
 			v._tangent = { 0,0,-1 };
 		}

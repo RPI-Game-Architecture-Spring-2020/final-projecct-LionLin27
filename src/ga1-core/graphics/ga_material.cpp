@@ -891,8 +891,8 @@ void ga_terrain_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, 
 	return;
 }
 
-ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file) : 
-	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file)
+ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file, const char* aoMap_file) :
+	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file), _ao_file(aoMap_file)
 {
 	_useEnvMap = true;
 }
@@ -969,10 +969,26 @@ bool ga_reflective_lit_material::init()
 		}
 	}
 
+	_useAOMap = false;
+	if (_ao_file.length() > 0) {
+		_useAOMap = true;
+		_aoMap = new ga_texture();
+		if (!_aoMap->load_from_file(_ao_file.c_str())) {
+			std::cerr << "Failed to load ao map" << std::endl;
+			_useAOMap = false;
+		}
+	}
+
+
 	// set initial roughness to 0
 	_roughness = 0.1f;
 	_metalness = 0.5f;
 	_normalStr = 1.0f;
+
+	_NDF = true;
+	_GEO = true;
+	_FNL = true;
+	_debug_uniform = 0;
 
 	_baseColor = { 1,1,1 };
 
@@ -1078,6 +1094,24 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 		metalmap_uniform.set(*_metallicMap, 3);
 	}
 
+	ga_uniform useAOMap = _program->get_uniform("b_useAOMap");
+	ga_uniform aomap_uniform = _program->get_uniform("u_AOMap");
+	useAOMap.set(_useAOMap);
+	if (_useAOMap) {
+		aomap_uniform.set(*_aoMap, 4);
+	}
+
+	// for visualization
+	ga_uniform ndf = _program->get_uniform("b_NDF");
+	ga_uniform geo = _program->get_uniform("b_GEO");
+	ga_uniform fnl = _program->get_uniform("b_FNL");
+	ndf.set(_NDF);
+	geo.set(_GEO);
+	fnl.set(_FNL);
+
+	ga_uniform debug_u = _program->get_uniform("u_debug");
+	debug_u.set(_debug_uniform);
+
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
@@ -1089,6 +1123,21 @@ void ga_reflective_lit_material::set_roughness(float roughness) {
 	_program->use();
 	ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
 	roughnessUniform.set(roughness);
+}
+void ga_reflective_lit_material::switch_brdf_comp(bool _ndf, bool _geo, bool _fnl)
+{
+	_NDF = _ndf;
+	_GEO = _geo;
+	_FNL = _fnl;
+
+	_program->use();
+
+	ga_uniform ndf = _program->get_uniform("b_NDF");
+	ga_uniform geo = _program->get_uniform("b_GEO");
+	ga_uniform fnl = _program->get_uniform("b_FNL");
+	ndf.set(_NDF);
+	geo.set(_GEO);
+	fnl.set(_FNL);
 }
 float ga_reflective_lit_material::get_roughness() {
 	return _roughness;

@@ -2259,7 +2259,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>SDL2-2.0.5\Release\SDL2.lib;glew32s.lib;opengl32.lib;Release\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2-2.0.5\Release\SDL2.lib;glew32s.lib;opengl32.lib;Release\lua53.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;dinput8.lib;kernel32.lib;winspool.lib;shell32.lib;comdlg32.lib;advapi32.lib;assimp-vc142-mt.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/glew-2.0.0/lib/Release/x64/$(Configuration);D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib;D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/../3rdparty/assimp/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /ignore:4098 /ignore:4099</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
