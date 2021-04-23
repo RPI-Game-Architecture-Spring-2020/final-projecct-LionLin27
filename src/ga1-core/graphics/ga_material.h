@@ -214,7 +214,7 @@ public:
 	bool get_useRoughnessMap() { return _useRoughMap; };
 	void set_useRoughnessMap(bool use) { _useRoughMap = use; };
 
-	bool get_useMetallicMap() { return _useMetalMap; };
+	// bool get_useMetallicMap() { return _useMetalMap; };
 	void set_useMetallicMap(bool use) { _useMetalMap = use; };
 
 	virtual ga_texture* get_roughnessMap() { return _roughnessMap; }

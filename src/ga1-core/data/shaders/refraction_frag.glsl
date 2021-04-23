@@ -64,28 +64,29 @@ uniform PositionalLight u_positionalLights[POSITIONAL_LIGHTS_MAX];
 
 layout (binding=1) uniform sampler2DShadow shadowTex;
 
-// TODO : for roughness
-// l = (1 - ((1 - back) * (1 - front)) * u_roughness????
+// REFRACTIOM FUNCTION
 vec4 blurRefraction(vec3 vertPos, vec3 normal) {
 	vec3 I = normalize(o_worldPos - v_eyePos);
     vec3 T_1 = refract(I, normalize(normal), 1.0 / f_ior);
-
+    // get the depth
     vec4 backNormals = textureProj(u_backNormals, screen_coord);
-
+    // aproximate the piercing internal distance and by-normal internal distance
     float dN = (backNormals.w) - (distance(o_worldPos, v_eyePos));
     float dV = o_internal_dist;
+    // use angles between incoming and normal and refract and normal
     float theta_i = acos(dot(-I, normalize(normal)));
     float theta_t = acos(dot(T_1, -normalize(normal)));
     float d = ((theta_t / theta_i) * dV) + ((1 - (theta_t / theta_i)) * dN);
     vec3 P_2 = o_worldPos + (T_1 * d);
-
+    // with the estimated position of where T_1 will strike, get second normal
     vec3 N_2 = textureProj(u_backNormals, vec4(P_2, 1) * u_vpMat_proj).xyz;
-
+    // refract by second normal
     vec3 T_2 = refract(T_1, -normalize(N_2), f_ior);
     // If N_2 isn't picked up or T_2 isn't a good refraction, revert to T_1
     int n_good = int(step(0.5, length(N_2)));
     int t_good = int(step(0.01, length(T_2)));
     float all_good = float(n_good & t_good);
+    // LOD based on roughness
     float lod = f_roughness;
     if (b_useRoughMap) {
         float back_rough = textureProj(u_backProps, vec4(P_2, 1) * u_vpMat_proj).x;
