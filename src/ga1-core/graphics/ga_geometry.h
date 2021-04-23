@@ -29,6 +29,8 @@ struct ga_vertex
 
 	uint32_t _joints[4] = { 0, 0, 0, 0 };
 	float _weights[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+
+	float internal_dist;
 };
 
 enum ga_vertex_attribute
@@ -38,6 +40,7 @@ enum ga_vertex_attribute
 	k_vertex_attribute_uv = 4,
 	k_vertex_attribute_weight = 8,
 	k_vertex_attribute_tangent = 16,
+	k_vertex_attribute_internal_dist = 32
 };
 
 struct ga_model
