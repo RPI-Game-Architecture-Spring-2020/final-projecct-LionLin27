@@ -6,3 +6,5 @@
 #include <assimp/scene.h>           // Output data structure
 
 void assimp_load_model(const char* filename, struct ga_model* model);
+
+void assimp_load_model_force(const char* filename, struct ga_model* model);

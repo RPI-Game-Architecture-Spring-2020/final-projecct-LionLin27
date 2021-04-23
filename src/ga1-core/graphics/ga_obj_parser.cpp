@@ -28,6 +28,11 @@ void obj_to_model(const char* filename, ga_model* model)
 	ifstream fileStream(fullpath, ios::in);
 	string line = "";
 
+	if (!fileStream) {
+		cout << "model file not found: " << filename << endl;
+		return;
+	}
+
 	while (!fileStream.eof()) {
 		getline(fileStream, line);
 		if (line.compare(0, 2, "v ") == 0) {

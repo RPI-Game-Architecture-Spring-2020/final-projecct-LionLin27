@@ -197,9 +197,12 @@ public:
 	bool get_useAOMap() { return _useAOMap; }
 	void switch_pbr_maps(bool useEnv, bool useRgh, bool useMtl, bool useAO) {
 		_useEnvMap = useEnv;
-		_useRoughMap = useRgh;
-		_useMetalMap = useMtl;
-		_useAOMap = useAO;
+		if(_roughness_file.length() > 0)
+			_useRoughMap = useRgh;
+		if(_metallic_file.length() > 0)
+			_useMetalMap = useMtl;
+		if(_ao_file.length() > 0)
+			_useAOMap = useAO;
 	}
 
 	bool get_NDF() { return _NDF; }

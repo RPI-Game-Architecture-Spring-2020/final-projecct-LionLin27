@@ -66,6 +66,7 @@ struct ga_frame_herald {
 	bool _create_sphere = false;
 	bool _create_cube = false;
 	bool _create_torus = false;
+	bool _create_bunny = false;
 	bool _create_light = false;
 
 	int _selected_mat = 0;

@@ -7,6 +7,8 @@
 ** This file is distributed under the MIT License. See LICENSE.txt.
 */
 
+#include <iostream>
+
 #include "framework/ga_camera.h"
 #include "framework/ga_compiler_defines.h"
 #include "framework/ga_input.h"
@@ -45,6 +47,9 @@
 #if defined(GA_MINGW)
 #include <unistd.h>
 #endif
+
+// bunny is too expensive to load everytime
+ga_model* bunny_model;
 
 struct TexturePack {
 	const char* texture;
@@ -436,12 +441,32 @@ ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
 	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, lit_mat2, true);
-	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(torusEnt);
 
 	torusEnt->set_position(pos);
 
 	return torusEnt;
+}
+
+ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+	// procedual sphere
+	ga_entity* ent = new ga_entity("bunny");
+
+	if (bunny_model == nullptr) {
+		bunny_model = new ga_model();
+		assimp_load_model_force("data/models/bunny.obj", bunny_model);
+		std::cout << bunny_model->_vertices.size() << std::endl;
+	}
+
+
+	ga_material* mat = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
+
+	ga_model_component* sphere_mce = new ga_model_component(ent, bunny_model, mat, true);
+	sim->add_entity(ent);
+
+	ent->set_position(pos);
+
+	return ent;
 }
 
 ga_entity* create_light(ga_sim* sim, ga_vec3f pos) {
@@ -512,6 +537,13 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10), selectedTP);
 		sim->select_last_ent();
 		params->_herald->_create_torus = false;
+	}
+	if (params->_herald->_create_bunny) {
+		ga_vec3f pos = params->_camPos;
+		ga_vec3f dir = params->_camDir;
+		ga_entity* new_ent = create_bunny(sim, pos + dir.scale_result(10), selectedTP);
+		sim->select_last_ent();
+		params->_herald->_create_bunny = false;
 	}
 	if (params->_herald->_create_light) {
 		ga_vec3f pos = params->_camPos;
