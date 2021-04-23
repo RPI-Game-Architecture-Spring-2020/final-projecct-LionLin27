@@ -119,8 +119,8 @@ void ga_refraction_pass::bind(const ga_mat4f& view, const ga_mat4f& proj,
 	ga_uniform eyePos_unifor = _program->get_uniform("v_eyePos");
 	eyePos_unifor.set(eyePos);
 
-	ga_uniform uni_roughness = _program->get_uniform("f_roughness");
-	uni_roughness.set(mat->get_roughness());
+	ga_uniform uni_roughnes = _program->get_uniform("f_roughness");
+	uni_roughnes.set(mat->get_roughness());
 
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
