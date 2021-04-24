@@ -70,6 +70,7 @@ struct ga_frame_herald {
 	bool _create_light = false;
 
 	int _selected_mat = 0;
+	int _selected_type = 0;
 };
 
 /*

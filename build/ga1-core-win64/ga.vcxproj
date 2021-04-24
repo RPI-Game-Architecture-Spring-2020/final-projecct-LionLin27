@@ -201,6 +201,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bunny.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/bunny.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/models/environment.egg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -381,6 +390,24 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_refraction_pass_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_refraction_pass_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_shadow_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/ga_shadow_frag.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -517,6 +544,24 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/refraction_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Debug/data/shaders/refraction_vert.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1295,6 +1340,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bunny.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/bunny.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/models/environment.egg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1475,6 +1529,24 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_refraction_pass_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_refraction_pass_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_shadow_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/ga_shadow_frag.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -1611,6 +1683,24 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/refraction_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/Release/data/shaders/refraction_vert.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -2389,6 +2479,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bunny.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/bunny.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/models/environment.egg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -2569,6 +2668,24 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_refraction_pass_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_refraction_pass_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_shadow_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/ga_shadow_frag.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -2705,6 +2822,24 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/refraction_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/MinSizeRel/data/shaders/refraction_vert.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -3482,6 +3617,15 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/bunny.obj D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/bunny.obj
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/models/environment.egg D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/models/environment.egg
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -3662,6 +3806,24 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_refraction_pass_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_refraction_pass_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_refraction_pass_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/ga_shadow_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/ga_shadow_frag.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
@@ -3798,6 +3960,24 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
 "C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/pbr_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/pbr_vert.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_frag.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/refraction_frag.glsl
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\cmake3.18.3\bin\cmake.exe" -E copy_if_different D:/RPI/GameArch/Final/final-projecct-LionLin27/src/ga1-core/data/shaders/refraction_vert.glsl D:/RPI/GameArch/Final/final-projecct-LionLin27/build/ga1-core-win64/RelWithDebInfo/data/shaders/refraction_vert.glsl
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -4531,6 +4711,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_debug_geometry.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_egg_parser.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_geometry.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_interiorDistanceScanner.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_light.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_light_component.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_material.cpp" />
@@ -4539,6 +4720,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_procedural_model.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_program.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_pyramid_component.cpp" />
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_refraction_pass.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_shadow.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_skybox.cpp" />
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_texture.cpp" />

@@ -418,14 +418,13 @@ static void set_root_path(const char* exepath)
 }
 
 
-ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	// procedual sphere
 	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
 	generate_sphere(64, sphereModel);
-	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
-	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, lit_mat2, true);
+	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, mat, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
 	sim->add_entity(sphereEnt);
 
@@ -434,13 +433,12 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	return sphereEnt;
 }
 
-ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_entity* ent = new ga_entity("cube");
 	ga_model* model = new ga_model();
 	generate_cube(model);
-	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
-	ga_model_component* mce = new ga_model_component(ent, model, lit_mat2, true);
+	ga_model_component* mce = new ga_model_component(ent, model, mat, true);
 	sim->add_entity(ent);
 
 	ent->set_position(pos);
@@ -448,14 +446,13 @@ ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	return ent;
 }
 
-ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	// procedual sphere
 	ga_entity* torusEnt = new ga_entity("torus");
 	ga_model* torusModel = new ga_model();
 	generate_torus(1.5f, 0.7f, 30, torusModel);
-	ga_material* lit_mat2 = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
-	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, lit_mat2, true);
+	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, mat, true);
 	sim->add_entity(torusEnt);
 
 	torusEnt->set_position(pos);
@@ -463,7 +460,7 @@ ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 	return torusEnt;
 }
 
-ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
+ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	// procedual sphere
 	ga_entity* ent = new ga_entity("bunny");
 
@@ -472,9 +469,6 @@ ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, TexturePack* tp) {
 		assimp_load_model_force("data/models/bunny.obj", bunny_model);
 		std::cout << bunny_model->_vertices.size() << std::endl;
 	}
-
-
-	ga_material* mat = new ga_reflective_lit_material(tp->texture, tp->normal, sim->get_env_map(), tp->roughness, tp->metallic);
 
 	ga_model_component* sphere_mce = new ga_model_component(ent, bunny_model, mat, true);
 	sim->add_entity(ent);
@@ -532,31 +526,54 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		break;
 	}
 
+	ga_material* mat;
+
+	if (params->_herald->_selected_type == 0) {
+		mat = new ga_reflective_lit_material(
+			selectedTP->texture, 
+			selectedTP->normal, 
+			sim->get_env_map(), 
+			selectedTP->roughness, 
+			selectedTP->metallic
+		);
+	}
+	else if (params->_herald->_selected_type == 1) {
+		mat = new ga_refractive_lit_material(
+			selectedTP->texture,
+			selectedTP->normal,
+			sim->get_env_map(),
+			selectedTP->roughness,
+			selectedTP->metallic
+		);
+	}
+
+
+
 	if (params->_herald->_create_sphere) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10), selectedTP);
+		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10), mat);
 		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
 	}
 	if (params->_herald->_create_cube) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_cube(sim, pos + dir.scale_result(10), selectedTP);
+		ga_entity* new_ent = create_cube(sim, pos + dir.scale_result(10), mat);
 		sim->select_last_ent();
 		params->_herald->_create_cube = false;
 	}
 	if (params->_herald->_create_torus) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10), selectedTP);
+		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10), mat);
 		sim->select_last_ent();
 		params->_herald->_create_torus = false;
 	}
 	if (params->_herald->_create_bunny) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_bunny(sim, pos + dir.scale_result(10), selectedTP);
+		ga_entity* new_ent = create_bunny(sim, pos + dir.scale_result(10), mat);
 		sim->select_last_ent();
 		params->_herald->_create_bunny = false;
 	}

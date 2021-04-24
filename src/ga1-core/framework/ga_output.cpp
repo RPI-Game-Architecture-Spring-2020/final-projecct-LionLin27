@@ -477,6 +477,22 @@ void ga_output::update(ga_frame_params* params)
 		);
 		ImGui::Begin("Model Creator");
 
+		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Select Type");
+		// select reflective / refractive
+		static int selectedType = 0;
+		for (int n = 0; n < 2; n++)
+		{
+			char buf[32];
+			if (n == 0)
+				sprintf(buf, "Opaque");
+			else if (n == 1)
+				sprintf(buf, "Transparent");
+
+			if (ImGui::Selectable(buf, selectedType == n))
+				selectedType = n;
+		}
+		params->_herald->_selected_type = selectedType;
+
 		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Select Material");
 		// select material
 		static int selectedMat = 0;

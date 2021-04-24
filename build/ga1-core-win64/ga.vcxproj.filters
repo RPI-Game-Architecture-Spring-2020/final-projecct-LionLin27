@@ -43,6 +43,9 @@
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_geometry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_interiorDistanceScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,6 +68,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_pyramid_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_refraction_pass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="D:\RPI\GameArch\Final\final-projecct-LionLin27\src\ga1-core\graphics\ga_shadow.cpp">
