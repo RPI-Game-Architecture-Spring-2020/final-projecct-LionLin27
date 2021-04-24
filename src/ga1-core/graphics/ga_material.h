@@ -213,6 +213,16 @@ public:
 	int get_debug_uniform() { return _debug_uniform; }
 	void set_debug_uniform(int input) { _debug_uniform = input; }
 
+	// Jay's Functions
+	bool get_useRoughnessMap() { return _useRoughMap; };
+	void set_useRoughnessMap(bool use) { _useRoughMap = use; };
+
+	// bool get_useMetallicMap() { return _useMetalMap; };
+	void set_useMetallicMap(bool use) { _useMetalMap = use; };
+
+	virtual ga_texture* get_roughnessMap() { return _roughnessMap; }
+	virtual ga_texture* get_metallicMap() { return _metallicMap; }
+
 protected:
 	ga_cube_texture* _envMap;
 
@@ -236,6 +246,61 @@ protected:
 	bool _GEO;
 	bool _FNL;
 	int _debug_uniform;
+};
+
+
+// TODO : so much overlap with ga_reflection, a common super-class is likely possible
+class ga_refractive_lit_material : public ga_lit_material {
+public:
+	// ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
+	ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file);
+	// ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
+
+	virtual bool init() override;
+
+	virtual const char* get_name() override { return "refractive material"; }
+
+	virtual float get_roughness() { return _roughness; }
+	void bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform,
+		const ga_light_drawcall& lights, const ga_mat4f& shadowMVP, int depthTexIndex, int normalTexIndex,
+		const ga_mat4f& u_eyeProj, const ga_vec3f& eyePos, const ga_mat4f& vpMat_for_world_proj);
+	virtual void set_roughness(float roughness) { _roughness = roughness; }
+
+	virtual float get_metalness() { return _metalness; }
+	virtual void set_metalness(float metalness) { _metalness = metalness; }
+
+	virtual float get_normalStr() { return _normalStr; }
+	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
+
+	virtual float get_IOR() { return _ior;  }
+	virtual void set_IOR(float ior) { _ior = ior; }
+
+	bool get_useRoughnessMap() { return _useRoughMap; };
+	void set_useRoughnessMap(bool use) { _useRoughMap = use; };
+
+	bool get_useMetallicMap() { return _useMetalMap; };
+	void set_useMetallicMap(bool use) { _useMetalMap = use; };
+
+	virtual ga_texture* get_normalMap() { return _normalmap; }
+	virtual ga_texture* get_metallicMap() { return _metallicMap; }
+	virtual ga_texture* get_roughnessMap() { return _roughnessMap; }
+protected:
+	ga_cube_texture * _envMap;
+
+	bool _useEnvMap;
+
+	bool _useRoughMap;
+	bool _useMetalMap;
+
+	float _roughness;
+	float _metalness;
+	float _normalStr;
+	float _ior;
+
+	std::string _roughness_file;
+	std::string _metallic_file;
+	ga_texture * _roughnessMap;
+	ga_texture* _metallicMap;
 };
 
 // material with texture & light

@@ -47,6 +47,7 @@
 #if defined(GA_MINGW)
 #include <unistd.h>
 #endif
+#include <graphics/ga_interiorDistanceScanner.h>
 
 // bunny is too expensive to load everytime
 ga_model* bunny_model;
@@ -162,6 +163,20 @@ int main(int argc, const char** argv)
 	light_entity2.scale(0.1f);
 	sim->add_entity(&light_entity2);
 	light_entity2.translate({ 15, -5, -1 });
+
+
+	// refractive torus
+	ga_entity torusRefEnt2("sphere");
+	ga_model torusRefModel2;
+	//generate_torus(1.5f, 0.7f, 30, &torusRefModel2);
+	generate_sphere(30, &torusRefModel2);
+	computeInteriorDistances(&torusRefModel2);
+
+	ga_material* refr_mat = new ga_refractive_lit_material("data/textures/checker.png", "data/textures/lego_normal.png", &sky_tex, "data/textures/RocketTextures/Roughness.png", "data/textures/RocketTextures/Metallic.png");
+	ga_model_component torus_refr_mc(&torusRefEnt2, &torusRefModel2, refr_mat, true);
+	sim->add_entity(&torusRefEnt2);
+	torusRefEnt2.translate({ -10,-7,10 });
+
 	/*
 
 	// point light ent
