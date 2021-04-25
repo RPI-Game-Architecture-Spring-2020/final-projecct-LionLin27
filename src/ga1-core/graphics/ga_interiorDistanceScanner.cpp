@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ga_interiorDistanceScanner.h"
 
 #include "ga_obj_parser.h"
@@ -66,7 +68,7 @@ float getDistanceToTri(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c,
 	return INFINITY;
 }
 
-float getInternalDistance(const std::vector<ga_vertex>& verts, const ga_vertex& point) {
+ga_vec4f getInternalDistance(const std::vector<ga_vertex>& verts, const ga_vertex& point) {
 	ga_vec3f n = -point._normal;
 	ga_vec3f p = point._position;
 	float bestDistance = INFINITY;
@@ -76,7 +78,12 @@ float getInternalDistance(const std::vector<ga_vertex>& verts, const ga_vertex& 
 			getDistanceToTri(verts[v]._position, verts[v + 1]._position, verts[v + 2]._position, p, n),
 			bestDistance);
 	}
-	return bestDistance;
+	ga_vec4f bestLine;
+	bestLine.x = n.x * bestDistance;
+	bestLine.y = n.y * bestDistance;
+	bestLine.z = n.z * bestDistance;
+	bestLine.w = bestDistance;
+	return bestLine;
 }
 
 
@@ -85,5 +92,7 @@ void computeInteriorDistances(ga_model* model) {
 	for (int v = 0; v < model->_vertices.size(); ++v) {
 		model->_vertices[v].internal_dist
 			= getInternalDistance(model->_vertices, model->_vertices[v]);
+		if (v != 0 && v % (model->_vertices.size() / 10) == 0)
+			std::cout << "Finished " << v << " out of " << model->_vertices.size() << std::endl;
 	}
 }
