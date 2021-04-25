@@ -420,14 +420,9 @@ static void set_root_path(const char* exepath)
 
 ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	// procedual sphere
-	ga_entity* sphereEnt = new ga_entity("sphhere");
+	ga_entity* sphereEnt = new ga_entity("shpere");
 	ga_model* sphereModel = new ga_model();
-	generate_sphere(32, sphereModel);
-
-	if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
-		std::cout << "Computing interior distance of sphere." << std::endl;
-		computeInteriorDistances(sphereModel);
-	}
+	generate_sphere(64, sphereModel);
 
 	ga_model_component* sphere_mce = new ga_model_component(sphereEnt, sphereModel, mat, true);
 	//ga_lua_component lua_rotate(&sphereEnt, "data/scripts/slow_rotate.lua");
@@ -443,10 +438,6 @@ ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_model* model = new ga_model();
 	generate_cube(model);
 
-	if (dynamic_cast<ga_refractive_lit_material*>(mat))
-		computeInteriorDistances(model);
-
-
 	ga_model_component* mce = new ga_model_component(ent, model, mat, true);
 	sim->add_entity(ent);
 
@@ -460,8 +451,6 @@ ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_entity* torusEnt = new ga_entity("torus");
 	ga_model* torusModel = new ga_model();
 	generate_torus(1.5f, 0.7f, 30, torusModel);
-	if (dynamic_cast<ga_refractive_lit_material*>(mat))
-		computeInteriorDistances(torusModel);
 
 	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, mat, true);
 	sim->add_entity(torusEnt);
@@ -479,10 +468,6 @@ ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 		bunny_model = new ga_model();
 		assimp_load_model_force("data/models/bunny.obj", bunny_model);
 		std::cout << bunny_model->_vertices.size() << std::endl;
-	}
-	if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
-		std::cout << "Running computeInteriorDistances on the bunny, this may take a while..." << std::endl;
-		computeInteriorDistances(bunny_model);
 	}
 
 	ga_model_component* sphere_mce = new ga_model_component(ent, bunny_model, mat, true);

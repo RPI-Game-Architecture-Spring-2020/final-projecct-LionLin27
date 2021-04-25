@@ -37,7 +37,7 @@ in vec4 shadow_coord;
 in vec4 screen_coord;
 in vec3 o_worldPos;
 in vec3 o_worldNormal;
-in vec4 o_internal_dist;
+in float o_internal_dist;
 
 const float PI = 3.14159265359;
 
@@ -72,12 +72,7 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
     vec4 backNormals = textureProj(u_backNormals, screen_coord);
     // aproximate the piercing internal distance and by-normal internal distance
     float dN = (backNormals.w) - (distance(o_worldPos, v_eyePos));
-
-    mat4 mMat = u_mvMat * inverse(u_vMat);
-    float dV = distance((vec4(o_internal_dist.xyz, 1) * mMat).xyz, (vec4(0,0,0, 1) * mMat).xyz);
-    dV = dV + 0.01;
-    // dV = o_internal_dist.w;
-    // float dV = o_internal_dist.w;
+    float dV = o_internal_dist;
     // use angles between incoming and normal and refract and normal
     float theta_i = acos(dot(-I, normalize(normal)));
     float theta_t = acos(dot(T_1, -normalize(normal)));
@@ -85,15 +80,12 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
     vec3 P_2 = o_worldPos + (T_1 * d);
     // with the estimated position of where T_1 will strike, get second normal
     vec3 N_2 = textureProj(u_backNormals, vec4(P_2, 1) * u_vpMat_proj).xyz;
-    int n_good = int(step(0.5, length(N_2)));
-    if (n_good < 1) { // poorly correct for out of bounds
-        N_2 = textureProj(u_backNormals, screen_coord).xyz;
-    }
     // refract by second normal
     vec3 T_2 = refract(T_1, -normalize(N_2), f_ior);
     // If N_2 isn't picked up or T_2 isn't a good refraction, revert to T_1
-    float t_good = step(0.01, length(T_2));
-
+    int n_good = int(step(0.5, length(N_2)));
+    int t_good = int(step(0.01, length(T_2)));
+    float all_good = float(n_good & t_good);
     // LOD based on roughness
     float lod = f_roughness;
     if (b_useRoughMap) {
@@ -102,7 +94,7 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
         lod = lod * (1 - ((1 - back_rough) * (1 - front_rough)));
     }
 
-	return textureLod(u_envMap, (t_good * T_2) + ((1.0 - t_good) * T_1), CUBE_MAP_LODS * lod);
+	return textureLod(u_envMap, (all_good * T_2) + ((1.0 - all_good) * T_1), CUBE_MAP_LODS * lod);
 }
 
 float DistributionGGX(vec3 N, vec3 H, float roughness){
