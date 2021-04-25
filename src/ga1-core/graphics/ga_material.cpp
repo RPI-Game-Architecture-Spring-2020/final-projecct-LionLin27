@@ -503,10 +503,6 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
-	_baseColor = {1.0, 1.0, 1.0};
-	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
-	baseColor_uniform.set(_baseColor);
-
 	globalAmbLoc.set(_ambientLight);
 	// ambLoc.set(lightAmbient);
 	diffLoc.set(dirL->_color);
@@ -1002,7 +998,6 @@ bool ga_reflective_lit_material::init()
 
 void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
 {
-	_baseColor = { 1.0, 1.0, 1.0 };
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
 	_program->use();
@@ -1265,10 +1260,6 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
-	_baseColor = { 1.0, 1.0, 1.0 };
-	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
-	baseColor_uniform.set(_baseColor);
-
 	globalAmbLoc.set(_ambientLight);
 	// ambLoc.set(lightAmbient);
 	diffLoc.set(dirL->_color);
@@ -1327,7 +1318,7 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	eyeProj_uniform.set(u_eyeProj);
 
 	ga_uniform useTexture = _program->get_uniform("b_useTexture");
-	useTexture.set(_useTextureMap);
+	useTexture.set(true);
 
 	ga_uniform useNormalMap = _program->get_uniform("b_useNormalMap");
 	ga_uniform normalmap_uniform = _program->get_uniform("u_normMap");
