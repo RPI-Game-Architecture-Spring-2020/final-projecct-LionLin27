@@ -19,14 +19,14 @@ ga_entity::ga_entity()
 {
 	_name = "default_name";
 	_transform.make_identity();
-	_size = 1;
+	_size = {1,1,1};
 }
 
 ga_entity::ga_entity(const char* name)
 {
 	_name = name;
 	_transform.make_identity();
-	_size = 1;
+	_size = {1,1,1};
 }
 
 ga_entity::~ga_entity()
@@ -67,6 +67,12 @@ void ga_entity::rotate(const ga_quatf& rotation)
 }
 
 void ga_entity::scale(float s)
+{
+	_transform.scale(s);
+	_size *= {s,s,s};
+}
+
+void ga_entity::scale(ga_vec3f s)
 {
 	_transform.scale(s);
 	_size *= s;

@@ -34,6 +34,7 @@ public:
 	void translate(const struct ga_vec3f& translation);
 	void rotate(const struct ga_quatf& rotation);
 	void scale(float s);
+	void scale(ga_vec3f s);
 
 	void set_position(const struct ga_vec3f& new_pos);
 
@@ -43,11 +44,11 @@ public:
 	const char* get_name();
 	class ga_component* get_component(const char* name);
 
-	float get_size() { return _size; }
+	ga_vec3f get_size() { return _size; }
 
 private:
 	std::vector<class ga_component*> _components;
 	ga_mat4f _transform;
-	float _size;
+	ga_vec3f _size;
 	const char* _name;
 };

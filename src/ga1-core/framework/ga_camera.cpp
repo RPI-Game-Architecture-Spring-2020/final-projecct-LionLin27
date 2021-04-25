@@ -29,7 +29,7 @@ void ga_camera::update(ga_frame_params* params)
 	// focus
 	if (params->_btn_down_mask & k_button_f) {
 		ga_vec3f ent_pos = params->_selected_ent->get_transform().get_translation();
-		float ent_size = params->_selected_ent->get_size();
+		float ent_size = params->_selected_ent->get_size().mag() / 3.0f;
 		ga_vec3f forward_dir = _transform.get_forward();
 		float offset = 10.0f;
 

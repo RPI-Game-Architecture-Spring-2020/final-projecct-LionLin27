@@ -10,7 +10,7 @@
 #include "math/ga_vec3f.h"
 
 static ga_vec3f vec3f_zero = { 0.0f, 0.0f, 0.0f };
-static ga_vec3f vec3f_one = { 1.0f, 1.0f, 0.0f };
+static ga_vec3f vec3f_one = { 1.0f, 1.0f, 1.0f };
 static ga_vec3f vec3f_x = { 1.0f, 0.0f, 0.0f };
 static ga_vec3f vec3f_y = { 0.0f, 1.0f, 0.0f };
 static ga_vec3f vec3f_z = { 0.0f, 0.0f, 1.0f };

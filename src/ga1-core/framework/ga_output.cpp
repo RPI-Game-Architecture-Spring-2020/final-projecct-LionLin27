@@ -279,6 +279,13 @@ void ga_output::update(ga_frame_params* params)
 		if (scale_val != 0.0f)
 			params->_selected_ent->scale(1 + scale_val*dt);
 
+		// scale x / y / z
+		float ent_scale_arr[] = { 0,0,0 };
+		ImGui::SliderFloat3("scale3", ent_scale_arr, -1.0f, 1.0f);
+		ga_vec3f ent_scale = { ent_scale_arr[0], ent_scale_arr[1], ent_scale_arr[2] };
+		if(ent_scale.mag() > 0.0001f)
+			params->_selected_ent->scale(ga_vec3f::one_vector() + ent_scale.scale_result(dt));
+
 		/*
 		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Transform Mat");
 		ga_mat4f trans = params->_selected_ent->get_transform();
