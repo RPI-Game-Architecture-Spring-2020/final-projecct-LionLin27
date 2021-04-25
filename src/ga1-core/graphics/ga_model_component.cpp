@@ -169,7 +169,7 @@ void ga_model_component::bind_model(ga_model* model)
 	}
 	// TODO : Jay's internal distance refraction data
 	if (model->_vertex_format & k_vertex_attribute_internal_dist) {
-		glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, vertex_size, (GLvoid*)88);
+		glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, vertex_size, (GLvoid*)88);
 		glEnableVertexAttribArray(6);
 	}
 

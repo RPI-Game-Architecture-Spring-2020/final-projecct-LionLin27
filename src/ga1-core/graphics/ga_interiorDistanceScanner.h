@@ -15,6 +15,6 @@ ga_vec3f getNormal(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c);
 float getDistanceToTri(const ga_vec3f& a, const ga_vec3f& b, const ga_vec3f& c,
 	const ga_vec3f& p, const ga_vec3f& dir);
 
-float getInternalDistance(const std::vector<ga_vertex>& verts, const ga_vertex& point);
+ga_vec4f getInternalDistance(const std::vector<ga_vertex>& verts, const ga_vertex& point);
 
 void computeInteriorDistances(ga_model* model);

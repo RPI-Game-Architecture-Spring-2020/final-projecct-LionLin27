@@ -30,7 +30,7 @@ struct ga_vertex
 	uint32_t _joints[4] = { 0, 0, 0, 0 };
 	float _weights[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
-	float internal_dist;
+	ga_vec4f internal_dist;
 };
 
 enum ga_vertex_attribute
