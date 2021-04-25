@@ -4,7 +4,7 @@ layout(location = 0) in vec3 in_vertex;
 layout (location = 1) in vec3 in_normal;
 layout(location = 3) in vec2 in_texcood0;
 layout(location = 4) in vec3 in_tangent;
-layout(location = 6) in float internal_dist;
+layout(location = 6) in vec4 internal_dist;
 
 out vec3 o_normal;
 out vec3 o_vertPos;
@@ -14,7 +14,7 @@ out vec4 shadow_coord;
 out vec4 screen_coord;
 out vec3 o_worldPos;
 out vec3 o_worldNormal;
-out float o_internal_dist;
+out vec4 o_internal_dist;
 
 uniform mat4 u_mvp;
 uniform mat4 u_mvMat;
