@@ -115,7 +115,7 @@ vec3 calcNewNormal(){
 
 void calcDirectionalLight(DirectionalLight dirLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo, out vec3 spec_debug){
 
-	vec3 L = normalize(dirLight.direction);
+    vec3 L = normalize(dirLight.direction);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
     vec3 H = normalize(V + L);
@@ -146,11 +146,12 @@ void calcDirectionalLight(DirectionalLight dirLight, vec3 vertPos, vec3 normal, 
 
     float NdotL = max(dot(N,L), 0.0);
     Lo += (kD * albedo / PI + specular) * radiance * NdotL;
-    spec_debug += specular;
+    spec_debug += specular * NdotL;
 }
 
 void calcPositionalLight(PositionalLight posLight, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo, out vec3 spec_debug){
-	vec3 L = normalize(posLight.position-vertPos);
+    
+    vec3 L = normalize(posLight.position-vertPos);
 	vec3 N = normalize(normal);
 	vec3 V = normalize(-vertPos);
     vec3 H = normalize(V + L);
@@ -182,7 +183,7 @@ void calcPositionalLight(PositionalLight posLight, vec3 vertPos, vec3 normal, ve
 
     float NdotL = max(dot(N,L), 0.0);
     Lo += (kD * albedo / PI + specular) * radiance * NdotL;
-    spec_debug += numerator;
+    spec_debug += specular * NdotL;
 }
 
 void calcEnvReflection(vec4 reflectColor, vec3 vertPos, vec3 normal, vec3 F0, vec3 albedo, float roughness, float metallic, inout vec3 Lo){
@@ -238,6 +239,7 @@ void main(void)
     F0 = mix(F0, color, f_metalness);
 
     vec3 spec_debug = vec3(0.0);
+    vec3 spec_debug2 = vec3(0.0);
 	calcDirectionalLight(u_directionalLight,  o_vertPos, normal, F0, color, roughness, metallic, Lo, spec_debug);
 
     for(int i = 0; i < u_posLightCount; i ++){
@@ -245,7 +247,7 @@ void main(void)
 			break;
 		}
 
-        calcPositionalLight(u_positionalLights[i], o_vertPos, normal, F0, color, roughness, metallic, Lo, spec_debug);
+        calcPositionalLight(u_positionalLights[i], o_vertPos, normal, F0, color, roughness, metallic, Lo, spec_debug2);
     }
 
 

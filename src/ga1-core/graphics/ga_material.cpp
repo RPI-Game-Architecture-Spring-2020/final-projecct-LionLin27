@@ -340,12 +340,14 @@ bool ga_lit_anim_material::init()
 		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
 	}
 
+
+	_baseColor = { 1.0, 1.0, 1.0 };
+
 	return true;
 }
 
 void ga_lit_anim_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform)
 {
-	_baseColor = { 1.0, 1.0, 1.0 };
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
 	_program->use();
@@ -503,7 +505,6 @@ void ga_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, cons
 	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
-	_baseColor = {1.0, 1.0, 1.0};
 	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
 	baseColor_uniform.set(_baseColor);
 
@@ -1002,7 +1003,6 @@ bool ga_reflective_lit_material::init()
 
 void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
 {
-	_baseColor = { 1.0, 1.0, 1.0 };
 	_ambientLight = { 0.1, 0.1, 0.1 };
 
 	_program->use();
@@ -1235,6 +1235,8 @@ bool ga_refractive_lit_material::init()
 	_normalStr = 1.0f;
 	_ior = 1.0f;
 
+	_baseColor = { 1.0, 1.0, 1.0 };
+
 	return true;
 }
 
@@ -1265,7 +1267,6 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	ga_uniform shadowMVPLoc = _program->get_uniform("shadowMVP");
 
 	//  set the uniform light and material values in the shader
-	_baseColor = { 1.0, 1.0, 1.0 };
 	ga_uniform baseColor_uniform = _program->get_uniform("u_baseColor");
 	baseColor_uniform.set(_baseColor);
 

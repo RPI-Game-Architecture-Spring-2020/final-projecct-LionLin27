@@ -72,6 +72,7 @@ ga_font* g_font = nullptr;
 static void set_root_path(const char* exepath);
 
 void process_herald_msg(ga_frame_params*, ga_sim*);
+ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, ga_material* mat);
 
 int main(int argc, const char** argv)
 {
@@ -149,6 +150,7 @@ int main(int argc, const char** argv)
 
 	sim->add_entity(&light_entity);
 
+	/*
 	// point light ent
 	ga_entity light_entity2("point light 1");
 	ga_positional_light* light2 = new ga_positional_light({ 1,1,1 }, 1);
@@ -177,7 +179,6 @@ int main(int argc, const char** argv)
 	sim->add_entity(&torusRefEnt2);
 	torusRefEnt2.translate({ -10,-7,10 });
 
-	/*
 
 	// point light ent
 	ga_entity light_entity3("point light 2");
@@ -303,6 +304,7 @@ int main(int argc, const char** argv)
 	*/
 
 	// rocket
+	/*
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
 	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
@@ -311,8 +313,29 @@ int main(int argc, const char** argv)
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);
 	rocketEnt.set_position({ 0, -3, 10 });
-	/*
 	*/
+
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			ga_material* mat;
+
+			mat = new ga_reflective_lit_material(
+				my_test_pack.texture,
+				my_test_pack.normal,
+				sim->get_env_map(),
+				my_test_pack.roughness,
+				my_test_pack.metallic
+			);
+
+			create_sphere(sim, { 2.0f * i, 2.0f * j, 0.0f }, mat);
+
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * i);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * j);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_useNormalMap(false);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_debug_uniform(1);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->switch_brdf_comp(true, true, false);
+		}
+	}
 
 	/*
 	// lit plane
@@ -567,35 +590,35 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 	if (params->_herald->_create_sphere) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(10), mat);
+		ga_entity* new_ent = create_sphere(sim, pos + dir.scale_result(3.0f*sqrtf(3.0f)), mat);
 		sim->select_last_ent();
 		params->_herald->_create_sphere = false;
 	}
 	if (params->_herald->_create_cube) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_cube(sim, pos + dir.scale_result(10), mat);
+		ga_entity* new_ent = create_cube(sim, pos + dir.scale_result(3.0f * sqrtf(3.0f)), mat);
 		sim->select_last_ent();
 		params->_herald->_create_cube = false;
 	}
 	if (params->_herald->_create_torus) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(10), mat);
+		ga_entity* new_ent = create_torus(sim, pos + dir.scale_result(3.0f * sqrtf(3.0f)), mat);
 		sim->select_last_ent();
 		params->_herald->_create_torus = false;
 	}
 	if (params->_herald->_create_bunny) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_bunny(sim, pos + dir.scale_result(10), mat);
+		ga_entity* new_ent = create_bunny(sim, pos + dir.scale_result(3.0f * sqrtf(3.0f)), mat);
 		sim->select_last_ent();
 		params->_herald->_create_bunny = false;
 	}
 	if (params->_herald->_create_light) {
 		ga_vec3f pos = params->_camPos;
 		ga_vec3f dir = params->_camDir;
-		ga_entity* new_ent = create_light(sim, pos + dir.scale_result(10));
+		ga_entity* new_ent = create_light(sim, pos + dir.scale_result(3.0f * sqrtf(3.0f)));
 		sim->select_last_ent();
 		params->_herald->_create_light = false;
 	}
