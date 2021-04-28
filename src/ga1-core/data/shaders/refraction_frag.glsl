@@ -19,6 +19,7 @@ uniform mat4 u_vpMat_proj;
 
 uniform vec3 v_eyePos;
 
+uniform float bf_useInternalDepth;
 uniform bool b_useTexture;
 uniform bool b_useNormalMap;
 uniform bool b_useRoughMap;
@@ -73,25 +74,32 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
     // aproximate the piercing internal distance and by-normal internal distance
     float dN = (backNormals.w) - (distance(o_worldPos, v_eyePos));
 
+    // scale the internal distance
     mat4 mMat = u_mvMat * inverse(u_vMat);
     float dV = distance((vec4(o_internal_dist.xyz, 1) * mMat).xyz, (vec4(0,0,0, 1) * mMat).xyz);
-    dV = dV + 0.01;
-    // dV = o_internal_dist.w;
-    // float dV = o_internal_dist.w;
+
     // use angles between incoming and normal and refract and normal
     float theta_i = acos(dot(-I, normalize(normal)));
     float theta_t = acos(dot(T_1, -normalize(normal)));
     float d = ((theta_t / theta_i) * dV) + ((1 - (theta_t / theta_i)) * dN);
-    vec3 P_2 = o_worldPos + (T_1 * d);
+
+    // if internal distance is off, only use the depth distance
+    d = (d * bf_useInternalDepth) + (dN * (1 - bf_useInternalDepth));
+
     // with the estimated position of where T_1 will strike, get second normal
+    vec3 P_2 = o_worldPos + (T_1 * d);
     vec3 N_2 = textureProj(u_backNormals, vec4(P_2, 1) * u_vpMat_proj).xyz;
+
+
     int n_good = int(step(0.5, length(N_2)));
-    if (n_good < 1) { // poorly correct for out of bounds
+    if (n_good < 1) { // correct for out of bounds sampling
         N_2 = textureProj(u_backNormals, screen_coord).xyz;
     }
     // refract by second normal
     vec3 T_2 = refract(T_1, -normalize(N_2), f_ior);
+
     // If N_2 isn't picked up or T_2 isn't a good refraction, revert to T_1
+    // can fail due to total internal reflection
     float t_good = step(0.01, length(T_2));
 
     // LOD based on roughness
@@ -101,7 +109,7 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
         float front_rough = texture(u_roughnessMap, texcoord0).x;
         lod = lod * (1 - ((1 - back_rough) * (1 - front_rough)));
     }
-
+    
 	return textureLod(u_envMap, (t_good * T_2) + ((1.0 - t_good) * T_1), CUBE_MAP_LODS * lod);
 }
 

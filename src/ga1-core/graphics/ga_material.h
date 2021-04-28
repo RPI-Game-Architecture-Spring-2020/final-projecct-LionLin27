@@ -253,7 +253,8 @@ protected:
 class ga_refractive_lit_material : public ga_lit_material {
 public:
 	// ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, const char* environment_file);
-	ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file);
+	ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file,
+		bool useInternalDepth = true);
 	// ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map);
 
 	virtual bool init() override;
@@ -284,6 +285,8 @@ public:
 	virtual ga_texture* get_normalMap() { return _normalmap; }
 	virtual ga_texture* get_metallicMap() { return _metallicMap; }
 	virtual ga_texture* get_roughnessMap() { return _roughnessMap; }
+
+	virtual bool get_useInternalDepth() { return _useInternalDepth; }
 protected:
 	ga_cube_texture * _envMap;
 
@@ -296,6 +299,8 @@ protected:
 	float _metalness;
 	float _normalStr;
 	float _ior;
+
+	bool _useInternalDepth;
 
 	std::string _roughness_file;
 	std::string _metallic_file;
@@ -385,4 +390,19 @@ private:
 	ga_vec3f _baseColor;
 	ga_vec3f _ambientLight;
 	ga_terrain* _terrain;
+};
+
+
+// TODO : used for importance sampling for convolving cubemaps
+class ga_cube_sampler_material : ga_material {
+	ga_cube_sampler_material() {};
+	~ga_cube_sampler_material();
+
+	virtual bool init() override;
+
+	virtual void bind(const ga_mat4f& view_proj, const ga_mat4f& transform) override;
+
+	ga_shader* _vs;
+	ga_shader* _fs;
+	ga_program* _program;
 };

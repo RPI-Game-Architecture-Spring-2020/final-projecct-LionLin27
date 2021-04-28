@@ -447,7 +447,8 @@ ga_entity* create_sphere(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_model* sphereModel = new ga_model();
 	generate_sphere(32, sphereModel);
 
-	if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
+	ga_refractive_lit_material* refractMat = dynamic_cast<ga_refractive_lit_material*>(mat);
+	if (refractMat && refractMat->get_useInternalDepth()) {
 		std::cout << "Computing interior distance of sphere." << std::endl;
 		computeInteriorDistances(sphereModel);
 	}
@@ -466,7 +467,8 @@ ga_entity* create_cube(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_model* model = new ga_model();
 	generate_cube(model);
 
-	if (dynamic_cast<ga_refractive_lit_material*>(mat))
+	ga_refractive_lit_material* refractMat = dynamic_cast<ga_refractive_lit_material*>(mat);
+	if (refractMat && refractMat->get_useInternalDepth())
 		computeInteriorDistances(model);
 
 
@@ -483,7 +485,8 @@ ga_entity* create_torus(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 	ga_entity* torusEnt = new ga_entity("torus");
 	ga_model* torusModel = new ga_model();
 	generate_torus(1.5f, 0.7f, 30, torusModel);
-	if (dynamic_cast<ga_refractive_lit_material*>(mat))
+	ga_refractive_lit_material* refractMat = dynamic_cast<ga_refractive_lit_material*>(mat);
+	if (refractMat && refractMat->get_useInternalDepth())
 		computeInteriorDistances(torusModel);
 
 	ga_model_component* sphere_mce = new ga_model_component(torusEnt, torusModel, mat, true);
@@ -503,7 +506,8 @@ ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 		assimp_load_model_force("data/models/bunny.obj", bunny_model);
 		std::cout << bunny_model->_vertices.size() << std::endl;
 	}
-	if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
+	ga_refractive_lit_material* refractMat = dynamic_cast<ga_refractive_lit_material*>(mat);
+	if (refractMat && refractMat->get_useInternalDepth()) {
 		std::cout << "Running computeInteriorDistances on the bunny, this may take a while..." << std::endl;
 		computeInteriorDistances(bunny_model);
 	}
@@ -581,8 +585,9 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 			selectedTP->normal,
 			sim->get_env_map(),
 			selectedTP->roughness,
-			selectedTP->metallic
-		);
+			selectedTP->metallic, 
+			!params->_herald->_create_bunny  
+		);  // don't use internal distances on the bunny
 	}
 
 

@@ -1150,8 +1150,9 @@ float ga_reflective_lit_material::get_roughness() {
 
 
 // REFRACTIVE LIT MATERIAL
-ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file) :
-	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file)
+ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file, const char* normalmap_file, 
+	ga_cube_texture* env_map, const char* roughMap_file, const char* metalMap_file, bool useInternalDepth) :
+	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file), _useInternalDepth(useInternalDepth)
 {
 	_useEnvMap = true;
 }
@@ -1351,6 +1352,11 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 		metalmap_uniform.set(*_metallicMap, 3);
 	}
 
+	// floating point either 1 or 0 depending on if _useInternalDepth
+	ga_uniform useInternalDepth = _program->get_uniform("bf_useInternalDepth");
+	useInternalDepth.set(_useInternalDepth ? 1.0f : 0.0f);
+
+
 	// roughness
 	ga_uniform roughness_uniform = _program->get_uniform("f_roughness");
 	roughness_uniform.set(_roughness);
@@ -1373,4 +1379,54 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
+}
+
+
+
+
+ga_cube_sampler_material::~ga_cube_sampler_material() {
+	if (_vs)
+		delete _vs;
+	if (_fs)
+		delete _fs;
+	if (_program)
+		delete _program;
+}
+
+bool ga_cube_sampler_material::init() {
+
+	std::string source_vs;
+	load_shader("data/shaders/ga_unlit_texture_vert.glsl", source_vs);
+
+	std::string source_fs;
+	load_shader("data/shaders/ga_unlit_texture_frag.glsl", source_fs);
+
+	_vs = new ga_shader(source_vs.c_str(), GL_VERTEX_SHADER);
+	if (!_vs->compile())
+	{
+		std::cerr << "Failed to compile vertex shader:" << std::endl << _vs->get_compile_log() << std::endl;
+	}
+
+	_fs = new ga_shader(source_fs.c_str(), GL_FRAGMENT_SHADER);
+	if (!_fs->compile())
+	{
+		std::cerr << "Failed to compile fragment shader:\n\t" << std::endl << _fs->get_compile_log() << std::endl;
+	}
+
+	_program = new ga_program();
+	_program->attach(*_vs);
+	_program->attach(*_fs);
+	if (!_program->link())
+	{
+		std::cerr << "Failed to link shader program:\n\t" << std::endl << _program->get_link_log() << std::endl;
+	}
+
+	return true;
+}
+
+void ga_cube_sampler_material::bind(const ga_mat4f& view_proj, const ga_mat4f& transform) {
+	_program->use();
+
+	ga_uniform mvp_uniform = _program->get_uniform("mvpMat");
+	mvp_uniform.set(transform * view_proj);
 }
