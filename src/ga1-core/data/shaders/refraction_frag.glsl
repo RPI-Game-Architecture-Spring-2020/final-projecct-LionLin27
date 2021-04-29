@@ -65,10 +65,16 @@ uniform PositionalLight u_positionalLights[POSITIONAL_LIGHTS_MAX];
 
 layout (binding=1) uniform sampler2DShadow shadowTex;
 
+vec3 refract2(vec3 I, vec3 N, float eta) {
+    float k = 1.0 - eta * eta * (1.0 - dot(N, I) * dot(N, I));
+    k = max(0.05, k);
+    return eta * I - (eta * dot(N, I) + sqrt(k)) * N;
+}
+
 // REFRACTIOM FUNCTION
 vec4 blurRefraction(vec3 vertPos, vec3 normal) {
 	vec3 I = normalize(o_worldPos - v_eyePos);
-    vec3 T_1 = refract(I, normalize(normal), 1.0 / f_ior);
+    vec3 T_1 = refract2(I, normalize(normal), 1.0 / f_ior);
     // get the depth
     vec4 backNormals = textureProj(u_backNormals, screen_coord);
     // aproximate the piercing internal distance and by-normal internal distance
@@ -90,17 +96,16 @@ vec4 blurRefraction(vec3 vertPos, vec3 normal) {
     vec3 P_2 = o_worldPos + (T_1 * d);
     vec3 N_2 = textureProj(u_backNormals, vec4(P_2, 1) * u_vpMat_proj).xyz;
 
-
     int n_good = int(step(0.5, length(N_2)));
     if (n_good < 1) { // correct for out of bounds sampling
         N_2 = textureProj(u_backNormals, screen_coord).xyz;
     }
     // refract by second normal
-    vec3 T_2 = refract(T_1, -normalize(N_2), f_ior);
+    vec3 T_2 = refract2(T_1, -normalize(N_2), f_ior);
 
     // If N_2 isn't picked up or T_2 isn't a good refraction, revert to T_1
     // can fail due to total internal reflection
-    float t_good = step(0.01, length(T_2));
+    float t_good = step(0.0001, length(T_2));
 
     // LOD based on roughness
     float lod = f_roughness;

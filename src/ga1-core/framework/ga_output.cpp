@@ -469,6 +469,8 @@ void ga_output::update(ga_frame_params* params)
 			}
 		}
 		
+		ImGui::Text("%f\n", 1.0f / (params->_delta_time.count() / 1000000000.0f));
+		
 
 		ImGui::End();
 	}
