@@ -58,15 +58,19 @@ struct TexturePack {
 	const char* roughness;
 	const char* metallic;
 
-	TexturePack(const char* txt, const char* nml, const char* rgh, const char* mtl) : texture(txt), normal(nml), roughness(rgh), metallic(mtl) {};
+	float roughness_f;
+	float metalness_f;
+
+	TexturePack(const char* txt, const char* nml, const char* rgh, const char* mtl, float rf, float mf) : 
+		texture(txt), normal(nml), roughness(rgh), metallic(mtl),roughness_f(rf), metalness_f(mf) {};
 };
 
-TexturePack my_test_pack("data/textures/checker.png", "data/textures/lego_normal.png", "", "");
-TexturePack marble_pack("data/textures/Marble6/Color.jpg", "data/textures/Marble6/Normal.jpg", "data/textures/Marble6/Roughness.jpg", "");
-TexturePack rustiron_pack("data/textures/rustediron/basecolor.png", "data/textures/rustediron/normal.png", "data/textures/rustediron/roughness.png", "data/textures/rustediron/metallic.png");
-TexturePack steel_pack("data/textures/Metal38/Color.jpg", "data/textures/Metal38/Normal.jpg", "data/textures/Metal38/Roughness.jpg", "data/textures/Metal38/Metalness.jpg");
-TexturePack wood_pack("data/textures/Wood47/Color.jpg", "data/textures/Wood47/Normal.jpg", "data/textures/Wood47/Roughness.jpg", "");
-TexturePack tile_pack("data/textures/Tiles83/Color.jpg", "data/textures/Tiles83/Normal.jpg", "data/textures/Tiles83/Roughness.jpg", "");
+TexturePack my_test_pack("data/textures/checker.png", "data/textures/lego_normal.png", "", "", 0.1f, 0.5f);
+TexturePack marble_pack("data/textures/Marble6/Color.jpg", "data/textures/Marble6/Normal.jpg", "data/textures/Marble6/Roughness.jpg", "", 0.1f, 0.1f);
+TexturePack rustiron_pack("data/textures/rustediron/basecolor.png", "data/textures/rustediron/normal.png", "data/textures/rustediron/roughness.png", "data/textures/rustediron/metallic.png", 0.9f, 0.6f);
+TexturePack steel_pack("data/textures/Metal38/Color.jpg", "data/textures/Metal38/Normal.jpg", "data/textures/Metal38/Roughness.jpg", "data/textures/Metal38/Metalness.jpg", 0.4f, 0.7f);
+TexturePack wood_pack("data/textures/Wood47/Color.jpg", "data/textures/Wood47/Normal.jpg", "data/textures/Wood47/Roughness.jpg", "", 1.0f, 0.0f);
+TexturePack tile_pack("data/textures/Tiles83/Color.jpg", "data/textures/Tiles83/Normal.jpg", "data/textures/Tiles83/Roughness.jpg", "", 0.8f, 0.0f);
 
 ga_font* g_font = nullptr;
 static void set_root_path(const char* exepath);
@@ -304,7 +308,6 @@ int main(int argc, const char** argv)
 	*/
 
 	// rocket
-	/*
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
 	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
@@ -313,10 +316,10 @@ int main(int argc, const char** argv)
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);
 	rocketEnt.set_position({ 0, -3, 10 });
-	*/
 
+	/*
 	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 5; j++) {
+		for (int j = 0; j < 1; j++) {
 			ga_material* mat;
 
 			mat = new ga_reflective_lit_material(
@@ -329,13 +332,14 @@ int main(int argc, const char** argv)
 
 			create_sphere(sim, { 2.0f * i, 2.0f * j, 0.0f }, mat);
 
-			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * i);
-			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * j);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * (i+0.5f));
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * (j+0.5f));
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_useNormalMap(false);
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_debug_uniform(1);
-			dynamic_cast<ga_reflective_lit_material*>(mat)->switch_brdf_comp(true, true, false);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->switch_brdf_comp(false, true, false);
 		}
 	}
+	*/
 
 	/*
 	// lit plane
@@ -504,8 +508,8 @@ ga_entity* create_bunny(ga_sim* sim, ga_vec3f pos, ga_material* mat) {
 		std::cout << bunny_model->_vertices.size() << std::endl;
 	}
 	if (dynamic_cast<ga_refractive_lit_material*>(mat)) {
-		std::cout << "Running computeInteriorDistances on the bunny, this may take a while..." << std::endl;
-		computeInteriorDistances(bunny_model);
+		//std::cout << "Running computeInteriorDistances on the bunny, this may take a while..." << std::endl;
+		//computeInteriorDistances(bunny_model);
 	}
 
 	ga_model_component* sphere_mce = new ga_model_component(ent, bunny_model, mat, true);
@@ -574,6 +578,8 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 			selectedTP->roughness, 
 			selectedTP->metallic
 		);
+		dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(selectedTP->roughness_f);
+		dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(selectedTP->metalness_f);
 	}
 	else if (params->_herald->_selected_type == 1) {
 		mat = new ga_refractive_lit_material(
@@ -583,6 +589,8 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 			selectedTP->roughness,
 			selectedTP->metallic
 		);
+		dynamic_cast<ga_refractive_lit_material*>(mat)->set_roughness(selectedTP->roughness_f);
+		dynamic_cast<ga_refractive_lit_material*>(mat)->set_metalness(selectedTP->metalness_f);
 	}
 
 

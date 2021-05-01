@@ -466,6 +466,10 @@ void ga_output::update(ga_frame_params* params)
 				float ior = refract_mat->get_IOR();
 				ImGui::SliderFloat("IOR", &ior, 1.0f, 1.5f);
 				refract_mat->set_IOR(ior);
+
+				float clearity = refract_mat->get_clearity();
+				ImGui::SliderFloat("clearity", &clearity, 0.0f, 1.0f);
+				refract_mat->set_clearity(clearity);
 			}
 		}
 		

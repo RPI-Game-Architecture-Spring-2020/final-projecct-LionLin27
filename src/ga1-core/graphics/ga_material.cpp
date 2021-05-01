@@ -900,6 +900,8 @@ ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file,
 	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file), _ao_file(aoMap_file)
 {
 	_useEnvMap = true;
+	_roughness = 0.1f;
+	_metalness = 0.5f;
 }
 
 bool ga_reflective_lit_material::init()
@@ -986,8 +988,8 @@ bool ga_reflective_lit_material::init()
 
 
 	// set initial roughness to 0
-	_roughness = 0.1f;
-	_metalness = 0.5f;
+	//_roughness = 0.1f;
+	//_metalness = 0.5f;
 	_normalStr = 1.0f;
 
 	_NDF = true;
@@ -1125,9 +1127,9 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 void ga_reflective_lit_material::set_roughness(float roughness) {
 	_roughness = roughness;
 
-	_program->use();
-	ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
-	roughnessUniform.set(roughness);
+	//_program->use();
+	//ga_uniform roughnessUniform = _program->get_uniform("f_roughness");
+	//roughnessUniform.set(roughness);
 }
 void ga_reflective_lit_material::switch_brdf_comp(bool _ndf, bool _geo, bool _fnl)
 {
@@ -1154,6 +1156,9 @@ ga_refractive_lit_material::ga_refractive_lit_material(const char* texture_file,
 	ga_lit_material(texture_file, normalmap_file), _envMap(env_map), _metallic_file(metalMap_file), _roughness_file(roughMap_file)
 {
 	_useEnvMap = true;
+	_roughness = 0.1f;
+	_metalness = 0.5f;
+	_clearity = 1.0f;
 }
 
 bool ga_refractive_lit_material::init()
@@ -1230,8 +1235,8 @@ bool ga_refractive_lit_material::init()
 
 
 	// set initial roughness to 0
-	_roughness = 0.1f;
-	_metalness = 0.5f;
+	//_roughness = 0.1f;
+	//_metalness = 0.5f;
 	_normalStr = 1.0f;
 	_ior = 1.0f;
 
@@ -1310,6 +1315,10 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	// fix reflection
 	ga_uniform vMat = _program->get_uniform("u_vMat");
 	vMat.set(view);
+
+	// clearity
+	ga_uniform clearity = _program->get_uniform("f_clearity");
+	clearity.set(_clearity);
 
 	ga_uniform eyePos_uniform = _program->get_uniform("v_eyePos");
 	eyePos_uniform.set(eyePos);

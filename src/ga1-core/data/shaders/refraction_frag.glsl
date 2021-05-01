@@ -28,6 +28,7 @@ uniform float f_roughness;
 uniform float f_metalness;
 uniform float f_normalStr;
 uniform float f_ior;
+uniform float f_clearity;
 
 in vec3 o_normal;
 in vec3 o_vertPos;
@@ -223,6 +224,14 @@ float lookup(float x, float y)
 	return t;
 }
 
+vec4 blurReflection(vec3 o_vertPos, vec3 o_normal, float roughness) {
+	
+	vec3 r = -reflect(normalize(-o_vertPos), normalize(o_normal));
+	vec4 r2 = normalize(vec4(r,0) * inverse(u_vMat));
+
+	return textureLod(u_envMap, r2.xyz, roughness * CUBE_MAP_LODS);
+}
+
 void main(void)
 {
 
@@ -301,8 +310,9 @@ void main(void)
 	vec4 litColor = vec4(color, 1.0);
 
 	vec4 refractionColor = blurRefraction(o_vertPos, worldNormal);
+    vec4 reflectionColor = blurReflection(o_vertPos, normal, roughness);
 
-	vec4 mixedColor = metallic * refractionColor + (1.0 - metallic) * litColor;
+	vec4 mixedColor = metallic * reflectionColor + (1.0 - metallic)*(f_clearity*refractionColor + (1.0- f_clearity) * litColor);
 
 	gl_FragColor = mix(fogColor, mixedColor, fogFactor);
 }

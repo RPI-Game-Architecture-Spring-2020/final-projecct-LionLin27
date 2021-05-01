@@ -275,6 +275,9 @@ public:
 	virtual float get_IOR() { return _ior;  }
 	virtual void set_IOR(float ior) { _ior = ior; }
 
+	float get_clearity() { return _clearity; }
+	void set_clearity(float c) { _clearity = c; }
+
 	bool get_useRoughnessMap() { return _useRoughMap; };
 	void set_useRoughnessMap(bool use) { _useRoughMap = use; };
 
@@ -296,6 +299,7 @@ protected:
 	float _metalness;
 	float _normalStr;
 	float _ior;
+	float _clearity;
 
 	std::string _roughness_file;
 	std::string _metallic_file;
