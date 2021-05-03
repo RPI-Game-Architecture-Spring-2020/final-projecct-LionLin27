@@ -305,8 +305,8 @@ int main(int argc, const char** argv)
 	ga_model_component torus_ref_mc(&torusRefEnt, &torusRefModel, ref_mat, true);
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
-	*/
 
+	*/
 	// rocket
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
