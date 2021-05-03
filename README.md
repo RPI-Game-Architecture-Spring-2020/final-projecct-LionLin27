@@ -8,8 +8,13 @@
 5. run '.\setup_win64.bat ga1-core'
 6. the project should build and create a Visual Studio solution
 
+### Due to cmake struggle, assimp need to be linked manually:
+1. After building the project, go to ga project properties
+2. Go to Linker/Input/additional dependencies
+3. Add "assimp-vc142-mt.lib"
+
 ## Run Steps:
-1. open the solution using Sisual Studio 
+1. open the solution using Visual Studio 
 2. set 'ga' to default startup project (right-click on the solution panel)
 3. run via Visual Studio
 
