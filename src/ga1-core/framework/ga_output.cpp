@@ -113,7 +113,6 @@ void ga_output::update(ga_frame_params* params)
 		if (d._lit && !d._drawTerrain) {
 			ga_mat4f mMat = d._transform;
 			_shadow.bind(lightVP, mMat);
-
 			glBindVertexArray(d._vao);
 
 			if (d._drawBuffer) {
@@ -424,6 +423,17 @@ void ga_output::update(ga_frame_params* params)
 				ImGui::SliderInt("debug uniform", &debug_uniform, 0, 10);
 				if(debug_uniform != reflect_mat->get_debug_uniform())
 					reflect_mat->set_debug_uniform(debug_uniform);
+
+				int ndf_selection = reflect_mat->get_NDF_selection();
+				ImGui::SliderInt("ndf selection", &ndf_selection, 1, 4);
+
+				int geo_selection = reflect_mat->get_GEO_selection();
+				ImGui::SliderInt("geo selection", &geo_selection, 1, 4);
+
+				int fnl_selection = reflect_mat->get_FNL_selection();
+				ImGui::SliderInt("fnl selection", &fnl_selection, 1, 4);
+
+				reflect_mat->switch_brdf_comp_selection(ndf_selection, geo_selection, fnl_selection);
 			}
 
 			// refractive materials

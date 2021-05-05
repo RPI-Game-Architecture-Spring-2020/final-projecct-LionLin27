@@ -210,6 +210,15 @@ public:
 	bool get_FNL() { return _FNL; }
 	void switch_brdf_comp(bool ndf, bool geo, bool fnl);
 
+	int get_NDF_selection() { return _NDF_selection; }
+	int get_GEO_selection() { return _GEO_selection; }
+	int get_FNL_selection() { return _FNL_selection; }
+	void switch_brdf_comp_selection(int ndf, int geo, int fnl) {
+		_NDF_selection = ndf;
+		_GEO_selection = geo;
+		_FNL_selection = fnl;
+	}
+
 	int get_debug_uniform() { return _debug_uniform; }
 	void set_debug_uniform(int input) { _debug_uniform = input; }
 
@@ -246,6 +255,9 @@ protected:
 	bool _GEO;
 	bool _FNL;
 	int _debug_uniform;
+	int _NDF_selection;
+	int _GEO_selection;
+	int _FNL_selection;
 };
 
 

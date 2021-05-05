@@ -82,7 +82,7 @@ void ga_shadow::finishPass() {
 	glDisable(GL_POLYGON_OFFSET_FILL);	// artifact reduction, continued
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glActiveTexture(GL_TEXTURE1);
+	glActiveTexture(GL_TEXTURE9);
 	glBindTexture(GL_TEXTURE_2D, *(_tex->get_handle()));
 
 	glDrawBuffer(GL_FRONT);

@@ -996,6 +996,9 @@ bool ga_reflective_lit_material::init()
 	_GEO = true;
 	_FNL = true;
 	_debug_uniform = 0;
+	_NDF_selection = 1;
+	_GEO_selection = 1;
+	_FNL_selection = 1;
 
 	_baseColor = { 1,1,1 };
 
@@ -1108,6 +1111,9 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 		aomap_uniform.set(*_aoMap, 4);
 	}
 
+	ga_uniform useEnvMap = _program->get_uniform("b_useEnvMap");
+	useEnvMap.set(_useEnvMap);
+
 	// for visualization
 	ga_uniform ndf = _program->get_uniform("b_NDF");
 	ga_uniform geo = _program->get_uniform("b_GEO");
@@ -1115,6 +1121,13 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	ndf.set(_NDF);
 	geo.set(_GEO);
 	fnl.set(_FNL);
+
+	ga_uniform ndf_selection = _program->get_uniform("u_NDFSelection");
+	ga_uniform geo_selection = _program->get_uniform("u_GEOSelection");
+	ga_uniform fnl_selection = _program->get_uniform("u_FNLSelection");
+	ndf_selection.set(_NDF_selection);
+	geo_selection.set(_GEO_selection);
+	fnl_selection.set(_FNL_selection);
 
 	ga_uniform debug_u = _program->get_uniform("u_debug");
 	debug_u.set(_debug_uniform);

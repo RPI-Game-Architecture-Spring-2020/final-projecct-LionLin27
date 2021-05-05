@@ -261,7 +261,8 @@ int main(int argc, const char** argv)
 	sphereEnt.scale(1000.0f);
 	sphereEnt.set_position({0,0,-2000});
 
-
+	*/
+	/*
 	// lit torus
 	ga_entity torusEnt("torus");
 	ga_model torusModel;
