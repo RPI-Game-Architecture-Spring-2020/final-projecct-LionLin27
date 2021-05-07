@@ -22,6 +22,8 @@ uniform bool b_useRoughMap;
 uniform bool b_useMetalMap;
 uniform bool b_useAOMap;
 
+uniform bool b_rcvShadow;
+
 uniform float f_roughness;
 uniform float f_metalness;
 uniform float f_normalStr;
@@ -115,7 +117,7 @@ float GeometryBeckmann(float NdotV, float roughness){
     }
 }
 
-float GeometrySchlickBeckmann(float NdotV, float roughness){
+float GeometrySchlickGGX(float NdotV, float roughness){
     float r = (roughness + 1.0);
     float k = (r*r) / 8.0;
 
@@ -125,7 +127,7 @@ float GeometrySchlickBeckmann(float NdotV, float roughness){
     return num / denom;
 }
 
-float GeometrySchlickGGX(float NdotV, float roughness){
+float GeometrySchlickBeckmann(float NdotV, float roughness){
     float r = roughness;
     float k = (r*r) * sqrt(2.0/PI);
 
@@ -280,7 +282,7 @@ float lookup(float x, float y)
 {  	float t = textureProj(shadowTex, shadow_coord 
             + vec4(x * (1.0/1280.0) * shadow_coord.w,
                    y * (1.0/720.0) * shadow_coord.w,
-                   0.0, 0.0));
+                   0.0001, 0.0));
 	return t;
 }
 
@@ -356,7 +358,9 @@ void main(void)
     shadowFactor += lookup( 0.3*swidth + o.x, -0.3*swidth - o.y);
     shadowFactor = shadowFactor / 4.0;
 
-    color += shadowFactor * vec3(5.0*ambient);
+    if(b_rcvShadow){
+        color += shadowFactor * vec3(5.0*ambient);
+    }
 
     if(b_useAOMap){
         color *= texture(u_AOMap, texcoord0).x;
@@ -377,9 +381,9 @@ void main(void)
 
     vec4 mixedColor = litColor;
     if(b_useEnvMap){
-        //vec3 F = fresnelSchlick(max(dot(normalize(normal),normalize(-o_vertPos)), 0.0), F0);
-        //vec3 F2 = vec3(1.0,1.0,1.0)-F;
-	    //mixedColor = vec4(F,1.0) * reflectionColor + vec4(F2,1.0) * litColor;
+        // vec3 F = fresnelSchlick(max(dot(normalize(normal),normalize(-o_vertPos)), 0.0), F0);
+        // vec3 F2 = vec3(1.0,1.0,1.0)-F;
+	    // mixedColor = vec4(F,1.0) * reflectionColor + vec4(F2,1.0) * litColor;
         mixedColor = metallic * reflectionColor + (1.0-metallic) * litColor;
     }
 

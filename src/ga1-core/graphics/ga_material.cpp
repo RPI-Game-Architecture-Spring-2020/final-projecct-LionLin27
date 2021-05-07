@@ -902,6 +902,7 @@ ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file,
 	_useEnvMap = true;
 	_roughness = 0.1f;
 	_metalness = 0.5f;
+	_rcvShadow = true;
 }
 
 bool ga_reflective_lit_material::init()
@@ -1113,6 +1114,9 @@ void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 
 	ga_uniform useEnvMap = _program->get_uniform("b_useEnvMap");
 	useEnvMap.set(_useEnvMap);
+
+	ga_uniform rcvShadow = _program->get_uniform("b_rcvShadow");
+	rcvShadow.set(_rcvShadow);
 
 	// for visualization
 	ga_uniform ndf = _program->get_uniform("b_NDF");

@@ -191,6 +191,9 @@ public:
 	virtual float get_normalStr() { return _normalStr; }
 	virtual void set_normalStr(float normalStr) { _normalStr = normalStr; }
 
+	virtual float get_rcvShadow() { return _rcvShadow; }
+	virtual void set_rcvShadow(bool b) { _rcvShadow = b; }
+
 	bool get_useEnvMap() { return _useEnvMap; }
 	bool get_useRoughMap() { return _useRoughMap; }
 	bool get_useMetallicMap() { return _useMetalMap; }
@@ -239,6 +242,7 @@ protected:
 	bool _useRoughMap;
 	bool _useMetalMap;
 	bool _useAOMap;
+	bool _rcvShadow;
 
 	float _roughness;
 	float _metalness;

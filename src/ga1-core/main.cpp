@@ -307,8 +307,8 @@ int main(int argc, const char** argv)
 	sim->add_entity(&torusRefEnt);
 	torusRefEnt.translate({ 5,-7,10 });
 
-	*/
 	// rocket
+	*/
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
 	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
@@ -333,11 +333,11 @@ int main(int argc, const char** argv)
 
 			create_sphere(sim, { 2.0f * i, 2.0f * j, 0.0f }, mat);
 
-			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * (i+0.5f));
-			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * (j+0.5f));
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * (j+0.5f));
+			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * (i+0.5f));
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_useNormalMap(false);
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_debug_uniform(1);
-			dynamic_cast<ga_reflective_lit_material*>(mat)->switch_brdf_comp(false, true, false);
+			dynamic_cast<ga_reflective_lit_material*>(mat)->switch_brdf_comp(false, false, true);
 		}
 	}
 	*/

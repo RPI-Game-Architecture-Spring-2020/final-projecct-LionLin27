@@ -406,34 +406,50 @@ void ga_output::update(ga_frame_params* params)
 					reflect_mat->set_metalness(metalness);
 				}
 
-				bool ndf = reflect_mat->get_NDF();
-				bool geo = reflect_mat->get_GEO();
-				bool fnl = reflect_mat->get_FNL();
-				ImGui::Checkbox("Normal Distrib", &ndf);
-				ImGui::Checkbox("Geometry", &geo);
-				ImGui::Checkbox("Frenel", &fnl);
-				if (ndf != reflect_mat->get_NDF()
-					|| geo != reflect_mat->get_GEO()
-					|| fnl != reflect_mat->get_FNL()) {
-
-					reflect_mat->switch_brdf_comp(ndf, geo, fnl);
+				bool sdw = reflect_mat->get_rcvShadow();
+				ImGui::Checkbox("Rcv Shadow", &sdw);
+				if (sdw != reflect_mat->get_rcvShadow()) {
+					reflect_mat->set_rcvShadow(sdw);
 				}
 
-				int debug_uniform = reflect_mat->get_debug_uniform();
-				ImGui::SliderInt("debug uniform", &debug_uniform, 0, 10);
-				if(debug_uniform != reflect_mat->get_debug_uniform())
-					reflect_mat->set_debug_uniform(debug_uniform);
+				ImGui::Dummy(ImVec2(0.0f, 5.0f));
+				if(ImGui::TreeNode("BRDF Detail")) {
+					bool ndf = reflect_mat->get_NDF();
+					bool geo = reflect_mat->get_GEO();
+					bool fnl = reflect_mat->get_FNL();
+					ImGui::Checkbox("Normal Distrib", &ndf);
+					ImGui::Checkbox("Geometry", &geo);
+					ImGui::Checkbox("Frenel", &fnl);
+					if (ndf != reflect_mat->get_NDF()
+						|| geo != reflect_mat->get_GEO()
+						|| fnl != reflect_mat->get_FNL()) {
 
-				int ndf_selection = reflect_mat->get_NDF_selection();
-				ImGui::SliderInt("ndf selection", &ndf_selection, 1, 4);
+						reflect_mat->switch_brdf_comp(ndf, geo, fnl);
+					}
 
-				int geo_selection = reflect_mat->get_GEO_selection();
-				ImGui::SliderInt("geo selection", &geo_selection, 1, 4);
+					int debug_uniform = reflect_mat->get_debug_uniform();
+					ImGui::SliderInt("debug uniform", &debug_uniform, 0, 10);
+					if(debug_uniform != reflect_mat->get_debug_uniform())
+						reflect_mat->set_debug_uniform(debug_uniform);
 
-				int fnl_selection = reflect_mat->get_FNL_selection();
-				ImGui::SliderInt("fnl selection", &fnl_selection, 1, 4);
+					int ndf_selection = reflect_mat->get_NDF_selection();
+					ImGui::SliderInt("ndf selection", &ndf_selection, 1, 4);
 
-				reflect_mat->switch_brdf_comp_selection(ndf_selection, geo_selection, fnl_selection);
+					int geo_selection = reflect_mat->get_GEO_selection();
+					ImGui::SliderInt("geo selection", &geo_selection, 1, 4);
+
+					int fnl_selection = reflect_mat->get_FNL_selection();
+					ImGui::SliderInt("fnl selection", &fnl_selection, 1, 4);
+
+					reflect_mat->switch_brdf_comp_selection(ndf_selection, geo_selection, fnl_selection);
+
+					static const char* ndf_str[4] = { "D: GGX", "D: Blinn-Phong", "D: Beckmann", "D: GGX"};
+					static const char* geo_str[4] = { "G: SchlickGGX", "G: SchlickVries", "G: SchlickBeckmann", "G: Beckmann" };
+					static const char* fnl_str[4] = { "F: Schlick", "F: Blinn-Schlick", "F: Schlick", "F: Schlick" };
+					ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), ndf_str[ndf_selection - 1]);
+					ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), geo_str[geo_selection - 1]);
+					ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), fnl_str[fnl_selection - 1]);
+				}
 			}
 
 			// refractive materials
