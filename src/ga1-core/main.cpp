@@ -71,6 +71,9 @@ TexturePack rustiron_pack("data/textures/rustediron/basecolor.png", "data/textur
 TexturePack steel_pack("data/textures/Metal38/Color.jpg", "data/textures/Metal38/Normal.jpg", "data/textures/Metal38/Roughness.jpg", "data/textures/Metal38/Metalness.jpg", 0.4f, 0.7f);
 TexturePack wood_pack("data/textures/Wood47/Color.jpg", "data/textures/Wood47/Normal.jpg", "data/textures/Wood47/Roughness.jpg", "", 1.0f, 0.0f);
 TexturePack tile_pack("data/textures/Tiles83/Color.jpg", "data/textures/Tiles83/Normal.jpg", "data/textures/Tiles83/Roughness.jpg", "", 0.8f, 0.0f);
+TexturePack moon_pack{ "data/textures/moon.jpg", "data/textures/moonNormal.jpg", "", "", 1.0f, 0.0f };
+
+TexturePack tparr[] = { my_test_pack, marble_pack, rustiron_pack, steel_pack, wood_pack, tile_pack, moon_pack };
 
 ga_font* g_font = nullptr;
 static void set_root_path(const char* exepath);
@@ -102,6 +105,7 @@ int main(int argc, const char** argv)
 
 	// skybox
 	ga_cube_texture sky_tex("data/textures/sybox_forest_pine");
+	//ga_cube_texture sky_tex("data/textures/cubeMap");
 	ga_skybox skybox(&sky_tex);
 	output->SetSkybox(&skybox);
 	skybox.init();
@@ -141,16 +145,19 @@ int main(int argc, const char** argv)
 	ga_material* sphereMat = new ga_constant_color_material();
 	sphereMat->set_color({ 1,1,1 });
 	ga_model_component sphere_mc2(&light_entity, &lightSphereModel, sphereMat);
-	light_entity.scale(0.1f);
-	ga_quatf rot;
-	rot.make_axis_angle({ 1, 0,0 }, -45);
-	light_entity.rotate(rot);
 
 	ga_model arrowModel;
 	generate_arrow(&arrowModel);
 	ga_material* arrow_mat = new ga_constant_color_material();
 	arrow_mat->set_color({ 1,1,1 });
 	ga_model_component arrow_mce(&light_entity, &arrowModel, arrow_mat);
+	
+	/*
+	*/
+	ga_quatf rot;
+	rot.make_axis_angle({ 1, 0,0 }, -45);
+	light_entity.scale(0.1f);
+	light_entity.rotate(rot);
 
 	sim->add_entity(&light_entity);
 
@@ -308,30 +315,36 @@ int main(int argc, const char** argv)
 	torusRefEnt.translate({ 5,-7,10 });
 
 	// rocket
-	*/
 	ga_entity rocketEnt("rocket");
 	ga_model rocketModel;
 	assimp_load_model("data/models/TheRocket.obj", &rocketModel);
 	ga_material* rocket_mat = new ga_reflective_lit_material("data/textures/RocketTextures/BaseColor.png", "data/textures/RocketTextures/Normal.png", &sky_tex, "data/textures/RocketTextures/Roughness.png", "data/textures/RocketTextures/Metallic.png", "data/textures/RocketTextures/AO.png");
+	((ga_reflective_lit_material*)rocket_mat)->set_roughness(1.0);
 	ga_model_component rocket_model_component(&rocketEnt, &rocketModel, rocket_mat, true);
 	sim->add_entity(&rocketEnt);
 	rocketEnt.scale(1.0f);
 	rocketEnt.set_position({ 0, -3, 10 });
+	*/
 
 	/*
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 7; i++) {
 		for (int j = 0; j < 1; j++) {
 			ga_material* mat;
 
-			mat = new ga_reflective_lit_material(
-				my_test_pack.texture,
-				my_test_pack.normal,
-				sim->get_env_map(),
-				my_test_pack.roughness,
-				my_test_pack.metallic
-			);
+			TexturePack tpp = tparr[i];
 
-			create_sphere(sim, { 2.0f * i, 2.0f * j, 0.0f }, mat);
+			mat = new ga_reflective_lit_material(
+				tpp.texture,
+				tpp.normal,
+				sim->get_env_map(),
+				tpp.roughness,
+				tpp.metallic
+			);
+			((ga_reflective_lit_material*)mat)->set_roughness(tpp.roughness_f);
+			((ga_reflective_lit_material*)mat)->set_metalness(tpp.metalness_f);
+
+			ga_entity* test_sph =  create_sphere(sim, { 4.0f * i, 2.0f * j, 0.0f }, mat);
+			ga_lua_component* lua_rotate = new ga_lua_component(test_sph, "data/scripts/rotate.lua");
 
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_roughness(0.2f * (j+0.5f));
 			dynamic_cast<ga_reflective_lit_material*>(mat)->set_metalness(0.2f * (i+0.5f));
@@ -563,6 +576,9 @@ void process_herald_msg(ga_frame_params* params, ga_sim* sim) {
 		break;
 	case(5):
 		selectedTP = &tile_pack;
+		break;
+	case(6):
+		selectedTP = &moon_pack;
 		break;
 	default:
 		selectedTP = &my_test_pack;

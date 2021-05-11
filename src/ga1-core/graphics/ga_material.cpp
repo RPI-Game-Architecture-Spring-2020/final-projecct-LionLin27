@@ -902,7 +902,7 @@ ga_reflective_lit_material::ga_reflective_lit_material(const char* texture_file,
 	_useEnvMap = true;
 	_roughness = 0.1f;
 	_metalness = 0.5f;
-	_rcvShadow = true;
+	_rcvShadow = false;
 }
 
 bool ga_reflective_lit_material::init()
@@ -1009,12 +1009,20 @@ bool ga_reflective_lit_material::init()
 
 void ga_reflective_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f& proj, const ga_mat4f& transform, const struct ga_light_drawcall& lights, const ga_mat4f& shadowMVP)
 {
-	_ambientLight = { 0.1, 0.1, 0.1 };
+	_ambientLight = { 0.3, 0.3, 0.3 };
 
 	_program->use();
 
 	// directional light
 	ga_directional_light* dirL = lights._dirLight;
+
+	// temprory shadow hack
+	if (_rcvShadow) {
+		_ambientLight = { 0.1, 0.1, 0.1 };
+	}
+	else {
+		_ambientLight = { 0.3, 0.3, 0.3 };
+	}
 
 	// get the locations of the light and material fields in the shader
 	ga_uniform globalAmbLoc = _program->get_uniform("u_ambientLight");
@@ -1268,7 +1276,7 @@ void ga_refractive_lit_material::bindLight(const ga_mat4f& view, const ga_mat4f&
 	int depthTexIndex, int normalTexIndex, const ga_mat4f& u_eyeProj, const ga_vec3f& eyePos,
 	const ga_mat4f& vpMat_for_world_proj)
 {
-	_ambientLight = { 0.1, 0.1, 0.1 };
+	_ambientLight = { 0.3, 0.3, 0.3 };
 
 	_program->use();
 

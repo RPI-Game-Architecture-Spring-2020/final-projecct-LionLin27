@@ -509,7 +509,7 @@ void ga_output::update(ga_frame_params* params)
 		// here we set the calculated width and also make the height to be
 		// be the height of the main window also with some margin
 		ImGui::SetNextWindowSize(
-			ImVec2(static_cast<float>(width / 8), static_cast<float>(height * 0.5f - 20)),
+			ImVec2(static_cast<float>(width / 8), static_cast<float>(height * 0.5f - 10)),
 			ImGuiCond_Always
 		);
 		ImGui::Begin("Model Creator");
@@ -533,7 +533,7 @@ void ga_output::update(ga_frame_params* params)
 		ImGui::TextColored(ImVec4(1.0f, 0.0f, 1.0f, 1.0f), "Select Material");
 		// select material
 		static int selectedMat = 0;
-		for (int n = 0; n < 6; n++)
+		for (int n = 0; n < 7; n++)
 		{
 			char buf[32];
 			if(n == 0)
@@ -547,7 +547,9 @@ void ga_output::update(ga_frame_params* params)
 			else if (n == 4)
 				sprintf(buf, "Wood"); 
 			else if (n == 5)
-				sprintf(buf, "Tiles");
+				sprintf(buf, "Tiles"); 
+			else if (n == 6)
+				sprintf(buf, "Moon");
 
 
 			if (ImGui::Selectable(buf, selectedMat == n))
